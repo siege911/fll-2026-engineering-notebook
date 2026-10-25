@@ -16,3 +16,5 @@ node_modules/
 # Pi: camera key and collected photos stay on the Pi
 pi/settings.json
 pi/photos/
+pi/data/
+__pycache__/

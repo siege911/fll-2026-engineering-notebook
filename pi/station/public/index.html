@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>Rooted Warriors Camera Station</title>
+<!--
+  The Camera Station page. Made for the Pi's 7" touchscreen (800 x 480),
+  but works in any browser. Colors match our Engineering Notebook.
+  Pages: Home, Live, Review, Publish, Experiment (see the sidebar).
+-->
+<style>
+  :root{
+    --forest:#1c3b2a; --pine:#2a5c3f; --grass:#3f9b4c;
+    --lavender:#b48fd9; --lilac:#d9c6ee; --teal:#20b5c9;
+    --cream:#f4efe1; --paper:#ffffff; --ink:#22301f; --dim:#7d8a76; --line:#e5decb; --soft:#efe9d8;
+    --warn:#e0a23a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Avenir Next','Trebuchet MS',sans-serif;-webkit-tap-highlight-color:transparent;user-select:none}
+  html,body{height:100%;background:var(--cream);color:var(--ink);overflow:hidden}
+  body{display:flex}
+  button{font-family:inherit;cursor:pointer;border:none}
+
+  /* Sidebar */
+  nav{width:96px;background:var(--forest);display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:4px;border-right:4px solid var(--lavender)}
+  nav .logo{color:#fff;font-weight:800;font-size:11px;text-align:center;line-height:1.2;margin-bottom:6px}
+  nav button{width:80px;height:72px;border-radius:14px;background:transparent;color:#cfe3d2;font-size:12px;font-weight:700;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;position:relative}
+  nav button span.i{font-size:24px}
+  nav button.on{background:var(--lavender);color:var(--forest)}
+  nav .badge{position:absolute;top:4px;right:6px;background:var(--warn);color:var(--forest);border-radius:10px;font-size:11px;padding:0 6px;font-weight:800}
+
+  main{flex:1;overflow-y:auto;padding:12px 14px}
+  h1{font-size:20px;color:var(--forest);margin-bottom:8px}
+  .card{background:var(--paper);border:3px solid var(--lavender);border-radius:16px;padding:12px}
+  .muted{color:var(--dim);font-size:13px}
+  .banner{background:var(--lilac);color:var(--forest);border-radius:12px;padding:8px 12px;font-size:13px;margin-bottom:10px}
+  .big{font-size:16px;font-weight:800;border-radius:14px;padding:14px 18px;min-height:56px}
+  .go{background:var(--grass);color:#fff}
+  .plain{background:var(--soft);color:var(--forest)}
+  .lav{background:var(--lavender);color:var(--forest)}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .actions{position:sticky;bottom:-12px;background:var(--cream);padding:8px 0 12px;margin-top:6px}
+
+  /* Home: the 4 steps */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .step{background:var(--paper);border:3px solid var(--line);border-radius:16px;padding:10px;min-height:150px;display:flex;flex-direction:column;gap:4px}
+  .step.ok{border-color:var(--grass)} .step.todo{border-color:var(--warn)}
+  .step .num{width:30px;height:30px;border-radius:50%;background:var(--forest);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .step b{font-size:15px;color:var(--forest)}
+  .step .n{font-size:30px;font-weight:800;color:var(--forest);line-height:1}
+  .step button{margin-top:auto}
+  .status{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+  .pill{border-radius:20px;padding:6px 12px;font-size:13px;font-weight:700;background:var(--soft)}
+  .pill.good{background:#e4f5e6;color:var(--pine)} .pill.bad{background:#fbe7c6;color:#7a5410}
+
+  /* Review */
+  .visits{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+  .visit{background:var(--paper);border:3px solid var(--line);border-radius:14px;overflow:hidden;text-align:left;padding:0}
+  .visit img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:var(--soft)}
+  .visit .cap{padding:6px 8px;font-size:13px}
+  .visit .cap b{display:block;font-size:14px;color:var(--forest);text-transform:capitalize}
+  .detail{display:grid;grid-template-columns:1.25fr 1fr;gap:10px}
+  .detail .photo{width:100%;border-radius:12px;display:block;aspect-ratio:4/3;object-fit:cover;background:var(--soft)}
+  .strip{display:flex;gap:6px;overflow-x:auto;margin-top:6px;padding-bottom:4px}
+  .strip img{height:52px;border-radius:8px;border:3px solid transparent}
+  .strip img.best{border-color:var(--lavender)}
+  .chips{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{border-radius:20px;padding:9px 12px;font-size:14px;font-weight:700;background:var(--soft);color:var(--forest);text-transform:capitalize}
+  .chip.on{background:var(--lavender)}
+  .counter{display:flex;align-items:center;gap:10px}
+  .counter button{width:48px;height:48px;border-radius:12px;font-size:24px;font-weight:800;background:var(--soft);color:var(--forest)}
+  .counter span{font-size:26px;font-weight:800;min-width:30px;text-align:center}
+  .label{font-size:12px;font-weight:800;color:var(--dim);text-transform:uppercase;letter-spacing:.05em;margin:8px 0 4px}
+
+  /* Publish + Experiment */
+  .list{display:flex;flex-direction:column;gap:8px}
+  .item{display:flex;align-items:center;gap:10px;background:var(--paper);border:3px solid var(--line);border-radius:14px;padding:6px}
+  .item.on{border-color:var(--grass)}
+  .item img{width:88px;aspect-ratio:4/3;object-fit:cover;border-radius:8px}
+  .item b{text-transform:capitalize;color:var(--forest)}
+  .tick{margin-left:auto;width:40px;height:40px;border-radius:10px;background:var(--soft);font-size:22px;display:flex;align-items:center;justify-content:center}
+  .item.on .tick{background:var(--grass);color:#fff}
+  .score{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+  .score > div{border-radius:12px;padding:10px 4px;background:var(--soft)}
+  .score > .c{background:#e3f6f8} .score > .s{background:var(--lilac)}
+  .score .n{font-size:28px;font-weight:800;color:var(--forest)}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+  th,td{text-align:center;padding:7px 4px;border-bottom:1px solid var(--line)}
+  th:first-child,td:first-child{text-align:left}
+  .live img{width:100%;max-height:390px;object-fit:contain;border-radius:12px;background:#000}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="logo">🌲 Rooted<br>Warriors</div>
+  <button data-page="home"><span class="i">🏠</span>Home</button>
+  <button data-page="live"><span class="i">📷</span>Live</button>
+  <button data-page="review"><span class="i">🔍</span>Review<span class="badge" id="badgeReview" hidden></span></button>
+  <button data-page="publish"><span class="i">🌐</span>Publish<span class="badge" id="badgePublish" hidden></span></button>
+  <button data-page="experiment"><span class="i">🧪</span>Test</button>
+</nav>
+<main id="main"></main>
+
+<script>
+// Animals we expect around Flagstaff, for quick picking. Add more!
+const QUICK_SPECIES = ['mule deer', 'elk', "abert's squirrel", 'gray fox', 'coyote', 'wild turkey', 'raccoon', 'skunk', 'rabbit', 'bird'];
+
+let status = {};
+let page = 'home';
+let reviewer = '';
+let choices = [];
+const main = document.getElementById('main');
+const api = (url, body) => fetch(url, body === undefined ? {} : {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)}).then(r => r.json());
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+const clock = t => t ? t.slice(11, 16) : '';
+const day = t => t ? new Date(t.replace(' ', 'T')).toLocaleDateString(undefined, {weekday: 'short', month: 'short', day: 'numeric'}) : '';
+const triggerText = t => ({S: '🔥 sensor', C: '📷 changed', SC: '📷🔥 both'}[t] || t);
+
+document.querySelectorAll('nav button').forEach(b => b.onclick = () => show(b.dataset.page));
+
+function show(name, arg) {
+  page = name;
+  document.querySelectorAll('nav button').forEach(b => b.classList.toggle('on', b.dataset.page === name));
+  ({home, live, review, publish, experiment})[name](arg);
+}
+
+async function refreshStatus() {
+  try { status = await api('/api/status'); } catch (e) { return; }
+  const badge = (id, n) => { const el = document.getElementById(id); el.hidden = !n; el.textContent = n; };
+  badge('badgeReview', status.to_review);
+  badge('badgePublish', status.approved);
+  if (page === 'home') home();
+}
+
+// ---------- Home: the four steps ----------
+function home() {
+  const s = status;
+  const cam = s.camera_online ? `Connected<br><span class="muted">last photo ${clock(s.camera.last_seen)}</span>`
+                              : s.camera?.last_seen ? `Out of range<br><span class="muted">last seen ${day(s.camera.last_seen)} ${clock(s.camera.last_seen)}</span>`
+                              : 'Not connected yet';
+  main.innerHTML = `
+    <h1>Camera Station</h1>
+    ${s.fake_ai ? '<div class="banner">🧪 Practice mode: the AI answers are made up.</div>' : ''}
+    ${s.error ? '<div class="banner">⚠️ The tagging helper had a problem. Ask Coach CJ.</div>' : ''}
+    <div class="steps">
+      <div class="step ${s.camera_online ? 'ok' : ''}"><div class="num">1</div><b>Camera sends</b>
+        <div>${cam}</div><div class="muted">${s.photos_today ?? 0} photos today</div>
+        <button class="big plain" onclick="show('live')">📷 Live</button></div>
+      <div class="step ${s.waiting ? 'todo' : 'ok'}"><div class="num">2</div><b>Pi tags</b>
+        <div class="n">${s.waiting ?? 0}</div><div class="muted">${s.tagging_now ? 'tagging ' + s.tagging_now + ' now…' : s.waiting ? 'waiting' : 'all tagged ✓'}</div></div>
+      <div class="step ${s.to_review ? 'todo' : 'ok'}"><div class="num">3</div><b>We review</b>
+        <div class="n">${s.to_review ?? 0}</div><div class="muted">visits to check</div>
+        <button class="big ${s.to_review ? 'go' : 'plain'}" onclick="show('review')">🔍 Review</button></div>
+      <div class="step ${s.approved ? 'todo' : 'ok'}"><div class="num">4</div><b>We publish</b>
+        <div class="n">${s.approved ?? 0}</div><div class="muted">ready · ${s.published ?? 0} published</div>
+        <button class="big ${s.approved ? 'go' : 'plain'}" onclick="show('publish')">🌐 Publish</button></div>
+    </div>
+    <div class="status">
+      <span class="pill ${s.camera_online ? 'good' : 'bad'}">${s.camera_online ? '✓' : '✗'} Camera</span>
+      <span class="pill ${s.internet ? 'good' : 'bad'}">${s.internet ? '✓' : '✗'} Internet</span>
+    </div>`;
+}
+
+// ---------- Live: what the camera sees right now ----------
+let liveTimer;
+function live() {
+  clearInterval(liveTimer);
+  if (!status.camera_online) {
+    main.innerHTML = `<h1>Live</h1><div class="card">The camera isn't connected to the Pi right now. When it's in range of the camera Wi-Fi, its picture shows up here.</div>`;
+    return;
+  }
+  const url = `http://${status.camera.ip}/picture.jpg`;
+  main.innerHTML = `<h1>Live</h1><div class="live"><img id="liveImg" src="${url}?n=${Date.now()}"></div>
+    <p class="muted" style="margin-top:6px">Camera at ${esc(status.camera.ip)} · new picture every second</p>`;
+  liveTimer = setInterval(() => {
+    const img = document.getElementById('liveImg');
+    if (!img || page !== 'live') return clearInterval(liveTimer);
+    img.src = `${url}?n=${Date.now()}`;
+  }, 1000);
+}
+
+// ---------- Review: one card per visit ----------
+async function review(visitId) {
+  if (visitId) return reviewVisit(visitId);
+  const visits = await api('/api/visits?status=review');
+  main.innerHTML = `<h1>Review visits</h1>
+    <p class="muted" style="margin-bottom:8px">A visit = photos of the same animal close together in time. Tap one to check it.</p>
+    ${visits.length ? `<div class="visits">${visits.map(v => `
+      <button class="visit" onclick="show('review', ${v.id})">
+        <img src="/${esc(v.best_file)}" loading="lazy">
+        <div class="cap"><b>${esc(v.species)}${v.animal_count > 1 ? ' ×' + v.animal_count : ''}</b>
+        ${day(v.start_at)} ${clock(v.start_at)} · ${v.photo_count} photo${v.photo_count > 1 ? 's' : ''}</div>
+      </button>`).join('')}</div>`
+    : '<div class="card">Nothing to review right now. 🎉</div>'}`;
+}
+
+async function reviewVisit(id) {
+  const v = await api('/api/visits/' + id);
+  if (v.error) return review();
+  const best = v.photos.find(p => p.id === v.best_photo_id) || v.photos[0];
+  const species = choices = [...new Set([v.species, ...QUICK_SPECIES])];
+  main.innerHTML = `
+    <div class="row" style="margin-bottom:8px"><button class="big plain" onclick="show('review')">← Back</button>
+      <h1 style="margin:0;text-transform:capitalize">${esc(v.species)}</h1></div>
+    <div class="detail">
+      <div>
+        <img class="photo" src="/${esc(best.file)}">
+        <div class="muted" style="margin-top:4px">${day(v.start_at)} ${clock(v.start_at)}–${clock(v.end_at)} · ${v.photo_count} photos · ${triggerText(v.triggers)}</div>
+        <div class="strip">${v.photos.map(p => `<img src="/${esc(p.file)}" class="${p.id === best.id ? 'best' : ''}" onclick="setVisit(${id}, {best_photo_id: ${p.id}})">`).join('')}</div>
+        <div class="muted">Tap a small photo to make it the one we show.</div>
+      </div>
+      <div>
+        <div class="label">What is it?</div>
+        <div class="chips">${species.map((s, i) => `<button class="chip ${s === v.species ? 'on' : ''}" onclick="setVisit(${id}, {species: choices[${i}]})">${esc(s)}</button>`).join('')}
+          <button class="chip" onclick="otherSpecies(${id})">Other…</button></div>
+        <div class="label">How many animals?</div>
+        <div class="counter"><button onclick="setVisit(${id}, {animal_count: ${Math.max(1, v.animal_count - 1)}})">−</button>
+          <span>${v.animal_count}</span><button onclick="setVisit(${id}, {animal_count: ${v.animal_count + 1}})">+</button></div>
+        <div class="label">Who checked it?</div>
+        <div class="chips">${(status.team || []).map((n, i) => `<button class="chip ${n === (v.reviewed_by || reviewer) ? 'on' : ''}" onclick="reviewer = status.team[${i}]; setVisit(${id}, {reviewed_by: reviewer})">${esc(n)}</button>`).join('')}</div>
+      </div>
+    </div>
+    <div class="row actions">
+      <button class="big go" onclick="decide(${id}, 'approved')">✓ Looks right</button>
+      <button class="big plain" onclick="merge(${id})">🔗 Same animal as visit before</button>
+      <button class="big plain" onclick="decide(${id}, 'hidden')">✗ Hide it</button>
+    </div>`;
+}
+
+async function setVisit(id, changes) {
+  await api('/api/visits/' + id, changes);
+  reviewVisit(id);
+}
+
+function otherSpecies(id) {
+  const name = prompt('What animal is it?');
+  if (name && name.trim()) setVisit(id, {species: name.trim().toLowerCase()});
+}
+
+async function decide(id, choice) {
+  const changes = {status: choice};
+  if (reviewer) changes.reviewed_by = reviewer;
+  await api('/api/visits/' + id, changes);
+  await refreshStatus();
+  show('review');
+}
+
+async function merge(id) {
+  const r = await api(`/api/visits/${id}/merge`, {});
+  if (!r.kept) return alert('There is no earlier visit to join it with.');
+  await refreshStatus();
+  show('review', r.kept);
+}
+
+// ---------- Publish: the team picks what goes on the website ----------
+let picked = new Set();
+async function publish() {
+  const [ready, queued] = await Promise.all([api('/api/visits?status=approved'), api('/api/visits?status=queued')]);
+  picked = new Set(ready.map(v => v.id));
+  const item = (v, tickable) => `
+    <div class="item ${tickable ? 'on' : ''}" ${tickable ? `onclick="tick(this, ${v.id})"` : ''}>
+      <img src="/${esc(v.best_file)}"><div><b>${esc(v.species)}${v.animal_count > 1 ? ' ×' + v.animal_count : ''}</b><br>
+      <span class="muted">${day(v.start_at)} ${clock(v.start_at)}${v.reviewed_by ? ' · checked by ' + esc(v.reviewed_by) : ''}</span></div>
+      ${tickable ? '<div class="tick">✓</div>' : ''}</div>`;
+  main.innerHTML = `<h1>Publish to our website</h1>
+    <div class="banner">🚧 The website isn't connected yet (Coach CJ is setting it up). Publishing puts visits in line, and they go up when it's ready.</div>
+    ${ready.length ? `<div class="list">${ready.map(v => item(v, true)).join('')}</div>
+      <div class="row actions"><button class="big go" onclick="sendPublish()">🌐 Publish the ✓ ones</button></div>`
+      : '<div class="card">Nothing ready yet. Approve visits on the Review page first.</div>'}
+    ${queued.length ? `<div class="label" style="margin-top:14px">In line for the website (${queued.length})</div><div class="list">${queued.map(v => item(v, false)).join('')}</div>` : ''}`;
+}
+
+function tick(el, id) {
+  picked.has(id) ? picked.delete(id) : picked.add(id);
+  el.classList.toggle('on', picked.has(id));
+}
+
+async function sendPublish() {
+  if (!picked.size) return;
+  await api('/api/publish', {ids: [...picked]});
+  await refreshStatus();
+  publish();
+}
+
+// ---------- Experiment: picture changed vs. motion sensor ----------
+async function experiment() {
+  const e = await api('/api/experiment');
+  const p = e.photos;
+  const row = (label, k) => `<tr><td>${label}</td><td>${p.C[k]}</td><td>${p.SC[k]}</td><td>${p.S[k]}</td></tr>`;
+  main.innerHTML = `<h1>Our experiment: who catches more?</h1>
+    <div class="card">
+      <div class="label" style="margin-top:0">Animal visits caught by…</div>
+      <div class="score">
+        <div class="c"><div class="n">${e.visits.C}</div><div class="muted">📷 Picture changed only</div></div>
+        <div><div class="n">${e.visits.SC}</div><div class="muted">Both</div></div>
+        <div class="s"><div class="n">${e.visits.S}</div><div class="muted">🔥 Motion sensor only</div></div>
+      </div>
+      <div class="label">Photos, by what the AI found</div>
+      <table><tr><th></th><th>📷 Changed</th><th>Both</th><th>🔥 Sensor</th></tr>
+        ${row('🦌 Animal', 'animal')}${row('🧍 Person (blurred)', 'person')}${row('🚗 Vehicle', 'vehicle')}${row('🍃 Empty (false alarm)', 'empty')}</table>
+    </div>`;
+}
+
+refreshStatus().then(() => show('home'));
+setInterval(refreshStatus, 3000);
+</script>
+</body>
+</html>

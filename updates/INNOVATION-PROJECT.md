@@ -33,6 +33,13 @@ What we do know:
 
 ---
 
+## 2026-10-25 (later) — The Pi becomes a Camera Station (Coach CJ)
+- The Pi makes its own Wi-Fi for the camera, so the camera works far from the house. The camera sends photos to the Pi whenever it's in range.
+- The Pi tags every photo with AI and groups photos into **visits**, so the same animal isn't counted over and over.
+- **The team reviews every visit on the Pi's touchscreen and chooses what to publish.** Nothing goes online by itself. Details: `CAMERA-BUILD.md`, `../pi/README.md`.
+
+---
+
 ## 2026-10-25 — Camera plan v2 (Coach CJ)
 - The camera notices animals two ways, **picture changed** and **motion sensor**, and saves a picture to its microSD card only when one fires. The live view stays on its own page. The Pi 4 collects the pictures, tags them, and sends only real animals (people blurred) to the website. Experiment: picture changed vs. motion sensor. Details: `../DECISIONS.md` 2026-10-25, `CAMERA-BUILD.md`.
 

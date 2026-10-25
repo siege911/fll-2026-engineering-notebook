@@ -26,7 +26,7 @@ The app they're building turns their daily Engineering Notebook log into a **vis
 | `updates/ROBOT-DESIGN.md`, `updates/ROBOT-GAME.md`, `updates/INNOVATION-PROJECT.md`, `updates/CORE-VALUES.md` | Running, dated notes per component: the facts behind what's shown on each app page. |
 | `updates/CAMERA-BUILD.md` | Innovation Project camera: parts bought, wiring tables, build and test steps. |
 | `camera/` | Arduino code for the wildlife camera (XIAO ESP32-S3 Sense), one folder per version, e.g. `camera/camera-v1/`. Separate from the notebook app. |
-| `pi/` | Raspberry Pi 4 code for the wildlife camera station: collector (and later tagging + upload). Setup in `pi/README.md`. |
+| `pi/` | Raspberry Pi 4 **Camera Station** for the wildlife camera: camera Wi-Fi, AI tagging, visits, touchscreen review/publish page (`pi/station/public/index.html`, the students' to edit). Start at `pi/README.md`. |
 | `updates/APP-CHANGES.md` | Changelog of the app itself: date, file, what changed, why, who asked. |
 | `app/` | **The live app (v5, since Sept 28).** `app/public/index.html` is the page, `app/server.mjs` is the dev server, and `app/db/` holds the database (schema, baseline seed, dated update files). How-to: `app/README.md`. |
 | `mockups/` + `mockups/GALLERY.md` | All prototypes. `14-rooted-warriors-app-v4.html` is the last single-file build; frozen, kept for comparison. New look/layout ideas still start here. |

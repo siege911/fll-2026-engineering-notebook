@@ -1,49 +1,57 @@
-# Raspberry Pi 4 — wildlife camera station
+# Raspberry Pi 4 — Camera Station
 
-The Pi collects pictures from the camera, tags them, and (later) sends the real animals to the website.
+The Pi is the base station for our wildlife camera. It runs its own Wi-Fi for the camera, tags every photo with AI, and lets us review the animals on its touchscreen before we choose what to put on our website.
 
-| Step | File | Status |
-|---|---|---|
-| 1. Collect pictures from the camera every 15 min | `collector.py` | ✅ written, tested against a pretend camera |
-| 2. Tag: animal / person / empty, then species; blur people | `tagger.py` | ✅ written, tested with made-up SpeciesNet answers |
-| 3. Upload tagged animals to the DigitalOcean site | — | after the site exists |
+```
+1. Camera sends   →   2. Pi tags   →   3. We review   →   4. We publish
+   (camera v3)         (SpeciesNet)      (touchscreen)       (only what we pick)
+```
 
-## Set up the Pi (one time)
+1. **Camera sends.** The camera saves a photo when the motion sensor fires or the picture changes. As soon as it's in range of the Pi's camera Wi-Fi it sends each photo to the Pi, then deletes it from its card. Out of range, photos wait on the card.
+2. **Pi tags.** SpeciesNet (Google's camera-trap AI) finds animals, people and vehicles, and names the species (only species found in Arizona). People and vehicles get **blurred** and the original is deleted. Empty photos (false alarms) are set aside and deleted after a week.
+3. **We review.** Photos of the same species close together in time are grouped into one **visit**, so one deer standing there for 40 photos counts as one deer, not 40. On the touchscreen we check each visit: right animal? how many? same animal as the visit before? Then **✓ Looks right** or **✗ Hide it**, and tap who checked it.
+4. **We publish.** Nothing goes online by itself. On the Publish page we pick which approved visits go on the website. (The website part isn't connected yet; picked visits wait in line.)
 
-1. **Raspberry Pi Imager** (on the Mac) → Raspberry Pi 4 → **Raspberry Pi OS Lite (64-bit)**. In the settings (gear): hostname `rooted-pi`, your user, Wi-Fi (same network as the camera), turn on SSH. Best: write it to a **USB SSD** instead of a microSD card (lots of writes wear SD cards out).
-2. Boot it, then from the Mac: `ssh <user>@rooted-pi.local`
-3. Check the RAM: `free -h` (the "Mem: total" column: ~0.9, 1.8, 3.7 or 7.6 Gi = 1, 2, 4 or 8 GB).
-4. Get the code: `git clone <repo> rooted-warriors` (or copy the `pi/` folder).
-5. `cd rooted-warriors/pi && cp settings.example.json settings.json && nano settings.json`. Set `camera_key` to the same `CAMERA_KEY` as in the camera's `secrets.h`.
-6. Test: `python3 collector.py` → "Copied N new pictures…". Photos land in `pi/photos/<date>/`, and the trigger log in `pi/photos/log.csv`.
-7. Install the AI (the Pi has 8 GB, plenty for SpeciesNet):
-   ```
-   sudo apt install -y python3-venv
-   python3 -m venv ~/speciesnet-env
-   ~/speciesnet-env/bin/pip install speciesnet
-   ~/speciesnet-env/bin/python -m speciesnet.scripts.run_model --help
-   ```
-   The first tagging run downloads the models (a few hundred MB). PyTorch on the Pi's CPU is slow: expect several seconds or more per picture. That's fine, it only sees pictures where something fired.
-8. Test: `~/speciesnet-env/bin/python tagger.py` → "Tagged: 3 animal, 1 empty…". Results go in `pi/photos/tags.csv`.
-9. Run both every 15 minutes: `crontab -e` and add
-   ```
-   */15 * * * * cd $HOME/rooted-warriors/pi && python3 collector.py >> collector.log 2>&1 && $HOME/speciesnet-env/bin/python tagger.py >> tagger.log 2>&1
-   ```
-   (The tagger won't start twice if a big batch is still running.)
+There's also a **Test** page for our experiment: did "picture changed" or the motion sensor catch more animals, and which one had more false alarms?
 
-## What the tagger does with each picture
-| SpeciesNet says | What happens |
+## Folder map
+
+| File | What it is |
 |---|---|
-| animal | stays in `photos/<date>/`; species + confidence in `tags.csv` |
-| person or vehicle | blurred in place; the unblurred original is deleted |
-| empty (nothing, or only a weak guess under 0.2) | moved to `photos/empty/<date>/`, deleted after 7 days |
+| [INSTALL.md](INSTALL.md) | Setting up the Pi: OS, SpeciesNet, starting at boot, touchscreen kiosk |
+| [NETWORKING.md](NETWORKING.md) | The camera Wi-Fi + house Wi-Fi setup |
+| `station/server.py` | The Camera Station: receives photos, runs the tagging helper, answers the page |
+| `station/ai.py` | Talking to SpeciesNet, blurring people, and the made-up answers for practice mode |
+| `station/store.py` | The station's memory (photos, visits) and **how visits are grouped and counted** |
+| `station/public/index.html` | **The touchscreen page.** Change colors, words, buttons, pages here |
+| `station/camera-station.service` | Starts the station when the Pi boots |
+| `collector.py` | Backup: fetches photos from a camera running the older v2 code |
+| `settings.example.json` | Copy to `settings.json` (not on GitHub) |
 
-`tags.csv` columns: file, time, trigger (S / C / SC), result, species, confidence, animals, people, vehicles. With the trigger in each row, it's the data for the experiment: how many real animals did "picture changed" find vs. the motion sensor, and how many false alarms each had.
+The camera's code is in `../camera/camera-v3/`.
 
-Settings (optional, in `settings.json`): `country` (`USA`), `admin1_region` (`AZ`: SpeciesNet only picks species found in Arizona), `min_confidence` (0.2), `keep_empty_days` (7).
+## Things the team can change (good places to start)
 
-## How it finds the camera
-The camera calls itself `rooted-camera.local` on the Wi-Fi (camera v2). If that ever fails, give the camera a fixed address in the router (DHCP reservation) and put that address in `camera_url`.
+- **The look of the touchscreen page:** `station/public/index.html`. The colors are at the top (`--forest`, `--lavender`, …), the same as our Engineering Notebook.
+- **Quick animal buttons:** `QUICK_SPECIES` near the top of the script in `index.html`.
+- **When is it "the same animal"?** `visit_gap_minutes` in `settings.json` (10 minutes to start). Scientists often use 30 minutes. Try both and see which matches what you see in the photos!
+- **How many animals in a visit:** the station uses the most animals the AI found in any one photo of the visit (scientists call it "MaxN"). You can always fix it with − / + on the Review page.
 
-## Safety
-The collector only deletes a picture on the camera after the copy on the Pi is complete and the right size. If the camera is off or out of range, it logs "not reachable" and tries again next time.
+## Try it without the Pi (on a laptop)
+
+```bash
+cd pi/station
+python3 server.py --fake-ai --data /tmp/station-practice
+```
+
+Open `http://localhost:8080`. Practice mode makes up the AI answers, so you can work on the page without the camera or SpeciesNet. To send it pretend photos, use the camera (with `PI_URL` pointing at the laptop) or ask Claude for a test script.
+
+## Status (Oct 25, 2026)
+
+| Part | Status |
+|---|---|
+| Camera v3 (push to Pi, time from Pi + clock module) | ✅ compiles · not tested on the real camera |
+| Station: receive, tag, blur, visits, review, publish queue, experiment | ✅ tested on a Mac in practice mode (made-up AI answers) |
+| SpeciesNet on the Pi | ⬜ not installed or tested yet (INSTALL.md step 4) |
+| Networking (camera Wi-Fi) | ⬜ needs a USB Wi-Fi adapter (or Ethernet), then NETWORKING.md |
+| Publishing to the website | ⬜ waits for the DigitalOcean site |

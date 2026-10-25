@@ -1,5 +1,18 @@
 {
-  "camera_url": "http://rooted-camera.local",
-  "camera_key": "same as CAMERA_KEY in camera/camera-v2/secrets.h",
-  "photos_dir": "photos"
+  "camera_key": "same as CAMERA_KEY in camera/camera-v3/secrets.h",
+  "team": [
+    "Thea",
+    "Adeline",
+    "Fynn",
+    "Isla",
+    "Nolan",
+    "Weston"
+  ],
+  "country": "USA",
+  "admin1_region": "AZ",
+  "min_confidence": 0.2,
+  "visit_gap_minutes": 10,
+  "keep_empty_days": 7,
+  "port": 8080,
+  "speciesnet_python": ""
 }

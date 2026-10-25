@@ -1,0 +1,17 @@
+# Starts the Camera Station when the Pi boots, and restarts it if it stops.
+# Install: see pi/INSTALL.md step 6 (replaces PIUSER with your user name).
+[Unit]
+Description=Rooted Warriors Camera Station
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=PIUSER
+WorkingDirectory=/home/PIUSER/rooted-warriors/pi/station
+ExecStart=/home/PIUSER/speciesnet-env/bin/python server.py
+Restart=always
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

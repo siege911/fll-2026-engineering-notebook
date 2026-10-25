@@ -4,6 +4,15 @@ The Innovation Project wildlife camera: what we bought, how it's wired, and ever
 
 ---
 
+## 2026-10-25 (later) — Camera v3 + Pi Camera Station
+**Asked by:** Coach CJ · **Built by:** Claude · **Code:** `../camera/camera-v3/`, `../pi/` (start with `../pi/README.md`)
+- **Camera v3:** joins the Pi's camera Wi-Fi (`RootedWarriorsCam`), sends each saved photo to the Pi right away (up to 5 at a time, every half second), deletes it after the Pi has it; out of range, photos wait on the card. Time from the Pi every hour; saved in the clock module (D4/D5) if one is wired. No time yet → `no-time-…` names, timed by the Pi when they arrive. Live page also shows "Sending to the Pi · N waiting · N sent". Compiles (36% of flash). **Not tested on the real camera.**
+- **Pi Camera Station:** tags as photos arrive, blurs people, groups visits, touchscreen review and publish. Tested on a Mac in practice mode (made-up AI answers): 34 practice photos → 7 visits; species/count/reviewer buttons, merge ("same animal as visit before"), approve, publish queue and Test page all worked; wrong key and bad file names are refused.
+- `pi/tagger.py` removed (the station does its job). `pi/collector.py` now hands photos to the station (backup for v2 cameras).
+- **Still to do:** USB Wi-Fi adapter + `pi/NETWORKING.md`; install SpeciesNet on the Pi (`pi/INSTALL.md`); first real test: camera v3 → Pi.
+
+---
+
 ## 2026-10-25 (later) — Pi tagger (step 2 of the Pi)
 **Told by:** Coach CJ (the Pi 4 has **8 GB** RAM, from the original order) · **Code by:** Claude · **Code:** `../pi/tagger.py`
 - Uses **SpeciesNet** (Google's camera-trap AI): MegaDetector finds animal / person / vehicle, then a classifier names the species, limited to species found in Arizona.

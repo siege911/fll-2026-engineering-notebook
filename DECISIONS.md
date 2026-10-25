@@ -4,6 +4,18 @@ Newest at top. Capture-field and design decisions come from the students; archit
 
 ---
 
+## 2026-10-25 (later) — Pi Camera Station (CJ): Pi runs the camera Wi-Fi, camera pushes, Pi tags + groups visits, students review and publish by hand
+
+**CJ's asks:** the Pi acts as a gateway/router with its own Wi-Fi for the camera (works out of range of house Wi-Fi) and joins the house Wi-Fi for the internet; photos move camera → Pi as soon as the camera is in range; the Pi tags them as they come in and works out whether photos in a row are the same animal (no double counting); **students review, and publishing is never automatic**; a touchscreen interface (7" Pi Touchscreen) in the Engineering Notebook style that walks them through it. Claude builds a basic level; the students take over the page and the details.
+**Built (Claude):**
+- **Networking:** NetworkManager hotspot `RootedWarriorsCam` at 10.42.0.1 on a **USB Wi-Fi adapter with an antenna** (needs AP mode, e.g. MediaTek mt76); house Wi-Fi on the built-in radio. One radio can't do both reliably. Alternative: Ethernet for the house. `pi/NETWORKING.md`.
+- **Camera v3** (`camera/camera-v3/`): joins the Pi's Wi-Fi without waiting for it, pushes every saved photo to the Pi and deletes it after the Pi says OK, keeps them on the card when out of range; gets the time from the Pi and keeps it in the DS3231 clock module if wired.
+- **Camera Station** (`pi/station/`): receives photos, tags them with SpeciesNet in the background, blurs people/vehicles, sets empties aside (deleted after 7 days), groups animal photos into **visits** (same species, < 10 minutes apart) and counts animals per visit as the most seen in one photo ("MaxN"). Touchscreen page: Home (4 steps), Live, Review (species, count, best photo, who checked, "same animal as visit before", approve/hide), Publish (pick → in line for the website), Test (picture changed vs. motion sensor).
+**Why visits + MaxN:** it's how camera-trap scientists avoid counting the same animal over and over; the students can merge visits by hand when the AI can't tell. The 10-minute gap is a starting point for the students to test (scientists often use 30).
+**Open:** buy the USB Wi-Fi adapter (or use Ethernet); SpeciesNet install on the Pi (not tried yet); the website uploader (after DigitalOcean).
+
+---
+
 ## 2026-10-25 — Camera v2 plan (CJ): the camera compares pictures + motion sensor, saves to microSD; Pi tags; DigitalOcean shows
 
 **CJ:** "Let's go with your comparing pictures idea along with the motion sensor. I'd still like to be able to view the camera images live... with the Engineering Notebook theme... show whether the 'comparing pictures' triggered or the 'motion sensor' triggered (or both)."
