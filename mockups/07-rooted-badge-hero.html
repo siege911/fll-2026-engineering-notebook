@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layout B — Badge Hero (Rooted Warriors)</title>
+<style>
+  :root{
+    --forest:#1c3b2a; --pine:#2a5c3f; --grass:#3f9b4c;
+    --lavender:#b48fd9; --lilac:#d9c6ee; --teal:#20b5c9;
+    --cream:#f4efe1; --ink:#22301f; --dim:#7d8a76;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Avenir Next','Trebuchet MS',sans-serif}
+  body{background:var(--cream);color:var(--ink);min-height:100vh}
+  /* ---------- hero ---------- */
+  .hero{background:var(--forest);color:var(--cream);padding:34px 20px 90px;text-align:center;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;inset:0;opacity:.18;
+    background-image:linear-gradient(var(--teal) 2px,transparent 2px),linear-gradient(90deg,var(--teal) 2px,transparent 2px);
+    background-size:44px 44px;mask-image:linear-gradient(to bottom,transparent,black)}
+  .hero svg{width:120px;position:relative}
+  .hero h1{font-size:34px;font-weight:900;letter-spacing:1px;margin-top:10px;position:relative}
+  .hero .banner{display:inline-block;background:var(--lavender);color:var(--forest);font-weight:800;font-size:13px;letter-spacing:2px;padding:7px 26px;border-radius:20px;margin-top:10px;position:relative}
+  .hills{position:absolute;bottom:-2px;left:0;right:0}
+  /* ---------- countdown ribbon ---------- */
+  .ribbon{max-width:860px;margin:-46px auto 0;background:#fff;border:2px solid var(--lavender);border-radius:16px;padding:14px 20px;display:flex;justify-content:space-around;flex-wrap:wrap;gap:12px;position:relative;box-shadow:0 8px 20px rgba(28,59,42,.15)}
+  .stat{text-align:center;min-width:120px}
+  .stat .num{font-size:28px;font-weight:900;color:var(--pine)}
+  .stat .num.t{color:var(--teal)} .stat .num.l{color:var(--lavender)} .stat .num.g{color:var(--grass)}
+  .stat .lbl{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);font-weight:800}
+  /* ---------- nav pills ---------- */
+  nav{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:24px auto}
+  nav .pill-nav{background:#fff;border:2px solid var(--pine);color:var(--pine);font-weight:800;font-size:13px;padding:9px 20px;border-radius:24px;cursor:pointer;transition:.15s}
+  nav .pill-nav:hover,nav .pill-nav.active{background:var(--pine);color:#fff}
+  /* ---------- single column content ---------- */
+  .col{max-width:860px;margin:0 auto;padding:0 20px 30px;display:flex;flex-direction:column;gap:18px}
+  .card{background:#fff;border-radius:16px;padding:22px;border:1px solid #e5decb;box-shadow:0 2px 8px rgba(28,59,42,.07)}
+  .card h2{text-align:center;font-size:14px;letter-spacing:2px;text-transform:uppercase;font-weight:900;color:var(--forest);margin-bottom:4px}
+  .card .arch{width:130px;height:5px;border-radius:3px;background:var(--lavender);margin:0 auto 16px}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:700px){.split{grid-template-columns:1fr}}
+  .big{font-size:58px;font-weight:900;color:var(--grass);line-height:1;text-align:center}
+  .delta{color:var(--grass);font-weight:800;font-size:13px;text-align:center;margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{text-align:left;font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;padding:6px 8px;border-bottom:2px solid #e5decb;font-weight:800}
+  td{padding:8px;border-bottom:1px solid #efe9d8;font-weight:600}
+  .pill{font-size:10px;font-weight:800;padding:4px 10px;border-radius:10px;color:#fff;white-space:nowrap}
+  .p-ready{background:var(--grass)} .p-working{background:var(--teal)} .p-proto{background:var(--lavender)} .p-not{background:#b9b3a4}
+  .bar{display:inline-block;width:70px;height:9px;background:#ece5d2;border-radius:5px;overflow:hidden;vertical-align:middle}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--teal),var(--grass))}
+  .heat{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;max-width:520px;margin:0 auto}
+  .heat .cell{aspect-ratio:1;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff}
+  .l1{background:#d9d3c2;color:#8a8471} .l2{background:var(--lavender)} .l3{background:var(--teal)} .l4{background:var(--grass)}
+  .legend{font-size:11px;color:var(--dim);margin-top:12px;font-weight:700;text-align:center}
+  .cv{display:flex;flex-direction:column;gap:9px;max-width:520px;margin:0 auto}
+  .cv .row{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700}
+  .cv .name{width:88px}
+  .cv .track{flex:1;background:#ece5d2;height:13px;border-radius:7px;overflow:hidden}
+  .cv .track i{display:block;height:100%;border-radius:7px}
+  .entry{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-bottom:1px solid #efe9d8}
+  .entry:last-child{border-bottom:none}
+  .avatar{width:36px;height:36px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff}
+  .entry .meta{font-size:11px;color:var(--dim);font-weight:800}
+  .entry .txt{font-size:13px;line-height:1.5;margin-top:2px}
+  .tag{font-size:10px;font-weight:800;color:var(--forest);background:var(--lilac);border-radius:8px;padding:2px 8px;margin-left:6px}
+  footer{background:var(--forest);color:var(--lilac);text-align:center;font-size:11px;font-weight:700;padding:16px;letter-spacing:1px;position:relative;overflow:hidden}
+  footer::before{content:'';position:absolute;inset:0;opacity:.2;
+    background-image:linear-gradient(var(--teal) 2px,transparent 2px),linear-gradient(90deg,var(--teal) 2px,transparent 2px);background-size:34px 34px}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <svg viewBox="0 0 100 110">
+      <path d="M50 4 92 26 92 68 50 106 8 68 8 26Z" fill="#f4efe1" stroke="#b48fd9" stroke-width="3"/>
+      <rect x="46" y="34" width="8" height="34" rx="2" fill="#1c3b2a"/>
+      <rect x="38" y="42" width="24" height="7" rx="2" fill="#1c3b2a"/>
+      <path d="M50 34 C36 30 30 18 34 12 C46 12 52 22 50 34Z" fill="#b48fd9"/>
+      <path d="M50 34 C64 30 70 18 66 12 C54 12 48 22 50 34Z" fill="#b48fd9"/>
+      <path d="M50 22 C44 16 44 9 50 5 C56 9 56 16 50 22Z" fill="#3f9b4c"/>
+      <g stroke="#20b5c9" stroke-width="3" fill="none"><path d="M50 68 V84 M50 76 L36 88 M50 76 L64 88 M50 84 V94"/></g>
+      <g fill="#20b5c9"><circle cx="36" cy="88" r="3.5"/><circle cx="64" cy="88" r="3.5"/><circle cx="50" cy="94" r="4.5"/></g>
+    </svg>
+    <h1>ROOTED WARRIORS</h1>
+    <div class="banner">2026 SEASON DASHBOARD · LAYOUT B</div>
+    <svg class="hills" viewBox="0 0 1200 70" preserveAspectRatio="none" style="width:100%;height:70px">
+      <path d="M0 70 Q300 10 600 45 T1200 25 V70 Z" fill="#3f9b4c" opacity=".5"/>
+      <path d="M0 70 Q400 30 800 55 T1200 45 V70 Z" fill="#f4efe1"/>
+    </svg>
+  </div>
+
+  <div class="ribbon">
+    <div class="stat"><div class="num t">75</div><div class="lbl">days to Regionals</div></div>
+    <div class="stat"><div class="num g">190</div><div class="lbl">best match score</div></div>
+    <div class="stat"><div class="num">4/12</div><div class="lbl">missions ready</div></div>
+    <div class="stat"><div class="num l">13/20</div><div class="lbl">rubric rows at 3+</div></div>
+  </div>
+
+  <nav>
+    <div class="pill-nav active">Home</div>
+    <div class="pill-nav">Robot Game</div>
+    <div class="pill-nav">Robot Design</div>
+    <div class="pill-nav">Innovation Project</div>
+    <div class="pill-nav">Core Values</div>
+  </nav>
+
+  <div class="col">
+    <div class="card">
+      <h2>Score Over Time</h2><div class="arch"></div>
+      <div class="split">
+        <div>
+          <div class="big">190</div>
+          <div class="delta">▲ +45 since last scrimmage · 5 matches played</div>
+        </div>
+        <svg viewBox="0 0 320 110" style="width:100%">
+          <polygon points="10,102 10,78 85,68 160,58 235,32 310,18 310,102" fill="rgba(180,143,217,.2)"/>
+          <polyline points="10,78 85,68 160,58 235,32 310,18" fill="none" stroke="#b48fd9" stroke-width="3" stroke-linecap="round"/>
+          <g fill="#20b5c9" stroke="#fff" stroke-width="2">
+            <circle cx="10" cy="78" r="5"/><circle cx="85" cy="68" r="5"/><circle cx="160" cy="58" r="5"/><circle cx="235" cy="32" r="5"/><circle cx="310" cy="18" r="6"/>
+          </g>
+          <g font-size="10" fill="#22301f" font-weight="800" text-anchor="middle">
+            <text x="10" y="70">85</text><text x="85" y="60">120</text><text x="160" y="50">145</text><text x="235" y="24">175</text><text x="303" y="12">190</text>
+          </g>
+          <g font-size="9" fill="#7d8a76" text-anchor="middle" font-weight="700">
+            <text x="12" y="110">Sep 12</text><text x="85" y="110">Sep 26</text><text x="160" y="110">Oct 10</text><text x="235" y="110">Oct 24</text><text x="303" y="110">Nov 7</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Mission Inventory</h2><div class="arch"></div>
+      <table>
+        <tr><th>Mission</th><th>Pts</th><th>Status</th><th>Reliability</th></tr>
+        <tr><td>M03 Glow Garden</td><td>40</td><td><span class="pill p-ready">Ready</span></td><td><span class="bar"><i style="width:95%"></i></span> 95%</td></tr>
+        <tr><td>M05 Firefly Release</td><td>30</td><td><span class="pill p-ready">Reliable</span></td><td><span class="bar"><i style="width:85%"></i></span> 85%</td></tr>
+        <tr><td>M08 Deep-Sea Lantern</td><td>45</td><td><span class="pill p-working">Working</span></td><td><span class="bar"><i style="width:60%"></i></span> 60%</td></tr>
+        <tr><td>M02 Mushroom Grove</td><td>25</td><td><span class="pill p-working">Working</span></td><td><span class="bar"><i style="width:70%"></i></span> 70%</td></tr>
+        <tr><td>M11 Bio Reactor</td><td>50</td><td><span class="pill p-proto">Prototype</span></td><td><span class="bar"><i style="width:20%"></i></span> 20%</td></tr>
+        <tr><td>M07 Cave Crystals</td><td>20</td><td><span class="pill p-not">Not started</span></td><td><span class="bar"><i style="width:0%"></i></span> —</td></tr>
+      </table>
+    </div>
+
+    <div class="split">
+      <div class="card">
+        <h2>Rubric Heat Map</h2><div class="arch"></div>
+        <div class="heat">
+          <div class="cell l3">3</div><div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l4">4</div>
+          <div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l3">3</div>
+          <div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l3">3</div><div class="cell l2">2</div>
+          <div class="cell l1">1</div><div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l4">4</div><div class="cell l3">3</div>
+        </div>
+        <div class="legend">2 Exceeds · 11 Accomplished · 6 Developing · 1 Beginning</div>
+      </div>
+      <div class="card">
+        <h2>Core Values Tally</h2><div class="arch"></div>
+        <div class="cv">
+          <div class="row"><span class="name">Teamwork</span><div class="track"><i style="width:90%;background:var(--grass)"></i></div><b>18</b></div>
+          <div class="row"><span class="name">Discovery</span><div class="track"><i style="width:70%;background:var(--teal)"></i></div><b>14</b></div>
+          <div class="row"><span class="name">Fun</span><div class="track"><i style="width:80%;background:var(--lavender)"></i></div><b>16</b></div>
+          <div class="row"><span class="name">Innovation</span><div class="track"><i style="width:55%;background:var(--pine)"></i></div><b>11</b></div>
+          <div class="row"><span class="name">Inclusion</span><div class="track"><i style="width:45%;background:#8fc9a4"></i></div><b>9</b></div>
+          <div class="row"><span class="name">Impact</span><div class="track"><i style="width:30%;background:#6fd0dd"></i></div><b>6</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Latest Notebook Entries</h2><div class="arch"></div>
+      <div class="entry">
+        <div class="avatar" style="background:var(--grass)">M</div>
+        <div><div class="meta">Maya · Aug 29 <span class="tag">Robot Design · ITERATE</span></div>
+        <div class="txt">Tested the Glow Garden arm 10 times — it worked 9! We shortened the axle after it snagged on run 4. Reliability up from 70% → 90%.</div></div>
+      </div>
+      <div class="entry">
+        <div class="avatar" style="background:var(--teal)">L</div>
+        <div><div class="meta">Leo · Aug 29 <span class="tag">Innovation Project · IDENTIFY</span></div>
+        <div class="txt">Interviewed Ms. Rivera (marine biologist). She gave us 3 sources on bioluminescent algae. Added her to the Experts page.</div></div>
+      </div>
+      <div class="entry">
+        <div class="avatar" style="background:var(--lavender)">S</div>
+        <div><div class="meta">Sam · Aug 27 <span class="tag">Core Values · Fun</span></div>
+        <div class="txt">Marshmallow tower warm-up — Zoe's team won! Then everyone helped Noah debug his line-follower. Teamwork moment!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>LAYOUT B · BADGE HERO — big crest up top, one centered column · all data is sample data</footer>
+</body>
+</html>

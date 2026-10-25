@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layout E — Canopy &amp; Roots (Rooted Warriors)</title>
+<style>
+  :root{
+    --forest:#16301f; --pine:#2a5c3f; --grass:#3f9b4c;
+    --lavender:#b48fd9; --lilac:#d9c6ee; --teal:#26c6da;
+    --cream:#f4efe1; --paper:#fffdf6; --ink:#22301f; --dim:#7d8a76; --dimdark:#8aa392;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Avenir Next','Trebuchet MS',sans-serif}
+  body{min-height:100vh;background:var(--forest);color:var(--ink)}
+  /* ================= CANOPY (light top half — judges) ================= */
+  .canopy{background:var(--cream);padding:26px 24px 60px;position:relative}
+  .canopy .leaves{position:absolute;top:14px;right:20px;opacity:.85}
+  .canopy-head{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+  .canopy-head svg.crest{width:56px}
+  .canopy-head h1{font-size:24px;font-weight:900;color:var(--forest);letter-spacing:.5px}
+  .canopy-head h1 small{display:block;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--dim)}
+  .zone-label{font-size:11px;font-weight:900;letter-spacing:3px;text-transform:uppercase;color:var(--grass);margin-bottom:12px}
+  .zone-label.roots-l{color:var(--teal)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+  .card{background:var(--paper);border:1px solid #e5decb;border-radius:14px;padding:18px;box-shadow:0 2px 6px rgba(28,59,42,.08)}
+  .card h2{font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:900;color:var(--pine);margin-bottom:12px}
+  .heat{display:grid;grid-template-columns:repeat(10,1fr);gap:6px}
+  .heat .cell{aspect-ratio:1;border-radius:0 40% 0 40%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff}
+  .l1{background:#d9d3c2;color:#8a8471} .l2{background:var(--lavender)} .l3{background:#57b6c9} .l4{background:var(--grass)}
+  .legend{font-size:11px;color:var(--dim);margin-top:10px;font-weight:600}
+  .cv{display:flex;flex-direction:column;gap:9px}
+  .cv .row{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700}
+  .cv .name{width:88px}
+  .cv .track{flex:1;background:#ece5d2;height:13px;border-radius:7px;overflow:hidden}
+  .cv .track i{display:block;height:100%;border-radius:7px}
+  .entry{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid #efe9d8;font-size:13px}
+  .entry:last-child{border-bottom:none}
+  .avatar{width:30px;height:30px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:12px}
+  .entry .meta{font-size:10px;color:var(--dim);font-weight:800;text-transform:uppercase}
+  .entry .txt{line-height:1.45;margin-top:2px}
+  /* ================= TRUNK BAND (name banner + nav) ================= */
+  .trunk{background:var(--lavender);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    border-top:5px solid var(--pine);border-bottom:5px solid var(--pine)}
+  .trunk .title{font-size:20px;font-weight:900;letter-spacing:2px;color:var(--forest);text-transform:uppercase}
+  .trunk nav{display:flex;gap:8px;flex-wrap:wrap}
+  .trunk nav span{background:var(--forest);color:var(--cream);font-size:12px;font-weight:800;padding:7px 16px;border-radius:18px;cursor:pointer}
+  .trunk nav span:hover{background:var(--pine)}
+  .trunk .count{background:var(--forest);color:var(--teal);font-weight:900;padding:7px 16px;border-radius:12px;font-size:14px}
+  .trunk .count small{color:var(--lilac);font-weight:700;font-size:10px;display:block;letter-spacing:1px}
+  /* ================= ROOTS (dark bottom half — robot tech) ================= */
+  .roots{background:var(--forest);color:var(--cream);padding:40px 24px 26px;position:relative;overflow:hidden}
+  .roots::before{content:'';position:absolute;inset:0;opacity:.12;
+    background-image:linear-gradient(var(--teal) 2px,transparent 2px),linear-gradient(90deg,var(--teal) 2px,transparent 2px);background-size:40px 40px}
+  .roots .cards{position:relative}
+  .roots .card{background:#20402c;border:1px solid #33543f;box-shadow:none}
+  .roots .card h2{color:var(--teal)}
+  .big{font-size:52px;font-weight:900;color:var(--grass);line-height:1}
+  .delta{color:var(--grass);font-weight:800;font-size:13px}
+  table{width:100%;border-collapse:collapse;font-size:12px}
+  th{text-align:left;font-size:10px;color:var(--dimdark);text-transform:uppercase;letter-spacing:1px;padding:5px 6px;border-bottom:1px solid #33543f;font-weight:800}
+  td{padding:7px 6px;border-bottom:1px solid #2b4936;font-weight:600;color:var(--cream)}
+  .pill{font-size:10px;font-weight:800;padding:3px 9px;border-radius:9px;color:var(--forest);white-space:nowrap}
+  .p-ready{background:var(--grass)} .p-working{background:var(--teal)} .p-proto{background:var(--lavender)} .p-not{background:#5d715f;color:var(--cream)}
+  .node-bar{display:flex;align-items:center;gap:4px}
+  .node-bar .wire{height:3px;flex:1;background:#2b4936;border-radius:2px;position:relative;overflow:hidden}
+  .node-bar .wire i{position:absolute;inset:0;background:var(--teal)}
+  .node-bar .dot{width:9px;height:9px;border-radius:50%;border:2px solid var(--teal);background:var(--forest)}
+  .node-bar .dot.f{background:var(--teal)}
+  .runplan{display:flex;gap:5px;align-items:center;margin-top:6px}
+  .runplan .seg{height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--forest)}
+  .runplan .gap{width:12px;text-align:center;font-size:9px;color:var(--dimdark)}
+  footer{background:var(--forest);color:var(--dimdark);text-align:center;font-size:11px;font-weight:700;padding:14px;letter-spacing:1px;border-top:1px solid #2b4936}
+</style>
+</head>
+<body>
+
+  <!-- CANOPY = the judged stuff, light like the top of the logo -->
+  <div class="canopy">
+    <svg class="leaves" width="120" height="60" viewBox="0 0 120 60">
+      <path d="M20 40 C4 34 0 16 8 8 C26 10 30 28 20 40Z" fill="#b48fd9"/>
+      <path d="M60 34 C46 26 46 8 56 2 C72 8 72 26 60 34Z" fill="#d9c6ee"/>
+      <path d="M100 44 C86 38 82 20 90 12 C106 14 110 32 100 44Z" fill="#3f9b4c"/>
+    </svg>
+    <div class="canopy-head">
+      <svg class="crest" viewBox="0 0 100 110">
+        <path d="M50 4 92 26 92 68 50 106 8 68 8 26Z" fill="#fff" stroke="#b48fd9" stroke-width="4"/>
+        <rect x="46" y="34" width="8" height="30" rx="2" fill="#1c3b2a"/>
+        <rect x="38" y="42" width="24" height="7" rx="2" fill="#1c3b2a"/>
+        <path d="M50 34 C36 30 30 18 34 12 C46 12 52 22 50 34Z" fill="#b48fd9"/>
+        <path d="M50 34 C64 30 70 18 66 12 C54 12 48 22 50 34Z" fill="#b48fd9"/>
+        <g stroke="#20b5c9" stroke-width="4" fill="none"><path d="M50 64 V82 M50 74 L38 88 M50 74 L62 88"/></g>
+      </svg>
+      <h1>The Canopy<small>WHAT THE JUDGES SEE · LAYOUT E</small></h1>
+    </div>
+    <div class="zone-label">🍃 Rubric · Core Values · Notebook</div>
+    <div class="cards">
+      <div class="card">
+        <h2>Rubric Leaf Map — 20 rows</h2>
+        <div class="heat">
+          <div class="cell l3">3</div><div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l4">4</div>
+          <div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l3">3</div>
+          <div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l3">3</div><div class="cell l2">2</div>
+          <div class="cell l1">1</div><div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l4">4</div><div class="cell l3">3</div>
+        </div>
+        <div class="legend">Each leaf is a rubric row — 2 Exceeds · 11 Accomplished · 6 Developing · 1 Beginning. Grow them all green!</div>
+      </div>
+      <div class="card">
+        <h2>Core Values Tally</h2>
+        <div class="cv">
+          <div class="row"><span class="name">Teamwork</span><div class="track"><i style="width:90%;background:var(--grass)"></i></div><b>18</b></div>
+          <div class="row"><span class="name">Discovery</span><div class="track"><i style="width:70%;background:#57b6c9"></i></div><b>14</b></div>
+          <div class="row"><span class="name">Fun</span><div class="track"><i style="width:80%;background:var(--lavender)"></i></div><b>16</b></div>
+          <div class="row"><span class="name">Innovation</span><div class="track"><i style="width:55%;background:var(--pine)"></i></div><b>11</b></div>
+          <div class="row"><span class="name">Inclusion</span><div class="track"><i style="width:45%;background:#8fc9a4"></i></div><b>9</b></div>
+          <div class="row"><span class="name">Impact</span><div class="track"><i style="width:30%;background:#c9a86f"></i></div><b>6</b></div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Fresh Notebook Entries</h2>
+        <div class="entry">
+          <div class="avatar" style="background:var(--grass)">M</div>
+          <div><div class="meta">Maya · Aug 29 · Robot Design</div>
+          <div class="txt">Glow Garden arm: 9 of 10 tests passed after we shortened the axle. 70% → 90%!</div></div>
+        </div>
+        <div class="entry">
+          <div class="avatar" style="background:#57b6c9">L</div>
+          <div><div class="meta">Leo · Aug 29 · Innovation</div>
+          <div class="txt">Interviewed Ms. Rivera (marine biologist) — 3 new research sources logged.</div></div>
+        </div>
+        <div class="entry">
+          <div class="avatar" style="background:var(--lavender)">S</div>
+          <div><div class="meta">Sam · Aug 27 · Core Values</div>
+          <div class="txt">Marshmallow tower win for Zoe's team, then a group debug of Noah's line-follower.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRUNK = the lavender name banner, like the logo's ribbon -->
+  <div class="trunk">
+    <div class="title">Rooted Warriors</div>
+    <nav><span>Robot Game</span><span>Robot Design</span><span>Innovation</span><span>Core Values</span><span>Daily Log</span></nav>
+    <div class="count">75 days<small>TO REGIONALS · NOV 14</small></div>
+  </div>
+
+  <!-- ROOTS = the robot tech, dark with circuit lines like the logo's roots -->
+  <div class="roots">
+    <div class="zone-label roots-l" style="position:relative">⚡ The Roots · Robot Game &amp; Engineering</div>
+    <div class="cards">
+      <div class="card">
+        <h2>Best Match Score</h2>
+        <div class="big">190</div>
+        <div class="delta">▲ +45 since last scrimmage</div>
+        <svg viewBox="0 0 320 100" style="width:100%;margin-top:10px">
+          <g stroke="#2b4936" stroke-width="1"><line x1="8" y1="20" x2="312" y2="20"/><line x1="8" y1="48" x2="312" y2="48"/><line x1="8" y1="76" x2="312" y2="76"/></g>
+          <polyline points="10,72 85,62 160,52 235,26 310,12" fill="none" stroke="#26c6da" stroke-width="3" stroke-linecap="round"/>
+          <g fill="#b48fd9" stroke="#16301f" stroke-width="2">
+            <circle cx="10" cy="72" r="5"/><circle cx="85" cy="62" r="5"/><circle cx="160" cy="52" r="5"/><circle cx="235" cy="26" r="5"/><circle cx="310" cy="12" r="6"/>
+          </g>
+          <g font-size="10" fill="#f4efe1" font-weight="800" text-anchor="middle">
+            <text x="10" y="64">85</text><text x="85" y="54">120</text><text x="160" y="44">145</text><text x="235" y="18">175</text><text x="302" y="8">190</text>
+          </g>
+          <g font-size="9" fill="#8aa392" text-anchor="middle" font-weight="700">
+            <text x="14" y="97">Sep 12</text><text x="85" y="97">Sep 26</text><text x="160" y="97">Oct 10</text><text x="235" y="97">Oct 24</text><text x="302" y="97">Nov 7</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="card">
+        <h2>Mission Circuit — reliability</h2>
+        <table>
+          <tr><th>Mission</th><th>Pts</th><th>Status</th><th style="width:34%">Signal</th></tr>
+          <tr><td>M03 Glow Garden</td><td>40</td><td><span class="pill p-ready">Ready</span></td><td><div class="node-bar"><div class="wire"><i style="width:95%"></i></div><div class="dot f"></div></div></td></tr>
+          <tr><td>M05 Firefly Release</td><td>30</td><td><span class="pill p-ready">Reliable</span></td><td><div class="node-bar"><div class="wire"><i style="width:85%"></i></div><div class="dot f"></div></div></td></tr>
+          <tr><td>M08 Deep-Sea Lantern</td><td>45</td><td><span class="pill p-working">Working</span></td><td><div class="node-bar"><div class="wire"><i style="width:60%"></i></div><div class="dot"></div></div></td></tr>
+          <tr><td>M02 Mushroom Grove</td><td>25</td><td><span class="pill p-working">Working</span></td><td><div class="node-bar"><div class="wire"><i style="width:70%"></i></div><div class="dot"></div></div></td></tr>
+          <tr><td>M11 Bio Reactor</td><td>50</td><td><span class="pill p-proto">Proto</span></td><td><div class="node-bar"><div class="wire"><i style="width:20%"></i></div><div class="dot"></div></div></td></tr>
+          <tr><td>M07 Cave Crystals</td><td>20</td><td><span class="pill p-not">Not started</span></td><td><div class="node-bar"><div class="wire"></div><div class="dot"></div></div></td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h2>Run Plan vs. 150 Seconds</h2>
+        <div style="font-size:12px;color:var(--dimdark);font-weight:700">4 runs planned · 128s used · 22s buffer</div>
+        <div class="runplan">
+          <div class="seg" style="flex:3.2;background:var(--grass)">R1 · 32s</div><div class="gap">↺</div>
+          <div class="seg" style="flex:2.6;background:var(--teal)">R2 · 26s</div><div class="gap">↺</div>
+          <div class="seg" style="flex:3.8;background:var(--lavender)">R3 · 38s</div><div class="gap">↺</div>
+          <div class="seg" style="flex:3.2;background:#8fc9a4">R4 · 32s</div>
+          <div class="seg" style="flex:2.2;background:#2b4936;color:var(--dimdark)">buffer</div>
+        </div>
+        <div style="font-size:11px;color:var(--dimdark);margin-top:10px;font-weight:600">Launchers: R1 Maya · R2 Noah · R3 Ava · R4 Leo — everyone gets a launch! ↺ = attachment swap</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>LAYOUT E · CANOPY &amp; ROOTS — the page is built like the logo: leafy light top, circuit-root dark bottom, lavender trunk banner between · all data is sample data</footer>
+</body>
+</html>

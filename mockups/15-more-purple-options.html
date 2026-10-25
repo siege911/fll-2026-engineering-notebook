@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>More Purple — 3 Options</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Avenir Next','Trebuchet MS',sans-serif}
+  body{background:#e9e4d6;color:#22301f;padding:24px}
+  .top{text-align:center;margin-bottom:22px}
+  .top h1{font-size:26px;font-weight:800;color:#1c3b2a}
+  .top p{font-size:14px;color:#5f6b59;font-weight:600;margin-top:4px}
+  .opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(520px,1fr));gap:22px}
+  .opt h2{font-size:18px;font-weight:800;margin-bottom:4px}
+  .opt .why{font-size:13px;color:#5f6b59;font-weight:600;margin-bottom:10px;min-height:36px}
+
+  /* ---- mini app (shared) ---- */
+  .app{display:flex;border-radius:14px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.15);height:440px;font-size:12px}
+  .app aside{width:150px;padding:14px 10px;display:flex;flex-direction:column;gap:3px}
+  .app .team{font-weight:800;font-size:12px;text-align:center;margin:6px 0 10px}
+  .app .crest{width:46px;height:52px;margin:0 auto;border-radius:12px 12px 24px 24px;display:flex;align-items:center;justify-content:center;font-size:22px}
+  .app .nav{padding:7px 9px;border-radius:8px;font-weight:700;font-size:11px}
+  .app .cd{margin-top:auto;border-radius:9px;padding:8px;text-align:center}
+  .app .cd b{display:block;font-size:20px}
+  .app .cd small{font-size:8px;letter-spacing:1px;text-transform:uppercase}
+  .app main{flex:1;padding:16px;min-width:0}
+  .app .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+  .app .head h3{font-size:18px;font-weight:800;color:#1c3b2a;-webkit-text-stroke:1px #b48fd9;paint-order:stroke fill}
+  .app .chip{font-weight:800;font-size:10px;padding:4px 10px;border-radius:12px}
+  .app .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .app .card{border-radius:11px;padding:11px}
+  .app .card h4{font-size:10px;text-transform:uppercase;letter-spacing:1.2px;font-weight:800;margin-bottom:8px;display:flex;align-items:center;gap:5px}
+  .app .leaf{width:9px;height:9px;background:#b48fd9;border-radius:0 60% 0 60%;display:inline-block}
+  .app .big{font-size:34px;font-weight:800;color:#3f9b4c}
+  .app .row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;font-weight:700}
+  .app .pill{font-size:9px;font-weight:800;padding:3px 8px;border-radius:8px;color:#fff}
+  .pT{background:#20b5c9}.pP{background:#b48fd9}.pR{background:#3f9b4c}
+  .app .heat{display:grid;grid-template-columns:repeat(10,1fr);gap:3px}
+  .app .heat i{aspect-ratio:1;border-radius:4px;display:block}
+  .h2{background:#b48fd9}.h3{background:#20b5c9}.h4{background:#3f9b4c}.h1{background:#d9d3c2}
+  .app .btn{font-size:9px;font-weight:800;padding:3px 8px;border-radius:8px;background:#b48fd9;color:#1c3b2a}
+
+  /* ---- TODAY (for comparison) ---- */
+  .now aside{background:#1c3b2a;color:#f4efe1}
+  .now .crest{background:#2a5c3f}
+  .now .nav.on{background:#b48fd9;color:#1c3b2a}
+  .now .cd{background:#2a5c3f;border:1px solid #20b5c9}.now .cd b{color:#20b5c9}.now .cd small{color:#d9c6ee}
+  .now main{background:#f4efe1}
+  .now .chip{background:#b48fd9;color:#1c3b2a}
+  .now .card{background:#fff;border:1px solid #e5decb}
+  .now .card h4{color:#2a5c3f}
+
+  /* ---- A: Purple Touches ---- */
+  .a aside{background:#1c3b2a;color:#f4efe1}
+  .a .crest{background:#2a5c3f}
+  .a .nav.on{background:#b48fd9;color:#1c3b2a}
+  .a .cd{background:#4a2d6b;border:1px solid #b48fd9}.a .cd b{color:#d9c6ee}.a .cd small{color:#d9c6ee}
+  .a main{background:#f4efe1}
+  .a .chip{background:#7a4fb0;color:#fff}
+  .a .card{background:#fff;border:1px solid #e5decb;border-top:4px solid #b48fd9}
+  .a .card h4{color:#7a4fb0}
+
+  /* ---- B: Purple Sidebar ---- */
+  .b aside{background:#3b2456;color:#f4efe1}
+  .b .crest{background:#5a3a80}
+  .b .nav.on{background:#b48fd9;color:#2a1640}
+  .b .cd{background:#5a3a80;border:1px solid #20b5c9}.b .cd b{color:#20b5c9}.b .cd small{color:#d9c6ee}
+  .b main{background:#f4efe1}
+  .b .chip{background:#b48fd9;color:#2a1640}
+  .b .card{background:#fff;border:1px solid #e5decb}
+  .b .card h4{color:#2a5c3f}
+
+  /* ---- C: Lilac Background ---- */
+  .c aside{background:#1c3b2a;color:#f4efe1}
+  .c .crest{background:#2a5c3f}
+  .c .nav.on{background:#b48fd9;color:#1c3b2a}
+  .c .cd{background:#2a5c3f;border:1px solid #b48fd9}.c .cd b{color:#d9c6ee}.c .cd small{color:#d9c6ee}
+  .c main{background:#efe6f8}
+  .c .chip{background:#b48fd9;color:#1c3b2a}
+  .c .card{background:#fff;border:1px solid #ddcdef}
+  .c .card h4{color:#7a4fb0}
+</style>
+</head>
+<body>
+<div class="top">
+  <h1>💜 More Purple: pick one!</h1>
+  <p>Same app, same data. Only the colors change. The first one is how the app looks today, so you can compare.</p>
+</div>
+<div class="opts" id="opts"></div>
+
+<script>
+const OPTIONS=[
+  {cls:'now',name:'Today (no change)',why:'Green sidebar, cream background, purple only on buttons and chips.'},
+  {cls:'a',name:'A · Purple Touches',why:'Keeps the green sidebar. Every card gets a purple stripe on top, purple card titles, and a purple countdown box.'},
+  {cls:'b',name:'B · Purple Sidebar',why:'The whole sidebar turns deep purple instead of dark green. Cards stay the same.'},
+  {cls:'c',name:'C · Lilac Background',why:'Keeps the green sidebar. The page behind the cards turns light lilac, and card titles turn purple.'}
+];
+const heat=[3,3,2,3,4,2,3,2,3,3,3,2,3,3,2,1,3,2,4,3];
+const navs=['🏠 Dashboard','🎯 Robot Game','🤖 Robot Design','💻 Coding','💡 Innovation Project','🤝 Core Values','📓 Daily Log','📋 Rubric Check'];
+document.getElementById('opts').innerHTML=OPTIONS.map(o=>`
+ <div class="opt"><h2>${o.name}</h2><div class="why">${o.why}</div>
+  <div class="app ${o.cls}">
+   <aside><div class="crest">🌳</div><div class="team">ROOTED WARRIORS</div>
+    ${navs.map((n,i)=>`<div class="nav ${i===0?'on':''}">${n}</div>`).join('')}
+    <div class="cd"><b>33</b><small>days to regionals</small></div></aside>
+   <main>
+    <div class="head"><h3>Team Dashboard</h3><span class="chip">2026 SEASON</span></div>
+    <div class="grid">
+     <div class="card"><h4><span class="leaf"></span>Best match score</h4><div class="big">190</div><div style="color:#3f9b4c;font-weight:700;font-size:10px">▲ up from 85 → 120 → 190</div></div>
+     <div class="card"><h4><span class="leaf"></span>Missions <span class="btn" style="margin-left:auto">Edit →</span></h4>
+      <div class="row">M01 Drone Survey <span class="pill pP">Prototyping</span></div>
+      <div class="row">M02 Exploding Seeds <span class="pill pT">Working</span></div>
+      <div class="row">M03 Flip the Rock <span class="pill pR">Reliable</span></div></div>
+     <div class="card" style="grid-column:1/-1"><h4><span class="leaf"></span>Rubric heat map</h4>
+      <div class="heat">${heat.map(l=>`<i class="h${l}"></i>`).join('')}</div></div>
+    </div>
+   </main>
+  </div></div>`).join('');
+</script>
+</body>
+</html>

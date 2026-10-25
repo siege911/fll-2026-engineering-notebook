@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layout D — Journal Feed (Rooted Warriors)</title>
+<style>
+  :root{
+    --forest:#1c3b2a; --pine:#2a5c3f; --grass:#3f9b4c;
+    --lavender:#b48fd9; --lilac:#d9c6ee; --teal:#20b5c9;
+    --cream:#f4efe1; --paper:#fffdf6; --ink:#22301f; --dim:#7d8a76;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Avenir Next','Trebuchet MS',sans-serif}
+  body{background:var(--cream);color:var(--ink);min-height:100vh}
+  /* top bar */
+  .topbar{background:var(--forest);color:var(--cream);padding:12px 22px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:5;flex-wrap:wrap}
+  .topbar svg{width:40px}
+  .topbar .name{font-weight:900;letter-spacing:1px;font-size:16px}
+  .topbar .name small{display:block;font-size:9px;letter-spacing:2px;color:var(--teal);font-weight:700}
+  .topbar nav{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+  .topbar nav span{font-size:12px;font-weight:800;padding:6px 14px;border-radius:16px;cursor:pointer}
+  .topbar nav span.active{background:var(--lavender);color:var(--forest)}
+  .topbar nav span:not(.active):hover{background:var(--pine)}
+  .wrap{max-width:1050px;margin:22px auto;padding:0 18px;display:grid;grid-template-columns:1fr 300px;gap:22px}
+  @media(max-width:800px){.wrap{grid-template-columns:1fr}}
+  /* timeline feed */
+  .feed h1{font-size:22px;font-weight:900;color:var(--forest);margin-bottom:4px}
+  .feed .sub{font-size:12px;color:var(--dim);font-weight:600;margin-bottom:18px}
+  .timeline{position:relative;padding-left:34px}
+  .timeline::before{content:'';position:absolute;left:12px;top:6px;bottom:6px;width:3px;border-radius:2px;
+    background:repeating-linear-gradient(var(--teal) 0 14px,transparent 14px 22px)}
+  .day{margin-bottom:22px;position:relative}
+  .node{position:absolute;left:-34px;top:2px;width:27px;height:27px;border-radius:50%;background:var(--teal);border:3px solid var(--cream);display:flex;align-items:center;justify-content:center;font-size:12px}
+  .day .date{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:var(--pine);margin-bottom:8px}
+  .post{background:var(--paper);border:1px solid #e5decb;border-left:6px solid var(--lavender);border-radius:12px;padding:14px 16px;margin-bottom:10px;box-shadow:0 2px 5px rgba(28,59,42,.06)}
+  .post.design{border-left-color:var(--grass)}
+  .post.ip{border-left-color:var(--lavender)}
+  .post.cv{border-left-color:var(--teal)}
+  .post.score{border-left-color:var(--pine);background:linear-gradient(100deg,#fffdf6,#f2ecfa)}
+  .post .meta{font-size:11px;color:var(--dim);font-weight:800;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .avatar{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:11px}
+  .tag{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;padding:2px 8px;border-radius:8px;background:var(--lilac);color:var(--forest)}
+  .post .txt{font-size:13px;line-height:1.55;margin-top:7px}
+  .post .photo{margin-top:8px;height:74px;border-radius:8px;background:repeating-linear-gradient(45deg,#e8e0cd 0 12px,#efe9d8 12px 24px);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--dim);font-weight:700}
+  .scorebig{font-size:34px;font-weight:900;color:var(--pine)}
+  .scorebig small{font-size:13px;color:var(--grass);font-weight:800}
+  /* right rail */
+  .rail{display:flex;flex-direction:column;gap:16px}
+  .widget{background:var(--paper);border:1px solid #e5decb;border-radius:14px;padding:16px;box-shadow:0 2px 5px rgba(28,59,42,.06)}
+  .widget h2{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:900;color:var(--pine);margin-bottom:10px}
+  .count{background:var(--forest);color:var(--cream);text-align:center;border:none;position:relative;overflow:hidden}
+  .count::before{content:'';position:absolute;inset:0;opacity:.15;
+    background-image:linear-gradient(var(--teal) 2px,transparent 2px),linear-gradient(90deg,var(--teal) 2px,transparent 2px);background-size:26px 26px}
+  .count .num{font-size:42px;font-weight:900;color:var(--lavender);position:relative}
+  .count .lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--lilac);font-weight:700;position:relative}
+  .stat-row{display:flex;justify-content:space-between;font-size:13px;font-weight:700;padding:7px 0;border-bottom:1px solid #efe9d8}
+  .stat-row:last-child{border-bottom:none}
+  .stat-row b{color:var(--pine)}
+  .heat{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
+  .heat .cell{aspect-ratio:1;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff}
+  .l1{background:#d9d3c2;color:#8a8471} .l2{background:var(--lavender)} .l3{background:var(--teal)} .l4{background:var(--grass)}
+  .legend{font-size:10px;color:var(--dim);margin-top:8px;font-weight:600}
+  .spark{width:100%}
+  footer{text-align:center;font-size:11px;color:var(--dim);font-weight:600;padding:18px}
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <svg viewBox="0 0 100 110">
+      <path d="M50 4 92 26 92 68 50 106 8 68 8 26Z" fill="#f4efe1" stroke="#b48fd9" stroke-width="4"/>
+      <rect x="46" y="34" width="8" height="30" rx="2" fill="#1c3b2a"/>
+      <rect x="38" y="42" width="24" height="7" rx="2" fill="#1c3b2a"/>
+      <path d="M50 34 C36 30 30 18 34 12 C46 12 52 22 50 34Z" fill="#b48fd9"/>
+      <path d="M50 34 C64 30 70 18 66 12 C54 12 48 22 50 34Z" fill="#b48fd9"/>
+      <g stroke="#20b5c9" stroke-width="4" fill="none"><path d="M50 64 V82 M50 74 L38 88 M50 74 L62 88"/></g>
+    </svg>
+    <div class="name">ROOTED WARRIORS<small>ENGINEERING NOTEBOOK · LAYOUT D</small></div>
+    <nav>
+      <span class="active">Feed</span><span>Robot Game</span><span>Robot Design</span><span>Innovation</span><span>Core Values</span>
+    </nav>
+  </div>
+
+  <div class="wrap">
+    <div class="feed">
+      <h1>The Season Story</h1>
+      <div class="sub">Every practice becomes a chapter — newest first. This feed <em>is</em> the engineering notebook.</div>
+
+      <div class="timeline">
+        <div class="day">
+          <div class="node">🍃</div>
+          <div class="date">Friday · Aug 29</div>
+          <div class="post design">
+            <div class="meta"><span class="avatar" style="background:var(--grass)">M</span> Maya <span class="tag">Robot Design · Iterate</span></div>
+            <div class="txt">Tested the Glow Garden arm 10 times — it worked 9! We shortened the axle after it snagged on run 4. Reliability up from 70% → 90%.</div>
+            <div class="photo">📷 photo: the new shorter axle</div>
+          </div>
+          <div class="post ip">
+            <div class="meta"><span class="avatar" style="background:var(--lavender)">L</span> Leo <span class="tag">Innovation · Identify</span></div>
+            <div class="txt">Interviewed Ms. Rivera (marine biologist). She gave us 3 sources on bioluminescent algae. Added her to the Experts page.</div>
+          </div>
+        </div>
+
+        <div class="day">
+          <div class="node">🤝</div>
+          <div class="date">Wednesday · Aug 27</div>
+          <div class="post cv">
+            <div class="meta"><span class="avatar" style="background:var(--teal)">S</span> Sam <span class="tag">Core Values · Fun</span></div>
+            <div class="txt">Marshmallow tower challenge for warm-up — Zoe's team won! Then everyone helped Noah debug his line-follower. Teamwork moment!</div>
+          </div>
+        </div>
+
+        <div class="day">
+          <div class="node">🏆</div>
+          <div class="date">Sunday · Aug 24 — Practice Match</div>
+          <div class="post score">
+            <div class="meta"><span class="avatar" style="background:var(--pine)">RW</span> Whole team <span class="tag">Robot Game · Match Day</span></div>
+            <div class="scorebig">190 pts <small>▲ new team record (+45)</small></div>
+            <div class="txt">Four runs completed. Deep-Sea Lantern failed once — Ava is redesigning the hook for next practice.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rail">
+      <div class="widget count">
+        <div class="num">75</div>
+        <div class="lbl">days to Regionals · Nov 14</div>
+      </div>
+
+      <div class="widget">
+        <h2>Season At A Glance</h2>
+        <div class="stat-row"><span>Best match score</span><b>190</b></div>
+        <div class="stat-row"><span>Missions ready</span><b>4 / 12</b></div>
+        <div class="stat-row"><span>Rubric rows at 3+</span><b>13 / 20</b></div>
+        <div class="stat-row"><span>Log entries this month</span><b>22</b></div>
+        <svg class="spark" viewBox="0 0 260 46">
+          <polyline points="6,38 66,32 126,26 186,14 250,6" fill="none" stroke="#3f9b4c" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="250" cy="6" r="4" fill="#20b5c9"/>
+        </svg>
+      </div>
+
+      <div class="widget">
+        <h2>Rubric — 20 rows</h2>
+        <div class="heat">
+          <div class="cell l3">3</div><div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l4">4</div>
+          <div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l3">3</div>
+          <div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l3">3</div><div class="cell l2">2</div>
+          <div class="cell l1">1</div><div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l4">4</div><div class="cell l3">3</div>
+        </div>
+        <div class="legend">2 Exceeds · 11 Accomplished · 6 Developing · 1 Beginning</div>
+      </div>
+
+      <div class="widget">
+        <h2>Core Values This Week</h2>
+        <div class="stat-row"><span>🤝 Teamwork</span><b>18</b></div>
+        <div class="stat-row"><span>🔍 Discovery</span><b>14</b></div>
+        <div class="stat-row"><span>🎉 Fun</span><b>16</b></div>
+        <div class="stat-row"><span>💡 Innovation</span><b>11</b></div>
+        <div class="stat-row"><span>🫶 Inclusion</span><b>9</b></div>
+        <div class="stat-row"><span>🌍 Impact</span><b>6</b></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>LAYOUT D · JOURNAL FEED — the notebook timeline is the main event, stats ride shotgun · all data is sample data</footer>
+</body>
+</html>

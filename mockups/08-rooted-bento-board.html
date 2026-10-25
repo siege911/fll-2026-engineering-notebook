@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layout C — Bento Board (Rooted Warriors)</title>
+<style>
+  :root{
+    --forest:#16301f; --panel:#20402c; --pine:#2a5c3f; --grass:#4cb85d;
+    --lavender:#b48fd9; --lilac:#d9c6ee; --teal:#26c6da;
+    --cream:#f4efe1; --dim:#8aa392;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Avenir Next','Trebuchet MS',sans-serif}
+  body{background:var(--forest);color:var(--cream);min-height:100vh;padding:20px;
+    background-image:linear-gradient(rgba(38,198,218,.05) 2px,transparent 2px),linear-gradient(90deg,rgba(38,198,218,.05) 2px,transparent 2px);
+    background-size:44px 44px}
+  .board{max-width:1100px;margin:0 auto;display:grid;gap:14px;
+    grid-template-columns:repeat(6,1fr);
+    grid-template-areas:
+      "head head head head count count"
+      "score score score miss miss miss"
+      "heat heat heat cv cv cv"
+      "log log log log log log"}
+  @media(max-width:820px){.board{grid-template-columns:1fr 1fr;grid-template-areas:"head head" "count count" "score score" "miss miss" "heat heat" "cv cv" "log log"}}
+  .tile{background:var(--panel);border:1px solid #33543f;border-radius:18px;padding:18px}
+  .tile h2{font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:800;color:var(--lilac);margin-bottom:12px}
+  /* head */
+  .head{grid-area:head;display:flex;align-items:center;gap:16px;background:linear-gradient(120deg,var(--panel),#2a4a35)}
+  .head svg{width:70px;flex-shrink:0}
+  .head h1{font-size:24px;font-weight:900;letter-spacing:1px}
+  .head .sub{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);font-weight:700;margin-top:3px}
+  .head nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  .head nav span{font-size:11px;font-weight:800;padding:4px 12px;border-radius:14px;background:#183426;color:var(--lilac);cursor:pointer;border:1px solid #33543f}
+  .head nav span:hover{border-color:var(--teal);color:var(--teal)}
+  .count{grid-area:count;text-align:center;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(160deg,#3a2a55,#20402c);border-color:var(--lavender)}
+  .count .num{font-size:46px;font-weight:900;color:var(--lavender)}
+  .count .lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--lilac);font-weight:700}
+  .score{grid-area:score}
+  .score .big{font-size:54px;font-weight:900;color:var(--grass);line-height:1}
+  .score .delta{color:var(--grass);font-weight:700;font-size:13px}
+  .miss{grid-area:miss}
+  .heatT{grid-area:heat}
+  .cvT{grid-area:cv}
+  .logT{grid-area:log}
+  table{width:100%;border-collapse:collapse;font-size:12px}
+  th{text-align:left;font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;padding:5px 6px;border-bottom:1px solid #33543f;font-weight:800}
+  td{padding:7px 6px;border-bottom:1px solid #2b4936;font-weight:600}
+  .pill{font-size:10px;font-weight:800;padding:3px 9px;border-radius:9px;color:var(--forest);white-space:nowrap}
+  .p-ready{background:var(--grass)} .p-working{background:var(--teal)} .p-proto{background:var(--lavender)} .p-not{background:#5d715f;color:var(--cream)}
+  .bar{display:inline-block;width:64px;height:8px;background:#183426;border-radius:4px;overflow:hidden;vertical-align:middle}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--teal),var(--grass))}
+  .heat{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+  .heat .cell{aspect-ratio:1;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--forest)}
+  .l1{background:#3a5142;color:var(--dim)} .l2{background:var(--lavender)} .l3{background:var(--teal)} .l4{background:var(--grass)}
+  .legend{font-size:10px;color:var(--dim);margin-top:10px;font-weight:600}
+  .cv{display:flex;flex-direction:column;gap:8px}
+  .cv .row{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700}
+  .cv .name{width:82px}
+  .cv .track{flex:1;background:#183426;height:11px;border-radius:6px;overflow:hidden}
+  .cv .track i{display:block;height:100%;border-radius:6px}
+  .logT .entries{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+  .entry{background:#183426;border:1px solid #2b4936;border-radius:12px;padding:12px}
+  .entry .meta{font-size:10px;color:var(--dim);font-weight:800;text-transform:uppercase;letter-spacing:.5px}
+  .entry .txt{font-size:12px;line-height:1.5;margin-top:6px}
+  .entry .who{display:inline-block;width:24px;height:24px;border-radius:50%;text-align:center;line-height:24px;font-weight:800;font-size:11px;color:var(--forest);margin-right:6px;vertical-align:middle}
+  .tag{font-size:9px;font-weight:800;color:var(--teal)}
+  footer{text-align:center;margin-top:16px;font-size:11px;color:var(--dim);font-weight:600;letter-spacing:1px}
+</style>
+</head>
+<body>
+  <div class="board">
+    <div class="tile head">
+      <svg viewBox="0 0 100 110">
+        <path d="M50 4 92 26 92 68 50 106 8 68 8 26Z" fill="#f4efe1" stroke="#b48fd9" stroke-width="3"/>
+        <rect x="46" y="34" width="8" height="34" rx="2" fill="#1c3b2a"/>
+        <rect x="38" y="42" width="24" height="7" rx="2" fill="#1c3b2a"/>
+        <path d="M50 34 C36 30 30 18 34 12 C46 12 52 22 50 34Z" fill="#b48fd9"/>
+        <path d="M50 34 C64 30 70 18 66 12 C54 12 48 22 50 34Z" fill="#b48fd9"/>
+        <path d="M50 22 C44 16 44 9 50 5 C56 9 56 16 50 22Z" fill="#3f9b4c"/>
+        <g stroke="#20b5c9" stroke-width="3" fill="none"><path d="M50 68 V84 M50 76 L36 88 M50 76 L64 88 M50 84 V94"/></g>
+        <g fill="#20b5c9"><circle cx="36" cy="88" r="3.5"/><circle cx="64" cy="88" r="3.5"/><circle cx="50" cy="94" r="4.5"/></g>
+      </svg>
+      <div>
+        <h1>ROOTED WARRIORS</h1>
+        <div class="sub">Season Board · Layout C · Bento</div>
+        <nav><span>Robot Game</span><span>Robot Design</span><span>Innovation</span><span>Core Values</span><span>Daily Log</span></nav>
+      </div>
+    </div>
+
+    <div class="tile count">
+      <div class="num">75</div>
+      <div class="lbl">days to Regionals<br>Nov 14</div>
+    </div>
+
+    <div class="tile score">
+      <h2>Best Match Score</h2>
+      <div class="big">190 <span class="delta">▲ +45</span></div>
+      <svg viewBox="0 0 320 100" style="width:100%;margin-top:10px">
+        <polyline points="10,72 85,62 160,52 235,28 310,14" fill="none" stroke="#26c6da" stroke-width="3" stroke-linecap="round"/>
+        <g fill="#b48fd9" stroke="#16301f" stroke-width="2">
+          <circle cx="10" cy="72" r="5"/><circle cx="85" cy="62" r="5"/><circle cx="160" cy="52" r="5"/><circle cx="235" cy="28" r="5"/><circle cx="310" cy="14" r="6"/>
+        </g>
+        <g font-size="10" fill="#f4efe1" font-weight="800" text-anchor="middle">
+          <text x="10" y="64">85</text><text x="85" y="54">120</text><text x="160" y="44">145</text><text x="235" y="20">175</text><text x="303" y="8">190</text>
+        </g>
+        <g font-size="9" fill="#8aa392" text-anchor="middle" font-weight="700">
+          <text x="12" y="98">Sep 12</text><text x="85" y="98">Sep 26</text><text x="160" y="98">Oct 10</text><text x="235" y="98">Oct 24</text><text x="303" y="98">Nov 7</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="tile miss">
+      <h2>Mission Inventory</h2>
+      <table>
+        <tr><th>Mission</th><th>Pts</th><th>Status</th><th>Rel.</th></tr>
+        <tr><td>M03 Glow Garden</td><td>40</td><td><span class="pill p-ready">Ready</span></td><td><span class="bar"><i style="width:95%"></i></span> 95%</td></tr>
+        <tr><td>M05 Firefly Release</td><td>30</td><td><span class="pill p-ready">Reliable</span></td><td><span class="bar"><i style="width:85%"></i></span> 85%</td></tr>
+        <tr><td>M08 Deep-Sea Lantern</td><td>45</td><td><span class="pill p-working">Working</span></td><td><span class="bar"><i style="width:60%"></i></span> 60%</td></tr>
+        <tr><td>M02 Mushroom Grove</td><td>25</td><td><span class="pill p-working">Working</span></td><td><span class="bar"><i style="width:70%"></i></span> 70%</td></tr>
+        <tr><td>M11 Bio Reactor</td><td>50</td><td><span class="pill p-proto">Proto</span></td><td><span class="bar"><i style="width:20%"></i></span> 20%</td></tr>
+        <tr><td>M07 Cave Crystals</td><td>20</td><td><span class="pill p-not">Not started</span></td><td>—</td></tr>
+      </table>
+    </div>
+
+    <div class="tile heatT">
+      <h2>Rubric — 20 rows</h2>
+      <div class="heat">
+        <div class="cell l3">3</div><div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l4">4</div>
+        <div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l3">3</div>
+        <div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l3">3</div><div class="cell l2">2</div>
+        <div class="cell l1">1</div><div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l4">4</div><div class="cell l3">3</div>
+      </div>
+      <div class="legend">2 Exceeds · 11 Accomplished · 6 Developing · 1 Beginning</div>
+    </div>
+
+    <div class="tile cvT">
+      <h2>Core Values</h2>
+      <div class="cv">
+        <div class="row"><span class="name">Teamwork</span><div class="track"><i style="width:90%;background:var(--grass)"></i></div><b>18</b></div>
+        <div class="row"><span class="name">Discovery</span><div class="track"><i style="width:70%;background:var(--teal)"></i></div><b>14</b></div>
+        <div class="row"><span class="name">Fun</span><div class="track"><i style="width:80%;background:var(--lavender)"></i></div><b>16</b></div>
+        <div class="row"><span class="name">Innovation</span><div class="track"><i style="width:55%;background:#8fc9a4"></i></div><b>11</b></div>
+        <div class="row"><span class="name">Inclusion</span><div class="track"><i style="width:45%;background:var(--lilac)"></i></div><b>9</b></div>
+        <div class="row"><span class="name">Impact</span><div class="track"><i style="width:30%;background:#6fd0dd"></i></div><b>6</b></div>
+      </div>
+    </div>
+
+    <div class="tile logT">
+      <h2>Latest Notebook Entries</h2>
+      <div class="entries">
+        <div class="entry">
+          <div class="meta"><span class="who" style="background:var(--grass)">M</span>Maya · Aug 29 · <span class="tag">Robot Design / Iterate</span></div>
+          <div class="txt">Tested the Glow Garden arm 10 times — 9 successes! Shortened the axle after the run-4 snag. Reliability 70% → 90%.</div>
+        </div>
+        <div class="entry">
+          <div class="meta"><span class="who" style="background:var(--teal)">L</span>Leo · Aug 29 · <span class="tag">Innovation / Identify</span></div>
+          <div class="txt">Interviewed Ms. Rivera (marine biologist) — 3 new sources on bioluminescent algae. Added her to the Experts page.</div>
+        </div>
+        <div class="entry">
+          <div class="meta"><span class="who" style="background:var(--lavender)">S</span>Sam · Aug 27 · <span class="tag">Core Values / Fun</span></div>
+          <div class="txt">Marshmallow tower warm-up — Zoe's team won! Everyone helped Noah debug the line-follower afterward.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>LAYOUT C · BENTO BOARD — dark forest with circuit grid, tiles of different sizes · all data is sample data</footer>
+</body>
+</html>

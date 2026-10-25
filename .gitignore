@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# Wi-Fi name/password for the camera — never commit (copy secrets.example.h)
+camera/**/secrets.h
+
+# Live database: binary, changes constantly. Rebuild from schema + seed + updates,
+# or copy the file. Everything in it is also in app/db/snapshot.json.
+app/db/*.db
+app/db/*.db-*
+app/db/backups/
+
+node_modules/
+.env

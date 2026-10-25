@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theme 5 — Brick Builder</title>
+<style>
+  :root{
+    --bg:#fff8ec; --ink:#2b2b2b; --dim:#8a8a8a;
+    --red:#e3000b; --yellow:#ffd500; --blue:#0057a8; --green:#00a651; --orange:#ff7f27; --panel:#ffffff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Futura','Trebuchet MS',sans-serif}
+  body{background:var(--bg);color:var(--ink);padding:24px;min-height:100vh}
+  .stud{display:inline-block;width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,.4);box-shadow:inset 0 -2px 0 rgba(0,0,0,.15)}
+  header{background:var(--red);border-radius:18px;padding:20px 24px;color:#fff;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:20px;position:relative;box-shadow:0 6px 0 #b00009}
+  .studs-row{position:absolute;top:8px;left:24px;display:flex;gap:18px}
+  .team{display:flex;align-items:center;gap:14px;margin-top:10px}
+  .head{width:52px;height:52px;background:var(--yellow);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 4px 0 #d9b500}
+  h1{font-size:26px;font-weight:800}
+  h1 small{display:block;font-size:12px;font-weight:600;opacity:.9;letter-spacing:1px}
+  .countdown{background:#fff;color:var(--ink);border-radius:14px;padding:10px 18px;text-align:center;box-shadow:0 4px 0 rgba(0,0,0,.15);margin-top:10px}
+  .countdown .num{font-size:32px;font-weight:800;color:var(--red)}
+  .countdown .lbl{font-size:10px;color:var(--dim);font-weight:700;text-transform:uppercase}
+  nav{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:20px}
+  .brick{border-radius:12px;padding:16px 16px 14px;color:#fff;cursor:pointer;position:relative;transition:.15s;font-weight:800}
+  .brick:hover{transform:translateY(-3px)}
+  .brick .top-studs{display:flex;gap:12px;margin-bottom:8px}
+  .brick .sub{font-size:11px;font-weight:600;opacity:.9;margin-top:2px}
+  .b-blue{background:var(--blue);box-shadow:0 5px 0 #003f7a}
+  .b-red{background:var(--red);box-shadow:0 5px 0 #b00009}
+  .b-yellow{background:var(--yellow);color:var(--ink);box-shadow:0 5px 0 #d9b500}
+  .b-green{background:var(--green);box-shadow:0 5px 0 #007a3c}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px}
+  .card{background:var(--panel);border-radius:16px;padding:20px;box-shadow:0 4px 0 rgba(0,0,0,.08);border:2px solid #f0e6d2}
+  .card h2{font-size:15px;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .plate{display:inline-block;width:22px;height:12px;border-radius:3px;position:relative}
+  .big{font-size:56px;font-weight:800;color:var(--green);line-height:1}
+  .delta{color:var(--green);font-weight:800;font-size:14px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{text-align:left;font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;padding:6px 8px;border-bottom:2px solid #f0e6d2;font-weight:800}
+  td{padding:9px 8px;border-bottom:1px solid #f5efe2;font-weight:600}
+  .chip{font-size:10px;font-weight:800;padding:4px 10px;border-radius:8px;color:#fff;white-space:nowrap;box-shadow:0 2px 0 rgba(0,0,0,.2)}
+  .c-ready{background:var(--green)} .c-working{background:var(--blue)} .c-proto{background:var(--orange)} .c-not{background:#bdbdbd}
+  .bricks-bar{display:flex;gap:3px;vertical-align:middle}
+  .bricks-bar span{width:12px;height:12px;border-radius:3px;background:#eee;box-shadow:inset 0 -2px 0 rgba(0,0,0,.08)}
+  .heat{display:grid;grid-template-columns:repeat(10,1fr);gap:6px}
+  .heat .cell{aspect-ratio:1;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+  .l1{background:#d6d6d6;color:#777} .l2{background:var(--yellow);color:var(--ink)} .l3{background:var(--blue)} .l4{background:var(--green)}
+  .legend{font-size:11px;color:var(--dim);margin-top:10px;font-weight:600}
+  .cv{display:flex;flex-direction:column;gap:9px}
+  .cv .row{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700}
+  .cv .name{width:90px}
+  .cv .track{flex:1;display:flex;gap:3px}
+  .cv .track span{flex:1;height:16px;border-radius:4px;background:#f0e6d2;box-shadow:inset 0 -3px 0 rgba(0,0,0,.08)}
+  .minifig-log{display:flex;flex-direction:column;gap:14px}
+  .fig{display:flex;gap:12px;align-items:flex-start}
+  .fig .face{width:38px;height:38px;background:var(--yellow);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;box-shadow:0 3px 0 #d9b500}
+  .fig .meta{font-size:11px;color:var(--dim);font-weight:800;text-transform:uppercase;letter-spacing:.5px}
+  .fig .txt{font-size:13px;line-height:1.5;margin-top:2px;font-weight:500}
+  .fig .tag{display:inline-block;font-size:10px;font-weight:800;color:#fff;border-radius:6px;padding:2px 8px;margin-left:4px}
+  footer{margin-top:24px;text-align:center;font-size:12px;color:var(--dim);font-weight:700}
+</style>
+</head>
+<body>
+  <header>
+    <div class="studs-row"><span class="stud"></span><span class="stud"></span><span class="stud"></span><span class="stud"></span><span class="stud"></span><span class="stud"></span></div>
+    <div class="team">
+      <div class="head">😃</div>
+      <h1>Team BioBots — Build HQ<small>Season Dashboard · Theme 5 · Brick Builder</small></h1>
+    </div>
+    <div class="countdown">
+      <div class="num">75</div>
+      <div class="lbl">days to Regionals · Nov 14</div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="brick b-blue"><div class="top-studs"><span class="stud"></span><span class="stud"></span></div>Robot Game<div class="sub">missions · runs · scores</div></div>
+    <div class="brick b-red"><div class="top-studs"><span class="stud"></span><span class="stud"></span></div>Robot Design<div class="sub">attachments · tests · code</div></div>
+    <div class="brick b-yellow"><div class="top-studs"><span class="stud"></span><span class="stud"></span></div>Innovation Project<div class="sub">problem → solution</div></div>
+    <div class="brick b-green"><div class="top-studs"><span class="stud"></span><span class="stud"></span></div>Core Values<div class="sub">spotlight · moments</div></div>
+  </nav>
+
+  <div class="grid">
+    <div class="card">
+      <h2><span class="plate" style="background:var(--green)"></span> Best Match Score</h2>
+      <div class="big">190</div>
+      <div class="delta">▲ +45 points since last scrimmage — new personal best!</div>
+      <svg viewBox="0 0 320 115" style="width:100%;margin-top:14px">
+        <g>
+          <rect x="18" y="72" width="40" height="30" rx="5" fill="#0057a8"/><circle cx="30" cy="72" r="4" fill="#3d82c4"/><circle cx="46" cy="72" r="4" fill="#3d82c4"/>
+          <rect x="78" y="60" width="40" height="42" rx="5" fill="#00a651"/><circle cx="90" cy="60" r="4" fill="#42c281"/><circle cx="106" cy="60" r="4" fill="#42c281"/>
+          <rect x="138" y="50" width="40" height="52" rx="5" fill="#ffd500"/><circle cx="150" cy="50" r="4" fill="#ffe566"/><circle cx="166" cy="50" r="4" fill="#ffe566"/>
+          <rect x="198" y="38" width="40" height="64" rx="5" fill="#ff7f27"/><circle cx="210" cy="38" r="4" fill="#ffa564"/><circle cx="226" cy="38" r="4" fill="#ffa564"/>
+          <rect x="258" y="26" width="40" height="76" rx="5" fill="#e3000b"/><circle cx="270" cy="26" r="4" fill="#f0555c"/><circle cx="286" cy="26" r="4" fill="#f0555c"/>
+        </g>
+        <g font-size="12" font-weight="800" fill="#2b2b2b" text-anchor="middle">
+          <text x="38" y="66">85</text><text x="98" y="54">120</text><text x="158" y="44">145</text><text x="218" y="32">175</text><text x="278" y="20">190</text>
+        </g>
+        <g font-size="9" fill="#8a8a8a" text-anchor="middle" font-weight="700">
+          <text x="38" y="113">Sep 12</text><text x="98" y="113">Sep 26</text><text x="158" y="113">Oct 10</text><text x="218" y="113">Oct 24</text><text x="278" y="113">Nov 7</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="card">
+      <h2><span class="plate" style="background:var(--blue)"></span> Mission Build Table</h2>
+      <table>
+        <tr><th>Mission</th><th>Pts</th><th>Status</th><th>Reliability</th></tr>
+        <tr><td>M03 Glow Garden</td><td>40</td><td><span class="chip c-ready">Ready!</span></td><td><div class="bricks-bar"><span style="background:var(--green)"></span><span style="background:var(--green)"></span><span style="background:var(--green)"></span><span style="background:var(--green)"></span><span style="background:var(--green)"></span></div></td></tr>
+        <tr><td>M05 Firefly Release</td><td>30</td><td><span class="chip c-ready">Reliable</span></td><td><div class="bricks-bar"><span style="background:var(--green)"></span><span style="background:var(--green)"></span><span style="background:var(--green)"></span><span style="background:var(--green)"></span><span></span></div></td></tr>
+        <tr><td>M08 Deep-Sea Lantern</td><td>45</td><td><span class="chip c-working">Working</span></td><td><div class="bricks-bar"><span style="background:var(--blue)"></span><span style="background:var(--blue)"></span><span style="background:var(--blue)"></span><span></span><span></span></div></td></tr>
+        <tr><td>M02 Mushroom Grove</td><td>25</td><td><span class="chip c-working">Working</span></td><td><div class="bricks-bar"><span style="background:var(--blue)"></span><span style="background:var(--blue)"></span><span style="background:var(--blue)"></span><span style="background:#9cc3e5"></span><span></span></div></td></tr>
+        <tr><td>M11 Bio Reactor</td><td>50</td><td><span class="chip c-proto">Building</span></td><td><div class="bricks-bar"><span style="background:var(--orange)"></span><span></span><span></span><span></span><span></span></div></td></tr>
+        <tr><td>M07 Cave Crystals</td><td>20</td><td><span class="chip c-not">In the bin</span></td><td><div class="bricks-bar"><span></span><span></span><span></span><span></span><span></span></div></td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2><span class="plate" style="background:var(--yellow)"></span> Rubric Baseplate — 20 rows</h2>
+      <div class="heat">
+        <div class="cell l3">3</div><div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l4">4</div>
+        <div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l3">3</div>
+        <div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l3">3</div><div class="cell l2">2</div>
+        <div class="cell l1">1</div><div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l4">4</div><div class="cell l3">3</div>
+      </div>
+      <div class="legend">Team self-check: 2 Exceeds 🟩 · 11 Accomplished 🟦 · 6 Developing 🟨 · 1 Beginning ⬜ — snap every brick green by Nov 14!</div>
+    </div>
+
+    <div class="card">
+      <h2><span class="plate" style="background:var(--red)"></span> Core Values Stack</h2>
+      <div class="cv">
+        <div class="row"><span class="name">Teamwork</span><div class="track"><span style="background:var(--green)"></span><span style="background:var(--green)"></span><span style="background:var(--green)"></span><span style="background:var(--green)"></span><span></span></div><b>18</b></div>
+        <div class="row"><span class="name">Discovery</span><div class="track"><span style="background:var(--blue)"></span><span style="background:var(--blue)"></span><span style="background:var(--blue)"></span><span></span><span></span></div><b>14</b></div>
+        <div class="row"><span class="name">Fun</span><div class="track"><span style="background:var(--red)"></span><span style="background:var(--red)"></span><span style="background:var(--red)"></span><span style="background:var(--red)"></span><span></span></div><b>16</b></div>
+        <div class="row"><span class="name">Innovation</span><div class="track"><span style="background:var(--yellow)"></span><span style="background:var(--yellow)"></span><span style="background:#ffe98a"></span><span></span><span></span></div><b>11</b></div>
+        <div class="row"><span class="name">Inclusion</span><div class="track"><span style="background:var(--orange)"></span><span style="background:var(--orange)"></span><span></span><span></span><span></span></div><b>9</b></div>
+        <div class="row"><span class="name">Impact</span><div class="track"><span style="background:#7b4fbf"></span><span style="background:#b79ae0"></span><span></span><span></span><span></span></div><b>6</b></div>
+      </div>
+    </div>
+
+    <div class="card" style="grid-column:1/-1">
+      <h2><span class="plate" style="background:var(--orange)"></span> Builder's Log</h2>
+      <div class="minifig-log">
+        <div class="fig">
+          <div class="face">😀</div>
+          <div><div class="meta">Maya · Aug 29 <span class="tag" style="background:var(--red)">Robot Design · Iterate</span></div>
+          <div class="txt">Tested the Glow Garden arm 10 times — it worked 9! We shortened the axle after it snagged on run 4. Reliability up from 70% to 90%.</div></div>
+        </div>
+        <div class="fig">
+          <div class="face">🤓</div>
+          <div><div class="meta">Leo · Aug 29 <span class="tag" style="background:var(--yellow);color:var(--ink)">Innovation Project · Identify</span></div>
+          <div class="txt">Interviewed Ms. Rivera (marine biologist) about our problem. She gave us 3 sources on bioluminescent algae. Added her to the Experts page.</div></div>
+        </div>
+        <div class="fig">
+          <div class="face">😄</div>
+          <div><div class="meta">Sam · Aug 27 <span class="tag" style="background:var(--green)">Core Values · Fun</span></div>
+          <div class="txt">Marshmallow tower challenge for warm-up — Zoe's team won! Then everybody helped Noah debug his line-follower. Great teamwork moment.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>🧱 Brick Builder theme · every number on this page is pretend sample data — your real season snaps in here</footer>
+</body>
+</html>

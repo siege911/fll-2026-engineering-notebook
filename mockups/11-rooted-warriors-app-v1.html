@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rooted Warriors — Season App v1</title>
+<style>
+  :root{
+    --forest:#1c3b2a; --pine:#2a5c3f; --grass:#3f9b4c;
+    --lavender:#b48fd9; --lilac:#d9c6ee; --teal:#20b5c9;
+    --cream:#f4efe1; --paper:#ffffff; --ink:#22301f; --dim:#7d8a76; --line:#e5decb; --soft:#efe9d8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Avenir Next','Trebuchet MS',sans-serif}
+  body{display:flex;min-height:100vh;background:var(--cream);color:var(--ink)}
+  button,select,input,textarea{font-family:inherit;font-size:13px}
+  /* ---------- sidebar ---------- */
+  aside{width:230px;flex-shrink:0;background:var(--forest);color:var(--cream);padding:22px 16px;display:flex;flex-direction:column;gap:5px;position:sticky;top:0;height:100vh;overflow:hidden}
+  aside::after{content:'';position:absolute;bottom:0;left:0;right:0;height:190px;opacity:.3;pointer-events:none;
+    background-image:linear-gradient(var(--teal) 2px,transparent 2px),linear-gradient(90deg,var(--teal) 2px,transparent 2px);
+    background-size:34px 34px;mask-image:linear-gradient(to top,black,transparent);-webkit-mask-image:linear-gradient(to top,black,transparent)}
+  .crest{text-align:center;margin-bottom:14px;position:relative;z-index:1}
+  .crest svg{width:80px}
+  .crest .team{font-size:16px;font-weight:800;letter-spacing:.5px;margin-top:4px}
+  .crest .sub{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--lilac)}
+  .navlink{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;position:relative;z-index:1;transition:.15s;border:none;background:none;color:var(--cream);text-align:left;width:100%}
+  .navlink:hover{background:var(--pine)}
+  .navlink.active{background:var(--lavender);color:var(--forest)}
+  .navlink .ico{width:20px;text-align:center}
+  .countdown{margin-top:auto;position:relative;z-index:1;background:var(--pine);border:1px solid var(--teal);border-radius:12px;padding:12px;text-align:center}
+  .countdown .num{font-size:30px;font-weight:800;color:var(--teal)}
+  .countdown .lbl{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--lilac)}
+  /* ---------- main ---------- */
+  main{flex:1;padding:26px 28px;min-width:0}
+  .page{display:none}.page.active{display:block}
+  .pagehead{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+  h1{font-size:24px;font-weight:800;color:var(--forest)}
+  h1 small{display:block;font-size:12px;font-weight:600;color:var(--dim)}
+  .chip{background:var(--lavender);color:var(--forest);font-weight:800;font-size:12px;padding:6px 14px;border-radius:20px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+  .wide{grid-column:1/-1}
+  .card{background:var(--paper);border-radius:14px;padding:18px;border:1px solid var(--line);box-shadow:0 2px 6px rgba(28,59,42,.07)}
+  .card h2{font-size:13px;text-transform:uppercase;letter-spacing:1.5px;font-weight:800;color:var(--pine);margin-bottom:12px;display:flex;align-items:center;gap:8px;justify-content:space-between}
+  .card h2 .leafdot{width:12px;height:12px;background:var(--lavender);border-radius:0 60% 0 60%;display:inline-block;margin-right:6px}
+  .card h2 span:first-child{display:flex;align-items:center}
+  .big{font-size:52px;font-weight:800;color:var(--grass);line-height:1}
+  .delta{color:var(--grass);font-weight:700;font-size:13px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{text-align:left;font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;padding:6px 8px;border-bottom:2px solid var(--line);font-weight:800}
+  td{padding:8px;border-bottom:1px solid var(--soft);font-weight:600;vertical-align:middle}
+  .pill{font-size:10px;font-weight:800;padding:4px 10px;border-radius:10px;color:#fff;white-space:nowrap;display:inline-block}
+  .p-Competition-ready,.p-Reliable{background:var(--grass)} .p-Working{background:var(--teal)} .p-Prototyping{background:var(--lavender)} .p-Not-started{background:#b9b3a4}
+  .bar{display:inline-block;width:76px;height:9px;background:#ece5d2;border-radius:5px;overflow:hidden;vertical-align:middle}
+  .bar i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,var(--teal),var(--grass))}
+  .heat{display:grid;grid-template-columns:repeat(10,1fr);gap:6px}
+  .heat .cell{aspect-ratio:1;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;cursor:pointer}
+  .l1{background:#d9d3c2;color:#8a8471} .l2{background:var(--lavender)} .l3{background:var(--teal)} .l4{background:var(--grass)}
+  .legend{font-size:11px;color:var(--dim);margin-top:10px;font-weight:600}
+  .cv{display:flex;flex-direction:column;gap:9px}
+  .cv .row{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700}
+  .cv .name{width:92px}
+  .cv .track{flex:1;background:#ece5d2;height:13px;border-radius:7px;overflow:hidden}
+  .cv .track i{display:block;height:100%;border-radius:7px;transition:width .5s}
+  .entry{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--soft)}
+  .entry:last-child{border-bottom:none}
+  .avatar{width:36px;height:36px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:14px}
+  .avatar.sm{width:24px;height:24px;font-size:10px}
+  .entry .meta{font-size:11px;color:var(--dim);font-weight:700;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .entry .txt{font-size:13px;line-height:1.5;margin-top:3px}
+  .tag{font-size:10px;font-weight:800;color:var(--pine);background:var(--lilac);border-radius:8px;padding:2px 8px}
+  .tag.cvtag{background:#d6f3f7;color:#0f7a88}
+  .photo{margin-top:8px;height:70px;max-width:260px;border-radius:8px;background:repeating-linear-gradient(45deg,#e8e0cd 0 12px,#efe9d8 12px 24px);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--dim);font-weight:700}
+  /* forms */
+  .form{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;align-items:end}
+  .form label{display:flex;flex-direction:column;gap:4px;font-size:11px;font-weight:800;color:var(--dim);text-transform:uppercase;letter-spacing:.5px}
+  .form input,.form select,.form textarea{border:1.5px solid var(--line);border-radius:8px;padding:8px 10px;background:#fffdf6;color:var(--ink);font-weight:600}
+  .form textarea{min-height:64px;resize:vertical}
+  .form .full{grid-column:1/-1}
+  .btn{background:var(--pine);color:#fff;border:none;border-radius:10px;padding:10px 16px;font-weight:800;cursor:pointer;transition:.15s}
+  .btn:hover{background:var(--forest)}
+  .btn.lav{background:var(--lavender);color:var(--forest)}
+  .btn.sm{padding:5px 10px;font-size:11px;border-radius:8px}
+  .btn.ghost{background:transparent;border:1.5px solid var(--pine);color:var(--pine)}
+  .who-picks{display:flex;gap:6px;flex-wrap:wrap}
+  .who-pick{border:2px solid var(--line);border-radius:20px;padding:4px 10px;font-size:12px;font-weight:800;cursor:pointer;background:#fffdf6;display:flex;align-items:center;gap:6px}
+  .who-pick.on{border-color:var(--pine);background:var(--lilac)}
+  .toast{position:fixed;bottom:20px;right:20px;background:var(--forest);color:var(--cream);padding:12px 18px;border-radius:12px;font-weight:800;box-shadow:0 8px 20px rgba(0,0,0,.25);opacity:0;transform:translateY(10px);transition:.3s;z-index:50}
+  .toast.show{opacity:1;transform:none}
+  .celebrate{background:linear-gradient(100deg,#fff,#f2ecfa);border-color:var(--lavender)}
+  .celebrate .quote{font-size:15px;font-style:italic;line-height:1.5}
+  .celebrate .by{font-size:11px;color:var(--dim);font-weight:800;margin-top:6px}
+  /* run plan */
+  .runplan{display:flex;gap:5px;align-items:center;margin-top:8px}
+  .runplan .seg{height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--forest);overflow:hidden;white-space:nowrap}
+  .runplan .gap{width:12px;text-align:center;font-size:9px;color:var(--dim)}
+  .ruler{display:flex;justify-content:space-between;font-size:10px;color:var(--dim);font-weight:700;margin-top:4px}
+  /* rubric */
+  .rrow{display:grid;grid-template-columns:1.6fr 2.4fr auto auto;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--soft);font-size:13px}
+  .rrow .lvls{display:flex;gap:4px}
+  .lvl{width:30px;height:30px;border-radius:8px;border:2px solid var(--line);background:#fffdf6;font-weight:800;cursor:pointer;color:var(--dim)}
+  .lvl.on1{background:#d9d3c2;color:#6d675a;border-color:#d9d3c2} .lvl.on2{background:var(--lavender);color:#fff;border-color:var(--lavender)} .lvl.on3{background:var(--teal);color:#fff;border-color:var(--teal)} .lvl.on4{background:var(--grass);color:#fff;border-color:var(--grass)}
+  .evid{font-size:11px;color:var(--dim);font-weight:700;white-space:nowrap}
+  .phase-h{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:900;color:var(--lavender);margin:14px 0 4px}
+  .gear{color:var(--teal);font-size:11px}
+  /* steps / gantt */
+  .steps{display:grid;grid-template-columns:repeat(8,1fr);gap:6px}
+  .step{border-radius:10px;padding:8px 6px;text-align:center;font-size:10px;font-weight:800;border:2px solid var(--line);background:#fffdf6}
+  .step.done{background:var(--grass);color:#fff;border-color:var(--grass)} .step.now{background:var(--lavender);color:var(--forest);border-color:var(--lavender)}
+  .step .n{font-size:16px;display:block}
+  .gantt{display:grid;grid-template-columns:150px 1fr;gap:6px 10px;font-size:12px;font-weight:700;align-items:center}
+  .gantt .lane{height:22px;background:#f3eee2;border-radius:6px;position:relative}
+  .gantt .gbar{position:absolute;top:3px;bottom:3px;border-radius:5px;cursor:pointer;display:flex;align-items:center;padding-left:6px;font-size:10px;color:#fff;font-weight:800}
+  .gantt .gbar:hover{filter:brightness(1.1)}
+  .months{display:grid;grid-template-columns:repeat(4,1fr);font-size:10px;color:var(--dim);font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-left:160px;margin-bottom:4px}
+  .expert{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--soft)}
+  .expert .face{width:44px;height:44px;border-radius:50%;background:var(--lilac);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+  .expert b{display:block}
+  .expert .fb{font-size:12px;margin-top:3px;line-height:1.45}
+  .arrow{color:var(--grass);font-weight:900}
+  /* spotlight */
+  .spot{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+  .scard{border-radius:14px;padding:16px;border:2px solid var(--line);background:#fffdf6;text-align:center}
+  .scard .face{width:64px;height:64px;border-radius:50%;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:30px;border:4px solid}
+  .scard b{font-size:16px;display:block}
+  .scard .role{font-size:11px;color:var(--dim);font-weight:800;text-transform:uppercase;letter-spacing:1px}
+  .scard .facts{font-size:12px;text-align:left;margin-top:10px;line-height:1.7}
+  .scard .facts span{color:var(--dim);font-weight:800}
+  .balance{display:flex;gap:4px;height:22px;border-radius:8px;overflow:hidden;margin-top:6px}
+  .balance i{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff}
+  /* calendar */
+  .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font-size:11px;font-weight:700}
+  .cal .dow{color:var(--dim);text-align:center;font-size:10px;text-transform:uppercase}
+  .cal .day{aspect-ratio:1;border-radius:8px;background:#f7f3ea;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;position:relative}
+  .cal .day.prac{background:var(--lilac);cursor:pointer} .cal .day.match{background:#cdeccf} .cal .day.tourn{background:var(--forest);color:#fff} .cal .day.today{outline:2px solid var(--teal)}
+  .cal .day .dots{display:flex;gap:2px}
+  .cal .day .dots i{width:5px;height:5px;border-radius:50%;background:var(--grass)}
+  .cal .day.blank{background:transparent}
+  .att{border:1.5px solid var(--line);border-radius:12px;padding:12px;background:#fffdf6}
+  .att b{font-size:14px}
+  .vers{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+  .ver{background:#f3eee2;border-radius:8px;padding:6px 8px;font-size:11px;font-weight:700;min-width:90px}
+  .ver .ph{height:36px;border-radius:5px;background:repeating-linear-gradient(45deg,#e8e0cd 0 8px,#efe9d8 8px 16px);margin-bottom:4px}
+  .spec{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;font-size:13px}
+  .spec span{color:var(--dim);font-weight:800;font-size:11px;text-transform:uppercase}
+  .filterbar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+  .filterbar button{border:2px solid var(--line);background:#fffdf6;border-radius:16px;padding:4px 12px;font-weight:800;font-size:12px;cursor:pointer}
+  .filterbar button.on{background:var(--pine);color:#fff;border-color:var(--pine)}
+  .confetti{position:fixed;top:-10px;width:10px;height:14px;border-radius:2px;z-index:99;pointer-events:none;animation:fall linear forwards}
+  @keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:.8}}
+  footer{margin-top:22px;font-size:11px;color:var(--dim);text-align:center;font-weight:600}
+  .hint{font-size:11px;color:var(--dim);font-weight:600;margin-top:6px}
+  @media(max-width:760px){body{flex-direction:column}aside{width:100%;height:auto;position:static;flex-direction:row;flex-wrap:wrap;gap:4px}.crest{width:100%}.countdown{margin-top:0;width:100%}.navlink{width:auto}}
+</style>
+</head>
+<body>
+<aside>
+  <div class="crest">
+    <svg viewBox="0 0 100 110">
+      <path d="M50 4 92 26 92 68 50 106 8 68 8 26Z" fill="#f4efe1" stroke="#b48fd9" stroke-width="3"/>
+      <rect x="46" y="34" width="8" height="34" rx="2" fill="#1c3b2a"/><rect x="38" y="42" width="24" height="7" rx="2" fill="#1c3b2a"/>
+      <path d="M50 34 C36 30 30 18 34 12 C46 12 52 22 50 34Z" fill="#b48fd9"/><path d="M50 34 C64 30 70 18 66 12 C54 12 48 22 50 34Z" fill="#b48fd9"/>
+      <path d="M50 22 C44 16 44 9 50 5 C56 9 56 16 50 22Z" fill="#3f9b4c"/>
+      <g stroke="#20b5c9" stroke-width="3" fill="none"><path d="M50 68 V84 M50 76 L36 88 M50 76 L64 88 M50 84 V94"/></g>
+      <g fill="#20b5c9"><circle cx="36" cy="88" r="3.5"/><circle cx="64" cy="88" r="3.5"/><circle cx="50" cy="94" r="4.5"/></g>
+    </svg>
+    <div class="team">ROOTED WARRIORS</div>
+    <div class="sub">Season App · v1 test</div>
+  </div>
+  <button class="navlink active" data-page="dash"><span class="ico">🏠</span> Dashboard</button>
+  <button class="navlink" data-page="game"><span class="ico">🎯</span> Robot Game</button>
+  <button class="navlink" data-page="design"><span class="ico">🤖</span> Robot Design</button>
+  <button class="navlink" data-page="ip"><span class="ico">💡</span> Innovation Project</button>
+  <button class="navlink" data-page="cv"><span class="ico">🤝</span> Core Values</button>
+  <button class="navlink" data-page="log"><span class="ico">📓</span> Daily Log</button>
+  <button class="navlink" data-page="rubric"><span class="ico">📋</span> Rubric Check</button>
+  <div class="countdown"><div class="num" id="cd-num">75</div><div class="lbl">days to Regionals<br>Nov 14</div></div>
+</aside>
+
+<main>
+  <!-- ================= DASHBOARD ================= -->
+  <section class="page active" id="page-dash">
+    <div class="pagehead"><h1>Team Dashboard<small>Everything the judges will see, in one place</small></h1><span class="chip">2026 SEASON</span></div>
+    <div class="grid">
+      <div class="card"><h2><span><i class="leafdot"></i>Best Match Score</span><button class="btn sm lav" onclick="go('game')">Log a match →</button></h2>
+        <div class="big" id="d-best">190</div><div class="delta" id="d-delta"></div><div id="d-chart"></div></div>
+      <div class="card"><h2><span><i class="leafdot"></i>Mission Inventory</span><button class="btn sm lav" onclick="go('game')">Edit →</button></h2><div id="d-missions"></div></div>
+      <div class="card"><h2><span><i class="leafdot"></i>Rubric Heat Map — 20 rows</span><button class="btn sm lav" onclick="go('rubric')">Rate →</button></h2><div class="heat" id="d-heat"></div><div class="legend" id="d-heat-legend"></div></div>
+      <div class="card"><h2><span><i class="leafdot"></i>Core Values Tally</span><button class="btn sm lav" onclick="go('cv')">Add moment →</button></h2><div class="cv" id="d-cv"></div></div>
+      <div class="card celebrate"><h2><span><i class="leafdot"></i>Proudest Moment</span></h2><div class="quote" id="d-quote"></div><div class="by" id="d-quote-by"></div></div>
+      <div class="card"><h2><span><i class="leafdot"></i>Who's Been Doing What</span></h2><div id="d-balance"></div><div class="hint">Judges look for "all team members" — keep every color showing up!</div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>Latest Notebook Entries</span><button class="btn sm lav" onclick="go('log')">Write one →</button></h2><div id="d-log"></div></div>
+    </div>
+  </section>
+
+  <!-- ================= ROBOT GAME ================= -->
+  <section class="page" id="page-game">
+    <div class="pagehead"><h1>Robot Game<small>Missions · run plan · practice match scores</small></h1><span class="chip">150 SECONDS</span></div>
+    <div class="grid">
+      <div class="card wide"><h2><span><i class="leafdot"></i>Mission Inventory</span><span class="hint">Change a status or reliability and watch the dashboard update</span></h2><div id="g-missions"></div></div>
+      <div class="card"><h2><span><i class="leafdot"></i>Run Plan vs. 150 s</span></h2><div id="g-runplan"></div></div>
+      <div class="card"><h2><span><i class="leafdot"></i>Points-per-Second Leaderboard</span></h2><div id="g-pps"></div><div class="hint">(points × reliability) ÷ seconds — which missions earn the most for their time?</div></div>
+      <div class="card"><h2><span><i class="leafdot"></i>Log a Practice Match</span></h2>
+        <div class="form">
+          <label>Date<input type="date" id="m-date" value="2026-09-04"></label>
+          <label>Score<input type="number" id="m-score" placeholder="e.g. 205"></label>
+          <label>Runs completed<input type="number" id="m-runs" placeholder="4"></label>
+          <label class="full">What failed?<input id="m-fail" placeholder="Deep-Sea Lantern hook slipped"></label>
+          <label class="full">What we changed after<input id="m-change" placeholder="Ava added a rubber grip"></label>
+          <button class="btn full" onclick="addMatch()">🏆 Save match</button>
+        </div></div>
+      <div class="card"><h2><span><i class="leafdot"></i>Score History</span></h2><div id="g-chart"></div><div id="g-matches"></div></div>
+    </div>
+  </section>
+
+  <!-- ================= ROBOT DESIGN ================= -->
+  <section class="page" id="page-design">
+    <div class="pagehead"><h1>Robot Design<small>The actual robot · attachments · testing · code</small></h1><span class="chip">IDENTIFY → DESIGN → CREATE → ITERATE → COMMUNICATE</span></div>
+    <div class="grid">
+      <div class="card"><h2><span><i class="leafdot"></i>The Actual Robot Thing</span></h2>
+        <div class="spec">
+          <div><span>Shape</span><br>Low & wide box frame</div><div><span>Size (W × D)</span><br>22 cm × 18 cm</div>
+          <div><span>Wheels</span><br>2 large drive + 1 caster ball</div><div><span>Motors</span><br>2 drive + 2 attachment ports</div>
+          <div><span>Sensors</span><br>Color (line), Gyro, Distance</div><div><span>Wire management</span><br>Clips along the top frame</div>
+          <div><span>How attachments attach</span><br>Quick-swap pin plate (2 sec!)</div><div><span>Accuracy vs Speed</span><br>Accuracy first, speed up later</div>
+        </div></div>
+      <div class="card"><h2><span><i class="leafdot"></i>Coding</span></h2>
+        <table><tr><th>Program</th><th>Who coded it</th><th>Sensors</th><th>Innovative bit</th></tr>
+          <tr><td>Glow Garden run</td><td>Noah</td><td>Gyro</td><td>Gyro-straight drive block we wrote ourselves</td></tr>
+          <tr><td>Firefly run</td><td>Maya</td><td>Color</td><td>Line-follow to the mission, no guessing</td></tr>
+          <tr><td>Lantern run</td><td>Leo</td><td>Distance</td><td>Stops when it "sees" the wall</td></tr>
+          <tr><td>Reactor (WIP)</td><td>Ava + Zoe</td><td>Gyro</td><td>Pair programming!</td></tr></table>
+        <div class="hint">Resources: Python (PyBricks) docs, FLL forum, Ms. Rivera's coding tips</div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>Attachments Over Time</span><span class="hint">Every version gets a picture — click a version in the real app to see it big</span></h2><div class="grid" id="rd-atts"></div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>Test Sessions — Observation → Change → Result</span></h2><div id="rd-tests"></div>
+        <div class="form" style="margin-top:12px">
+          <label>Date<input type="date" id="t-date" value="2026-09-04"></label>
+          <label>Attachment<select id="t-att"></select></label>
+          <label>Tries<input type="number" id="t-tries" placeholder="10"></label>
+          <label>Successes<input type="number" id="t-succ" placeholder="8"></label>
+          <label class="full">What we saw<input id="t-obs" placeholder="Arm bounced off the flower"></label>
+          <label class="full">What we changed<input id="t-chg" placeholder="Added a rubber tip"></label>
+          <button class="btn full" onclick="addTest()">🔬 Save test session</button>
+        </div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>Tradeoff Decisions</span></h2><div id="rd-trade"></div></div>
+    </div>
+  </section>
+
+  <!-- ================= INNOVATION PROJECT ================= -->
+  <section class="page" id="page-ip">
+    <div class="pagehead"><h1>Innovation Project<small>Problem · Solution · How we got here</small></h1><span class="chip">STEP 5 OF 8</span></div>
+    <div class="grid">
+      <div class="card wide" style="background:linear-gradient(100deg,#fff,#f2ecfa)"><div class="grid">
+        <div><h2><span><i class="leafdot"></i>The Problem</span></h2><p style="font-size:14px;line-height:1.55">Divers and tide-pool visitors can't see bioluminescent algae blooms coming, so they miss them — or accidentally trample fragile glowing habitats at night.</p></div>
+        <div><h2><span><i class="leafdot"></i>Our Solution</span></h2><p style="font-size:14px;line-height:1.55"><b>GlowCast</b> — a floating sensor buoy that measures water glow and texts a "bloom alert" with a safe-viewing map to the community.</p></div>
+        <div><h2><span><i class="leafdot"></i>How We Got Here</span></h2><p style="font-size:14px;line-height:1.55">Started with 6 problem ideas → voted → researched 9 sources → interviewed 2 experts → built a cardboard buoy → got feedback → now building v2 with a real light sensor.</p></div>
+      </div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>8-Step Progress</span></h2><div class="steps" id="ip-steps"></div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>Project Plan (Gantt)</span><span class="hint">Colors = who owns it · click a bar to see its iterations</span></h2><div class="months"><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span></div><div class="gantt" id="ip-gantt"></div><div id="ip-gantt-detail" class="hint" style="margin-top:10px">👆 Click a bar</div></div>
+      <div class="card"><h2><span><i class="leafdot"></i>Research Collection</span></h2><div id="ip-research"></div></div>
+      <div class="card"><h2><span><i class="leafdot"></i>Experts &amp; Their Feedback</span></h2><div id="ip-experts"></div></div>
+    </div>
+  </section>
+
+  <!-- ================= CORE VALUES ================= -->
+  <section class="page" id="page-cv">
+    <div class="pagehead"><h1>Core Values<small>Team spotlight · daily moments · who helped who</small></h1><span class="chip">25% OF CHAMPION'S SCORE</span></div>
+    <div class="grid">
+      <div class="card wide"><h2><span><i class="leafdot"></i>Team Profile</span></h2><div class="spot" id="cv-spot"></div></div>
+      <div class="card"><h2><span><i class="leafdot"></i>Six-Value Tally</span></h2><div class="cv" id="cv-tally"></div></div>
+      <div class="card"><h2><span><i class="leafdot"></i>Add a Core Values Moment</span></h2>
+        <div class="form">
+          <label class="full">Which value?<select id="cvm-val"><option>Teamwork</option><option>Discovery</option><option>Fun</option><option>Innovation</option><option>Inclusion</option><option>Impact</option></select></label>
+          <label class="full">Who was involved?<div class="who-picks" id="cvm-who"></div></label>
+          <label class="full">What happened?<textarea id="cvm-text" placeholder="Zoe stayed late to help Noah finish his program"></textarea></label>
+          <button class="btn full" onclick="addMoment()">🤝 Save moment</button>
+        </div></div>
+      <div class="card"><h2><span><i class="leafdot"></i>Help Given ↔ Received</span></h2><div id="cv-help"></div></div>
+      <div class="card"><h2><span><i class="leafdot"></i>Recent Moments</span></h2><div id="cv-moments"></div></div>
+    </div>
+  </section>
+
+  <!-- ================= DAILY LOG ================= -->
+  <section class="page" id="page-log">
+    <div class="pagehead"><h1>Daily Log<small>The Engineering Notebook — one entry, ≤10 minutes, your own words</small></h1><span class="chip" id="log-count"></span></div>
+    <div class="grid">
+      <div class="card"><h2><span><i class="leafdot"></i>New Entry</span></h2>
+        <div class="form">
+          <label>Date<input type="date" id="e-date" value="2026-09-04"></label>
+          <label>Component<select id="e-comp"><option>Robot Game</option><option>Robot Design</option><option>Innovation Project</option><option>Core Values</option></select></label>
+          <label class="full">Rubric phase<select id="e-phase"><option>IDENTIFY</option><option>DESIGN</option><option>CREATE</option><option>ITERATE</option><option>COMMUNICATE</option></select></label>
+          <label class="full">Who did this?<div class="who-picks" id="e-who"></div></label>
+          <label class="full">What happened?<textarea id="e-text" placeholder="What did we try, what did we see, what will we change?"></textarea></label>
+          <label class="full">Core Values spotted (optional)<div class="who-picks" id="e-cv"></div></label>
+          <label class="full"><span style="display:flex;justify-content:space-between"><span>Photo</span><span class="hint">📷 add photo (works in the real app)</span></span><div class="photo" style="height:40px;max-width:100%">tap to add a photo</div></label>
+          <button class="btn full" onclick="addEntry()">📓 Save entry</button>
+        </div></div>
+      <div class="card"><h2><span><i class="leafdot"></i>Success Calendar</span></h2><div id="log-cal"></div><div class="legend">💜 practice day · 💚 match day · green dots = successes logged · teal ring = today</div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>Notebook Feed</span></h2>
+        <div class="filterbar" id="log-filter"></div><div id="log-feed"></div></div>
+    </div>
+  </section>
+
+  <!-- ================= RUBRIC ================= -->
+  <section class="page" id="page-rubric">
+    <div class="pagehead"><h1>Rubric Check<small>Rate ourselves honestly, 1–4 · ⚙️ rows count for Core Values too</small></h1><span class="chip" id="rub-summary"></span></div>
+    <div class="grid">
+      <div class="card"><h2><span><i class="leafdot"></i>Innovation Project</span></h2><div id="rub-ip"></div></div>
+      <div class="card"><h2><span><i class="leafdot"></i>Robot Design</span></h2><div id="rub-rd"></div></div>
+    </div>
+    <div class="hint" style="margin-top:12px">1 Beginning · 2 Developing · 3 Accomplished (our baseline goal) · 4 Exceeds (judge has to write down why!) · "evidence" = notebook entries tagged to that phase</div>
+  </section>
+
+  <footer>Rooted Warriors Season App · v1 test build · sample data, nothing is saved when you close the page (yet)</footer>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===================== SAMPLE DATA ===================== */
+const TEAM=[
+ {n:'Maya',c:'#3f9b4c',face:'😀',role:'Lead builder',fav:'Teamwork',color:'Forest green',most:'Attachments & Firefly code',learned:'How to test one change at a time',with:'Noah'},
+ {n:'Leo',c:'#20b5c9',face:'🤓',role:'Research captain',fav:'Discovery',color:'Teal',most:'Expert interviews & Lantern code',learned:'How to email a scientist',with:'Sam'},
+ {n:'Sam',c:'#b48fd9',face:'😄',role:'Core Values keeper',fav:'Fun',color:'Purple',most:'Team games & presentation',learned:'Everyone has a different idea and that is good',with:'Zoe'},
+ {n:'Ava',c:'#e07a5f',face:'😎',role:'Mechanical designer',fav:'Innovation',color:'Orange',most:'Lantern hook redesign',learned:'Rubber grips beat smooth plastic',with:'Maya'},
+ {n:'Noah',c:'#2a5c3f',face:'🙂',role:'Lead programmer',fav:'Discovery',color:'Dark green',most:'Gyro-straight block',learned:'Gyro drift is real',with:'Maya'},
+ {n:'Zoe',c:'#d4a017',face:'🤩',role:'Project designer',fav:'Inclusion',color:'Yellow',most:'GlowCast buoy prototype',learned:'Cardboard first, LEGO second',with:'Sam'}];
+const CVALS=['Teamwork','Discovery','Fun','Innovation','Inclusion','Impact'];
+const STATUSES=['Not started','Prototyping','Working','Reliable','Competition-ready'];
+let missions=[
+ {id:'M03',name:'Glow Garden',pts:40,diff:2,zone:'Left',run:1,att:'Garden Arm',built:'Maya',prog:'Noah',rel:95,st:'Competition-ready',sec:14},
+ {id:'M05',name:'Firefly Release',pts:30,diff:2,zone:'Left',run:1,att:'Garden Arm',built:'Maya',prog:'Maya',rel:85,st:'Reliable',sec:12},
+ {id:'M08',name:'Deep-Sea Lantern',pts:45,diff:4,zone:'Back',run:2,att:'Lantern Hook',built:'Ava',prog:'Leo',rel:60,st:'Working',sec:20},
+ {id:'M02',name:'Mushroom Grove',pts:25,diff:3,zone:'Right',run:3,att:'Pusher Plate',built:'Zoe',prog:'Noah',rel:70,st:'Working',sec:16},
+ {id:'M11',name:'Bio Reactor',pts:50,diff:5,zone:'Back',run:4,att:'Reactor Lift',built:'Ava',prog:'Ava',rel:20,st:'Prototyping',sec:24},
+ {id:'M07',name:'Cave Crystals',pts:20,diff:3,zone:'Right',run:3,att:'Pusher Plate',built:'—',prog:'—',rel:0,st:'Not started',sec:10}];
+const runs=[{n:1,m:['M03','M05'],t:32,l:'Maya'},{n:2,m:['M08'],t:26,l:'Noah'},{n:3,m:['M02','M07'],t:38,l:'Ava'},{n:4,m:['M11'],t:32,l:'Leo'}];
+let matches=[
+ {d:'2026-07-25',s:85,r:2,f:'Robot drove off the line on run 2',c:'Added gyro-straight block'},
+ {d:'2026-08-03',s:120,r:3,f:'Garden arm too short',c:'Longer arm + counterweight'},
+ {d:'2026-08-10',s:145,r:3,f:'Lantern hook slipped',c:'Ava redesigned the hook'},
+ {d:'2026-08-17',s:175,r:4,f:'Run 4 ran out of time',c:'Cut 8 s from run 3'},
+ {d:'2026-08-24',s:190,r:4,f:'Reactor lift missed once',c:'Zoe is adding a guide rail'}];
+let rubric=[
+ {sec:'ip',ph:'IDENTIFY',row:'Problem definition',cv:0,l:3},{sec:'ip',ph:'IDENTIFY',row:'Research',cv:1,l:3},
+ {sec:'ip',ph:'DESIGN',row:'Project plan',cv:0,l:2},{sec:'ip',ph:'DESIGN',row:'Team involvement',cv:1,l:3},
+ {sec:'ip',ph:'CREATE',row:'Innovation',cv:1,l:4},{sec:'ip',ph:'CREATE',row:'Model / drawing',cv:0,l:2},
+ {sec:'ip',ph:'ITERATE',row:'Sharing',cv:0,l:3},{sec:'ip',ph:'ITERATE',row:'Improvements',cv:0,l:2},
+ {sec:'ip',ph:'COMMUNICATE',row:'Explanation & impact',cv:1,l:3},{sec:'ip',ph:'COMMUNICATE',row:'Pride & enthusiasm',cv:1,l:3},
+ {sec:'rd',ph:'IDENTIFY',row:'Mission strategy',cv:0,l:3},{sec:'rd',ph:'IDENTIFY',row:'Use of resources',cv:1,l:2},
+ {sec:'rd',ph:'DESIGN',row:'All members contributed',cv:1,l:3},{sec:'rd',ph:'DESIGN',row:'Skills in all members',cv:0,l:3},
+ {sec:'rd',ph:'CREATE',row:'Attachments',cv:0,l:2},{sec:'rd',ph:'CREATE',row:'Code / sensors',cv:0,l:1},
+ {sec:'rd',ph:'ITERATE',row:'Testing',cv:0,l:3},{sec:'rd',ph:'ITERATE',row:'Improvements',cv:1,l:2},
+ {sec:'rd',ph:'COMMUNICATE',row:'Process & lessons',cv:1,l:4},{sec:'rd',ph:'COMMUNICATE',row:'Pride & enthusiasm',cv:1,l:3}];
+let entries=[
+ {d:'2026-08-29',who:['Maya','Noah'],comp:'Robot Design',ph:'ITERATE',t:'Tested the Glow Garden arm 10 times — it worked 9! We shortened the axle after it snagged on run 4. Reliability up from 70% → 90%.',cv:['Teamwork'],photo:'the new shorter axle',succ:true},
+ {d:'2026-08-29',who:['Leo'],comp:'Innovation Project',ph:'IDENTIFY',t:'Interviewed Ms. Rivera (marine biologist) about our problem. She gave us 3 sources on bioluminescent algae. Added her to the Experts page.',cv:['Discovery'],succ:true},
+ {d:'2026-08-27',who:['Sam','Zoe','Noah'],comp:'Core Values',ph:'DESIGN',t:'Marshmallow tower challenge for warm-up — Zoe\'s team won! Then everyone helped Noah debug his line-follower. Teamwork moment!',cv:['Fun','Teamwork']},
+ {d:'2026-08-24',who:['Maya','Leo','Sam','Ava','Noah','Zoe'],comp:'Robot Game',ph:'ITERATE',t:'Practice match: 190 points, new record! Four runs done. Deep-Sea Lantern failed once — Ava is redesigning the hook.',cv:['Fun'],succ:true},
+ {d:'2026-08-22',who:['Zoe','Sam'],comp:'Innovation Project',ph:'CREATE',t:'Built the cardboard GlowCast buoy v1. It floats! Sam drew the alert-map screen on paper.',cv:['Innovation'],photo:'cardboard buoy v1',succ:true},
+ {d:'2026-08-20',who:['Ava'],comp:'Robot Design',ph:'CREATE',t:'Sketched 3 hook designs for the Lantern. Picked the C-hook because it can\'t slip off sideways.',cv:['Innovation']},
+ {d:'2026-08-17',who:['Noah','Maya'],comp:'Robot Design',ph:'DESIGN',t:'Decided: accuracy over speed for now. We wrote a gyro-straight block so every run starts the same way.',cv:['Discovery','Teamwork']},
+ {d:'2026-08-15',who:['Leo','Zoe','Sam'],comp:'Innovation Project',ph:'IDENTIFY',t:'Narrowed 6 problem ideas to 1 by voting. Everyone got two votes. Algae bloom alerts won.',cv:['Inclusion']},
+ {d:'2026-08-13',who:['Maya','Ava','Noah','Zoe','Leo','Sam'],comp:'Robot Game',ph:'IDENTIFY',t:'Mission strategy meeting: scored every mission on points, difficulty and travel time. Picked 6 to attempt.',cv:['Teamwork','Discovery']}];
+let moments=[
+ {d:'2026-08-29',v:'Teamwork',who:['Maya','Noah'],t:'Maya held the robot steady for 10 straight tests while Noah tweaked code.',help:['Maya','Noah']},
+ {d:'2026-08-27',v:'Fun',who:['Sam','Zoe'],t:'Marshmallow tower challenge — best warm-up yet.'},
+ {d:'2026-08-27',v:'Teamwork',who:['Zoe','Noah'],t:'Zoe stayed late to help Noah find the line-follower bug.',help:['Zoe','Noah']},
+ {d:'2026-08-22',v:'Innovation',who:['Zoe'],t:'Zoe used a takeout container as the buoy body. Genius.'},
+ {d:'2026-08-20',v:'Inclusion',who:['Sam','Ava'],t:'Sam made sure Ava presented her own hook sketches instead of doing it for her.',help:['Sam','Ava']},
+ {d:'2026-08-15',v:'Discovery',who:['Leo'],t:'Leo found out algae glow is called bioluminescence and taught us all.'},
+ {d:'2026-08-13',v:'Impact',who:['Leo','Sam'],t:'Talked about who our buoy would actually help — divers, tide-pool kids, scientists.'}];
+const tallyBase={Teamwork:15,Discovery:12,Fun:14,Innovation:9,Inclusion:7,Impact:4};
+let tests=[
+ {d:'2026-08-29',att:'Garden Arm',tries:10,succ:9,obs:'Arm snagged on the flower on run 4',chg:'Shortened the axle by one stud',res:'70% → 90%'},
+ {d:'2026-08-24',att:'Lantern Hook',tries:8,succ:5,obs:'Hook slips off sideways',chg:'Ava switching to C-hook',res:'pending'},
+ {d:'2026-08-20',att:'Pusher Plate',tries:6,succ:4,obs:'Plate too narrow, misses left mushroom',chg:'Widened plate 4 studs',res:'67% → 83%'}];
+const atts=[
+ {name:'Garden Arm',purpose:'Sweeps Glow Garden + releases Fireflies',by:'Maya',size:'12 × 4 studs',vers:[{d:'Aug 15',n:'v1 long arm'},{d:'Aug 22',n:'v2 + counterweight'},{d:'Aug 29',n:'v3 shorter axle'}]},
+ {name:'Lantern Hook',purpose:'Lifts Deep-Sea Lantern',by:'Ava',size:'6 × 3 studs',vers:[{d:'Aug 20',n:'v1 J-hook'},{d:'Aug 27',n:'v2 C-hook'}]},
+ {name:'Pusher Plate',purpose:'Pushes Mushrooms + Crystals',by:'Zoe',size:'16 × 2 studs',vers:[{d:'Aug 17',n:'v1 narrow'},{d:'Aug 20',n:'v2 wide'}]},
+ {name:'Reactor Lift',purpose:'Raises Bio Reactor lever',by:'Ava',size:'8 × 6 studs',vers:[{d:'Aug 29',n:'v1 prototype'}]}];
+const tradeoffs=[
+ {q:'Many short runs or few long runs?',opts:'2 long runs vs 4 medium runs vs 6 short runs',pick:'4 medium runs',why:'One failure only loses a quarter of the points, and everyone gets a launch.'},
+ {q:'Accuracy or speed?',opts:'Fast wheels vs gyro-straight slow start',pick:'Accuracy first',why:'A fast miss scores zero. We will speed up once runs hit 80%.'},
+ {q:'How do attachments attach?',opts:'Pins vs magnets vs quick-swap plate',pick:'Quick-swap plate',why:'2-second swaps save ~15 s per match.'}];
+const ipSteps=['Explore the theme','Define the problem','Research','Plan the project','Build a prototype','Share & get feedback','Improve','Present'];
+const ipDone=4, ipNow=5;
+const gantt=[
+ {task:'Pick the problem',who:'Leo',s:0,e:.6,iters:['6 ideas listed','Voted with 2 votes each','Algae bloom alerts chosen']},
+ {task:'Research sources',who:'Leo',s:.4,e:1.4,iters:['3 websites','Library book on plankton','Ms. Rivera sent 3 papers']},
+ {task:'Interview experts',who:'Sam',s:.8,e:1.8,iters:['Emailed 4 experts','Ms. Rivera said yes','Mr. Okafor (lifeguard) next week']},
+ {task:'Prototype buoy',who:'Zoe',s:1.2,e:2.6,iters:['Cardboard v1 — floats!','v2 with light sensor (in progress)','v3 with waterproof case (planned)']},
+ {task:'Alert map screen',who:'Sam',s:1.6,e:2.8,iters:['Paper sketch','Cardboard phone mockup']},
+ {task:'Presentation',who:'Maya',s:2.6,e:3.6,iters:['Outline drafted']}];
+const research=[
+ {src:'NOAA — Harmful algal blooms',type:'Website',by:'Leo',note:'Blooms can be predicted by water temp'},
+ {src:'"Glow: Life in the Deep" (library book)',type:'Book',by:'Zoe',note:'How bioluminescence works'},
+ {src:'Ms. Rivera — 3 research papers',type:'Expert',by:'Leo',note:'Sensors that measure light in water'},
+ {src:'Local dive shop survey (12 people)',type:'Survey',by:'Sam',note:'10 of 12 wanted alerts'}];
+const experts=[
+ {n:'Ms. Rivera',role:'Marine biologist',face:'👩‍🔬',fb:'"Measure the glow at night AND day so you know the baseline."',imp:'Added a day/night comparison to the buoy plan'},
+ {n:'Mr. Okafor',role:'Beach lifeguard',face:'🏖️',fb:'"People won\'t download an app — use text messages."',imp:'Switched from app to SMS alerts'},
+ {n:'Coach CJ',role:'Team coach',face:'🧢',fb:'"Can a kid explain it in one sentence?"',imp:'Wrote the one-sentence pitch on the Problem card'}];
+const quotes=[{q:'When the Garden arm finally worked 9 out of 10, the whole room screamed.',by:'Maya · Aug 29'},{q:'A real scientist answered MY email.',by:'Leo · Aug 29'}];
+
+/* ===================== HELPERS ===================== */
+const $=id=>document.getElementById(id);
+const member=n=>TEAM.find(t=>t.n===n)||{c:'#999',face:'🙂'};
+const fmt=d=>{const [y,m,dd]=d.split('-');return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]+' '+(+dd)};
+const av=(n,sm)=>`<span class="avatar ${sm?'sm':''}" style="background:${member(n).c}" title="${n}">${n[0]}</span>`;
+function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)}
+function confetti(){const cols=['#3f9b4c','#b48fd9','#20b5c9','#d9c6ee','#f4efe1'];for(let i=0;i<90;i++){const c=document.createElement('div');c.className='confetti';c.style.left=Math.random()*100+'vw';c.style.background=cols[i%cols.length];c.style.animationDuration=(2+Math.random()*2)+'s';c.style.animationDelay=(Math.random()*.6)+'s';document.body.appendChild(c);setTimeout(()=>c.remove(),4500)}}
+function go(p){document.querySelectorAll('.navlink').forEach(b=>b.classList.toggle('active',b.dataset.page===p));document.querySelectorAll('.page').forEach(s=>s.classList.toggle('active',s.id==='page-'+p));window.scrollTo(0,0)}
+document.querySelectorAll('.navlink').forEach(b=>b.onclick=()=>go(b.dataset.page));
+function whoPicker(id,opts,colors){const box=$(id);box.innerHTML=opts.map(o=>`<span class="who-pick" data-v="${o}">${colors?`<span class="avatar sm" style="background:${member(o).c}">${o[0]}</span>`:''}${o}</span>`).join('');box.querySelectorAll('.who-pick').forEach(p=>p.onclick=()=>p.classList.toggle('on'))}
+const picked=id=>[...$(id).querySelectorAll('.who-pick.on')].map(p=>p.dataset.v);
+const clearPicks=id=>$(id).querySelectorAll('.who-pick').forEach(p=>p.classList.remove('on'));
+function tally(){const t={...tallyBase};moments.forEach(m=>t[m.v]=(t[m.v]||0)+1);entries.forEach(e=>(e.cv||[]).forEach(v=>t[v]++));return t}
+function lineChart(data,color){const xs=data.map((_,i)=>10+i*(300/Math.max(1,data.length-1)));const max=Math.max(...data.map(m=>m.s))*1.15;const ys=data.map(m=>100-(m.s/max)*85);const pts=xs.map((x,i)=>`${x},${ys[i]}`).join(' ');
+ return `<svg viewBox="0 0 320 118" style="width:100%;margin-top:10px"><polygon points="10,100 ${pts} ${xs[xs.length-1]},100" fill="rgba(63,155,76,.14)"/><polyline points="${pts}" fill="none" stroke="${color}" stroke-width="3" stroke-linecap="round"/>
+ ${xs.map((x,i)=>`<circle cx="${x}" cy="${ys[i]}" r="${i===data.length-1?6:5}" fill="#20b5c9" stroke="#fff" stroke-width="2"/><text x="${x}" y="${ys[i]-9}" font-size="10" font-weight="800" fill="#22301f" text-anchor="middle">${data[i].s}</text><text x="${Math.min(300,Math.max(14,x))}" y="114" font-size="9" font-weight="700" fill="#7d8a76" text-anchor="middle">${fmt(data[i].d)}</text>`).join('')}</svg>`}
+function missionTable(editable){return `<table><tr><th>Mission</th><th>Pts</th>${editable?'<th>Diff</th><th>Run</th><th>Attachment</th><th>Built</th><th>Coded</th>':''}<th>Status</th><th>Reliability</th></tr>${missions.map((m,i)=>`<tr><td>${m.id} ${m.name}</td><td>${m.pts}</td>${editable?`<td>${'●'.repeat(m.diff)}${'○'.repeat(5-m.diff)}</td><td>${m.run}</td><td>${m.att}</td><td>${m.built!=='—'?av(m.built,1):'—'}</td><td>${m.prog!=='—'?av(m.prog,1):'—'}</td>`:''}
+ <td>${editable?`<select onchange="missions[${i}].st=this.value;renderAll()">${STATUSES.map(s=>`<option ${s===m.st?'selected':''}>${s}</option>`).join('')}</select>`:`<span class="pill p-${m.st.replace(/ /g,'-')}">${m.st}</span>`}</td>
+ <td>${editable?`<input type="range" min="0" max="100" value="${m.rel}" style="width:80px;vertical-align:middle" oninput="missions[${i}].rel=+this.value;renderAll()"> `:`<span class="bar"><i style="width:${m.rel}%"></i></span> `}${m.rel?m.rel+'%':'—'}</td></tr>`).join('')}</table>`}
+
+/* ===================== RENDER ===================== */
+function renderDash(){
+ const best=Math.max(...matches.map(m=>m.s));const sorted=[...matches].sort((a,b)=>a.d.localeCompare(b.d));const last=sorted[sorted.length-1].s,prev=sorted.length>1?sorted[sorted.length-2].s:last;
+ $('d-best').textContent=best;$('d-delta').textContent=(last-prev>=0?'▲ +':'▼ ')+(last-prev)+' vs. previous match · '+matches.length+' matches played';
+ $('d-chart').innerHTML=lineChart(sorted,'#3f9b4c');$('g-chart').innerHTML=lineChart(sorted,'#b48fd9');
+ $('d-missions').innerHTML=missionTable(false);$('g-missions').innerHTML=missionTable(true);
+ $('d-heat').innerHTML=rubric.map(r=>`<div class="cell l${r.l}" title="${r.row}" onclick="go('rubric')">${r.l}</div>`).join('');
+ const cnt=[0,0,0,0,0];rubric.forEach(r=>cnt[r.l]++);$('d-heat-legend').innerHTML=`<b>${cnt[4]} Exceeds</b> · <b>${cnt[3]} Accomplished</b> · <b>${cnt[2]} Developing</b> · <b>${cnt[1]} Beginning</b> — grow every row to 3+ by Nov 14!`;
+ $('rub-summary').textContent=`${cnt[3]+cnt[4]} / 20 rows at Accomplished or better`;
+ const t=tally(),mx=Math.max(...Object.values(t));const cols={Teamwork:'#3f9b4c',Discovery:'#20b5c9',Fun:'#b48fd9',Innovation:'#2a5c3f',Inclusion:'#8fc9a4',Impact:'#6fd0dd'};
+ const cvHtml=CVALS.map(v=>`<div class="row"><span class="name">${v}</span><div class="track"><i style="width:${t[v]/mx*100}%;background:${cols[v]}"></i></div><b>${t[v]}</b></div>`).join('');$('d-cv').innerHTML=cvHtml;$('cv-tally').innerHTML=cvHtml;
+ $('d-quote').textContent='“'+quotes[0].q+'”';$('d-quote-by').textContent='— '+quotes[0].by;
+ const contrib={};TEAM.forEach(m=>contrib[m.n]=0);entries.forEach(e=>e.who.forEach(w=>contrib[w]++));const tot=Object.values(contrib).reduce((a,b)=>a+b,0);
+ $('d-balance').innerHTML=`<div class="balance">${TEAM.map(m=>`<i style="flex:${contrib[m.n]||.3};background:${m.c}" title="${m.n}: ${contrib[m.n]} entries">${m.n}</i>`).join('')}</div><div class="hint">Entries tagged per person: ${TEAM.map(m=>`${m.n} ${contrib[m.n]}`).join(' · ')}</div>`;
+ $('d-log').innerHTML=[...entries].sort((a,b)=>b.d.localeCompare(a.d)).slice(0,3).map(entryHtml).join('');
+}
+function entryHtml(e){return `<div class="entry">${av(e.who[0])}<div><div class="meta">${e.who.join(', ')} · ${fmt(e.d)} <span class="tag">${e.comp} · ${e.ph}</span>${(e.cv||[]).map(v=>`<span class="tag cvtag">⚙️ ${v}</span>`).join('')}${e.succ?'<span class="tag" style="background:#cdeccf;color:#1f6b2f">✅ success</span>':''}</div><div class="txt">${e.t}</div>${e.photo?`<div class="photo">📷 ${e.photo}</div>`:''}</div></div>`}
+function renderGame(){
+ const total=runs.reduce((a,r)=>a+r.t,0),swaps=(runs.length-1)*4,used=total+swaps,buf=150-used;const cols=['#3f9b4c','#20b5c9','#b48fd9','#8fc9a4'];
+ $('g-runplan').innerHTML=`<div class="hint">${runs.length} runs · ${total}s driving + ${swaps}s swaps = <b>${used}s</b> · ${buf>=0?buf+'s buffer ✅':Math.abs(buf)+'s OVER ⚠️'}</div><div class="runplan">${runs.map((r,i)=>`<div class="seg" style="flex:${r.t};background:${cols[i]}" title="${r.m.join(', ')}">R${r.n} ${r.l} · ${r.t}s</div>${i<runs.length-1?'<div class="gap">↺</div>':''}`).join('')}<div class="seg" style="flex:${Math.max(buf,4)};background:#ece5d2;color:#7d8a76">buffer</div></div><div class="ruler"><span>0s</span><span>75s</span><span>150s</span></div>
+ <table style="margin-top:10px"><tr><th>Run</th><th>Missions</th><th>Est. pts</th><th>Time</th><th>Launcher</th></tr>${runs.map(r=>`<tr><td>${r.n}</td><td>${r.m.map(id=>missions.find(m=>m.id===id).name).join(' + ')}</td><td>${r.m.reduce((a,id)=>a+missions.find(m=>m.id===id).pts,0)}</td><td>${r.t}s</td><td>${av(r.l,1)} ${r.l}</td></tr>`).join('')}</table>`;
+ const pps=missions.map(m=>({...m,v:(m.pts*m.rel/100)/m.sec})).sort((a,b)=>b.v-a.v);
+ $('g-pps').innerHTML=`<table><tr><th>#</th><th>Mission</th><th>Expected pts</th><th>Time</th><th>Pts / sec</th></tr>${pps.map((m,i)=>`<tr><td>${i+1}</td><td>${m.name}</td><td>${Math.round(m.pts*m.rel/100)}</td><td>${m.sec}s</td><td><b style="color:${i===0?'var(--grass)':'inherit'}">${m.v.toFixed(2)}</b></td></tr>`).join('')}</table>`;
+ $('g-matches').innerHTML=`<table style="margin-top:8px"><tr><th>Date</th><th>Score</th><th>Runs</th><th>What failed</th><th>What we changed</th></tr>${[...matches].sort((a,b)=>b.d.localeCompare(a.d)).map(m=>`<tr><td>${fmt(m.d)}</td><td><b>${m.s}</b></td><td>${m.r}</td><td>${m.f}</td><td class="arrow">→ <span style="color:var(--ink);font-weight:600">${m.c}</span></td></tr>`).join('')}</table>`;
+}
+function renderDesign(){
+ $('rd-atts').innerHTML=atts.map(a=>`<div class="att"><b>${a.name}</b> <span class="hint">· ${a.size} · built by ${av(a.by,1)} ${a.by}</span><div style="font-size:12px;margin-top:4px">${a.purpose}</div><div class="vers">${a.vers.map(v=>`<div class="ver"><div class="ph"></div>${v.d}<br><span style="color:var(--dim)">${v.n}</span></div>`).join('')}</div></div>`).join('');
+ $('rd-tests').innerHTML=`<table><tr><th>Date</th><th>Attachment</th><th>Result</th><th>What we saw</th><th>What we changed</th><th>Outcome</th></tr>${[...tests].sort((a,b)=>b.d.localeCompare(a.d)).map(t=>`<tr><td>${fmt(t.d)}</td><td>${t.att}</td><td><b>${t.succ}/${t.tries}</b> (${Math.round(t.succ/t.tries*100)}%)</td><td>${t.obs}</td><td class="arrow">→ <span style="color:var(--ink);font-weight:600">${t.chg}</span></td><td>${t.res}</td></tr>`).join('')}</table>`;
+ $('t-att').innerHTML=atts.map(a=>`<option>${a.name}</option>`).join('');
+ $('rd-trade').innerHTML=`<table><tr><th>Question</th><th>Options we weighed</th><th>We picked</th><th>Why</th></tr>${tradeoffs.map(t=>`<tr><td>${t.q}</td><td style="font-weight:500">${t.opts}</td><td><span class="pill" style="background:var(--pine)">${t.pick}</span></td><td style="font-weight:500">${t.why}</td></tr>`).join('')}</table>`;
+}
+function renderIP(){
+ $('ip-steps').innerHTML=ipSteps.map((s,i)=>`<div class="step ${i<ipDone?'done':i===ipDone?'now':''}"><span class="n">${i<ipDone?'✅':i+1}</span>${s}</div>`).join('');
+ $('ip-gantt').innerHTML=gantt.map((g,i)=>`<div>${av(g.who,1)} ${g.task}</div><div class="lane"><div class="gbar" style="left:${g.s/4*100}%;width:${(g.e-g.s)/4*100}%;background:${member(g.who).c}" onclick="ganttDetail(${i})">${g.who}</div></div>`).join('');
+ $('ip-research').innerHTML=`<table><tr><th>Source</th><th>Type</th><th>Found by</th><th>What we learned</th></tr>${research.map(r=>`<tr><td>${r.src}</td><td><span class="tag">${r.type}</span></td><td>${av(r.by,1)}</td><td style="font-weight:500">${r.note}</td></tr>`).join('')}</table>`;
+ $('ip-experts').innerHTML=experts.map(e=>`<div class="expert"><div class="face">${e.face}</div><div><b>${e.n}</b><span class="hint">${e.role}</span><div class="fb">${e.fb}</div><div class="fb"><span class="arrow">→ improvement:</span> ${e.imp}</div></div></div>`).join('');
+}
+function ganttDetail(i){const g=gantt[i];$('ip-gantt-detail').innerHTML=`<b style="color:var(--pine)">${g.task}</b> — owned by ${g.who} · iterations: ${g.iters.map((it,k)=>`<span class="tag">${k+1}. ${it}</span>`).join(' ')} <span class="hint">(photos of each version show here in the real app)</span>`}
+function renderCV(){
+ const contrib={};TEAM.forEach(m=>contrib[m.n]=0);entries.forEach(e=>e.who.forEach(w=>contrib[w]++));
+ $('cv-spot').innerHTML=TEAM.map(m=>`<div class="scard"><div class="face" style="border-color:${m.c};background:${m.c}22">${m.face}</div><b>${m.n}</b><div class="role">${m.role}</div><div class="facts"><span>Fav core value:</span> ${m.fav}<br><span>Fav color:</span> ${m.color}<br><span>Worked on most:</span> ${m.most}<br><span>Learned:</span> ${m.learned}<br><span>Worked with most:</span> ${m.with}<br><span>Notebook entries:</span> ${contrib[m.n]}</div></div>`).join('');
+ const help={};TEAM.forEach(m=>help[m.n]={g:0,r:0});moments.filter(m=>m.help).forEach(m=>{help[m.help[0]].g++;help[m.help[1]].r++});
+ $('cv-help').innerHTML=`<table><tr><th>Who</th><th>Helped someone</th><th>Got help</th></tr>${TEAM.map(m=>`<tr><td>${av(m.n,1)} ${m.n}</td><td>${'🟢'.repeat(help[m.n].g)||'—'}</td><td>${'💜'.repeat(help[m.n].r)||'—'}</td></tr>`).join('')}</table><div class="hint">Tag a moment as "help" and it shows up here — both giving and getting help are Core Values wins.</div>`;
+ $('cv-moments').innerHTML=[...moments].sort((a,b)=>b.d.localeCompare(a.d)).slice(0,6).map(m=>`<div class="entry">${av(m.who[0])}<div><div class="meta">${m.who.join(' + ')} · ${fmt(m.d)} <span class="tag cvtag">⚙️ ${m.v}</span></div><div class="txt">${m.t}</div></div></div>`).join('');
+}
+let logFilter='All';
+function renderLog(){
+ $('log-count').textContent=entries.length+' entries this season';
+ const comps=['All','Robot Game','Robot Design','Innovation Project','Core Values',...TEAM.map(t=>t.n)];
+ $('log-filter').innerHTML=comps.map(c=>`<button class="${logFilter===c?'on':''}" onclick="logFilter='${c}';renderLog()">${c}</button>`).join('');
+ const list=[...entries].sort((a,b)=>b.d.localeCompare(a.d)).filter(e=>logFilter==='All'||e.comp===logFilter||e.who.includes(logFilter));
+ $('log-feed').innerHTML=list.map(entryHtml).join('')||'<div class="hint">No entries yet for that filter.</div>';
+ const months=[{key:'2026-08',name:'August 2026',days:31,start:6},{key:'2026-09',name:'September 2026',days:30,start:2}];
+ $('log-cal').innerHTML=months.map(mo=>{
+  const pracDays=new Set(entries.filter(e=>e.d.startsWith(mo.key)).map(e=>+e.d.slice(8)));const succ={};entries.filter(e=>e.d.startsWith(mo.key)&&e.succ).forEach(e=>{const d=+e.d.slice(8);succ[d]=(succ[d]||0)+1});
+  const matchDays=new Set(matches.filter(m=>m.d.startsWith(mo.key)).map(m=>+m.d.slice(8)));
+  let cal=`<div class="phase-h" style="margin-top:6px">${mo.name}</div><div class="cal">`+['S','M','T','W','T','F','S'].map(d=>`<div class="dow">${d}</div>`).join('');for(let i=0;i<mo.start;i++)cal+='<div class="day blank"></div>';
+  for(let d=1;d<=mo.days;d++){const cls=matchDays.has(d)?'match':pracDays.has(d)?'prac':'';const today=mo.key==='2026-09'&&d===4;cal+=`<div class="day ${cls} ${today?'today':''}" title="${cls?'entries logged':''}">${d}${succ[d]?`<div class="dots">${'<i></i>'.repeat(Math.min(succ[d],3))}</div>`:''}</div>`}
+  return cal+'</div>'}).join('');
+}
+function renderRubric(){
+ const evid=ph=>entries.filter(e=>e.ph===ph).length;
+ ['ip','rd'].forEach(sec=>{let html='',lastPh='';rubric.forEach((r,i)=>{if(r.sec!==sec)return;if(r.ph!==lastPh){html+=`<div class="phase-h">${r.ph}</div>`;lastPh=r.ph}
+  html+=`<div class="rrow"><div>${r.cv?'<span class="gear" title="also counts for Core Values">⚙️</span> ':''}<b>${r.row}</b></div><div class="lvls">${[1,2,3,4].map(l=>`<button class="lvl ${r.l===l?'on'+l:''}" onclick="rubric[${i}].l=${l};renderAll()">${l}</button>`).join('')}</div><div class="evid">${evid(r.ph)} entries</div><div></div></div>`});
+  $(sec==='ip'?'rub-ip':'rub-rd').innerHTML=html});
+}
+function renderAll(){renderDash();renderGame();renderDesign();renderIP();renderCV();renderLog();renderRubric()}
+
+/* ===================== ACTIONS ===================== */
+function addMatch(){const s=+$('m-score').value;if(!s){toast('Type a score first!');return}const prevBest=Math.max(...matches.map(m=>m.s));
+ matches.push({d:$('m-date').value,s,r:+$('m-runs').value||0,f:$('m-fail').value||'—',c:$('m-change').value||'—'});$('m-score').value='';$('m-runs').value='';$('m-fail').value='';$('m-change').value='';
+ if(s>prevBest){confetti();toast(`🎉 NEW HIGH SCORE: ${s}! (+${s-prevBest})`);quotes.unshift({q:`We just scored ${s} — a new team record!`,by:'Whole team · '+fmt($('m-date').value)})}else toast('Match saved. Keep iterating!');renderAll()}
+function addTest(){const tr=+$('t-tries').value,su=+$('t-succ').value;if(!tr){toast('How many tries?');return}
+ tests.push({d:$('t-date').value,att:$('t-att').value,tries:tr,succ:su,obs:$('t-obs').value||'—',chg:$('t-chg').value||'—',res:Math.round(su/tr*100)+'% today'});
+ entries.push({d:$('t-date').value,who:[atts.find(a=>a.name===$('t-att').value).by],comp:'Robot Design',ph:'ITERATE',t:`Tested ${$('t-att').value}: ${su}/${tr}. Saw: ${$('t-obs').value||'—'}. Changed: ${$('t-chg').value||'—'}.`,cv:[],succ:su/tr>=.8});
+ ['t-tries','t-succ','t-obs','t-chg'].forEach(i=>$(i).value='');toast('🔬 Test logged — that\'s ITERATE evidence!');renderAll()}
+function addMoment(){const t=$('cvm-text').value.trim(),who=picked('cvm-who');if(!t||!who.length){toast('Pick who and say what happened');return}
+ moments.push({d:'2026-09-04',v:$('cvm-val').value,who,t,help:who.length>=2&&/help/i.test(t)?[who[0],who[1]]:undefined});$('cvm-text').value='';clearPicks('cvm-who');toast('🤝 Core Values moment saved!');renderAll()}
+function addEntry(){const t=$('e-text').value.trim(),who=picked('e-who');if(!t||!who.length){toast('Pick who did it and write what happened');return}
+ entries.push({d:$('e-date').value,who,comp:$('e-comp').value,ph:$('e-phase').value,t,cv:picked('e-cv'),succ:/work|success|finally|record|✅/i.test(t)});$('e-text').value='';clearPicks('e-who');clearPicks('e-cv');toast('📓 Entry saved to the notebook!');renderAll()}
+
+/* ===================== INIT ===================== */
+whoPicker('e-who',TEAM.map(t=>t.n),true);whoPicker('cvm-who',TEAM.map(t=>t.n),true);whoPicker('e-cv',CVALS,false);
+const days=Math.max(0,Math.round((new Date('2026-11-14')-new Date('2026-09-04'))/864e5));$('cd-num').textContent=days;
+renderAll();
+</script>
+</body>
+</html>

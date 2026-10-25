@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theme 4 — Retro Arcade</title>
+<style>
+  :root{
+    --bg:#12041f; --panel:#1d0a33; --line:#3c1a63;
+    --p1:#ffe74c; --p2:#38f8b8; --p3:#ff4fa0; --p4:#4fc9ff; --white:#f4ecff; --dim:#9a7fc4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Courier New',Courier,monospace;font-weight:700}
+  body{background:var(--bg);color:var(--white);padding:24px;min-height:100vh;
+    background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 4px)}
+  .frame{border:3px solid var(--line);border-radius:6px;background:var(--panel);padding:16px;box-shadow:0 0 0 3px #12041f,0 0 0 5px var(--line)}
+  header{text-align:center;margin-bottom:20px}
+  .marquee{display:inline-block;border:3px solid var(--p1);border-radius:8px;padding:14px 30px;background:var(--panel);
+    box-shadow:0 0 25px rgba(255,231,76,.35)}
+  h1{font-size:26px;letter-spacing:4px;color:var(--p1);text-transform:uppercase;text-shadow:3px 3px 0 var(--p3)}
+  .sub{font-size:11px;letter-spacing:3px;color:var(--dim);margin-top:6px;text-transform:uppercase}
+  .insert{margin-top:10px;font-size:13px;color:var(--p2);letter-spacing:2px;animation:flash 1.2s step-start infinite}
+  @keyframes flash{50%{opacity:0}}
+  nav{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:12px;margin-bottom:18px}
+  .cab{border:3px solid;border-radius:8px;background:var(--panel);padding:12px;text-align:center;cursor:pointer;transition:.1s}
+  .cab:hover{transform:scale(1.03)}
+  .cab .lvl{font-size:10px;letter-spacing:2px;color:var(--dim)}
+  .cab .name{font-size:13px;letter-spacing:1px;margin-top:4px;text-transform:uppercase}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:16px}
+  h2{font-size:13px;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;color:var(--p1);text-shadow:2px 2px 0 #3c1a63}
+  .hiscore{font-size:52px;color:var(--p2);text-shadow:3px 3px 0 #0a4d38;letter-spacing:3px}
+  .hiscore-label{font-size:11px;color:var(--p3);letter-spacing:3px;margin-bottom:4px}
+  .newrec{display:inline-block;background:var(--p3);color:#12041f;font-size:10px;letter-spacing:2px;padding:3px 10px;border-radius:4px;margin-top:8px}
+  table{width:100%;border-collapse:collapse;font-size:12px}
+  th{text-align:left;font-size:10px;color:var(--p4);letter-spacing:2px;text-transform:uppercase;padding:6px;border-bottom:2px solid var(--line)}
+  td{padding:8px 6px;border-bottom:1px dashed var(--line)}
+  .stat{font-size:10px;letter-spacing:1px;text-transform:uppercase}
+  .s-ready{color:var(--p2)} .s-working{color:var(--p1)} .s-proto{color:var(--p3)} .s-not{color:var(--dim)}
+  .lives{letter-spacing:2px;font-size:12px}
+  .lives .on{color:var(--p3)} .lives .off{color:#3c1a63}
+  .heat{display:grid;grid-template-columns:repeat(10,1fr);gap:5px}
+  .heat .cell{aspect-ratio:1;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:11px}
+  .l1{background:#2b1247;color:var(--dim)} .l2{background:#ff4fa0;color:#12041f} .l3{background:#4fc9ff;color:#12041f} .l4{background:#38f8b8;color:#12041f;box-shadow:0 0 8px rgba(56,248,184,.8)}
+  .legend{font-size:10px;color:var(--dim);margin-top:10px;letter-spacing:1px;text-transform:uppercase}
+  .power{display:flex;flex-direction:column;gap:8px;font-size:12px}
+  .power .row{display:flex;align-items:center;gap:10px}
+  .power .name{width:92px;text-transform:uppercase;font-size:10px;letter-spacing:1px}
+  .blocks{flex:1;display:flex;gap:3px}
+  .blocks span{flex:1;height:14px;border-radius:2px;background:#2b1247}
+  .blocks span.f{box-shadow:0 0 4px currentColor}
+  .feed{font-size:12px;line-height:1.6}
+  .feed .line{padding:9px 0;border-bottom:1px dashed var(--line)}
+  .feed .p{color:var(--p1)}
+  .feed .lvl-tag{color:var(--p4);font-size:10px;letter-spacing:1px;text-transform:uppercase}
+  footer{margin-top:22px;text-align:center;font-size:11px;color:var(--dim);letter-spacing:3px;text-transform:uppercase}
+</style>
+</head>
+<body>
+  <header>
+    <div class="marquee">
+      <h1>★ BioBots Arcade ★</h1>
+      <div class="sub">FLL Season 2026 · Theme 4 · Retro Arcade</div>
+      <div class="insert">▶ 75 DAYS UNTIL BOSS LEVEL: REGIONALS NOV 14 ◀</div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="cab" style="border-color:var(--p2)"><div class="lvl">WORLD 1</div><div class="name" style="color:var(--p2)">Robot Game</div></div>
+    <div class="cab" style="border-color:var(--p4)"><div class="lvl">WORLD 2</div><div class="name" style="color:var(--p4)">Robot Design</div></div>
+    <div class="cab" style="border-color:var(--p1)"><div class="lvl">WORLD 3</div><div class="name" style="color:var(--p1)">Innovation Project</div></div>
+    <div class="cab" style="border-color:var(--p3)"><div class="lvl">WORLD 4</div><div class="name" style="color:var(--p3)">Core Values</div></div>
+  </nav>
+
+  <div class="grid">
+    <div class="frame">
+      <h2>High Score</h2>
+      <div class="hiscore-label">1UP · BEST MATCH</div>
+      <div class="hiscore">000190</div>
+      <span class="newrec">★ NEW RECORD +45 ★</span>
+      <svg viewBox="0 0 320 110" style="width:100%;margin-top:14px">
+        <g fill="#38f8b8">
+          <rect x="16" y="72" width="10" height="28"/><rect x="28" y="72" width="10" height="28"/><rect x="40" y="72" width="10" height="28"/>
+          <rect x="76" y="60" width="10" height="40"/><rect x="88" y="60" width="10" height="40"/><rect x="100" y="60" width="10" height="40"/>
+          <rect x="136" y="51" width="10" height="49"/><rect x="148" y="51" width="10" height="49"/><rect x="160" y="51" width="10" height="49"/>
+          <rect x="196" y="40" width="10" height="60"/><rect x="208" y="40" width="10" height="60"/><rect x="220" y="40" width="10" height="60"/>
+        </g>
+        <g fill="#ff4fa0">
+          <rect x="256" y="28" width="10" height="72"/><rect x="268" y="28" width="10" height="72"/><rect x="280" y="28" width="10" height="72"/>
+        </g>
+        <g font-size="11" fill="#f4ecff" text-anchor="middle">
+          <text x="33" y="66">85</text><text x="93" y="54">120</text><text x="153" y="45">145</text><text x="213" y="34">175</text><text x="273" y="22">190</text>
+        </g>
+        <g font-size="8" fill="#9a7fc4" text-anchor="middle">
+          <text x="33" y="109">SEP12</text><text x="93" y="109">SEP26</text><text x="153" y="109">OCT10</text><text x="213" y="109">OCT24</text><text x="273" y="109">NOV7</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="frame">
+      <h2>Mission Select</h2>
+      <table>
+        <tr><th>Stage</th><th>Pts</th><th>Status</th><th>Power</th></tr>
+        <tr><td>M03 GLOW GARDEN</td><td>40</td><td class="stat s-ready">CLEARED!</td><td class="lives"><span class="on">♥♥♥♥</span><span class="off">♥</span> 95%</td></tr>
+        <tr><td>M05 FIREFLY RELEASE</td><td>30</td><td class="stat s-ready">CLEARED!</td><td class="lives"><span class="on">♥♥♥♥</span><span class="off">♥</span> 85%</td></tr>
+        <tr><td>M08 DEEP-SEA LANTERN</td><td>45</td><td class="stat s-working">IN PLAY</td><td class="lives"><span class="on">♥♥♥</span><span class="off">♥♥</span> 60%</td></tr>
+        <tr><td>M02 MUSHROOM GROVE</td><td>25</td><td class="stat s-working">IN PLAY</td><td class="lives"><span class="on">♥♥♥</span><span class="off">♥♥</span> 70%</td></tr>
+        <tr><td>M11 BIO REACTOR</td><td>50</td><td class="stat s-proto">TRAINING</td><td class="lives"><span class="on">♥</span><span class="off">♥♥♥♥</span> 20%</td></tr>
+        <tr><td>M07 CAVE CRYSTALS</td><td>20</td><td class="stat s-not">LOCKED</td><td class="lives"><span class="off">♥♥♥♥♥</span> —</td></tr>
+      </table>
+    </div>
+
+    <div class="frame">
+      <h2>Rubric Level Map — 20 Rows</h2>
+      <div class="heat">
+        <div class="cell l3">3</div><div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l4">4</div>
+        <div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l3">3</div>
+        <div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l3">3</div><div class="cell l3">3</div><div class="cell l2">2</div>
+        <div class="cell l1">1</div><div class="cell l3">3</div><div class="cell l2">2</div><div class="cell l4">4</div><div class="cell l3">3</div>
+      </div>
+      <div class="legend">2 exceeds · 11 accomplished · 6 developing · 1 beginning — beat every level by Nov 14!</div>
+    </div>
+
+    <div class="frame">
+      <h2>Core Values Power-Ups</h2>
+      <div class="power">
+        <div class="row"><span class="name" style="color:#38f8b8">Teamwork</span><div class="blocks" style="color:#38f8b8"><span class="f" style="background:#38f8b8"></span><span class="f" style="background:#38f8b8"></span><span class="f" style="background:#38f8b8"></span><span class="f" style="background:#38f8b8"></span><span></span></div><b>18</b></div>
+        <div class="row"><span class="name" style="color:#4fc9ff">Discovery</span><div class="blocks" style="color:#4fc9ff"><span class="f" style="background:#4fc9ff"></span><span class="f" style="background:#4fc9ff"></span><span class="f" style="background:#4fc9ff"></span><span></span><span></span></div><b>14</b></div>
+        <div class="row"><span class="name" style="color:#ff4fa0">Fun</span><div class="blocks" style="color:#ff4fa0"><span class="f" style="background:#ff4fa0"></span><span class="f" style="background:#ff4fa0"></span><span class="f" style="background:#ff4fa0"></span><span class="f" style="background:#ff4fa0"></span><span></span></div><b>16</b></div>
+        <div class="row"><span class="name" style="color:#ffe74c">Innovation</span><div class="blocks" style="color:#ffe74c"><span class="f" style="background:#ffe74c"></span><span class="f" style="background:#ffe74c"></span><span></span><span></span><span></span></div><b>11</b></div>
+        <div class="row"><span class="name" style="color:#c996ff">Inclusion</span><div class="blocks" style="color:#c996ff"><span class="f" style="background:#c996ff"></span><span class="f" style="background:#c996ff"></span><span></span><span></span><span></span></div><b>9</b></div>
+        <div class="row"><span class="name" style="color:#ff9d5c">Impact</span><div class="blocks" style="color:#ff9d5c"><span class="f" style="background:#ff9d5c"></span><span></span><span></span><span></span><span></span></div><b>6</b></div>
+      </div>
+    </div>
+
+    <div class="frame" style="grid-column:1/-1">
+      <h2>Player Log</h2>
+      <div class="feed">
+        <div class="line"><span class="p">MAYA</span> · AUG 29 · <span class="lvl-tag">[Robot Design · Iterate]</span><br>
+          Tested Glow Garden arm x10 — 9 wins! Shortened the axle after run 4 snag. Power level 70% → 90%.</div>
+        <div class="line"><span class="p">LEO</span> · AUG 29 · <span class="lvl-tag">[Innovation Project · Identify]</span><br>
+          Side quest complete: interviewed Ms. Rivera (marine biologist). +3 research sources on bioluminescent algae. New ally added to Experts page!</div>
+        <div class="line"><span class="p">SAM</span> · AUG 27 · <span class="lvl-tag">[Core Values · Fun]</span><br>
+          Bonus round: marshmallow tower — Zoe's team wins! Whole party helped Noah debug the line-follower. CO-OP MODE ACTIVATED.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>▶ Insert coin · all data is sample data · your real season goes here ◀</footer>
+</body>
+</html>

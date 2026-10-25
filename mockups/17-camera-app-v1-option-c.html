@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wildlife Camera v1 (Option C) — mockup 17</title>
+<style>
+  :root{
+    --forest:#1c3b2a; --pine:#2a5c3f; --grass:#3f9b4c;
+    --lavender:#b48fd9; --lilac:#d9c6ee; --teal:#20b5c9;
+    --cream:#f4efe1; --paper:#ffffff; --ink:#22301f; --dim:#7d8a76; --line:#e5decb; --soft:#efe9d8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Avenir Next','Trebuchet MS',sans-serif}
+  body{background:var(--cream);color:var(--ink);padding:20px 16px 40px}
+  .note{max-width:1100px;margin:0 auto 14px;background:var(--lilac);border-radius:12px;padding:10px 14px;font-size:13px;color:var(--forest)}
+  .label{max-width:1100px;margin:22px auto 8px;font-weight:800;color:var(--pine);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+  .app{max-width:1100px;margin:0 auto;background:var(--paper);border:4px solid var(--lavender);border-radius:18px;overflow:hidden}
+  .top{background:var(--forest);color:#fff;display:flex;align-items:center;gap:12px;padding:12px 18px;flex-wrap:wrap}
+  .top h1{font-size:20px}
+  .top .pill{margin-left:auto;background:var(--lavender);color:var(--forest);border-radius:20px;padding:4px 12px;font-weight:800;font-size:12px}
+  .grid{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;padding:16px}
+  @media (max-width:800px){.grid{grid-template-columns:1fr}}
+  .card{border:2px solid var(--line);border-radius:14px;padding:14px;background:#fffdf6}
+  .card h2{font-size:15px;color:var(--pine);margin-bottom:10px}
+  .live{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:4/3;background:#9cc8e8}
+  .live svg{width:100%;height:100%;display:block}
+  .stamp{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.55);color:#fff;border-radius:8px;padding:4px 8px;font-size:12px}
+  .lights{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+  .light{flex:1;min-width:150px;border-radius:12px;padding:10px;border:2px solid var(--line);font-size:13px}
+  .light b{display:block;font-size:15px;margin-top:2px}
+  .on{background:#e4f5e6;border-color:var(--grass)}
+  .off{background:var(--soft)}
+  .score{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+  .score div{border-radius:12px;padding:10px 4px;background:var(--soft)}
+  .score .n{font-size:26px;font-weight:800;color:var(--forest)}
+  .score .t{font-size:12px;color:var(--dim)}
+  .score .app{background:#e3f6f8;border:none}
+  .score .sen{background:var(--lilac)}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:12px}
+  th,td{text-align:left;padding:6px 4px;border-bottom:1px solid var(--line)}
+  th{color:var(--dim);font-weight:600}
+  .feed{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;padding:0 16px 16px}
+  .shot{border:2px solid var(--line);border-radius:12px;overflow:hidden;background:#fffdf6;font-size:12px}
+  .shot svg{width:100%;display:block;aspect-ratio:4/3}
+  .shot .cap{padding:6px 8px}
+  .shot .tag{display:inline-block;background:var(--grass);color:#fff;border-radius:10px;padding:1px 8px;font-weight:800;margin-bottom:3px}
+  .shot .tag.person{background:var(--dim)}
+  .shot .tag.none{background:var(--soft);color:var(--dim)}
+  .who{display:flex;gap:4px;margin-top:3px}
+  .who span{border-radius:8px;padding:1px 6px;font-size:11px}
+  .a{background:#e3f6f8;color:#0d6b77}.s{background:var(--lilac);color:#5a3f7a}.x{background:var(--soft);color:var(--dim);text-decoration:line-through}
+  .feedhead{padding:0 16px 10px;font-weight:800;color:var(--pine)}
+  .nb{max-width:520px;margin:0 auto;border:4px solid var(--lavender);border-radius:16px;background:var(--paper);padding:14px}
+  .nb h3{color:var(--pine);font-size:15px;margin-bottom:8px}
+  .nb .row{display:flex;gap:8px;margin-bottom:10px}
+  .nb .row svg{width:33%;border-radius:8px}
+  .nb a{display:inline-block;background:var(--lavender);color:var(--forest);font-weight:800;border-radius:20px;padding:6px 14px;text-decoration:none;font-size:13px}
+</style>
+</head>
+<body>
+
+<div class="note"><b>Mockup 17 · sample data only.</b> Option C (Thea, Oct 24): the camera sends a picture every 1–2 seconds, and each picture says whether the motion sensor felt something. The app spots motion too, saves the good pictures, and tags the animals. Then we compare: who catches more animals, the app or the sensor?</div>
+
+<div class="label">The camera app</div>
+<div class="app">
+  <div class="top"><h1>🌲 Rooted Warriors Wildlife Camera</h1><span style="opacity:.8;font-size:13px">Camera 1 · behind the house</span><span class="pill">● Live · new picture every 2 s</span></div>
+  <div class="grid">
+    <div class="card">
+      <h2>Live view</h2>
+      <div class="live" id="live"></div>
+      <div class="lights">
+        <div class="light on">📷 App saw motion<b>Yes: something moved</b></div>
+        <div class="light on">🔥 Motion sensor felt heat<b>Yes</b></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Our experiment: who catches more animals?</h2>
+      <div class="score">
+        <div class="app"><div class="n">31</div><div class="t">App only</div></div>
+        <div><div class="n">18</div><div class="t">Both</div></div>
+        <div class="sen"><div class="n">12</div><div class="t">Sensor only</div></div>
+      </div>
+      <table>
+        <tr><th></th><th>Day</th><th>Night</th><th>False alarms</th></tr>
+        <tr><td>📷 App</td><td>44</td><td>5</td><td>23 (wind, shadows)</td></tr>
+        <tr><td>🔥 Sensor</td><td>17</td><td>13</td><td>4 (warm rocks)</td></tr>
+      </table>
+      <p style="font-size:12px;color:var(--dim);margin-top:10px">Sample numbers. "Both" = the app and the sensor noticed the same animal.</p>
+    </div>
+  </div>
+  <div class="feedhead">Saved pictures · tagged by AI · people blurred</div>
+  <div class="feed" id="feed"></div>
+</div>
+
+<div class="label">Inside our Engineering Notebook app (a small Camera card)</div>
+<div class="nb">
+  <h3>📷 Wildlife Camera this week</h3>
+  <div class="row" id="nbrow"></div>
+  <p style="font-size:13px;margin-bottom:10px">61 animals saved · top animal: <b>Mule deer (19)</b> · App 49 vs. Sensor 30</p>
+  <a href="#">Open the camera app →</a>
+</div>
+
+<script>
+function scene(night, animal, blur){
+  const sky = night ? '#1b2340' : '#9cc8e8';
+  const ground = night ? '#1f3326' : '#6c9a4f';
+  const tree = night ? '#13261a' : '#2a5c3f';
+  let s = `<svg viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="120" fill="${sky}"/>`;
+  if (night) s += `<circle cx="130" cy="20" r="8" fill="#e8e6c8"/>`;
+  s += `<rect y="82" width="160" height="38" fill="${ground}"/>`;
+  [[18,30],[45,22],[120,26],[148,34]].forEach(([x,h])=>{s+=`<polygon points="${x-14},86 ${x},${h} ${x+14},86" fill="${tree}"/><rect x="${x-2}" y="84" width="4" height="8" fill="#5b4330"/>`;});
+  if (blur) s += `<rect x="66" y="48" width="26" height="44" rx="8" fill="#b9b4a6" opacity=".9"/><text x="79" y="74" font-size="9" text-anchor="middle" fill="#555">blurred</text>`;
+  else if (animal) s += `<text x="80" y="96" font-size="34" text-anchor="middle">${animal}</text>`;
+  return s + `</svg>`;
+}
+document.getElementById('live').innerHTML = scene(false,'🦌') + '<div class="stamp">Oct 24 · 4:12:07 PM</div>';
+const shots = [
+  {a:'🦌',tag:'Mule deer',p:94,t:'Oct 24 · 4:12 PM',app:1,sen:1},
+  {a:'🐿️',tag:'Abert\'s squirrel',p:88,t:'Oct 24 · 9:40 AM',app:1,sen:0},
+  {a:'🦊',tag:'Gray fox',p:81,t:'Oct 23 · 11:58 PM',night:1,app:0,sen:1},
+  {blur:1,tag:'Person',p:97,t:'Oct 23 · 5:30 PM',app:1,sen:1,cls:'person'},
+  {a:'🦃',tag:'Wild turkey',p:90,t:'Oct 23 · 7:15 AM',app:1,sen:1},
+  {a:'',tag:'Nothing (wind)',p:0,t:'Oct 22 · 2:03 PM',app:1,sen:0,cls:'none'},
+  {a:'🦨',tag:'Skunk',p:76,t:'Oct 22 · 10:44 PM',night:1,app:0,sen:1},
+  {a:'🦌',tag:'Elk',p:85,t:'Oct 22 · 6:20 AM',app:1,sen:1}
+];
+document.getElementById('feed').innerHTML = shots.map(x=>`<div class="shot">${scene(x.night,x.a,x.blur)}<div class="cap"><span class="tag ${x.cls||''}">${x.tag}${x.p?' · '+x.p+'%':''}</span><div style="color:var(--dim)">${x.t}</div><div class="who"><span class="${x.app?'a':'x'}">📷 app</span><span class="${x.sen?'s':'x'}">🔥 sensor</span></div></div></div>`).join('');
+document.getElementById('nbrow').innerHTML = scene(false,'🦌') + scene(true,'🦊') + scene(false,'🦃');
+</script>
+</body>
+</html>

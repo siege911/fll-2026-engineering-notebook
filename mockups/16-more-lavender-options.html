@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>More Lavender — 4 Options</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Avenir Next','Trebuchet MS',sans-serif}
+  body{background:#e9e4d6;color:#22301f;padding:24px}
+  .top{text-align:center;margin-bottom:22px}
+  .top h1{font-size:26px;font-weight:800;color:#1c3b2a}
+  .top p{font-size:14px;color:#5f6b59;font-weight:600;margin-top:4px}
+  .opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(520px,1fr));gap:22px}
+  .opt h2{font-size:18px;font-weight:800;margin-bottom:4px}
+  .opt .why{font-size:13px;color:#5f6b59;font-weight:600;margin-bottom:10px;min-height:36px}
+
+  /* ---- mini app (shared) ---- */
+  .app{display:flex;border-radius:14px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.15);height:440px;font-size:12px}
+  .app aside{width:150px;padding:14px 10px;display:flex;flex-direction:column;gap:3px}
+  .app .team{font-weight:800;font-size:12px;text-align:center;margin:6px 0 10px}
+  .app .crest{width:46px;height:52px;margin:0 auto;border-radius:12px 12px 24px 24px;display:flex;align-items:center;justify-content:center;font-size:22px}
+  .app .nav{padding:7px 9px;border-radius:8px;font-weight:700;font-size:11px}
+  .app .cd{margin-top:auto;border-radius:9px;padding:8px;text-align:center}
+  .app .cd b{display:block;font-size:20px}
+  .app .cd small{font-size:8px;letter-spacing:1px;text-transform:uppercase}
+  .app main{flex:1;padding:16px;min-width:0}
+  .app .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+  .app .head h3{font-size:18px;font-weight:800;color:#1c3b2a;-webkit-text-stroke:1px #b48fd9;paint-order:stroke fill}
+  .app .chip{font-weight:800;font-size:10px;padding:4px 10px;border-radius:12px}
+  .app .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .app .card{border-radius:11px;padding:11px}
+  .app .card h4{font-size:10px;text-transform:uppercase;letter-spacing:1.2px;font-weight:800;margin-bottom:8px;display:flex;align-items:center;gap:5px}
+  .app .leaf{width:9px;height:9px;background:#b48fd9;border-radius:0 60% 0 60%;display:inline-block}
+  .app .big{font-size:34px;font-weight:800;color:#3f9b4c}
+  .app .row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;font-weight:700}
+  .app .pill{font-size:9px;font-weight:800;padding:3px 8px;border-radius:8px;color:#fff}
+  .pT{background:#20b5c9}.pP{background:#b48fd9}.pR{background:#3f9b4c}
+  .app .heat{display:grid;grid-template-columns:repeat(10,1fr);gap:3px}
+  .app .heat i{aspect-ratio:1;border-radius:4px;display:block}
+  .h2{background:#b48fd9}.h3{background:#20b5c9}.h4{background:#3f9b4c}.h1{background:#d9d3c2}
+  .app .btn{font-size:9px;font-weight:800;padding:3px 8px;border-radius:8px;background:#b48fd9;color:#1c3b2a}
+
+  /* ---- TODAY (for comparison) ---- */
+  .now aside{background:#1c3b2a;color:#f4efe1}
+  .now .crest{background:#2a5c3f}
+  .now .nav.on{background:#b48fd9;color:#1c3b2a}
+  .now .cd{background:#2a5c3f;border:1px solid #20b5c9}.now .cd b{color:#20b5c9}.now .cd small{color:#d9c6ee}
+  .now main{background:#f4efe1}
+  .now .chip{background:#b48fd9;color:#1c3b2a}
+  .now .card{background:#fff;border:1px solid #e5decb}
+  .now .card h4{color:#2a5c3f}
+
+  /* every option = today's look + extra lavender (#b48fd9) only */
+  .d aside,.e aside,.f aside,.g aside{background:#1c3b2a;color:#f4efe1}
+  .d .crest,.e .crest,.f .crest,.g .crest{background:#2a5c3f}
+  .d .nav.on,.e .nav.on,.f .nav.on,.g .nav.on{background:#b48fd9;color:#1c3b2a}
+  .d .cd,.e .cd,.f .cd,.g .cd{background:#2a5c3f;border:1px solid #20b5c9}
+  .d .cd b,.e .cd b,.f .cd b,.g .cd b{color:#20b5c9} .d .cd small,.e .cd small,.f .cd small,.g .cd small{color:#d9c6ee}
+  .d main,.e main,.f main,.g main{background:#f4efe1}
+  .d .chip,.e .chip,.f .chip,.g .chip{background:#b48fd9;color:#1c3b2a}
+  .d .card,.e .card,.f .card,.g .card{background:#fff;border:1px solid #e5decb}
+  .d .card h4,.e .card h4,.f .card h4,.g .card h4{color:#2a5c3f}
+
+  /* D: Lavender Title Bars */
+  .d .card{padding-top:0;overflow:hidden}
+  .d .card h4{background:#b48fd9;color:#1c3b2a;margin:0 -11px 8px;padding:7px 11px}
+  .d .card h4 .leaf{background:#1c3b2a}
+  .d .card h4 .btn{background:#fff}
+
+  /* E: Lavender Frames */
+  .e .card{border:2.5px solid #b48fd9}
+
+  /* F: Lavender Sidebar Trim */
+  .f aside{border-right:6px solid #b48fd9}
+  .f .crest{background:#b48fd9}
+  .f .team{color:#b48fd9}
+  .f .cd{border:2px solid #b48fd9}.f .cd b{color:#b48fd9}
+
+  /* G: Lavender Banner */
+  .g .head{background:#b48fd9;margin:-16px -16px 12px;padding:12px 16px}
+  .g .head h3{-webkit-text-stroke:0}
+  .g .head .chip{background:#1c3b2a;color:#b48fd9}
+</style>
+</head>
+<body>
+<div class="top">
+  <h1>💜 More Lavender: pick one!</h1>
+  <p>Only our lavender purple is added. No new purples. Same app, same data. The first one is how the app looks today, so you can compare.</p>
+</div>
+<div class="opts" id="opts"></div>
+
+<script>
+const OPTIONS=[
+  {cls:'now',name:'Today (no change)',why:'Green sidebar, cream background, lavender only on buttons, chips, and the selected page.'},
+  {cls:'d',name:'D · Lavender Title Bars',why:'Every card title sits on a lavender bar across the top of the card.'},
+  {cls:'e',name:'E · Lavender Frames',why:'Every card gets a thick lavender border all the way around.'},
+  {cls:'f',name:'F · Lavender Sidebar Trim',why:'Sidebar stays green, with a lavender stripe down its edge, a lavender logo badge, team name, and countdown.'},
+  {cls:'g',name:'G · Lavender Banner',why:'The top of every page becomes a lavender banner with the page title on it.'}
+];
+const heat=[3,3,2,3,4,2,3,2,3,3,3,2,3,3,2,1,3,2,4,3];
+const navs=['🏠 Dashboard','🎯 Robot Game','🤖 Robot Design','💻 Coding','💡 Innovation Project','🤝 Core Values','📓 Daily Log','📋 Rubric Check'];
+document.getElementById('opts').innerHTML=OPTIONS.map(o=>`
+ <div class="opt"><h2>${o.name}</h2><div class="why">${o.why}</div>
+  <div class="app ${o.cls}">
+   <aside><div class="crest">🌳</div><div class="team">ROOTED WARRIORS</div>
+    ${navs.map((n,i)=>`<div class="nav ${i===0?'on':''}">${n}</div>`).join('')}
+    <div class="cd"><b>33</b><small>days to regionals</small></div></aside>
+   <main>
+    <div class="head"><h3>Team Dashboard</h3><span class="chip">2026 SEASON</span></div>
+    <div class="grid">
+     <div class="card"><h4><span class="leaf"></span>Best match score</h4><div class="big">190</div><div style="color:#3f9b4c;font-weight:700;font-size:10px">▲ up from 85 → 120 → 190</div></div>
+     <div class="card"><h4><span class="leaf"></span>Missions <span class="btn" style="margin-left:auto">Edit →</span></h4>
+      <div class="row">M01 Drone Survey <span class="pill pP">Prototyping</span></div>
+      <div class="row">M02 Exploding Seeds <span class="pill pT">Working</span></div>
+      <div class="row">M03 Flip the Rock <span class="pill pR">Reliable</span></div></div>
+     <div class="card" style="grid-column:1/-1"><h4><span class="leaf"></span>Rubric heat map</h4>
+      <div class="heat">${heat.map(l=>`<i class="h${l}"></i>`).join('')}</div></div>
+    </div>
+   </main>
+  </div></div>`).join('');
+</script>
+</body>
+</html>
