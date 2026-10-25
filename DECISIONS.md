@@ -4,6 +4,16 @@ Newest at top. Capture-field and design decisions come from the students; archit
 
 ---
 
+## 2026-10-25 — Camera v2 plan (CJ): the camera compares pictures + motion sensor, saves to microSD; Pi tags; DigitalOcean shows
+
+**CJ:** "Let's go with your comparing pictures idea along with the motion sensor. I'd still like to be able to view the camera images live... with the Engineering Notebook theme... show whether the 'comparing pictures' triggered or the 'motion sensor' triggered (or both)."
+**Plan:** 1) The **camera** takes a picture every second, shows it live on its own page (notebook colors), and saves it to the microSD card only when the **motion sensor** fires or the **picture changed** (or both); `log.csv` records which. 2) The **Pi 4** collects the saved pictures every 15–30 min over Wi-Fi, tags them (animal / person / empty, then species), blurs people, deletes empties. 3) **DigitalOcean** shows only the finished, tagged pictures.
+**Why:** SenseCraft AI has no general "any animal or object" model for the XIAO ESP32S3 Sense (only person, face, gesture, gender, bird, cat, apple, strawberry; checked Oct 24), so motion sensor + picture comparing is the "something came into view" trigger, and the Pi does the real tagging. The same camera code works for Camera 2 in the forest; nothing is lost if the Pi or internet is down; unblurred pictures never leave the house.
+**Changes Option C (Oct 24):** the camera, not the online app, compares pictures. The experiment is now "picture changed vs. motion sensor."
+**Later (student project idea):** train a "something's there" model on the camera itself (SenseCraft training or Edge Impulse).
+
+---
+
 ## 2026-10-24 — Architecture (CJ): one DigitalOcean droplet for both apps; GitHub (siege911)
 
 **CJ:** host the notebook app and the camera app on **one DigitalOcean droplet** (subdomains or subfolders); code on GitHub under **siege911** (not the City account). Replaces the 2026-08-31 plan (Cloudflare Workers + D1 + R2).

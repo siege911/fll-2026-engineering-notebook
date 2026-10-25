@@ -4,6 +4,19 @@ The Innovation Project wildlife camera: what we bought, how it's wired, and ever
 
 ---
 
+## 2026-10-25 — Camera code v2: picture comparing + motion sensor, saves to microSD
+**Asked by:** Coach CJ · **Code by:** Claude · **Code:** `../camera/camera-v2/camera-v2.ino` (+ `secrets.h`: Wi-Fi and the Pi's delete key; not on GitHub)
+- **Every second:** takes a 640×480 picture and shows it live (notebook colors) with two lights: **📷 Picture changed** (with % changed) and **🔥 Motion sensor**.
+- **Picture changed:** shrinks each picture to 80×60 black and white and counts the spots that changed more than 30 (out of 255) since the picture before. 2% of the picture or more = changed. A whole-picture brightness change (a cloud) is ignored. Settings at the top of the code: `PIXEL_CHANGE`, `AREA_CHANGE`.
+- **Saves only when something fired:** `/photos/2026-10-25/2026-10-25_14-03-22_SC.jpg` (S = motion sensor, C = picture changed). Every save also goes into `/photos/log.csv` (time, file, motion_sensor, picture_changed, percent_changed): the experiment's data.
+- **Experiment scoreboard on the live page:** Picture changed only / Both / Motion sensor only (saved pictures since power-on).
+- **Time:** from the internet (Arizona time, `MST7`). The clock module isn't used yet (needed for the forest camera without Wi-Fi).
+- **For the Pi:** `/files` (list), `/download?f=…`, `POST /delete?f=…&key=…`.
+- Checked: compiles for XIAO_ESP32S3 with OPI PSRAM (esp32 core 3.3.12). **Not tested on the real camera yet.** Needs a microSD card (FAT32) in the camera board's slot.
+- **Test:** upload → open the address → wave a hand (both lights) → walk past at a distance → check that saved pictures appear on the card and in log.csv. Tune `AREA_CHANGE` if wind sets it off. [result: not yet]
+
+---
+
 ## 2026-10-24 — Camera code v1 (Option C), first draft
 **Asked by:** Thea · **Code by:** Claude (coach's assistant), for Thea to test · **Code:** `../camera/camera-v1/camera-v1.ino` (+ `secrets.h` for the Wi-Fi name and password)
 - Takes a picture every 2 seconds (640×480). Checks the motion sensor (D0): did it feel something any time since the last picture? Shows both on a web page at the address printed in the Serial Monitor, on the same Wi-Fi. Counts how many pictures the sensor felt something in.

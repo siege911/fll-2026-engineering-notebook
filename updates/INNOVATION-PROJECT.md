@@ -33,6 +33,11 @@ What we do know:
 
 ---
 
+## 2026-10-25 — Camera plan v2 (Coach CJ)
+- The camera notices animals two ways, **picture changed** and **motion sensor**, and saves a picture to its microSD card only when one fires. The live view stays on its own page. The Pi 4 collects the pictures, tags them, and sends only real animals (people blurred) to the website. Experiment: picture changed vs. motion sensor. Details: `../DECISIONS.md` 2026-10-25, `CAMERA-BUILD.md`.
+
+---
+
 ## 2026-10-24 (later) — Camera app v1: Option C picked (Thea)
 - **Option C:** the camera sends a picture every 1–2 s plus "motion sensor: yes/no"; the app spots motion, saves pictures, tags animals; the team tests which catches more animals, the app or the sensor (day vs. night, false alarms).
 - Mockup 17 made. **Decided (Thea): separate camera app + a small Camera card in the notebook app** that shows highlights and links to it. Hosting: DigitalOcean (Thea; for CJ).
