@@ -4,6 +4,14 @@ Newest at top. Capture-field and design decisions come from the students; archit
 
 ---
 
+## 2026-10-24 — Architecture (CJ): one DigitalOcean droplet for both apps; GitHub (siege911)
+
+**CJ:** host the notebook app and the camera app on **one DigitalOcean droplet** (subdomains or subfolders); code on GitHub under **siege911** (not the City account). Replaces the 2026-08-31 plan (Cloudflare Workers + D1 + R2).
+**Suggested (Claude), waiting on CJ:** Cloudflare Registrar + DNS (A records, DNS only); Caddy for HTTPS + one team password per site; $6/mo droplet (1 GB) + weekly backups; Node apps run as services on localhost; camera uploads use their own device key; save only motion pictures.
+**Done:** local git repo created, first commit as siege911. Not committed: the camera Wi-Fi file (`secrets.h`) and the live database file (`*.db`; data is in `snapshot.json`).
+
+---
+
 ## 2026-10-24 (later) — Camera app v1 = Option C; separate camera app + Camera card in the notebook (Thea)
 
 **Decided (Thea):** "Let's do C." The camera sends a picture every 1–2 s and each picture says whether the motion sensor felt something. The app spots motion too, saves pictures, tags animals; the team compares which catches more animals (app vs. sensor). Mockup: `mockups/17-camera-app-v1-option-c.html`.
