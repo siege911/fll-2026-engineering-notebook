@@ -4,6 +4,15 @@ The Innovation Project wildlife camera: what we bought, how it's wired, and ever
 
 ---
 
+## 2026-10-25 (later) — Pi 4 collector (step 1 of the Pi)
+**Asked by:** Coach CJ · **Code by:** Claude · **Code:** `../pi/collector.py`, setup in `../pi/README.md`
+- The Pi is a **Raspberry Pi 4 Model B** (the board says © 2018; all Pi 4s do). RAM not known yet (1/2/4/8 GB): it decides the tagging model.
+- Every 15 min the Pi copies new pictures off the camera's microSD card, checks each is complete, then deletes it on the camera; merges the camera's `log.csv` into `pi/photos/log.csv`. Built-in Python only.
+- Camera v2 now also answers at `http://rooted-camera.local`, so the Pi can find it even if its address changes.
+- Checked: tested against a pretend camera (3 photos copied over 2 pages, deleted from the "card", log merged, second run copied nothing, camera-off handled). **Not tested with the real camera/Pi yet.**
+
+---
+
 ## 2026-10-25 — Camera code v2: picture comparing + motion sensor, saves to microSD
 **Asked by:** Coach CJ · **Code by:** Claude · **Code:** `../camera/camera-v2/camera-v2.ino` (+ `secrets.h`: Wi-Fi and the Pi's delete key; not on GitHub)
 - **Every second:** takes a 640×480 picture and shows it live (notebook colors) with two lights: **📷 Picture changed** (with % changed) and **🔥 Motion sensor**.

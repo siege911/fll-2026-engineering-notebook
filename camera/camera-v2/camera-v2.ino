@@ -26,6 +26,7 @@
 #include "jpeg_decoder.h"
 #include <WiFi.h>
 #include <WebServer.h>
+#include <ESPmDNS.h>
 #include "FS.h"
 #include "SD.h"
 #include "SPI.h"
@@ -460,8 +461,13 @@ void setup() {
   server.on("/delete", deleteFile);
   server.begin();
 
+  // The Pi finds the camera by this name: http://rooted-camera.local
+  MDNS.begin("rooted-camera");
+  MDNS.addService("http", "tcp", 80);
+
   Serial.print("Connected! Open this in a browser: http://");
-  Serial.println(WiFi.localIP());
+  Serial.print(WiFi.localIP());
+  Serial.println("  (or http://rooted-camera.local)");
   Serial.println("Motion sensor needs about 30 seconds to settle after power-on.");
 }
 

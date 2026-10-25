@@ -1,0 +1,5 @@
+{
+  "camera_url": "http://rooted-camera.local",
+  "camera_key": "same as CAMERA_KEY in camera/camera-v2/secrets.h",
+  "photos_dir": "photos"
+}
