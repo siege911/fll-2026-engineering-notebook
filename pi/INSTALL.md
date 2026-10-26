@@ -17,7 +17,7 @@ On the Pi (Raspberry Pi menu → Preferences → Control Centre / Raspberry Pi C
 
 ## 2. Networking
 
-Follow **[NETWORKING.md](NETWORKING.md)** (camera Wi-Fi + house Wi-Fi).
+Follow **[NETWORKING.md](NETWORKING.md)**, setup 1 (one radio with a switch: no extra parts).
 
 ## 3. Get our code
 
@@ -40,6 +40,9 @@ In `settings.json`, set **`camera_key`** to the same `CAMERA_KEY` as in the came
 | `visit_gap_minutes` | photos of the same species closer together than this are one visit | `10` |
 | `keep_empty_days` | empty photos are deleted after this many days | `7` |
 | `port` | the station's web address port | `8080` |
+| `wifi_switch` | show the 📡 Camera Wi-Fi / 🌐 House Wi-Fi switch (one radio) | `true` |
+| `camera_connection`, `house_connection` | NetworkManager names of the two Wi-Fi connections | `camera-wifi`, `preconfigured` |
+| `auto_return_minutes` | House Wi-Fi mode goes back to Camera Wi-Fi after this long (0 = never) | `15` |
 
 ## 4. SpeciesNet (the AI)
 

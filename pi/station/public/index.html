@@ -53,6 +53,14 @@
   .pill{border-radius:20px;padding:6px 12px;font-size:13px;font-weight:700;background:var(--soft)}
   .pill.good{background:#e4f5e6;color:var(--pine)} .pill.bad{background:#fbe7c6;color:#7a5410}
 
+  /* Home: Camera Wi-Fi / House Wi-Fi switch */
+  .net{display:flex;align-items:center;gap:12px;margin-top:10px;background:var(--paper);border:3px solid var(--lavender);border-radius:16px;padding:8px 10px}
+  .switch{display:flex;background:var(--soft);border-radius:14px;padding:4px;gap:4px;flex-shrink:0}
+  .switch button{border-radius:11px;padding:10px 12px;font-size:14px;font-weight:800;background:transparent;color:var(--dim);min-height:48px}
+  .switch button.on{background:var(--forest);color:#fff}
+  .switch button:disabled{opacity:.5}
+  .net .why{font-size:13px;line-height:1.35}
+
   /* Review */
   .visits{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
   .visit{background:var(--paper);border:3px solid var(--line);border-radius:14px;overflow:hidden;text-align:left;padding:0}
@@ -155,16 +163,42 @@ function home() {
         <div class="n">${s.approved ?? 0}</div><div class="muted">ready · ${s.published ?? 0} published</div>
         <button class="big ${s.approved ? 'go' : 'plain'}" onclick="show('publish')">🌐 Publish</button></div>
     </div>
-    <div class="status">
+    ${s.network ? networkSwitch(s.network) : `<div class="status">
       <span class="pill ${s.camera_online ? 'good' : 'bad'}">${s.camera_online ? '✓' : '✗'} Camera</span>
       <span class="pill ${s.internet ? 'good' : 'bad'}">${s.internet ? '✓' : '✗'} Internet</span>
-    </div>`;
+    </div>`}`;
+}
+
+// One Wi-Fi radio: it's either the camera's Wi-Fi or on the house Wi-Fi, not both.
+function networkSwitch(n) {
+  const busy = !!n.switching;
+  const why = busy ? `Switching to ${n.switching === 'camera' ? 'Camera Wi-Fi' : 'House Wi-Fi'}… (up to 20 seconds)`
+    : n.mode === 'camera' ? '📷 The camera can send photos. No internet right now.'
+    : n.mode === 'internet' ? `🌐 Internet is on. The camera can't send right now: its photos wait on its card.${n.returns_at ? ' Back to Camera Wi-Fi at ' + clock(n.returns_at) + '.' : ''}`
+    : '⚠️ Not on any Wi-Fi. Tap one.';
+  return `<div class="net">
+    <div class="switch">
+      <button class="${n.mode === 'camera' ? 'on' : ''}" ${busy ? 'disabled' : ''} onclick="switchNetwork('camera')">📡 Camera Wi-Fi</button>
+      <button class="${n.mode === 'internet' ? 'on' : ''}" ${busy ? 'disabled' : ''} onclick="switchNetwork('internet')">🌐 House Wi-Fi</button>
+    </div>
+    <div class="why">${why}${n.message ? `<br><span class="muted">Last try didn't work: ${esc(n.message)}</span>` : ''}${n.pretend ? '<br><span class="muted">(Practice: pretend switch)</span>' : ''}</div>
+  </div>`;
+}
+
+async function switchNetwork(mode) {
+  if (status.network?.mode === mode) return;
+  await api('/api/network', {mode});
+  refreshStatus();
 }
 
 // ---------- Live: what the camera sees right now ----------
 let liveTimer;
 function live() {
   clearInterval(liveTimer);
+  if (status.network && status.network.mode !== 'camera') {
+    main.innerHTML = `<h1>Live</h1><div class="card">The Pi is on the house Wi-Fi, so it can't see the camera. Switch to 📡 Camera Wi-Fi on the Home page.</div>`;
+    return;
+  }
   if (!status.camera_online) {
     main.innerHTML = `<h1>Live</h1><div class="card">The camera isn't connected to the Pi right now. When it's in range of the camera Wi-Fi, its picture shows up here.</div>`;
     return;

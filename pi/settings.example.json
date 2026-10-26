@@ -14,5 +14,9 @@
   "visit_gap_minutes": 10,
   "keep_empty_days": 7,
   "port": 8080,
-  "speciesnet_python": ""
+  "speciesnet_python": "",
+  "wifi_switch": true,
+  "camera_connection": "camera-wifi",
+  "house_connection": "preconfigured",
+  "auto_return_minutes": 15
 }

@@ -1,6 +1,6 @@
 # Pi networking: camera Wi-Fi + house Wi-Fi
 
-The Pi does two network jobs at once:
+The Pi has two network jobs:
 
 ```
  Camera ))) camera Wi-Fi "RootedWarriorsCam" ))) [Pi 4] ))) house Wi-Fi ))) internet → our website
@@ -8,78 +8,145 @@ The Pi does two network jobs at once:
 ```
 
 - **Camera Wi-Fi:** the Pi makes its own network. The camera joins it (that's what goes in the camera's `secrets.h`), gets an address from the Pi, and sends photos to `http://10.42.0.1:8080`. It works anywhere the Pi is, even with no house Wi-Fi nearby.
-- **House Wi-Fi (or Ethernet):** the Pi joins it like a laptop, for the internet (publishing to the website, time, updates).
+- **House Wi-Fi:** the Pi joins it like a laptop, for the internet (publishing to the website, the correct time, updates).
 
-## What you need: a second Wi-Fi radio
+## Pick a setup
 
-The Pi 4 has one built-in Wi-Fi radio. It *can* run a hotspot and a client at the same time, but only on one channel, and it drops out when the house router changes channel. So use one of these:
+| Setup | Parts | Camera can send | Internet | Notes |
+|---|---|---|---|---|
+| **1. One radio with a switch** (start here) | none | in **Camera Wi-Fi** mode | in **House Wi-Fi** mode | A button on the touchscreen flips between the two. Goes back to Camera Wi-Fi by itself after 15 min |
+| 2. Two radios | USB Wi-Fi adapter with an antenna (~$30) | always | always | Upgrade later if the switching gets annoying. Better camera range too |
+| 3. Ethernet | a network cable to the router | always | always | Only if the Pi sits near the router |
 
-| Option | Camera Wi-Fi on | House network on | Notes |
-|---|---|---|---|
-| **A (recommended)** | **USB Wi-Fi adapter with an antenna** (`wlan1`) | built-in Wi-Fi (`wlan0`) | Best range to the camera. The antenna can go high or in a window on a USB extension cable |
-| B | built-in Wi-Fi (`wlan0`) | Ethernet cable (`eth0`) | No extra parts if the Pi sits near the router |
-| C | built-in only, both jobs | | Not recommended (see above) |
+The Pi 4's one built-in radio *can* run a hotspot and join a network at the same time, but only on one channel, and it drops out when the house router changes channel. That's why setup 1 switches instead of doing both.
 
-For option A, the adapter must support **AP mode** with a driver built into Linux. MediaTek "mt76" adapters work out of the box, e.g. **Alfa AWUS036ACHM** (MT7610U, long range) or **AWUS036ACM** (MT7612U). Check after plugging it in:
+**Why switching is OK:** camera v3 keeps saving photos on its card when it can't reach the Pi, and sends them all when Camera Wi-Fi is back. Nothing is lost; photos just arrive later.
+
+---
+
+## Setup 1: one radio with a switch
+
+### 1. House Wi-Fi
+
+If you typed the house Wi-Fi into Raspberry Pi Imager, it's already there, called `preconfigured`. Give it a low priority so the Pi starts in Camera Wi-Fi mode after a reboot:
+
+```bash
+nmcli connection show                         # find the house Wi-Fi connection's name
+sudo nmcli connection modify preconfigured connection.interface-name wlan0 connection.autoconnect-priority 0
+```
+
+(Not set up yet? `sudo nmcli device wifi connect "HOUSE-WIFI-NAME" password "HOUSE-PASSWORD" ifname wlan0`, then the `modify` line above with that connection's name.)
+
+### 2. Camera Wi-Fi on the same radio
+
+The camera Wi-Fi password is the `WIFI_PASSWORD` in `camera/camera-v3/secrets.h` (Claude generated one; or make your own and change it in both places).
+
+```bash
+sudo nmcli connection add type wifi ifname wlan0 con-name camera-wifi autoconnect yes \
+  connection.autoconnect-priority 10 \
+  ssid RootedWarriorsCam \
+  802-11-wireless.mode ap 802-11-wireless.band bg 802-11-wireless.channel 6 \
+  ipv4.method shared ipv4.addresses 10.42.0.1/24 ipv6.method disabled \
+  wifi-sec.key-mgmt wpa-psk wifi-sec.proto rsn wifi-sec.pairwise ccmp wifi-sec.group ccmp \
+  wifi-sec.psk "THE-CAMERA-WIFI-PASSWORD"
+```
+
+What that does:
+- `mode ap`: the Pi *makes* a network instead of joining one.
+- `band bg`, `channel 6`: 2.4 GHz, the only band the camera's XIAO can use, and it reaches farther than 5 GHz.
+- `ipv4.method shared`: the Pi hands out addresses (DHCP) to the camera (10.42.0.x) and is its router.
+- `autoconnect-priority 10`: higher than the house Wi-Fi, so the Pi starts in Camera Wi-Fi mode.
+
+⚠️ **If you're connected over SSH through the house Wi-Fi,** the next step will cut you off. Do it on the Pi's own screen with a keyboard, or be ready to reconnect through the camera Wi-Fi (below).
+
+```bash
+sudo nmcli connection up camera-wifi
+```
+
+### 3. Let the station flip the switch
+
+The station runs as your user, and NetworkManager needs permission for that user to switch networks. First test whether you already have it:
+
+```bash
+nmcli connection up preconfigured     # no sudo. "Not authorized"? Then install the rule below.
+nmcli connection up camera-wifi
+```
+
+If it said "Not authorized":
+```bash
+sed "s/PIUSER/$USER/" ~/rooted-warriors/pi/station/50-camera-station.rules | sudo tee /etc/polkit-1/rules.d/50-camera-station.rules
+sudo systemctl restart polkit
+```
+
+### 4. Turn on the switch in settings
+
+In `pi/settings.json`:
+```json
+"wifi_switch": true,
+"camera_connection": "camera-wifi",
+"house_connection": "preconfigured",
+"auto_return_minutes": 15
+```
+Restart the station (`sudo systemctl restart camera-station`). The Home page now shows **📡 Camera Wi-Fi | 🌐 House Wi-Fi**.
+
+### Using it
+
+| Mode | What works | What doesn't |
+|---|---|---|
+| 📡 **Camera Wi-Fi** (normal) | camera sends photos, Live view, tagging, reviewing | internet, publishing, SSH from the Mac over the house Wi-Fi |
+| 🌐 **House Wi-Fi** | internet, publishing, updates, SSH from the Mac | the camera can't send (photos wait on its card), no Live view |
+
+- Switching takes 5–20 seconds.
+- House Wi-Fi mode goes back to Camera Wi-Fi by itself after `auto_return_minutes` (15), so the camera never gets stuck waiting. Set it to `0` to turn that off.
+- If the Pi can't join the house Wi-Fi (wrong password, out of range), it goes straight back to Camera Wi-Fi and shows why.
+- **Getting to the Pi from the Mac in Camera Wi-Fi mode:** join the Mac to **RootedWarriorsCam**, then `ssh <user>@10.42.0.1`, and the station is at `http://10.42.0.1:8080`.
+
+### ⏰ The Pi's clock
+
+The Pi 4 has no clock battery. It normally gets the time from the internet, but in Camera Wi-Fi mode it has no internet, and it gives its time to the camera. After a reboot its clock can be off until it gets internet again. Two fixes:
+- **Easy:** after the Pi starts up, tap 🌐 House Wi-Fi for a minute, then switch back.
+- **Better:** wire the team's **second DS3231 clock module** (it came as a 2-pack) to the Pi: VCC → pin 1 (3.3V), SDA → pin 3, SCL → pin 5, GND → pin 6. Add `dtoverlay=i2c-rtc,ds3231` to `/boot/firmware/config.txt` and reboot. Check with `sudo hwclock -r`. The Pi then keeps time through reboots, like the camera does.
+
+---
+
+## Setup 2: two radios (USB Wi-Fi adapter)
+
+The adapter must support **AP mode** with a driver built into Linux. MediaTek "mt76" adapters work out of the box, e.g. **Alfa AWUS036ACHM** (MT7610U, long range) or **AWUS036ACM** (MT7612U). Check after plugging it in:
 
 ```bash
 iw list | grep -A8 "Supported interface modes"   # look for "* AP"
 nmcli device                                     # should list wlan0 and wlan1
 ```
 
-The commands below are for **option A**. For option B, use `wlan0` wherever it says `wlan1`, and plug in Ethernet (it connects by itself).
+Then follow setup 1, steps 1–2, but put the camera Wi-Fi on the adapter: use `ifname wlan1` in the `nmcli connection add` command. Both connections stay up all the time. In `settings.json`, set `"wifi_switch": false` (no switch needed).
 
-## 1. House Wi-Fi on the built-in radio (wlan0)
+If you set up the switch first and add the adapter later: `sudo nmcli connection modify camera-wifi connection.interface-name wlan1`, then `"wifi_switch": false`.
 
-If you typed the house Wi-Fi into Raspberry Pi Imager, it's already there, called `preconfigured`. Pin it to the built-in radio so it never grabs the USB adapter:
+## Setup 3: Ethernet
 
-```bash
-nmcli connection show                                   # find the house Wi-Fi connection name
-sudo nmcli connection modify preconfigured connection.interface-name wlan0
-```
+Plug in the network cable (it connects by itself), and do setup 1, step 2 (camera Wi-Fi on `wlan0`). `"wifi_switch": false`.
 
-(Not set up yet? `sudo nmcli device wifi connect "HOUSE-WIFI-NAME" password "HOUSE-PASSWORD" ifname wlan0`)
+---
 
-## 2. Camera Wi-Fi on the USB adapter (wlan1)
-
-Pick the camera Wi-Fi password: it's the `WIFI_PASSWORD` in `camera/camera-v3/secrets.h` (Claude generated one; or make your own and change it in both places).
+## Check it
 
 ```bash
-sudo nmcli connection add type wifi ifname wlan1 con-name camera-wifi autoconnect yes \
-  ssid RootedWarriorsCam \
-  802-11-wireless.mode ap 802-11-wireless.band bg 802-11-wireless.channel 6 \
-  ipv4.method shared ipv4.addresses 10.42.0.1/24 ipv6.method disabled \
-  wifi-sec.key-mgmt wpa-psk wifi-sec.proto rsn wifi-sec.pairwise ccmp wifi-sec.group ccmp \
-  wifi-sec.psk "THE-CAMERA-WIFI-PASSWORD"
-sudo nmcli connection up camera-wifi
+nmcli device                 # which connection each radio is using
+ip -4 addr show wlan0        # in Camera Wi-Fi mode: inet 10.42.0.1/24
 ```
 
-What that does:
-- `mode ap`: the Pi *makes* a network instead of joining one.
-- `band bg`, `channel 6`: 2.4 GHz, which is the only band the camera's XIAO can use, and it reaches farther than 5 GHz.
-- `ipv4.method shared`: the Pi hands out addresses (DHCP) to the camera (10.42.0.x) and is the router for it.
-
-It comes back by itself after every reboot (`autoconnect yes`).
-
-## 3. Check it
-
-```bash
-nmcli device                 # wlan0 connected to the house, wlan1 connected to camera-wifi
-ip -4 addr show wlan1        # inet 10.42.0.1/24
-```
-
-- On a phone: the network **RootedWarriorsCam** should appear. Join it with the password and open `http://10.42.0.1:8080` to see the Camera Station.
-- Power the camera (v3 code): within a few seconds the station's home page shows **Camera: Connected**, and `http://rooted-camera.local` works from the Pi.
+- On a phone: the network **RootedWarriorsCam** should appear. Join it and open `http://10.42.0.1:8080` to see the Camera Station.
+- Power the camera (v3 code): within a few seconds the station's Home page shows **Camera: Connected**.
 
 ## Range tips
 
 - Attach the camera's little antenna (it's much weaker without it).
-- Put the Pi's USB adapter antenna up high, in a window facing the camera, on a USB extension cable.
-- Trees and walls eat 2.4 GHz signal. Walk the camera out step by step and watch the station's "Camera: Connected" to find the edge of range. That's a good experiment to write down in the notebook!
-- Out of range is fine: the camera keeps saving to its card and sends everything when it's back in range.
+- Trees and walls eat 2.4 GHz signal. Walk the camera out step by step and watch "Camera: Connected" to find the edge of range. That's a good experiment to write down in the notebook!
+- Out of range is fine: the camera keeps saving and sends everything when it's back.
 
 ## Undo
 
 ```bash
 sudo nmcli connection delete camera-wifi
+sudo rm -f /etc/polkit-1/rules.d/50-camera-station.rules
 ```

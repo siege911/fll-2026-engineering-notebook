@@ -4,6 +4,13 @@ The Innovation Project wildlife camera: what we bought, how it's wired, and ever
 
 ---
 
+## 2026-10-26 — Pi: one Wi-Fi radio, switch on the touchscreen
+**Asked by:** Coach CJ · **Built by:** Claude · **Code:** `../pi/station/network.py`, guide `../pi/NETWORKING.md` (setup 1)
+- Home page switch **📡 Camera Wi-Fi | 🌐 House Wi-Fi** (NetworkManager `nmcli connection up …`). House Wi-Fi mode returns to Camera Wi-Fi after 15 min by itself. No USB adapter needed.
+- Checked: on a Mac in practice mode (pretend switch): switching, the "Switching…" message, the return time, and going back by itself after 1 minute (test setting) all worked. **Not tried with real NetworkManager on the Pi yet.**
+
+---
+
 ## 2026-10-25 (later) — Camera v3 + Pi Camera Station
 **Asked by:** Coach CJ · **Built by:** Claude · **Code:** `../camera/camera-v3/`, `../pi/` (start with `../pi/README.md`)
 - **Camera v3:** joins the Pi's camera Wi-Fi (`RootedWarriorsCam`), sends each saved photo to the Pi right away (up to 5 at a time, every half second), deletes it after the Pi has it; out of range, photos wait on the card. Time from the Pi every hour; saved in the clock module (D4/D5) if one is wired. No time yet → `no-time-…` names, timed by the Pi when they arrive. Live page also shows "Sending to the Pi · N waiting · N sent". Compiles (36% of flash). **Not tested on the real camera.**

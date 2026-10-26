@@ -4,6 +4,15 @@ Newest at top. Capture-field and design decisions come from the students; archit
 
 ---
 
+## 2026-10-26 — Pi networking: one radio with a Camera Wi-Fi / House Wi-Fi switch (CJ)
+
+**CJ:** "Can we have a button on the screen that switches the networking from broadcast Wi-Fi to connect to Wi-Fi instead of buying a second adapter?"
+**Done:** the touchscreen Home page has **📡 Camera Wi-Fi | 🌐 House Wi-Fi**. Camera Wi-Fi = the Pi's hotspot (camera sends photos); House Wi-Fi = internet (publishing). The Pi starts in Camera Wi-Fi mode and goes back to it by itself after 15 minutes in House Wi-Fi mode (`auto_return_minutes`), or right away if it can't join the house Wi-Fi.
+**Why it's OK:** camera v3 keeps photos on its card while it can't reach the Pi and sends them when Camera Wi-Fi is back. **Trade-offs:** no camera photos, Live view or SSH-over-house-Wi-Fi while switched; the Pi 4 has no clock battery, so after a reboot in Camera Wi-Fi mode its time can be off. Fix: a minute on House Wi-Fi, or wire the second DS3231 module to the Pi (`dtoverlay=i2c-rtc,ds3231`).
+**Later upgrade:** a USB Wi-Fi adapter (setup 2) does both at once; then `wifi_switch: false`.
+
+---
+
 ## 2026-10-25 (later) — Pi Camera Station (CJ): Pi runs the camera Wi-Fi, camera pushes, Pi tags + groups visits, students review and publish by hand
 
 **CJ's asks:** the Pi acts as a gateway/router with its own Wi-Fi for the camera (works out of range of house Wi-Fi) and joins the house Wi-Fi for the internet; photos move camera → Pi as soon as the camera is in range; the Pi tags them as they come in and works out whether photos in a row are the same animal (no double counting); **students review, and publishing is never automatic**; a touchscreen interface (7" Pi Touchscreen) in the Engineering Notebook style that walks them through it. Claude builds a basic level; the students take over the page and the details.

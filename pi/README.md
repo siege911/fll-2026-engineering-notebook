@@ -12,6 +12,8 @@ The Pi is the base station for our wildlife camera. It runs its own Wi-Fi for th
 3. **We review.** Photos of the same species close together in time are grouped into one **visit**, so one deer standing there for 40 photos counts as one deer, not 40. On the touchscreen we check each visit: right animal? how many? same animal as the visit before? Then **✓ Looks right** or **✗ Hide it**, and tap who checked it.
 4. **We publish.** Nothing goes online by itself. On the Publish page we pick which approved visits go on the website. (The website part isn't connected yet; picked visits wait in line.)
 
+The Pi has one Wi-Fi radio, so the Home page has a switch: **📡 Camera Wi-Fi** (the camera can send photos) or **🌐 House Wi-Fi** (internet, for publishing). In House Wi-Fi mode the camera keeps its photos on its card until Camera Wi-Fi is back, and the Pi switches back by itself after 15 minutes.
+
 There's also a **Test** page for our experiment: did "picture changed" or the motion sensor catch more animals, and which one had more false alarms?
 
 ## Folder map
@@ -22,6 +24,8 @@ There's also a **Test** page for our experiment: did "picture changed" or the mo
 | [NETWORKING.md](NETWORKING.md) | The camera Wi-Fi + house Wi-Fi setup |
 | `station/server.py` | The Camera Station: receives photos, runs the tagging helper, answers the page |
 | `station/ai.py` | Talking to SpeciesNet, blurring people, and the made-up answers for practice mode |
+| `station/network.py` | The **📡 Camera Wi-Fi / 🌐 House Wi-Fi** switch (one Wi-Fi radio, two jobs) |
+| `station/50-camera-station.rules` | Lets the station flip the Wi-Fi switch |
 | `station/store.py` | The station's memory (photos, visits) and **how visits are grouped and counted** |
 | `station/public/index.html` | **The touchscreen page.** Change colors, words, buttons, pages here |
 | `station/camera-station.service` | Starts the station when the Pi boots |
@@ -53,5 +57,5 @@ Open `http://localhost:8080`. Practice mode makes up the AI answers, so you can 
 | Camera v3 (push to Pi, time from Pi + clock module) | ✅ compiles · not tested on the real camera |
 | Station: receive, tag, blur, visits, review, publish queue, experiment | ✅ tested on a Mac in practice mode (made-up AI answers) |
 | SpeciesNet on the Pi | ⬜ not installed or tested yet (INSTALL.md step 4) |
-| Networking (camera Wi-Fi) | ⬜ needs a USB Wi-Fi adapter (or Ethernet), then NETWORKING.md |
+| Networking: one radio + 📡/🌐 switch | ✅ switch tested on a Mac (pretend mode, incl. going back by itself) · ⬜ NETWORKING.md on the real Pi |
 | Publishing to the website | ⬜ waits for the DigitalOcean site |

@@ -1,0 +1,8 @@
+// Lets the Camera Station (running as PIUSER) switch Wi-Fi with nmcli,
+// for the touchscreen's Camera Wi-Fi / House Wi-Fi switch.
+// Install: see pi/NETWORKING.md, "One radio with a switch", step 3.
+polkit.addRule(function(action, subject) {
+    if (action.id.indexOf("org.freedesktop.NetworkManager.") == 0 && subject.user == "PIUSER") {
+        return polkit.Result.YES;
+    }
+});

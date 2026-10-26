@@ -28,6 +28,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 import ai
+from network import Network
 from store import Store, now
 
 HERE = Path(__file__).resolve().parent
@@ -44,7 +45,12 @@ DEFAULTS = {
     "visit_gap_minutes": 10,
     "keep_empty_days": 7,
     "port": 8080,
-    "speciesnet_python": "",  # e.g. /home/pi/speciesnet-env/bin/python (blank = the Python running this)
+    "speciesnet_python": "",
+    # One Wi-Fi radio? Show the Camera Wi-Fi / House Wi-Fi switch (see pi/NETWORKING.md).
+    "wifi_switch": False,
+    "camera_connection": "camera-wifi",
+    "house_connection": "preconfigured",
+    "auto_return_minutes": 15,  # e.g. /home/pi/speciesnet-env/bin/python (blank = the Python running this)
 }
 
 
@@ -59,6 +65,7 @@ class Station:
         self.tagging_now = 0
         self.last_error = ""
         self._internet = (0, False)
+        self.network = Network(settings) if settings["wifi_switch"] else None
 
     # ---------- photos coming in ----------
     def receive(self, name, body, camera_ip):
@@ -156,6 +163,7 @@ class Station:
             "fake_ai": self.fake_ai,
             "error": self.last_error,
             "team": self.settings["team"],
+            "network": self.network.status() if self.network else None,
         }
 
     def visits(self, status):
@@ -257,6 +265,12 @@ def make_handler(station):
                     return self.reply(200 if keep else 400, {"kept": keep})
                 station.store.update_visit(visit_id, data)
                 return self.reply(200, station.visit(visit_id) or {})
+            if url.path == "/api/network":
+                if not station.network:
+                    return self.reply(400, {"error": "wifi_switch is off in settings.json"})
+                started = station.network.switch(data.get("mode"))
+                station._internet = (0, False)  # check the internet again after switching
+                return self.reply(200 if started else 409, station.network.status())
             if url.path == "/api/publish":
                 # Approved visits wait in the "queued" list until the website uploader exists.
                 ids = [int(i) for i in data.get("ids", [])]
