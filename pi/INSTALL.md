@@ -15,9 +15,9 @@ On the Pi (Raspberry Pi menu → Preferences → Control Centre / Raspberry Pi C
 - **Display → Screen blanking: off** (so the screen stays on).
 - **Display → On-screen keyboard: on**, for typing an animal name with "Other…".
 
-## 2. Networking
+## 2. Networking: do this LAST
 
-Follow **[NETWORKING.md](NETWORKING.md)**, setup 1 (one radio with a switch: no extra parts).
+Leave the Pi on the house Wi-Fi for now. Steps 3–4 download a lot (our code, PyTorch, the AI models), and once the camera Wi-Fi is set up the Pi only has internet in 🌐 House Wi-Fi mode. Come back here after step 5 and follow **[NETWORKING.md](NETWORKING.md)**, setup 1 (one radio with a switch: no extra parts).
 
 ## 3. Get our code
 
@@ -65,6 +65,8 @@ cat ~/ai-test/out.json
 ```
 
 Expect several seconds or more per photo on the Pi's CPU. That's fine: the station tags in batches as photos arrive.
+
+**Do this warm-up before the camera Wi-Fi is set up.** Tagging must work without internet in 📡 Camera Wi-Fi mode, so the models need to be downloaded already. To check: after networking is done (Camera Wi-Fi mode, no internet), run the warm-up command again. If it still works, tagging works offline. If it tries to download and fails, tell Coach CJ.
 
 ## 5. Try the station by hand
 
