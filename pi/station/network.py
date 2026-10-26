@@ -4,8 +4,9 @@
   internet = the Pi joins the house Wi-Fi; we can publish, get updates, set the clock
 
 Only one at a time. In internet mode the camera keeps saving photos on its
-card and sends them when camera mode comes back. So we never forget, the
-station goes back to camera mode by itself after `auto_return_minutes`.
+card and sends them when camera mode comes back. The Pi stays in whichever
+mode was picked last. (Optional: `auto_return_minutes` in settings.json makes
+internet mode go back to camera mode by itself; 0 = off, the default.)
 
 Uses NetworkManager's `nmcli` (see pi/NETWORKING.md, "One radio" setup).
 On a computer without nmcli (practice on a laptop) it only pretends.
@@ -22,7 +23,7 @@ class Network:
     def __init__(self, settings):
         self.camera_connection = settings.get("camera_connection", "camera-wifi")
         self.house_connection = settings.get("house_connection", "preconfigured")
-        self.auto_return_minutes = settings.get("auto_return_minutes", 15)
+        self.auto_return_minutes = settings.get("auto_return_minutes", 0)
         self.pretend = shutil.which("nmcli") is None
         self.pretend_mode = "camera"
         self.switching = None        # "camera" or "internet" while a switch is happening

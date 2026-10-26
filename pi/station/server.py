@@ -45,12 +45,12 @@ DEFAULTS = {
     "visit_gap_minutes": 10,
     "keep_empty_days": 7,
     "port": 8080,
-    "speciesnet_python": "",
+    "speciesnet_python": "",  # e.g. /home/pi/speciesnet-env/bin/python (blank = the Python running this)
     # One Wi-Fi radio? Show the Camera Wi-Fi / House Wi-Fi switch (see pi/NETWORKING.md).
     "wifi_switch": False,
     "camera_connection": "camera-wifi",
     "house_connection": "preconfigured",
-    "auto_return_minutes": 15,  # e.g. /home/pi/speciesnet-env/bin/python (blank = the Python running this)
+    "auto_return_minutes": 0,  # 0 = stay in House Wi-Fi mode until someone taps Camera Wi-Fi
 }
 
 
@@ -272,11 +272,16 @@ def make_handler(station):
                 station._internet = (0, False)  # check the internet again after switching
                 return self.reply(200 if started else 409, station.network.status())
             if url.path == "/api/publish":
-                # Approved visits wait in the "queued" list until the website uploader exists.
+                # The picked visits wait in the "queued" list, and the Pi switches to
+                # House Wi-Fi to send them. (The website uploader isn't built yet.)
                 ids = [int(i) for i in data.get("ids", [])]
                 for visit_id in ids:
                     station.store.update_visit(visit_id, {"status": "queued"})
-                return self.reply(200, {"queued": len(ids)})
+                switching = False
+                if ids and station.network and station.network.mode() != "internet":
+                    switching = station.network.switch("internet")
+                    station._internet = (0, False)
+                return self.reply(200, {"queued": len(ids), "switching_to_internet": switching})
             self.reply(404, {"error": "not found"})
 
     return Handler

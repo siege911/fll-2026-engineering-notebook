@@ -297,7 +297,7 @@ async function publish() {
       <span class="muted">${day(v.start_at)} ${clock(v.start_at)}${v.reviewed_by ? ' · checked by ' + esc(v.reviewed_by) : ''}</span></div>
       ${tickable ? '<div class="tick">✓</div>' : ''}</div>`;
   main.innerHTML = `<h1>Publish to our website</h1>
-    <div class="banner">🚧 The website isn't connected yet (Coach CJ is setting it up). Publishing puts visits in line, and they go up when it's ready.</div>
+    <div class="banner">🚧 The website isn't connected yet (Coach CJ is setting it up). Publishing puts visits in line, and they go up when it's ready.${status.network ? ' Publishing switches the Pi to 🌐 House Wi-Fi.' : ''}</div>
     ${ready.length ? `<div class="list">${ready.map(v => item(v, true)).join('')}</div>
       <div class="row actions"><button class="big go" onclick="sendPublish()">🌐 Publish the ✓ ones</button></div>`
       : '<div class="card">Nothing ready yet. Approve visits on the Review page first.</div>'}
@@ -311,9 +311,12 @@ function tick(el, id) {
 
 async function sendPublish() {
   if (!picked.size) return;
-  await api('/api/publish', {ids: [...picked]});
+  const r = await api('/api/publish', {ids: [...picked]});
   await refreshStatus();
-  publish();
+  await publish();
+  if (r.switching_to_internet) {
+    main.insertAdjacentHTML('afterbegin', `<div class="banner">🌐 Switching to House Wi-Fi to publish. The camera can't send photos until you tap 📡 Camera Wi-Fi on the Home page.</div>`);
+  }
 }
 
 // ---------- Experiment: picture changed vs. motion sensor ----------

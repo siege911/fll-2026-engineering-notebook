@@ -6,7 +6,7 @@ The Innovation Project wildlife camera: what we bought, how it's wired, and ever
 
 ## 2026-10-26 — Pi: one Wi-Fi radio, switch on the touchscreen
 **Asked by:** Coach CJ · **Built by:** Claude · **Code:** `../pi/station/network.py`, guide `../pi/NETWORKING.md` (setup 1)
-- Home page switch **📡 Camera Wi-Fi | 🌐 House Wi-Fi** (NetworkManager `nmcli connection up …`). House Wi-Fi mode returns to Camera Wi-Fi after 15 min by itself. No USB adapter needed.
+- Home page switch **📡 Camera Wi-Fi | 🌐 House Wi-Fi** (NetworkManager `nmcli connection up …`). No USB adapter needed. **Changed later on Oct 26 (CJ):** no automatic return; it stays in the mode picked, and Publish switches to House Wi-Fi.
 - Checked: on a Mac in practice mode (pretend switch): switching, the "Switching…" message, the return time, and going back by itself after 1 minute (test setting) all worked. **Not tried with real NetworkManager on the Pi yet.**
 
 ---

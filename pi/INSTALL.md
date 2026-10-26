@@ -42,7 +42,7 @@ In `settings.json`, set **`camera_key`** to the same `CAMERA_KEY` as in the came
 | `port` | the station's web address port | `8080` |
 | `wifi_switch` | show the 📡 Camera Wi-Fi / 🌐 House Wi-Fi switch (one radio) | `true` |
 | `camera_connection`, `house_connection` | NetworkManager names of the two Wi-Fi connections | `camera-wifi`, `preconfigured` |
-| `auto_return_minutes` | House Wi-Fi mode goes back to Camera Wi-Fi after this long (0 = never) | `15` |
+| `auto_return_minutes` | House Wi-Fi mode goes back to Camera Wi-Fi after this long (0 = never, stays until someone taps 📡) | `0` |
 
 ## 4. SpeciesNet (the AI)
 

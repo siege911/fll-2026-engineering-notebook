@@ -14,7 +14,7 @@ The Pi has two network jobs:
 
 | Setup | Parts | Camera can send | Internet | Notes |
 |---|---|---|---|---|
-| **1. One radio with a switch** (start here) | none | in **Camera Wi-Fi** mode | in **House Wi-Fi** mode | A button on the touchscreen flips between the two. Goes back to Camera Wi-Fi by itself after 15 min |
+| **1. One radio with a switch** (start here) | none | in **Camera Wi-Fi** mode | in **House Wi-Fi** mode | A button on the touchscreen flips between the two. It stays in the mode you picked. Publishing switches to House Wi-Fi by itself |
 | 2. Two radios | USB Wi-Fi adapter with an antenna (~$30) | always | always | Upgrade later if the switching gets annoying. Better camera range too |
 | 3. Ethernet | a network cable to the router | always | always | Only if the Pi sits near the router |
 
@@ -85,7 +85,7 @@ In `pi/settings.json`:
 "wifi_switch": true,
 "camera_connection": "camera-wifi",
 "house_connection": "preconfigured",
-"auto_return_minutes": 15
+"auto_return_minutes": 0
 ```
 Restart the station (`sudo systemctl restart camera-station`). The Home page now shows **📡 Camera Wi-Fi | 🌐 House Wi-Fi**.
 
@@ -97,7 +97,8 @@ Restart the station (`sudo systemctl restart camera-station`). The Home page now
 | 🌐 **House Wi-Fi** | internet, publishing, updates, SSH from the Mac | the camera can't send (photos wait on its card), no Live view |
 
 - Switching takes 5–20 seconds.
-- House Wi-Fi mode goes back to Camera Wi-Fi by itself after `auto_return_minutes` (15), so the camera never gets stuck waiting. Set it to `0` to turn that off.
+- **It stays in the mode you picked.** After publishing or updates, remember to tap **📡 Camera Wi-Fi** so the camera can send again (its photos wait on its card until then). (Want it to go back by itself? Set `auto_return_minutes` to e.g. `15`. It's `0`, off, to start.)
+- **Publish** on the Publish page switches to 🌐 House Wi-Fi by itself, so the photos can go to the website.
 - If the Pi can't join the house Wi-Fi (wrong password, out of range), it goes straight back to Camera Wi-Fi and shows why.
 - **Getting to the Pi from the Mac in Camera Wi-Fi mode:** join the Mac to **RootedWarriorsCam**, then `ssh <user>@10.42.0.1`, and the station is at `http://10.42.0.1:8080`.
 

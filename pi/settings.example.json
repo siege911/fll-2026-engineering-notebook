@@ -18,5 +18,5 @@
   "wifi_switch": true,
   "camera_connection": "camera-wifi",
   "house_connection": "preconfigured",
-  "auto_return_minutes": 15
+  "auto_return_minutes": 0
 }

@@ -4,6 +4,14 @@ Newest at top. Capture-field and design decisions come from the students; archit
 
 ---
 
+## 2026-10-26 (later) — Wi-Fi switch stays where you put it; Publish switches to House Wi-Fi (CJ)
+
+**CJ:** "The Publish should automatically try to connect to House Wi-Fi." And: remove the 15-minute return to Camera Wi-Fi: "If you select Camera Wi-Fi, it stays on that mode. If you click House Wi-Fi it stays on that mode."
+**Done:** `auto_return_minutes` is 0 (off) by default; the setting is kept in case the team wants it later. Tapping **Publish** queues the picked visits and switches the Pi to 🌐 House Wi-Fi; it stays there until someone taps 📡 Camera Wi-Fi. If the Pi can't join the house Wi-Fi, it still goes back to Camera Wi-Fi (the radio would otherwise be on nothing) and shows why.
+**Confirmed with CJ (how it works):** the camera always pushes to the Pi (never the other way); tagging runs in both modes; in House Wi-Fi mode the Pi sends the students' picked, processed photos to DigitalOcean (uploader not built yet: picked visits wait in line).
+
+---
+
 ## 2026-10-26 — Pi networking: one radio with a Camera Wi-Fi / House Wi-Fi switch (CJ)
 
 **CJ:** "Can we have a button on the screen that switches the networking from broadcast Wi-Fi to connect to Wi-Fi instead of buying a second adapter?"
