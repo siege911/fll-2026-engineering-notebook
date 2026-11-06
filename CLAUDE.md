@@ -25,7 +25,10 @@ The app they're building turns their daily Engineering Notebook log into a **vis
 | `updates/PRACTICE-LOG.md` | **One entry per practice.** The raw student update plus a structured summary. This is the future Engineering Notebook log. See "Practice updates" below. |
 | `updates/ROBOT-DESIGN.md`, `updates/ROBOT-GAME.md`, `updates/INNOVATION-PROJECT.md`, `updates/CORE-VALUES.md` | Running, dated notes per component: the facts behind what's shown on each app page. |
 | `updates/CAMERA-BUILD.md` | Innovation Project camera: parts bought, wiring tables, build and test steps. |
-| `camera/` | Arduino code for the wildlife camera (XIAO ESP32-S3 Sense), one folder per version, e.g. `camera/camera-v1/`. Separate from the notebook app. |
+| `code/` | **The robot's Pybricks programs**, one folder per practice named `M-D` (e.g. `code/11-1/`) holding the Pybricks backup zips / `.py` files. The Coding page reads it directly (`app/robotcode.mjs`); new folders show up by themselves. Written history: `updates/ROBOT-CODE.md` (update it when a new folder is added). Don't rename files: `mission2_3.py` → M02 + M03. |
+| `updates/ROBOT-CODE.md` | History of the robot programs: which program changed at which practice, and open questions. |
+| `camera/` | Arduino code for the wildlife camera (XIAO ESP32-S3 Sense), one folder per version, e.g. `camera/camera-v1/`. Install steps: `camera/INSTALL.md`. Separate from the notebook app. |
+| `droplet/` | The DigitalOcean website (camera website + later this app). **Placeholder:** only the plan, `droplet/INSTALL.md`. |
 | `pi/` | Raspberry Pi 4 **Camera Station** for the wildlife camera: camera Wi-Fi, AI tagging, visits, touchscreen review/publish page (`pi/station/public/index.html`, the students' to edit). Start at `pi/README.md`. |
 | `updates/APP-CHANGES.md` | Changelog of the app itself: date, file, what changed, why, who asked. |
 | `app/` | **The live app (v5, since Sept 28).** `app/public/index.html` is the page, `app/server.mjs` is the dev server, and `app/db/` holds the database (schema, baseline seed, dated update files). How-to: `app/README.md`. |
@@ -89,6 +92,14 @@ The markdown files are the permanent record, in the students' words. The databas
 Do steps 1–6 even when the update is tiny ("we tested mission 3 and it worked twice"). Small facts add up to the judges' "iterate" evidence.
 
 Never talk to the students about SQL, the database, or the server (hard rule 1). To them it's just "I saved it to the app."
+
+### Keep "Innovation Project Details" up to date (CJ, Nov 2)
+
+The Innovation Project page ends with **Innovation Project Details**: parts list (`ip_parts`), camera wiring (`ip_wiring`, which also draws the diagram), and the code + install guides for the three computers (`ip_platforms`: camera/ESP32, Pi, DigitalOcean). The page opens the real files from `camera/`, `pi/`, `droplet/`, so edits to an existing file show up by themselves. **In the same session as any major change** to the code, the plan, or the install steps, also:
+- update the install guide (`camera/INSTALL.md`, `pi/INSTALL.md` / `pi/NETWORKING.md`, `droplet/INSTALL.md`);
+- write an update file for anything the rows hold: a new or renamed file or version (e.g. camera v4 → `files`), a status/version/"last big change" (`updated`) change, parts bought or added, wiring changes. Placeholders (files that don't exist yet) turn into real code by themselves once the file is written at that path;
+- keep `updates/CAMERA-BUILD.md` in step (it's the markdown record for parts and wiring).
+The file viewer only shows paths listed in `ip_platforms` and never `secrets.h` / `settings.json`; never list a file with real passwords or keys.
 
 ### Handling messy updates
 

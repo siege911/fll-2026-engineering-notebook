@@ -8,6 +8,76 @@ One entry per practice, **newest at top**. This is the raw material for the team
 
 ---
 
+## 2026-11-02 (Monday) — Attachment photos sent (not a practice)
+**Told by:** [who?]
+
+**Raw update (their words):**
+> these are the photos of the attachments with the missions. put these in the app
+
+**What happened**
+- Robot Design: six photos of attachments on the mat with their missions: M15, M12, M14, M08 + M09 (one attachment does both), M02 + M03 (combined attachment), M04. Which mission is in each photo was answered by the student. Details: `ROBOT-DESIGN.md` 2026-11-02.
+
+**App changes made:** `app/db/updates/2026-11-02-attachment-photos.sql` (new: each attachment card shows its photo); photos in `app/images/11-2-mission-*.jpg`.
+**Rubric rows touched:** Robot Design COMMUNICATE (showing the attachments), CREATE.
+
+---
+
+## 2026-11-01 (Sunday) — M04 + M05 finished (4/5), M08 + M09 almost done, first M11 program, camera soldering
+**Who was there:** Adeline, Fynn, Nolan, Weston (named in the update) [unclear: were Thea and Isla there?]
+**Told by:** Adeline
+
+**Raw update (their words):**
+> This is Adeline updating for today. Weston and Nolan worked on mission 6, 7, and 11. they only programed 11 today. Adeline and Fynn worked on mission 8 and 9. Mission 8 and 9 are mostly finished besides the seed. Adeline worked on mission 4 and 5 and finished it, and it is pretty consistent - 4/5. As of this point we have an attachment for all the missions, the only thing left to program is mission 6 and 7. Nolan and Weston did soldering for innovation.
+
+**What happened**
+- Robot Design / Robot Game:
+  - **Weston and Nolan worked on M06 Leafcutter Frenzy, M07 Humongous Fungus and M11 Window to the Past.** They **programmed M11** (its first program). M06 and M07 have attachments (Nolan built them Oct 26) but **no programs yet**.
+  - **Adeline and Fynn worked on M08 Tangled and M09 Research Platform.** Both are "mostly finished besides the seed": the **M09 seed** (knock the seed off the big tree, 10 pts) is the part still left. M08 → **Working**. M09 stays **Prototyping** until the seed works. [unclear: who programmed M08? The app has no M08 program yet, but the team says only M06 and M07 are left to program.]
+  - **Adeline finished M04 Lucky Leaves and M05 Reaching Roots: 4 out of 5 runs worked (80%).** Both → **Working**.
+  - **Team milestone:** "we have an attachment for all the missions." **Only M06 and M07 are left to program.** [unclear: the app has no attachment or program for M10 Fragile Microhabitats, and no M05 attachment. Done with another mission's attachment, or not tracked yet?]
+- Innovation Project: **Nolan and Weston did soldering for the camera.** [unclear: which parts got soldered (motion sensor, clock, switch)? Did they test it after?]
+- Core Values: two pairs working together all practice (Weston + Nolan, Adeline + Fynn): Teamwork.
+
+**Wins / celebrate:** Every mission has an attachment! Only two programs to go. M04 + M05 hit 4/5, the first counted test since Oct 2. And the camera got real solder joints.
+**Problems / open questions:**
+- The M09 seed still doesn't work.
+- M06 and M07 still need programs.
+- Who programmed M08, and where are M10 and M05's attachments? (see unclear above)
+- What went wrong in the 1 miss out of 5 on M04/M05?
+**Next practice:** Program M06 and M07. Fix the M09 seed. Test M08, M09 and M11 and count tries and successes. Test the soldered camera (test order in `CAMERA-BUILD.md`).
+**App changes made:** data only — `app/db/updates/2026-11-01-m04-m05-m11-solder.sql` (also adds the Oct 26 robot facts below to the mission table).
+**Photos (added 2026-11-02):** two soldering photos, sent with "nov 1 we did sodering so put these pictures in innovation progect for the app" [who sent them?]. Saved as `app/images/11-1-soldering-1.jpg` and `11-1-soldering-2.jpg`; shown on the Innovation Project page (Project Photos) via `app/db/updates/2026-11-02-ip-solder-photos.sql`.
+**Rubric rows touched:** Robot Design CREATE (M11 program, M04/M05 finished), ITERATE (4/5 test), Robot Game mission strategy (only M06/M07 left); Innovation Project CREATE (soldering the camera); "all team members" contribution rows.
+
+---
+
+## 2026-10-26 (Monday) — Typed into the app: M09 programmed, M04 + M05 programmed, attachments for M06, M07, M11
+**Who was there:** Weston, Fynn, Thea, Isla, Nolan (named in the app entries) [unclear: was Adeline there?]
+**Told by:** typed straight into the app's Daily Log (copied here 2026-11-01) [who typed? not recorded]
+
+**Raw update (their words, one app entry each):**
+> Weston programed Mission 9.
+> Fynn helped Weston with mission 9.
+> Thea worked on the app. She compared the rubric and made adjustments to the app.
+> Isla programmed missions 4 and 5.
+> Nolan built an attachment for 6,7, and 11.
+
+**What happened**
+- Robot Design / Robot Game:
+  - **Weston programmed M09 Research Platform**, with **Fynn helping**.
+  - **Isla programmed M04 Lucky Leaves and M05 Reaching Roots.**
+  - **Nolan built attachments for M06 Leafcutter Frenzy, M07 Humongous Fungus and M11 Window to the Past.** First attachments for M06 and M07 (both go from "Not started" to "Prototyping"). [unclear: M11 already had Weston's Oct 12 attachment: is Nolan's a rebuild or a new one?]
+- Core Values: **Fynn helped Weston** with M09 (Teamwork).
+- App: **Thea compared the app to the rubric and made changes** (Oct 26: Communication section, Rubric Map counts, Gantt filled in; see `APP-CHANGES.md`).
+
+**Wins / celebrate:** Two missions (M06, M07) got their first attachments, and two more programs got written.
+**Problems / open questions:** No tries / successes counted.
+**Next practice:** (done Nov 1) test M04/M05.
+**App changes made:** entries already in the app (typed there). Mission table brought up to date Nov 1 in `app/db/updates/2026-11-01-m04-m05-m11-solder.sql`.
+**Rubric rows touched:** Robot Design CREATE (M06/M07 attachments, M04/M05/M09 programs); Core Values Teamwork (Fynn helped Weston).
+
+---
+
 ## 2026-10-23 (Friday) — Camera wired; M13 programmed; first M09 attachment + program
 **Who was there:** Thea, Nolan, Isla, Weston (Adeline and Fynn were not there)
 **Told by:** Thea

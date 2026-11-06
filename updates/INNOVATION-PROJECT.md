@@ -8,6 +8,38 @@ Backfilled 2026-09-06 from `../DECISIONS.md` and `../PROGRESS.md`.
 
 ---
 
+## 2026-11-02 — New "Innovation Project Details" section in the app (Coach CJ asked)
+**Asked by:** Coach CJ. At the bottom of the Innovation Project page: **Parts We Ordered** (every part, by box, with status), the **Camera Wiring Diagram** (drawn from the wiring plan, with a wire-by-wire table), and **The Code & How to Install It**: click the camera (ESP32), the Pi, or the website (DigitalOcean) to open its install guide and each code file. The website is a placeholder (not built yet). The page reads the real code files, so it always shows the newest version. Parts list: `CAMERA-BUILD.md` 2026-11-02.
+
+## 2026-11-01 — Camera soldering (Nolan + Weston)
+**Told by:** Adeline. Nolan and Weston did soldering for the camera. Details in `CAMERA-BUILD.md`.
+**Photos (sent 2026-11-02, [who sent them?]):** "nov 1 we did sodering so put these pictures in innovation progect for the app"
+- `app/images/11-1-soldering-1.jpg`: soldering wires on the small breadboard, with the helping-hands magnifier. [unclear: Nolan or Weston?]
+- `app/images/11-1-soldering-2.jpg`: one teammate solders while three teammates watch. [unclear: who is in it?]
+Shown in the app on the Innovation Project page, **Project Photos** card.
+
+## 2026-10-26 — New "Communication" section: who we shared our project with (Thea asked)
+**Asked by:** Thea ("in innovation can you make a new section that is called communication") → picked **"Sharing our project"**: every time we show our project to someone (family, school, experts): date, who we told, who shared, what they said, what we changed.
+
+| Date | Who we shared with | Who shared | What they said | What we changed |
+|---|---|---|---|---|
+| Oct 5 | Nate Reagan (Arizona Game and Fish) | Whole team | A camera with a flashing light has been done before. Don't live stream. Use AI to blur out people. Cameras spread over a wide area work best. | Oct 25: our Camera Station blurs people, and we review every photo before anything is published. |
+
+## 2026-10-26 — Project Plan (Gantt) filled in from these notes (Thea asked)
+**Asked by:** Thea ("for the gantt chart can you fill it out using all the information you have"). Built by Claude from the dated entries in this file and `CAMERA-BUILD.md`. Rows 1–7 are things that already happened (real dates). Rows 8–9 are **suggested** next steps with guessed dates: change them if they're wrong.
+
+| # | Task | Owner | Dates | Versions / steps |
+|---|---|---|---|---|
+| 1 | Choose the camera design | Thea | Oct 2 – Oct 3 | Oct 2 idea: AI forest wildlife camera · Oct 3 Option B, Raspberry Pi build · Oct 3 research (Gemini): low-power XIAO camera · Oct 3 XIAO camera + Pi 4 gets the pictures over Wi-Fi · Oct 3 two cameras (house + forest) + mode switch |
+| 2 | Expert interview: Nate Reagan, Game and Fish | Whole team | Oct 5 | Wrote 5 questions · met Nate, notes and answers saved |
+| 3 | Buy the camera parts | Whole team [who? not recorded] | Oct 3 – Oct 12 | Oct 3 parts list · Oct 12 parts bought (batteries delayed) |
+| 4 | Wire the camera box | Nolan (Thea helped) | Oct 12 – Oct 23 | Oct 12 wiring plan v1 · Oct 23 Nolan wired it, Thea helped |
+| 5 | Decide what to change from Nate's advice | Whole team | Oct 5 – Oct 26 (still open) | Oct 5 open: live stream, bridge or squirrel nest, how many cameras, warning light · Oct 25 people get blurred and the team reviews photos before publishing |
+| 6 | Program the camera | Thea | Oct 24 – Oct 26 (still going) | Oct 24 v1: picture every 2 s + motion sensor · Oct 25 v2: picture changed + motion sensor, saves to microSD · Oct 25 v3: sends photos to the Pi · not tested on the real camera yet |
+| 7 | Pi Camera Station (with Coach CJ) | Whole team | Oct 25 – Oct 26 | Oct 25 collector · Oct 25 tagger (SpeciesNet), blurs people · Oct 25 Camera Station: visits, review, publish by hand · Oct 26 Camera Wi-Fi / House Wi-Fi switch |
+| 8 | Test the camera + Pi for real (**suggested**) | Thea | Oct 27 – Nov 7 (guess) | First real test: camera v3 → Pi |
+| 9 | Practice our presentation (**suggested**) | Whole team | Nov 1 – Nov 14 (guess) | Regionals Nov 14 |
+
 ## 2026-10-23 — Camera wired (Nolan, Thea helped)
 **Told by:** Thea
 - **Nolan did the wiring for the camera; Thea helped.** Plan followed: `CAMERA-BUILD.md`. [unclear: how much got wired, and was anything tested?]

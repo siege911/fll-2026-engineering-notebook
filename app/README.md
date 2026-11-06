@@ -18,6 +18,7 @@ To open it from a tablet on the same Wi-Fi: `HOST=0.0.0.0 npm run dev`, then go 
 | `server.mjs` | Dev server: serves `public/`, JSON API at `/api/…`, applies new update files on start |
 | `public/index.html` | The app page (all 8 pages). Reads everything from `GET /api/data` |
 | `public/logo.png` | Sidebar logo (= `../mockups/rooted-warriors-logo-outlined.png`) |
+| `robotcode.mjs` | Reads the robot's Pybricks programs from `../code/` (one `M-D` folder per practice, zips or `.py`) for the Coding page's Our Robot Code card. Read-only, `.py` only, nothing stored in the database |
 | `images/` | The team's photos, served at `/images/<file>`. `profile <name>.jpg` = profile pictures (`team.photo`). `<M-D>-mission-<N>.jpg` = attachment photos (not shown yet) |
 | `db/schema.sql` | Baseline tables (Sept 28). SQLite that also runs on Cloudflare D1. **Don't edit.** Add columns/tables with `ALTER TABLE` / `CREATE TABLE` in an update file, so a rebuild replays them in order |
 | `db/seed.sql` | Baseline data: everything through the 2026-09-25 practice, taken from app v4. **Don't edit.** |
@@ -70,6 +71,8 @@ The API only accepts these (everything else goes through `db/updates/`):
 - **Fill in (since Oct 5):** Innovation Project Problem / Solution / How we got here (`settings.ip_summary`) and the current step (`settings.ip_progress`), via `PATCH /api/settings/<key>`. Their `note` becomes "typed in the app <time>"; check `SELECT * FROM settings WHERE note LIKE 'typed in the app%'` at session start and copy them into markdown.
 
 Rows added from the page get `source = 'app'`.
+
+**Read-only (since Nov 2):** `GET /api/file?path=<path from the notebook folder>` returns a code file or install guide, only if it's listed in `ip_platforms` (`docs` / `files`), and never `secrets.h` or `settings.json`. 404 = listed but not written yet (the page shows a 🚧 placeholder).
 
 ## Sample data
 

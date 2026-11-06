@@ -4,6 +4,43 @@ The Innovation Project wildlife camera: what we bought, how it's wired, and ever
 
 ---
 
+## 2026-11-02 — Parts list for the whole project (for the app's Innovation Project Details)
+**Asked by:** Coach CJ · **Put together by:** Claude, from the Oct 3 and Oct 12 entries and the Pi plan · **In the app:** Innovation Project → Innovation Project Details (`app/db/updates/2026-11-02-ip-details.sql`)
+
+| Box | Part | How many | Status | Note |
+|---|---|---|---|---|
+| Camera box | Seeed Studio XIAO ESP32-S3 Sense | — | Bought Oct 12 | |
+| Camera box | AM312 mini PIR motion sensor (HC-SR312) | 5-pack | Bought Oct 12 | |
+| Camera box | DS3231 AT24C32 I2C clock module (with jumper wires) | 2-pack | Bought Oct 12 | The second one can go on the Pi |
+| Camera box | 32 GB high-endurance microSD (FAT32) | — | Need | Oct 12 "still need" list |
+| Camera box | SPDT mini toggle switch | — | Need | Mode switch |
+| Camera box | CR2032 coin cell | — | Need | Only if the clock didn't come with one |
+| Camera box | Waterproof box + USB-C panel jack (or short USB-C extension) | — | Need | |
+| Camera box | Breadboard + jumper wires | — | Need | For testing |
+| Camera box | LED + 220 Ω resistor | 1 each | Optional | Status light |
+| Solar box | ZPSHYD 6V 3W solar panel (DC5521) | — | Bought Oct 12 | |
+| Solar box | Waveshare Solar Power Manager (D) | — | Bought Oct 12 | |
+| Solar box | 2600 mAh 3.7 V button-top 18650 | 2-pack | Shipping | Delayed (Oct 12) |
+| Pi Camera Station | Raspberry Pi 4 Model B, 8 GB | 1 | Have (Oct 3) | |
+| Pi Camera Station | microSD card for the Pi | 1 | Have (Oct 3) | A USB SSD lasts longer |
+| Pi Camera Station | 7" Raspberry Pi Touchscreen | — | Not sure | [unclear: do we have it yet?] |
+| Pi Camera Station | USB Wi-Fi adapter with antenna (~$30) | — | Later | Only for two radios at once (NETWORKING.md setup 2) |
+| Pi Camera Station | "m5cam" camera module | — | Have (Oct 3) | Not in the current plan |
+
+[unclear: the "Need" rows are the Oct 12 still-need list. Some may have been bought for the Oct 23 wiring / Nov 1 soldering. Tell Claude what came in and it gets updated.]
+
+**Wiring:** the app's diagram is drawn from the Oct 12 wiring table below (one row per wire). It also marks which wires the camera v3 code uses today (motion sensor D0, clock SDA/SCL D4/D5); the mode switch (D1), status light (D2) and clock alarm (D3) are wired in the plan but not in the code yet.
+**Install guides:** camera → `../camera/INSTALL.md` (new, gathers the Oct 23 Arduino steps + v3 setup); Pi → `../pi/INSTALL.md` + `../pi/NETWORKING.md`; website → `../droplet/INSTALL.md` (placeholder plan, nothing built).
+
+---
+
+## 2026-11-01 — Soldering (Nolan + Weston)
+**Told by:** Adeline · "Nolan and Weston did soldering for innovation."
+- First soldering on the camera build. [unclear: which parts were soldered (motion sensor, clock, switch, headers)? Tested after?]
+- Photos (sent 2026-11-02): `../app/images/11-1-soldering-1.jpg`, `../app/images/11-1-soldering-2.jpg` (soldering iron, helping-hands magnifier, small breadboard with jumper wires).
+
+---
+
 ## 2026-10-26 — Pi: one Wi-Fi radio, switch on the touchscreen
 **Asked by:** Coach CJ · **Built by:** Claude · **Code:** `../pi/station/network.py`, guide `../pi/NETWORKING.md` (setup 1)
 - Home page switch **📡 Camera Wi-Fi | 🌐 House Wi-Fi** (NetworkManager `nmcli connection up …`). No USB adapter needed. **Changed later on Oct 26 (CJ):** no automatic return; it stays in the mode picked, and Publish switches to House Wi-Fi.

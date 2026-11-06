@@ -5,7 +5,7 @@ Update this at the end of every session (same time as `DECISIONS.md` and `mockup
 
 **Status key:** ⬜ not started · 🟡 in progress · ✅ done
 
-**Last updated:** 2026-10-23 (Thea: camera wired by Nolan + Thea; M13 programmed by Isla; first M09 attachment + program by Weston) · 2026-10-12 (robot: M11 first attachment, M12 + M13 rebuilt, M04 + M05 programmed) · 2026-10-12 (Innovation Project: camera parts bought, camera box wiring plan in `updates/CAMERA-BUILD.md`) · 2026-10-05 (Innovation Project: first real expert, Nate Reagan from Game and Fish; Experts card shows dates + full notes; sample experts/research removed; later: ALL sample data removed, Innovation Project Problem/Solution/How, 8 steps and Project Plan are now fill-in boxes) · 2026-10-03 (Thea — Innovation Project: picked the Raspberry Pi build, parts list) · 2026-10-02 (AI forest wildlife camera idea saved to the app) · before that 2026-09-28 (CJ — the app now runs on a real database: `app/`, v5 · later: students' real profile pictures added)
+**Last updated:** 2026-11-02 (Robot Design: attachment photos on the mat for M02+M03, M04, M08+M09, M12, M14, M15) · 2026-11-02 (Innovation Project: Project Photos card, first photos = Nov 1 camera soldering) · 2026-11-02 (Coding page: Our Robot Code, the `code/` folder's history of every program, read live) · 2026-11-02 (Coach CJ: Innovation Project Details section: parts list, camera wiring diagram, click-to-open code + install guides for the camera, Pi and website) · 2026-11-01 (Adeline: every mission has an attachment, only M06 + M07 left to program; M04 + M05 4/5; first M11 program; camera soldering by Nolan + Weston) · 2026-10-23 (Thea: camera wired by Nolan + Thea; M13 programmed by Isla; first M09 attachment + program by Weston) · 2026-10-12 (robot: M11 first attachment, M12 + M13 rebuilt, M04 + M05 programmed) · 2026-10-12 (Innovation Project: camera parts bought, camera box wiring plan in `updates/CAMERA-BUILD.md`) · 2026-10-05 (Innovation Project: first real expert, Nate Reagan from Game and Fish; Experts card shows dates + full notes; sample experts/research removed; later: ALL sample data removed, Innovation Project Problem/Solution/How, 8 steps and Project Plan are now fill-in boxes) · 2026-10-03 (Thea — Innovation Project: picked the Raspberry Pi build, parts list) · 2026-10-02 (AI forest wildlife camera idea saved to the app) · before that 2026-09-28 (CJ — the app now runs on a real database: `app/`, v5 · later: students' real profile pictures added)
 
 **Team:** Rooted Warriors — Thea, Adeline, Fynn, Isla, Nolan, Weston · Coach CJ
 
@@ -18,7 +18,7 @@ Update this at the end of every session (same time as `DECISIONS.md` and `mockup
 | 1. Design the capture (what info the app collects) | 🟡 | Every component now has a visual in the v2 app; students still need to add/cut/rename fields in their own words, one component per session |
 | 2. Prototype playground (what it looks like) | ✅ | Colors = Rooted Warriors logo palette · Layout = Sidebar HQ (06) · fun stuff (confetti, avatars, countdown, proudest-moment quote) in the app |
 | 3. Architecture (CJ) | ✅ | Cloudflare Workers + D1 + R2, team PIN — see `DECISIONS.md` 2026-08-31 |
-| 4. Build the real app | 🟡 | **v5 (`app/`) saves to a database** since Sept 28 — all data through Sep 25 loaded, every form saves. Runs on a local dev server (`cd app && npm run dev`). Not on the internet yet, no PIN. Profile pictures ✅ (Sep 28, from `app/images/`); attachment photos and photo upload not yet |
+| 4. Build the real app | 🟡 | **v5 (`app/`) saves to a database** since Sept 28 — all data through Sep 25 loaded, every form saves. Runs on a local dev server (`cd app && npm run dev`). Not on the internet yet, no PIN. Profile pictures ✅ (Sep 28, from `app/images/`); attachment photos ✅ for 7 attachments (Nov 2); photo upload not yet |
 | 5. Team starts using it at practice | ⬜ | The finish line — first test: each student logs one real entry in v2 at practice |
 
 ---
@@ -29,9 +29,9 @@ For each one: list what the docs say to capture → students add/cut/rename → 
 
 | Component | Wish-list in App Notes? | Fields decided & recorded? | Visual prototyped? |
 |---|---|---|---|
-| Robot Design | ✅ (attachments, robot specs, coding, success calendar) | 🟡 v2 shows a proposed set — students to confirm | ✅ v2 Robot Design page |
+| Robot Design | ✅ (attachments, robot specs, coding, success calendar) | 🟡 v2 shows a proposed set — students to confirm · ✅ Coding page shows the real code from `code/`, every version (Nov 2) | ✅ v2 Robot Design page |
 | Robot Game | ✅ ("probably all in Robot Design") | 🟡 v3 has its own page (inventory, run plan, scores, reliability) — students to confirm that's OK · ✅ official 15 missions + points loaded (`06-missions-bioglow.md`) | ✅ v3 Robot Game page |
-| Innovation Project | ✅ (problem/solution page, research, Gantt chart, experts) | 🟡 v2 shows a proposed set — students to confirm | ✅ v2 Innovation Project page |
+| Innovation Project | ✅ (problem/solution page, research, Gantt chart, experts) | 🟡 v2 shows a proposed set — students to confirm · ✅ Communication (Oct 26) · ✅ Innovation Project Details: parts, wiring, code + install guides (Nov 2, CJ) · ✅ Project Photos (Nov 2) | ✅ v2 Innovation Project page |
 | Core Values | ✅ (team profile cards) | 🟡 v2 adds moments, six-value tally, help given/received — students to confirm · ✅ profile cards filled in for all six teammates (Thea, Sept 4) | ✅ v2 Core Values page |
 | Daily Log / Notebook feed | ⬜ (not in App Notes yet — nudge) | 🟡 v2 entry form: date, component, rubric phase, who, text, core values spotted, photo | ✅ v2 Daily Log page |
 | Rubric self-assessment (20 rows) | ⬜ (not in App Notes yet — nudge) | 🟡 v2: 1–4 per row + evidence count | ✅ v2 Rubric Check page |

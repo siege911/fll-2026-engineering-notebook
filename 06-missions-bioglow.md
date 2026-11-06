@@ -152,6 +152,9 @@ Add a row every time the team uses a name that isn't the official one. Newest at
 
 | Date first heard | What we say | Official mission | Notes |
 |---|---|---|---|
+| 2026-11-01 | "mission 6, 7, and 11," "mission 8 and 9," "mission 4 and 5" | M06 Leafcutter Frenzy, M07 Humongous Fungus, M11 Window to the Past · M08 Tangled + M09 Research Platform · M04 Lucky Leaves + M05 Reaching Roots | Adeline's update. First time we've said "mission 6," "mission 7," "mission 9" |
+| 2026-11-01 | "the seed" (with mission 8 and 9) | M09 Research Platform, "Seed no longer touching the tree" (10 pts) | "Mission 8 and 9 are mostly finished besides the seed" (Adeline). M08 has no seed, so it's the M09 one |
+| 2026-10-26 | "6,7, and 11," "Mission 9," "missions 4 and 5" | M06, M07, M11 · M09 · M04 + M05 | Typed in the app (Nolan's attachments, Weston's M09 program, Isla's M04 + M05 programs) |
 | 2026-10-23 | "the big tree mission" | M09 Research Platform | Weston's attachment + program. Thea confirmed it's M09. (The Oct 2 "tree mission" may be the same one; not confirmed) |
 | 2026-10-23 | "the mascot mission" | M13 Keystone Species | Isla's program (same nickname as Sep 11) |
 | 2026-10-12 | "mission 12," "mission 13," "mission 11," "mission 4 and 5" | M12, M13, M11 Window to the Past, M04 Lucky Leaves + M05 Reaching Roots | Adeline (M12 rebuild + program), Nolan (M13 rebuild), Weston (M11 attachment), Fynn (M04 + M05 programs). First time we've said "mission 11," "mission 13," "mission 5" |

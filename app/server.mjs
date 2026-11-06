@@ -7,11 +7,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { open, applyUpdates, snapshot } from './db/db.mjs';
+import { robotCode } from './robotcode.mjs';
 
 const PORT = +process.env.PORT || 8787;
 const HOST = process.env.HOST || '127.0.0.1'; // HOST=0.0.0.0 to reach it from other devices on the same Wi-Fi
 const PUBLIC = path.join(path.dirname(fileURLToPath(import.meta.url)), 'public');
 const IMAGES = path.join(path.dirname(fileURLToPath(import.meta.url)), 'images');
+const NOTEBOOK = path.join(path.dirname(fileURLToPath(import.meta.url)), '..'); // the Engineering Notebook folder (camera/, pi/, droplet/, code/)
 
 const db = open();
 applyUpdates(db);
@@ -29,7 +31,7 @@ const TABLES = {
   entries:     { map: { id: 'id', d: 'date', who: 'who', comp: 'component', ph: 'phase', t: 'text', cv: 'core_values', succ: 'success', photo: 'photo', sample: 'sample' }, order: 'date DESC, id DESC' },
   moments:     { map: { id: 'id', d: 'date', v: 'value', who: 'who', t: 'text', help: 'help', sample: 'sample' }, order: 'date DESC, id DESC' },
   tests:       { map: { id: 'id', d: 'date', att: 'attachment', tries: 'tries', succ: 'successes', obs: 'observed', chg: 'changed', res: 'result' }, order: 'date DESC, id DESC' },
-  attachments: { map: { id: 'id', name: 'name', mission: 'mission', purpose: 'purpose', by: 'built_by', size: 'size' }, order: 'sort_order' },
+  attachments: { map: { id: 'id', name: 'name', mission: 'mission', purpose: 'purpose', by: 'built_by', size: 'size', photo: 'photo' }, order: 'sort_order' },
   programs:    { key: 'id', map: { id: 'id', name: 'program', mission: 'mission', by: 'coded_by', sensors: 'sensors', bit: 'innovative_bit' }, order: 'sort_order' },
   robot_specs: { map: { label: 'label', value: 'value' }, order: 'sort_order' },
   tradeoffs:   { key: 'id', map: { id: 'id', d: 'date', q: 'question', opts: 'options', pick: 'pick', why: 'why' }, order: 'sort_order, id' },
@@ -38,10 +40,16 @@ const TABLES = {
   research:    { map: { src: 'source', type: 'type', by: 'found_by', note: 'note', sample: 'sample' }, order: 'id' },
   experts:     { map: { n: 'name', role: 'role', face: 'face', fb: 'feedback', imp: 'improvement', d: 'date', by: 'met_by', notes: 'notes', qs: 'questions', sample: 'sample' }, order: 'id' },
   quotes:      { map: { q: 'quote', by: 'by_line', d: 'date' }, order: 'id DESC' },
+  shares:      { map: { id: 'id', d: 'date', to: 'shared_with', who: 'who', said: 'what_they_said', chg: 'what_we_changed' }, order: 'date DESC, id DESC' }, // Communication: who we shared our project with (Oct 26)
+  ip_photos:   { map: { id: 'id', d: 'date', who: 'who', cap: 'caption', photo: 'photo' }, order: 'date DESC, sort_order, id' }, // Project Photos (Nov 2)
+  // Innovation Project Details (Nov 2): parts, camera wiring, and the three computers' code + install guides
+  ip_parts:    { map: { id: 'id', grp: 'grp', part: 'part', qty: 'qty', st: 'status', d: 'date', note: 'note' }, order: 'sort_order, id' },
+  ip_wiring:   { map: { pin: 'pin', gpio: 'gpio', part: 'part', ppin: 'part_pin', color: 'color', why: 'why', opt: 'optional', code: 'in_code' }, order: 'sort_order, id' },
+  ip_platforms:{ map: { id: 'id', icon: 'icon', name: 'name', device: 'device', job: 'job', ver: 'version', st: 'status', built: 'built', docs: 'docs', files: 'files', upd: 'updated' }, order: 'sort_order' },
 };
-const JSON_COLS = new Set(['built_by', 'programmed_by', 'missions', 'who', 'core_values', 'help', 'coded_by', 'iterations', 'notes', 'questions']);
+const JSON_COLS = new Set(['built_by', 'programmed_by', 'missions', 'who', 'core_values', 'help', 'coded_by', 'iterations', 'notes', 'questions', 'docs', 'files']);
 // What the page may change. Everything else is changed through db/updates/ files.
-const CAN_ADD = { entries: ['d', 'who', 'comp', 'ph', 't', 'cv', 'succ'], moments: ['d', 'v', 'who', 't', 'help'], matches: ['d', 's', 'r', 'f', 'c'], tests: ['d', 'att', 'tries', 'succ', 'obs', 'chg', 'res'], quotes: ['q', 'by', 'd'], gantt: ['task', 'who', 's', 'e'] };
+const CAN_ADD = { entries: ['d', 'who', 'comp', 'ph', 't', 'cv', 'succ'], moments: ['d', 'v', 'who', 't', 'help'], matches: ['d', 's', 'r', 'f', 'c'], tests: ['d', 'att', 'tries', 'succ', 'obs', 'chg', 'res'], quotes: ['q', 'by', 'd'], gantt: ['task', 'who', 's', 'e'], shares: ['d', 'to', 'who', 'said', 'chg'] };
 // Settings the page may fill in (merged into the JSON value; note records that it was typed in the app).
 const CAN_SET = { ip_summary: ['problem', 'solution', 'how'], ip_progress: ['now'], mascot: ['name'] };
 // "Tap to fill in" blanks (Oct 9): mission diff/run/attachment/built/coded, run launcher, program sensors, tradeoff pick/why.
@@ -62,6 +70,8 @@ function allData() {
   for (const t of Object.keys(TABLES)) data[t] = rows(t);
   const versions = db.prepare('SELECT attachment_id, date AS d, note AS n, photo FROM attachment_versions ORDER BY date, id').all();
   for (const a of data.attachments) a.vers = versions.filter(v => v.attachment_id === a.id);
+  for (const p of data.ip_platforms) for (const f of [...p.docs, ...p.files]) f.exists = fs.existsSync(path.join(NOTEBOOK, f.path)); // missing = "not built yet" placeholder
+  data.robot_code = robotCode(NOTEBOOK); // Coding page: the robot programs, read live from code/ (Nov 2)
   data.settings = Object.fromEntries(db.prepare('SELECT key, value FROM settings').all().map(s => [s.key, JSON.parse(s.value)]));
   return data;
 }
@@ -79,7 +89,7 @@ const toDb = (table, body, allowed) => {
 function add(table, body) {
   const { cols, vals } = toDb(table, body, CAN_ADD[table]);
   if (!cols.length) throw new Error('nothing to save');
-  if (table === 'gantt') { cols.push('created_at'); vals.push(new Date().toISOString().slice(0, 19).replace('T', ' ')); }
+  if (table === 'gantt' || table === 'shares') { cols.push('created_at'); vals.push(new Date().toISOString().slice(0, 19).replace('T', ' ')); }
   const r = db.prepare(`INSERT INTO ${table} (${cols.join(', ')}, source) VALUES (${cols.map(() => '?').join(', ')}, 'app')`).run(...vals);
   return { id: Number(r.lastInsertRowid) };
 }
@@ -90,6 +100,15 @@ function edit(table, id, body) {
   const r = db.prepare(`UPDATE ${table} SET ${cols.map(c => c + ' = ?').join(', ')} WHERE ${TABLES[table].key} = ?`).run(...vals, id);
   if (!r.changes) throw new Error(`no ${table} row ${id}`);
   return { changed: r.changes };
+}
+
+// Read-only view of the code and install guides listed in ip_platforms (Nov 2). Only listed files, never secrets.
+function notebookFile(rel) {
+  const listed = new Set(rows('ip_platforms').flatMap(p => [...p.docs, ...p.files].map(f => f.path)));
+  if (!listed.has(rel) || /(^|\/)(secrets\.h|settings\.json)$/.test(rel)) throw new Error('that file is not shared');
+  const file = path.join(NOTEBOOK, path.normalize(rel));
+  if (!file.startsWith(NOTEBOOK + path.sep)) throw new Error('that file is not shared');
+  return fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : null;
 }
 
 function setSetting(key, body) {
@@ -112,6 +131,7 @@ http.createServer(async (req, res) => {
     if (parts[0] === 'api') {
       const [, table, id] = parts;
       if (req.method === 'GET' && table === 'data') return send(res, 200, allData());
+      if (req.method === 'GET' && table === 'file') { const text = notebookFile(url.searchParams.get('path') || ''); return text == null ? send(res, 404, { missing: true }) : send(res, 200, text, 'text/plain; charset=utf-8'); }
       if (req.method === 'POST' && CAN_ADD[table] && !id) { const out = add(table, await readBody(req)); snapshot(db); return send(res, 201, out); }
       if (req.method === 'PATCH' && table === 'settings' && CAN_SET[id]) { const out = setSetting(id, await readBody(req)); snapshot(db); return send(res, 200, out); }
       if (req.method === 'PATCH' && CAN_EDIT[table] && id) { const out = edit(table, id, await readBody(req)); snapshot(db); return send(res, 200, out); }

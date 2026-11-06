@@ -56,7 +56,7 @@ Learned / Worked with most / Notebook entries: still blank for everyone.
 
 | Value | Count | Evidence |
 |---|---|---|
-| Teamwork | 5 (+2 candidates) | **Oct 23 Thea helped Nolan wire the camera** · **Oct 12 Isla helped Fynn program M04 + M05** · Sep 4 Nolan combining two attachments · Sep 6 Thea/Nolan/Weston building three bases together · **Sep 25 with half the team away, Fynn coded Weston's M14 attachment and Thea programmed the Forest Elder Isla and Fynn started** · candidate: Sep 11 Isla finished the Forest Elder attachment Fynn started [unclear: same attachment?] · candidate: Sep 19 Fynn programmed the Forest Elder that Isla finished, and Adeline programmed Fynn's Lucky Leaves attachment — builders and coders working on each other's missions |
+| Teamwork | 6 (+2 candidates) | **Oct 26 Fynn helped Weston with M09** · **Oct 23 Thea helped Nolan wire the camera** · **Oct 12 Isla helped Fynn program M04 + M05** · Sep 4 Nolan combining two attachments · Sep 6 Thea/Nolan/Weston building three bases together · **Sep 25 with half the team away, Fynn coded Weston's M14 attachment and Thea programmed the Forest Elder Isla and Fynn started** · candidate: Sep 11 Isla finished the Forest Elder attachment Fynn started [unclear: same attachment?] · candidate: Sep 19 Fynn programmed the Forest Elder that Isla finished, and Adeline programmed Fynn's Lucky Leaves attachment — builders and coders working on each other's missions |
 | Inclusion | 2 | Sep 4 every teammate has a profile card · **Sep 19 all six teammates built or programmed something in one practice** |
 | Discovery | 1 | Sep 6 discussed sensors, weighed options, decided |
 | Innovation | 0 | — |
@@ -64,6 +64,12 @@ Learned / Worked with most / Notebook entries: still blank for everyone.
 | Fun | 1 | Sep 11 Thea built the team mascot (three students list Fun as their favorite value — keep logging the moments!) |
 
 ---
+
+## 2026-11-01 (Sunday) — Teamwork: working in pairs (told by Adeline)
+- **Teamwork:** Weston + Nolan worked together on M06, M07, M11 and on soldering the camera; Adeline + Fynn worked together on M08 + M09. (Not counted in the tally: no one said who helped whom.)
+
+## 2026-10-26 (Monday) — Teamwork: Fynn helped Weston (typed into the app)
+- **Teamwork / help given:** "Fynn helped Weston with mission 9." Help given: Fynn → received: Weston.
 
 ## 2026-10-12 (Monday) — Teamwork: Isla helped Fynn program
 - **Teamwork / help given:** Isla helped Fynn program M04 Lucky Leaves and M05 Reaching Roots. Help given: Isla → received: Fynn.

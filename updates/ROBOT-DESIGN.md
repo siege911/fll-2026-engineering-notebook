@@ -8,6 +8,8 @@ Backfilled 2026-09-06 from `../DECISIONS.md` and `../PROGRESS.md`.
 
 ---
 
+**Code:** the history of every robot program (which practice it changed, what changed) is in `ROBOT-CODE.md`, from the `../code/` folder (added 2026-11-02).
+
 ## Robot specs (current, as of 2026-09-06)
 
 | Spec | Value | Since | Decided by |
@@ -36,6 +38,30 @@ Backfilled 2026-09-06 from `../DECISIONS.md` and `../PROGRESS.md`.
 | Sep 4 → open | Which Mission 2 attachment: Adeline's M02-only, or Nolan's combined M02+M03? | two builds | [not decided] | — |
 
 ---
+
+## 2026-11-02 (Monday) — Photos of the attachments with their missions
+**Sent by:** [who?] · "these are the photos of the attachments with the missions. put these in the app" · mission for each photo confirmed by the student who sent them. [unclear: taken Nov 1 or Nov 2?]
+
+| Photo (in `../app/images/`) | Mission | Attachment in the app | What it shows |
+|---|---|---|---|
+| `11-2-mission-15.jpg` | M15 Biocentric Architecture | Mission 15 attachment | Long gray beam reaching up the green building, robot against the wall |
+| `11-2-mission-12.jpg` | M12 Forest Elder | Mission 12 attachment | Rack of red and gray pegs + long arm, aimed at the tree with the red support tie |
+| `11-2-mission-14.jpg` | M14 Seeds of Renewal | Mission 14 attachment | Next to the brown replantation station: two red poles with yellow tips, long black pole |
+| `11-2-mission-8-9.jpg` | M08 Tangled + M09 Research Platform | Mission 8 attachment, Mission 9 attachment | Under the big tree with the research platform; one attachment does both |
+| `11-2-mission-2-3.jpg` | M02 Exploding Seeds + M03 Flip the Rock | Combined 2 + 3 attachment | Gray arms reaching the rock, launched from home by the FIRST LEGO League logo |
+| `11-2-mission-4.jpg` | M04 Lucky Leaves | Lucky Leaves attachment | Three gray prongs, leaves with brown loops pulled out of the nest |
+
+New facts: **one attachment does both M08 and M09.** The photo for M02 + M03 shows the **combined** attachment is the one in use (helps answer the open Sep 4 question "Adeline's M02-only or Nolan's combined?" [unclear: decided for good?]).
+
+## 2026-11-01 (Sunday) — M04 + M05 finished 4/5; first M11 program; M08 + M09 almost done (told by Adeline)
+- **Adeline finished M04 Lucky Leaves and M05 Reaching Roots: 4 / 5 runs worked (80%)**, "pretty consistent."
+- **Weston + Nolan programmed M11 Window to the Past** (first M11 program) and worked on the M06 and M07 attachments.
+- **Adeline + Fynn worked on M08 Tangled and M09 Research Platform:** "mostly finished besides the seed" (the M09 seed is the part left).
+- Team says **every mission now has an attachment**. [unclear: none recorded for M05 or M10]
+
+## 2026-10-26 (Monday) — typed into the app (copied here Nov 1)
+- **Nolan built attachments for M06, M07 and M11.** First M06 and M07 attachments. [unclear: M11 rebuild or new?]
+- **Weston programmed M09** (Fynn helped). **Isla programmed M04 + M05.**
 
 ## 2026-10-23 (Friday) — M13 programmed; first M09 attachment + program
 - **Isla programmed M13 Keystone Species** ("the mascot mission"). First M13 program.
@@ -103,4 +129,10 @@ Backfilled 2026-09-06 from `../DECISIONS.md` and `../PROGRESS.md`.
 - Milestone: the team **built the base robot** (first version of the chassis).
 
 ## Test sessions (observation → change → result)
-None logged yet. The app's test-session card shows "log your first one." First real test data should go here with: date, attachment/mission, runs attempted, runs succeeded, what was observed, what was changed, result.
+Each test: date, attachment/mission, runs attempted, runs succeeded, what was observed, what was changed, result. Newest at top.
+
+| Date | Attachment / mission | Result | What we saw | What we changed | Who |
+|---|---|---|---|---|---|
+| Nov 1 | M04 Lucky Leaves + M05 Reaching Roots | **4 / 5 (80%)** | "pretty consistent" [unclear: what went wrong on the miss?] | — | Adeline |
+| Oct 2 | Combined 2 + 3 (M02 + M03) | 5 / 5 (100%) | Nolan programmed and tested | — | Nolan |
+| Oct 2 | Mission 14 attachment (M14) | 5 / 5 (100%) | First test session of the season | — | Fynn |

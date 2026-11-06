@@ -53,6 +53,12 @@
   .bar i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,var(--teal),var(--grass))}
   .heat{display:grid;grid-template-columns:repeat(10,1fr);gap:6px}
   .heat .cell{aspect-ratio:1;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;cursor:pointer}
+  .heatcount{display:grid;grid-template-columns:repeat(4,1fr);gap:8px} /* count of each rating (Thea, Oct 26) */
+  .heatcount .cell{border-radius:10px;padding:12px 2px;text-align:center;color:#fff;cursor:pointer}
+  .heatcount .num{font-size:30px;font-weight:800;line-height:1}
+  .heatcount .lab{font-size:12px;font-weight:800;margin-top:4px}
+  .heatcount .lvlname{font-size:10px;font-weight:700;opacity:.9;text-transform:uppercase;overflow-wrap:anywhere}
+  .heatcount .l1{color:#6f6a59}
   .l1{background:#d9d3c2;color:#8a8471} .l2{background:var(--lavender)} .l3{background:var(--teal)} .l4{background:var(--grass)}
   .legend{font-size:11px;color:var(--dim);margin-top:10px;font-weight:600}
   .cv{display:flex;flex-direction:column;gap:9px}
@@ -119,7 +125,7 @@
   .ipbox p{font-size:14px;line-height:1.55;margin:0 0 6px;white-space:pre-wrap}
   .gantt{display:grid;grid-template-columns:150px 1fr;gap:6px 10px;font-size:12px;font-weight:700;align-items:center}
   .gantt .lane{height:22px;background:#f3eee2;border-radius:6px;position:relative}
-  .gantt .gbar{position:absolute;top:3px;bottom:3px;border-radius:5px;cursor:pointer;display:flex;align-items:center;padding-left:6px;font-size:10px;color:#fff;font-weight:800}
+  .gantt .gbar{position:absolute;top:3px;bottom:3px;border-radius:5px;cursor:pointer;display:flex;align-items:center;padding-left:6px;font-size:10px;color:#fff;font-weight:800;white-space:nowrap;overflow:hidden}
   .gantt .gbar:hover{filter:brightness(1.1)}
   .months{display:grid;grid-template-columns:repeat(4,1fr);font-size:10px;color:var(--dim);font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-left:160px;margin-bottom:4px}
   .expert{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--soft)}
@@ -127,6 +133,66 @@
   .expert b{display:block}
   .expert .fb{font-size:12px;margin-top:3px;line-height:1.45}
   .arrow{color:var(--grass);font-weight:900}
+  /* Project Photos (Nov 2) */
+  .ipphotos{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+  .ipphotos figure{margin:0}.ipphotos figure>a img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:12px;display:block}
+  .ipphotos figcaption{font-size:13px;margin-top:6px;display:flex;gap:4px;align-items:center}
+  /* Innovation Project Details (Nov 2) */
+  .ipd-head{margin:12px 0 -4px}
+  .ipd-grp{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:900;color:var(--lavender);margin:12px 0 2px}
+  .ipd-grp:first-child{margin-top:0}
+  .p-Bought,.p-Have{background:var(--grass)} .p-Shipping{background:var(--teal)} .p-Need{background:var(--lavender);color:var(--forest)} .p-Optional,.p-Later{background:#b9b3a4} .p-Not-sure{background:#fffdf6;color:var(--pine);border:1.5px dashed var(--lavender)}
+  .ipd-svg{width:100%;max-width:760px;display:block;margin:0 auto 10px}
+  .ipd-flow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+  .ipd-tile{flex:1;min-width:170px;border:2px solid var(--line);border-radius:12px;padding:10px 12px;background:#fffdf6;cursor:pointer;text-align:left;font-family:inherit}
+  .ipd-tile:hover{border-color:var(--lavender)}
+  .ipd-tile .ico{font-size:24px}
+  .ipd-tile b{display:block;font-size:14px;color:var(--forest)}
+  .ipd-flow .arrow{font-size:20px}
+  details.plat{border:2px solid var(--line);border-radius:12px;padding:0 14px;margin-top:10px;background:#fffdf6}
+  details.plat[open]{border-color:var(--lavender);padding-bottom:12px}
+  details.plat>summary{cursor:pointer;padding:12px 0;font-size:15px;font-weight:800;color:var(--forest);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  details.plat>summary .hint{margin:0}
+  details.plat>p{font-size:13px;line-height:1.55;margin:0 0 4px}
+  .ipd-sub{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:900;color:var(--pine);margin:14px 0 4px}
+  details.ipd-f{border-top:1px solid var(--soft)}
+  details.ipd-f>summary{cursor:pointer;padding:8px 0;font-size:13px;font-weight:700;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+  details.ipd-f>summary code{font-size:12px;color:var(--pine);font-weight:800}
+  details.ipd-f>summary .hint{margin:0}
+  .ipd-todo{background:repeating-linear-gradient(45deg,#f7f3ea 0 12px,#fffdf6 12px 24px);border:1.5px dashed var(--lavender);border-radius:10px;padding:12px;font-size:13px;margin-bottom:8px}
+  .codebar{display:flex;gap:8px;align-items:center;justify-content:flex-end;margin-bottom:6px;font-size:11px;color:var(--dim);font-weight:700}
+  .codebar span{margin-right:auto}
+  .codebar a{text-decoration:none}
+  /* Our Robot Code (Nov 2): history grid + what changed */
+  .rc-wrap{overflow-x:auto}
+  .rc-grid td,.rc-grid th{text-align:center;white-space:nowrap}
+  .rc-grid td:first-child,.rc-grid th:first-child{text-align:left}
+  .rc-grid tr.rc-row{cursor:pointer}
+  .rc-grid tr.rc-row:hover td{background:#fffdf6}
+  .rc-dot{display:inline-block;width:14px;height:14px;border-radius:50%;vertical-align:middle}
+  .rc-new{background:var(--teal)}
+  .rc-chg{background:var(--grass)}
+  .rc-same{border:2px solid var(--line)}
+  details.rc{border-top:2px solid var(--soft)}
+  details.rc>summary{cursor:pointer;padding:10px 0;font-size:14px;font-weight:700;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  details.rc>summary code{color:var(--pine);font-weight:800}
+  details.rc>summary .hint{margin:0}
+  details.rc[open]>summary{color:var(--forest)}
+  .rc-body{padding:0 0 10px 14px;border-left:3px solid var(--lilac)}
+  pre.code .ln{display:block;font-family:inherit}
+  pre.code .ln i{font-family:inherit}
+  pre.code .ln.a{background:rgba(63,155,76,.45)}
+  pre.code .ln.d{background:rgba(214,69,69,.35);text-decoration:line-through;opacity:.8}
+  pre.code .ln i{font-style:normal;display:inline-block;width:16px;opacity:.7}
+  pre.code,.md pre{background:var(--forest);color:var(--cream);font:12px/1.5 Menlo,Consolas,monospace;padding:12px 14px;border-radius:10px;overflow:auto;max-height:520px;white-space:pre;tab-size:2;margin-bottom:8px}
+  .md{font-size:13px;line-height:1.55;margin-bottom:8px}
+  .md h3{font-size:17px;color:var(--forest);margin:4px 0 8px} .md h4{font-size:14px;color:var(--pine);margin:14px 0 6px} .md h5,.md h6{font-size:13px;color:var(--pine);margin:10px 0 4px}
+  .md p,.md ul,.md ol,.md table,.md blockquote{margin:0 0 8px} .md ul,.md ol{padding-left:22px} .md li{margin-bottom:3px}
+  .md code{background:var(--soft);border-radius:4px;padding:1px 4px;font:12px Menlo,Consolas,monospace}
+  .md pre{max-height:none}
+  .md blockquote{border-left:4px solid var(--lavender);background:#f7f3fb;padding:8px 12px;border-radius:0 8px 8px 0}
+  .md td{font-weight:500;vertical-align:top} .md hr{border:none;border-top:1px solid var(--line);margin:12px 0}
+  .md a{color:var(--pine);font-weight:700}
   /* spotlight */
   .spot{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
   .scard{border-radius:14px;padding:16px;border:2px solid var(--line);background:#fffdf6;text-align:center}
@@ -152,6 +218,7 @@
   .cal .day .dots i{width:5px;height:5px;border-radius:50%;background:var(--grass)}
   .cal .day.blank{background:transparent}
   .att{border:1.5px solid var(--line);border-radius:12px;padding:12px;background:#fffdf6}
+  .att-pic{display:block;margin:8px 0}.att-pic img{width:100%;height:260px;object-fit:contain;background:#f3eee2;border-radius:10px;display:block} /* Nov 2: attachment photo on the mat */
   .att b{font-size:14px}
   .vers{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
   .ver{background:#f3eee2;border-radius:8px;padding:6px 8px;font-size:11px;font-weight:700;min-width:90px}
@@ -200,11 +267,11 @@
       <div class="card"><h2><span><i class="leafdot"></i>Best Match Score</span><button class="btn sm lav" onclick="go('game')">Log a match →</button></h2>
         <div class="big" id="d-best">—</div><div class="delta" id="d-delta"></div><div id="d-chart"></div></div>
       <div class="card"><h2><span><i class="leafdot"></i>Mission Inventory</span><button class="btn sm lav" onclick="go('game')">Edit →</button></h2><div id="d-missions"></div></div>
-      <div class="card"><h2><span><i class="leafdot"></i>Rubric Heat Map — 20 rows</span><button class="btn sm lav" onclick="go('rubric')">Rate →</button></h2><div class="heat" id="d-heat"></div><div class="legend" id="d-heat-legend"></div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>Latest Notebook Entries</span><button class="btn sm lav" onclick="go('log')">Write one →</button></h2><div id="d-log"></div></div>
       <div class="card"><h2><span><i class="leafdot"></i>Core Values Tally</span><button class="btn sm lav" onclick="go('cv')">Add moment →</button></h2><div class="cv" id="d-cv"></div></div>
       <div class="card celebrate"><h2><span><i class="leafdot"></i>Proudest Moment</span></h2><div class="quote" id="d-quote"></div><div class="by" id="d-quote-by"></div></div>
       <div class="card"><h2><span><i class="leafdot"></i>Who's Been Doing What</span></h2><div id="d-balance"></div><div class="hint">Judges look for "all team members" — keep every color showing up!</div></div>
-      <div class="card wide"><h2><span><i class="leafdot"></i>Latest Notebook Entries</span><button class="btn sm lav" onclick="go('log')">Write one →</button></h2><div id="d-log"></div></div>
+      <div class="card"><h2><span><i class="leafdot"></i>Rubric Map — 20 rows</span><button class="btn sm lav" onclick="go('rubric')">Rate →</button></h2><div class="heatcount" id="d-heat"></div><div class="legend" id="d-heat-legend"></div></div>
     </div>
   </section>
 
@@ -258,6 +325,8 @@
       <div class="card wide"><h2><span><i class="leafdot"></i>Programs We've Written</span><span class="hint">Every program, who coded it, and what's clever about it</span></h2>
         <div id="code-programs"></div>
         <div class="hint" id="code-note"></div></div>
+      <!-- Our Robot Code (Nov 2): read live from the code/ folder, one folder per practice -->
+      <div class="card wide"><h2><span><i class="leafdot"></i>Our Robot Code</span><span class="hint" id="rc-sum"></span></h2><div id="rc"></div></div>
       <div class="card wide"><h2><span><i class="leafdot"></i>Mission Programs — Who Coded What</span></h2><div id="code-missions"></div></div>
       <div class="card wide"><h2><span><i class="leafdot"></i>Coding Notebook Entries</span><span class="hint">Entries from the Daily Log that mention programming</span></h2><div id="code-entries"></div></div>
     </div>
@@ -272,7 +341,7 @@
         <div><h2><span><i class="leafdot"></i>Our Solution</span></h2><div class="ipbox" id="ip-solution"></div></div>
         <div><h2><span><i class="leafdot"></i>How We Got Here</span></h2><div class="ipbox" id="ip-how"></div></div>
       </div></div>
-      <div class="card wide"><h2><span><i class="leafdot"></i>8-Step Progress</span><span class="hint">👆 Click the step we're working on now</span></h2><div class="steps" id="ip-steps"></div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>Research Collection</span></h2><div id="ip-research"></div></div>
       <div class="card wide"><h2><span><i class="leafdot"></i>Project Plan (Gantt)</span><span class="hint">Colors = who owns it · click a bar to see its iterations</span></h2><div class="months"><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span></div><div class="gantt" id="ip-gantt"></div><div id="ip-gantt-detail" class="hint" style="margin-top:10px"></div>
         <div class="form" style="margin-top:14px">
           <label>Task<input id="g-task" placeholder="Build Camera 1"></label>
@@ -281,8 +350,24 @@
           <label>Ends<select id="g-e"><option value="0.5">Mid Aug</option><option value="1">End of Aug</option><option value="1.5">Mid Sep</option><option value="2">End of Sep</option><option value="2.5">Mid Oct</option><option value="3">End of Oct</option><option value="3.5">Mid Nov</option><option value="4">End of Nov</option></select></label>
           <button class="btn" onclick="addGantt()">📅 Add to plan</button>
         </div></div>
-      <div class="card wide"><h2><span><i class="leafdot"></i>Research Collection</span></h2><div id="ip-research"></div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>8-Step Progress</span><span class="hint">👆 Click the step we're working on now</span></h2><div class="steps" id="ip-steps"></div></div>
       <div class="card wide"><h2><span><i class="leafdot"></i>Experts &amp; Their Feedback</span></h2><div id="ip-experts"></div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>Communication</span><span class="hint">Every time we shared our project: who we told, what they said, what we changed</span></h2> <!-- Thea, Oct 26 -->
+        <div id="ip-shares"></div>
+        <div class="form" style="margin-top:14px">
+          <label>Date<input type="date" id="sh-d"></label>
+          <label>Who we shared with<input id="sh-to" placeholder="Our families, a teacher, an expert…"></label>
+          <label class="full">Who shared it<div class="who-picks" id="sh-who"></div></label>
+          <label class="full">What they said<input id="sh-said" placeholder="Their ideas, questions, or advice"></label>
+          <label class="full">What we changed because of it<input id="sh-chg" placeholder="Leave blank if nothing yet"></label>
+          <button class="btn full" onclick="addShare()">📣 Save</button>
+        </div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>Project Photos</span><span class="hint">Click a photo to see it big</span></h2><div class="ipphotos" id="ip-photos"></div></div> <!-- Nov 2: soldering photos -->
+      <!-- Innovation Project Details (Coach CJ, Nov 2): parts, wiring, and the code + install guide for each computer -->
+      <div class="pagehead wide ipd-head"><h1>Innovation Project Details<small>Parts · wiring · the code on each computer · how to install it</small></h1></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>Parts We Ordered</span><span class="hint" id="ipd-parts-sum"></span></h2><div id="ipd-parts"></div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>Camera Wiring Diagram</span><span class="hint">Everything runs on 3.3 V · dashed = optional · hover a pin to see why</span></h2><div id="ipd-wiring"></div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>The Code &amp; How to Install It</span><span class="hint">👆 Click a computer to open its code and install steps</span></h2><div id="ipd-code"></div></div>
     </div>
   </section>
 
@@ -359,14 +444,15 @@
 const CVALS=['Teamwork','Discovery','Fun','Innovation','Inclusion','Impact'];
 const STATUSES=['Not started','Prototyping','Working','Reliable','Competition-ready'];
 let TEAM=[],missions=[],EXTRAS=[],runs=[],matches=[],rubric=[],entries=[],moments=[],tests=[],atts=[],tradeoffs=[],programs=[],specs=[],
-    ipSteps=[],gantt=[],research=[],experts=[],quotes=[],settings={},ipNow=null;
+    ipSteps=[],gantt=[],research=[],experts=[],shares=[],ipPhotos=[],quotes=[],settings={},ipNow=null,ipParts=[],ipWiring=[],ipPlatforms=[],robotCode={dates:[],programs:[]};
 async function api(method,url,body){
  const r=await fetch(url,{method,headers:{'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined});
  if(!r.ok)throw new Error((await r.json().catch(()=>({}))).error||r.statusText);return r.json()}
 async function load(){
  const d=await api('GET','/api/data');
  TEAM=d.team;missions=d.missions;EXTRAS=d.scoring_extras;runs=d.runs;matches=d.matches;rubric=d.rubric;entries=d.entries;moments=d.moments;tests=d.tests;
- atts=d.attachments;tradeoffs=d.tradeoffs;programs=d.programs;specs=d.robot_specs;ipSteps=d.ip_steps.map(s=>s.name);gantt=d.gantt;research=d.research;experts=d.experts;
+ atts=d.attachments;tradeoffs=d.tradeoffs;programs=d.programs;specs=d.robot_specs;ipSteps=d.ip_steps.map(s=>s.name);gantt=d.gantt;research=d.research;experts=d.experts;shares=d.shares;ipPhotos=d.ip_photos||[];
+ ipParts=d.ip_parts||[];ipWiring=d.ip_wiring||[];ipPlatforms=d.ip_platforms||[];robotCode=d.robot_code||{dates:[],programs:[]}; /* || []: an older server (before Nov 2) doesn't send these */
  quotes=d.quotes.length?d.quotes:[{q:'Your proudest moment goes here.',by:'—'}];settings=d.settings;
  ipNow=(settings.ip_progress||{}).now??null;
  renderAll()}
@@ -430,8 +516,9 @@ function renderDash(){
  else{$('d-best').textContent='—';$('d-delta').textContent='No practice matches scored yet — the first one is a milestone!';
   $('d-chart').innerHTML='<div class="hint" style="margin-top:10px">Your score-over-time chart appears here after the first match.</div>';$('g-chart').innerHTML=''}
  $('d-missions').innerHTML=missionTable(false);$('g-missions').innerHTML=missionTable(true);
- $('d-heat').innerHTML=rubric.map(r=>`<div class="cell l${r.l}" title="${r.row}" onclick="go('rubric')">${r.l}</div>`).join('');
- const cnt=[0,0,0,0,0];rubric.forEach(r=>cnt[r.l]++);$('d-heat-legend').innerHTML=`<b>${cnt[4]} Exceeds</b> · <b>${cnt[3]} Accomplished</b> · <b>${cnt[2]} Developing</b> · <b>${cnt[1]} Beginning</b> — grow every row to 3+ by Nov 14!`;
+ const cnt=[0,0,0,0,0];rubric.forEach(r=>cnt[r.l]++);
+ $('d-heat').innerHTML=[[4,'Exceeds'],[3,'Accomplished'],[2,'Developing'],[1,'Beginning']].map(([l,name])=>`<div class="cell l${l}" title="${rubric.filter(r=>r.l===l).map(r=>r.row).join(', ')||'none'}" onclick="go('rubric')"><div class="num">${cnt[l]}</div><div class="lab">${l}s</div><div class="lvlname">${name}</div></div>`).join('');
+ $('d-heat-legend').innerHTML='Grow every row to 3+ by Nov 14!';
  $('rub-summary').textContent=`${cnt[3]+cnt[4]} / 20 rows at Accomplished or better`;
  const t=tally(),mx=Math.max(1,...Object.values(t));const cols={Teamwork:'#3f9b4c',Discovery:'#20b5c9',Fun:'#b48fd9',Innovation:'#2a5c3f',Inclusion:'#8fc9a4',Impact:'#6fd0dd'};
  const cvHtml=CVALS.map(v=>`<div class="row"><span class="name">${v}</span><div class="track"><i style="width:${t[v]/mx*100}%;background:${cols[v]}"></i></div><b>${t[v]}</b></div>`).join('');$('d-cv').innerHTML=cvHtml;$('cv-tally').innerHTML=cvHtml;
@@ -451,7 +538,7 @@ function renderGame(){
 }
 function renderDesign(){
  $('rd-specs').innerHTML=specs.map(s=>`<div><span>${s.label}</span><br>${s.value}</div>`).join('')+`<div><span>Programs</span><br>See the <a href="#" onclick="go('coding');return false" style="color:var(--pine);font-weight:800">💻 Coding</a> page</div>`;
- $('rd-atts').innerHTML=atts.map(a=>`<div class="att"><b>${a.name}</b> <span class="tag">${a.mission}</span> <span class="hint">· Size ${a.size} · Built by ${a.by.map(b=>av(b,1)+' '+b).join(' + ')}</span><div style="font-size:12px;margin-top:4px">${a.purpose}</div><div class="vers">${a.vers.map(v=>`<div class="ver"><div class="ph"></div>${fmt(v.d)}<br><span style="color:var(--dim)">${cap(v.n)}</span></div>`).join('')}</div></div>`).join('');
+ $('rd-atts').innerHTML=atts.map(a=>`<div class="att"><b>${a.name}</b> <span class="tag">${a.mission}</span> <span class="hint">· Size ${a.size} · Built by ${a.by.map(b=>av(b,1)+' '+b).join(' + ')}</span><div style="font-size:12px;margin-top:4px">${a.purpose}</div>${a.photo?`<a class="att-pic" href="/images/${encodeURIComponent(a.photo)}" target="_blank" title="Click to see it big"><img src="/images/${encodeURIComponent(a.photo)}" alt="${a.name} on the mat" loading="lazy"></a>`:''}<div class="vers">${a.vers.map(v=>`<div class="ver"><div class="ph"></div>${fmt(v.d)}<br><span style="color:var(--dim)">${cap(v.n)}</span></div>`).join('')}</div></div>`).join('');
  $('rd-tests').innerHTML=`<table><tr><th>Date</th><th>Attachment</th><th>Result</th><th>What we saw</th><th>What we changed</th><th>Outcome</th></tr>${tests.length?'':'<tr><td colspan="6" class="hint">No test sessions logged yet. Try an attachment 10 times, count the successes, and write what you changed — judges call that ITERATE.</td></tr>'}${[...tests].sort((a,b)=>b.d.localeCompare(a.d)).map(t=>`<tr><td>${fmt(t.d)}</td><td>${t.att}</td><td><b>${t.succ}/${t.tries}</b> (${Math.round(t.succ/t.tries*100)}%)</td><td>${cap(t.obs)}</td><td class="arrow">→ <span style="color:var(--ink);font-weight:600">${t.chg}</span></td><td>${t.res}</td></tr>`).join('')}</table>`;
  $('t-att').innerHTML=atts.map(a=>`<option>${a.name}</option>`).join('');
  $('rd-trade').innerHTML=`<table><tr><th>Question</th><th>Options we weighed</th><th>We picked</th><th>Why</th></tr>${tradeoffs.map(t=>`<tr><td>${t.q}</td><td style="font-weight:500">${t.opts}</td><td>${blank(t.pick)?fill('/api/tradeoffs/'+t.id,'pick',''):`<span class="pill" style="background:var(--pine)">${t.pick}</span>`}</td><td style="font-weight:500">${blank(t.why)?fill('/api/tradeoffs/'+t.id,'why',''):t.why}</td></tr>`).join('')}</table>`;
@@ -462,7 +549,8 @@ function renderIP(){
  $('ip-steps').innerHTML=ipSteps.map((s,i)=>{const done=ipNow!=null&&i<ipNow,now=i===ipNow;return `<div class="step ${done?'done':now?'now':''}" onclick="setStep(${i})" title="Click: we're working on this step now"><span class="n">${done?'✅':i+1}</span>${s}</div>`}).join('');
  $('g-who').innerHTML=[...TEAM.map(m=>m.n),'Whole team'].map(n=>`<option>${n}</option>`).join('');
  $('ip-gantt-detail').innerHTML=gantt.length?'👆 Click a bar':'Nothing in the plan yet. Add your first task below: what needs to happen before the tournament, and who owns it?';
- $('ip-gantt').innerHTML=gantt.map((g,i)=>`<div>${av(g.who,1)} ${g.task}</div><div class="lane"><div class="gbar" style="left:${g.s/4*100}%;width:${(g.e-g.s)/4*100}%;background:${member(g.who).c}" onclick="ganttDetail(${i})">${g.who}</div></div>`).join('');
+ $('ip-gantt').innerHTML=gantt.map((g,i)=>`<div>${av(g.who,1)} ${g.task}</div><div class="lane"><div class="gbar" style="left:${g.s/4*100}%;width:${(g.e-g.s)/4*100}%;background:${member(g.who).c}" onclick="ganttDetail(${i})" title="${g.who}">${(g.e-g.s)>=g.who.length*0.045?g.who:''}</div></div>`).join('');
+ renderShares();renderIPPhotos();renderIPDetails();
  $('ip-research').innerHTML=`<table><tr><th>Source</th><th>Type</th><th style="white-space:nowrap">Found by</th><th>What we learned</th></tr>${research.map(r=>`<tr><td>${r.src}</td><td><span class="tag" style="white-space:nowrap">${r.type}</span></td><td>${av(r.by,1)}</td><td style="font-weight:500">${cap(r.note)}</td></tr>`).join('')}</table>`;
  $('ip-experts').innerHTML=experts.length?experts.map(e=>`<div class="expert"><div class="face">${e.face}</div><div><b>${e.n}</b><span class="hint">${e.role}${e.d?` · met ${fmt(e.d)}`:''}${e.by?` · ${e.by}`:''}</span><div class="fb">${e.fb}</div><div class="fb"><span class="arrow">→ improvement:</span> ${e.imp}</div>${e.notes&&e.notes.length?`<details class="fb"><summary>What we learned (${e.notes.length} notes)</summary><ul style="margin:4px 0 0;padding-left:18px">${e.notes.map(x=>`<li>${x}</li>`).join('')}</ul></details>`:''}${e.qs&&e.qs.length?`<details class="fb"><summary>Our questions (${e.qs.length})</summary><ol style="margin:4px 0 0;padding-left:18px">${e.qs.map(x=>`<li style="margin-bottom:4px"><b style="display:inline">${x.q}</b><br><span class="arrow">→</span> ${x.a}</li>`).join('')}</ol></details>`:''}</div></div>`).join(''):'<p class="hint">No experts yet. Who knows a lot about our problem?</p>';
 }
@@ -473,6 +561,82 @@ async function saveIP(k){const v=$('ipt-'+k).value.trim();await save('PATCH','/a
 async function setStep(i){await save('PATCH','/api/settings/ip_progress',{now:i},`📍 Now on step ${i+1}: ${ipSteps[i]}`)}
 async function addGantt(){const task=$('g-task').value.trim(),s=+$('g-s').value,e=+$('g-e').value;if(!task){toast('Type the task first');return}if(e<=s){toast('The end has to be after the start');return}
  if(await save('POST','/api/gantt',{task,who:$('g-who').value,s,e},'📅 Added to the plan')) $('g-task').value=''}
+function renderIPPhotos(){ // Project Photos (Nov 2): files in app/images/, click to open full size
+ $('ip-photos').innerHTML=ipPhotos.length?ipPhotos.map(p=>{const src='/images/'+encodeURIComponent(p.photo);return `<figure><a href="${src}" target="_blank"><img src="${src}" alt="${escH(p.cap||'')}" loading="lazy"></a><figcaption>${(p.who||[]).map(n=>av(n,1)).join('')}<span><b>${fmt(p.d)}</b> · ${escH(p.cap||'')}</span></figcaption></figure>`}).join(''):'<div class="hint">No photos yet.</div>'}
+function renderShares(){
+ $('ip-shares').innerHTML=shares.length?`<table><tr><th>Date</th><th>Who we shared with</th><th>Who shared</th><th>What they said</th><th>What we changed</th></tr>${shares.map(x=>`<tr><td style="white-space:nowrap">${fmt(x.d)}</td><td>${escH(x.to)}</td><td>${(x.who||[]).map(n=>av(n,1)).join('')}</td><td style="font-weight:500">${escH(x.said||'')}</td><td style="font-weight:500">${x.chg?escH(x.chg):'<span class="hint">nothing yet</span>'}</td></tr>`).join('')}</table>`:'<div class="hint">No shares yet. Who will you tell about our project first?</div>';
+ if(!$('sh-d').value)$('sh-d').value=TODAY;
+ if(!$('sh-who').children.length)whoPicker('sh-who',[...TEAM.map(m=>m.n),'Whole team'],true)}
+async function addShare(){const to=$('sh-to').value.trim(),who=picked('sh-who');if(!to){toast('Type who we shared with first');return}if(!who.length){toast('Pick who shared it');return}
+ if(await save('POST','/api/shares',{d:$('sh-d').value,to,who,said:$('sh-said').value.trim(),chg:$('sh-chg').value.trim()},'📣 Saved to Communication')){['sh-to','sh-said','sh-chg'].forEach(id=>$(id).value='');clearPicks('sh-who')}}
+/* ---------- Innovation Project Details (Coach CJ, Nov 2): parts, wiring, code + install guides ---------- */
+function renderIPDetails(){
+ const groups=[...new Set(ipParts.map(p=>p.grp))],n=st=>ipParts.filter(p=>st.includes(p.st)).length;
+ $('ipd-parts-sum').textContent=`${n(['Bought','Have'])} bought or have · ${n(['Shipping'])} on the way · ${n(['Need'])} still need`;
+ $('ipd-parts').innerHTML=groups.map(g=>`<div class="ipd-grp">${escH(g)}</div><table><tr><th>Part</th><th>How many</th><th>Status</th><th>Note</th></tr>${ipParts.filter(p=>p.grp===g).map(p=>`<tr><td>${escH(p.part)}</td><td style="white-space:nowrap">${escH(p.qty||'—')}</td><td><span class="pill p-${p.st.replace(/ /g,'-')}">${escH(p.st)}</span>${p.d?`<span class="hint" style="display:block;margin-top:2px">${fmt(p.d)}</span>`:''}</td><td style="font-weight:500">${escH(p.note||'')}</td></tr>`).join('')}</table>`).join('');
+ const wires=ipWiring.filter(w=>w.part),free=ipWiring.filter(w=>!w.part);
+ $('ipd-wiring').innerHTML=wiringSvg()+`<table><tr><th>XIAO pin</th><th>Goes to</th><th>Why</th><th>In the code?</th></tr>${wires.map(w=>`<tr><td style="white-space:nowrap"><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:${w.color};vertical-align:middle;margin-right:6px"></span><b>${escH(w.pin)}</b>${w.gpio?` <span class="hint">${escH(w.gpio)}</span>`:''}</td><td>${escH(w.part)} · <b>${escH(w.ppin)}</b>${w.opt?' <span class="tag">optional</span>':''}</td><td style="font-weight:500">${escH(w.why)}</td><td style="white-space:nowrap">${w.code?'✅ camera v3':'<span class="hint">planned</span>'}</td></tr>`).join('')}</table><div class="hint">${free.map(w=>`<b>${escH(w.pin)}</b>: ${escH(w.why)}`).join(' · ')}</div>`;
+ const sig=JSON.stringify(ipPlatforms);if($('ipd-code').dataset.sig===sig)return; /* don't snap open code shut when something else saves */
+ $('ipd-code').dataset.sig=sig;
+ const file=(f,kind,what)=>f.exists?`<details class="ipd-f" data-path="${escH(f.path)}" data-kind="${kind}" ontoggle="ipdOpen(this)"><summary>${kind==='doc'?'📋':'💻'} ${kind==='doc'?`<b>${escH(what)}</b> <code>${escH(f.path)}</code>`:`<code>${escH(f.path)}</code> <span class="hint">${escH(what)}</span>`}</summary><div class="ipd-body"><p class="hint">Opening…</p></div></details>`
+  :`<details class="ipd-f"><summary>🚧 <code>${escH(f.path)}</code> <span class="hint">${escH(what)}</span> <span class="tag">not built yet</span></summary><div class="ipd-todo">🚧 <b>Not built yet.</b> ${escH(what)}. When this file is written, it shows up here by itself.</div></details>`;
+ $('ipd-code').innerHTML=`<div class="ipd-flow">${ipPlatforms.map((p,i)=>`${i?'<span class="arrow">→</span>':''}<button class="ipd-tile" onclick="ipdShow('${p.id}')"><span class="ico">${p.icon}</span><b>${escH(p.name)}</b><span class="hint" style="display:block;margin:0">${escH(p.device)}</span><span class="pill" style="margin-top:6px;background:${p.built?'var(--teal)':'var(--lavender)'};color:${p.built?'#fff':'var(--forest)'}">${p.built?'Code written':'Not built yet'}</span></button>`).join('')}</div>`
+  +ipPlatforms.map(p=>`<details class="plat" id="ipd-${p.id}"><summary>${p.icon} ${escH(p.name)} <span class="hint">${escH(p.device)}</span> <span class="pill" style="background:${p.built?'var(--teal)':'var(--lavender)'};color:${p.built?'#fff':'var(--forest)'}">${escH(p.st)}</span></summary>
+   <p>${escH(p.job)}</p><div class="hint">${escH(p.ver)} · last big change ${fmt(p.upd)}</div>
+   <div class="ipd-sub">📋 How to install</div>${p.docs.map(d=>file(d,'doc',d.label)).join('')}
+   <div class="ipd-sub">💻 The code</div>${p.files.map(f=>file(f,'code',f.what)).join('')}</details>`).join('')}
+function ipdShow(id){const d=$('ipd-'+id);d.open=true;d.scrollIntoView({behavior:'smooth',block:'start'})}
+/* Opens a guide or code file the first time it's clicked. The server reads the real file, so it's always the latest version. */
+async function ipdOpen(el){if(!el.open||el.dataset.done)return;el.dataset.done=1;const box=el.querySelector('.ipd-body'),url='/api/file?path='+encodeURIComponent(el.dataset.path);
+ try{const r=await fetch(url);if(!r.ok)throw new Error(r.status===404?'the file is missing':(await r.json().catch(()=>({}))).error||r.statusText);const t=await r.text();
+  box.innerHTML=el.dataset.kind==='doc'?`<div class="md">${md(t)}</div>`:`<div class="codebar"><span>${t.split('\n').length} lines</span><button class="btn sm ghost" onclick="copyCode(this)">📋 Copy</button><a class="btn sm ghost" href="${url}" target="_blank" rel="noopener">Open by itself ↗</a></div><pre class="code">${escH(t)}</pre>`}
+ catch(e){el.dataset.done='';box.innerHTML=`<p class="hint">⚠️ Couldn't open it: ${escH(e.message)}</p>`}}
+async function copyCode(b){try{await navigator.clipboard.writeText(b.closest('.ipd-body').querySelector('pre').textContent);toast('📋 Copied')}catch(e){toast('⚠️ Couldn\'t copy. Use "Open by itself" instead')}}
+/* Tiny markdown reader for the install guides: headings, lists, tables, code blocks, quotes, **bold**, `code`, links. */
+function md(src){
+ const inl=t=>escH(t).replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/\[([^\]]+)\]\(([^)\s]+)\)/g,(m,a,u)=>/^https?:/.test(u)?`<a href="${u}" target="_blank" rel="noopener">${a}</a>`:`<b>${a}</b>`);
+ const L=src.replace(/\r/g,'').split('\n'),LIST=/^\s*([-*]|\d+\.)\s/,BLOCK=/^(```|#{1,4}\s|\||>|---+\s*$)/;let out='',i=0;
+ while(i<L.length){const l=L[i];
+  if(/^```/.test(l)){const b=[];i++;while(i<L.length&&!/^```/.test(L[i]))b.push(L[i++]);i++;out+=`<pre>${escH(b.join('\n'))}</pre>`;continue}
+  if(/^#{1,4}\s/.test(l)){const h=l.match(/^#+/)[0].length+2;out+=`<h${h}>${inl(l.replace(/^#+\s*/,''))}</h${h}>`;i++;continue}
+  if(/^\|/.test(l)){const rs=[];while(i<L.length&&/^\|/.test(L[i]))rs.push(L[i++]);const cells=r=>r.trim().replace(/^\||\|$/g,'').split('|').map(c=>c.trim()),body=rs.filter(r=>!/^\|[\s:|-]+\|\s*$/.test(r));
+   out+=`<table><tr>${cells(body[0]).map(c=>`<th>${inl(c)}</th>`).join('')}</tr>${body.slice(1).map(r=>`<tr>${cells(r).map(c=>`<td>${inl(c)}</td>`).join('')}</tr>`).join('')}</table>`;continue}
+  if(/^>/.test(l)){const b=[];while(i<L.length&&/^>/.test(L[i]))b.push(L[i++].replace(/^>\s?/,''));out+=`<blockquote>${inl(b.join(' '))}</blockquote>`;continue}
+  if(/^---+\s*$/.test(l)){out+='<hr>';i++;continue}
+  if(LIST.test(l)){const ol=/^\s*\d+\./.test(l),items=[];
+   while(i<L.length&&(LIST.test(L[i])||(/^\s{2,}\S/.test(L[i])&&items.length))){if(LIST.test(L[i]))items.push(L[i].replace(LIST,''));else items[items.length-1]+=' '+L[i].trim();i++}
+   out+=`<${ol?'ol':'ul'}>${items.map(x=>`<li>${inl(x)}</li>`).join('')}</${ol?'ol':'ul'}>`;continue}
+  if(!l.trim()){i++;continue}
+  const p=[L[i++]];while(i<L.length&&L[i].trim()&&!BLOCK.test(L[i])&&!LIST.test(L[i]))p.push(L[i++]);out+=`<p>${inl(p.join(' '))}</p>`}
+ return out}
+/* The XIAO's pins, top view with USB-C at the top. This is the board itself, not team data; the wires come from the database. */
+const XIAO_LEFT=['D0','D1','D2','D3','D4','D5','D6'],XIAO_RIGHT=['5V','GND','3V3','D10','D9','D8','D7'];
+function wiringSvg(){
+ if(!ipWiring.some(w=>w.part))return '<p class="hint">No wiring saved yet.</p>';
+ const Y=i=>96+i*56,pinY=p=>Y(XIAO_LEFT.includes(p)?XIAO_LEFT.indexOf(p):XIAO_RIGHT.indexOf(p)),BX=470,BW=150,PX=130,PW=170,R3=34,RG=56,RED='#d64545',BLK='#2b2b2b';
+ const t=(x,y,s,o='')=>`<text x="${x}" y="${y}" ${o}>${escH(s)}</text>`,dash=w=>w.opt?' stroke-dasharray="6 4"':'';
+ const parts=[...new Set(ipWiring.filter(w=>w.part).map(w=>w.part))].map(name=>{const ws=ipWiring.filter(w=>w.part===name),sig=ws.filter(w=>XIAO_LEFT.includes(w.pin)),pwr=ws.filter(w=>w.pin==='3V3'||w.pin==='GND'),ys=sig.map(w=>pinY(w.pin));
+  const top=Math.min(...ys)-22,bot=Math.max(...ys)+22;return {name,sig,pwr:pwr.map((w,k)=>({...w,y:top+(k+1)*(bot-top)/(pwr.length+1)})),top,bot,opt:ws.every(w=>w.opt)}});
+ const lowest=Math.max(...parts.flatMap(p=>p.pwr.map(w=>w.y)));let s='';
+ /* power rails: 3V3 (red) and GND (black) run from the XIAO's right side, over the top, down the left */
+ s+=`<path d="M${BX+BW} ${Y(2)} H710 V26 H${R3} V${lowest}" stroke="${RED}" stroke-width="3" fill="none"/><path d="M${BX+BW} ${Y(1)} H690 V42 H${RG} V${lowest}" stroke="${BLK}" stroke-width="3" fill="none"/>`;
+ s+=t(R3+4,20,'3V3 (+)',`font-size="10" font-weight="800" fill="${RED}"`)+t(RG+4,38,'GND (−)',`font-size="10" font-weight="800" fill="${BLK}"`);
+ parts.forEach(p=>{
+  s+=`<rect x="${PX}" y="${p.top}" width="${PW}" height="${p.bot-p.top}" rx="9" fill="#fffdf6" stroke="#b48fd9" stroke-width="2"${p.opt?' stroke-dasharray="6 4"':''}/>`;
+  const [a,b]=p.name.split(/ (?=\()/),cy=(p.top+p.bot)/2;
+  s+=t(PX+PW/2,b?cy-2:cy+4,a,'font-size="12" font-weight="800" fill="#1c3b2a" text-anchor="middle"')+(b?t(PX+PW/2,cy+12,b,'font-size="10" font-weight="700" fill="#7d8a76" text-anchor="middle"'):'');
+  p.pwr.forEach(w=>{const rx=w.pin==='3V3'?R3:RG;s+=`<line x1="${rx}" y1="${w.y}" x2="${PX}" y2="${w.y}" stroke="${w.color}" stroke-width="2.5"${dash(w)}><title>${escH(w.pin+' → '+p.name+' '+w.ppin+': '+w.why)}</title></line><circle cx="${rx}" cy="${w.y}" r="3.5" fill="${w.color}"/>`+t(PX-5,w.y-4,w.ppin,'font-size="9" font-weight="800" fill="#7d8a76" text-anchor="end"')});
+  p.sig.forEach(w=>{const y=pinY(w.pin);s+=`<line x1="${PX+PW}" y1="${y}" x2="${BX}" y2="${y}" stroke="${w.color}" stroke-width="3.5"${dash(w)}><title>${escH(w.pin+' → '+p.name+' '+w.ppin+': '+w.why)}</title></line>`+t(PX+PW+6,y-6,w.ppin,'font-size="9" font-weight="800" fill="#7d8a76"')});
+ });
+ /* the XIAO board */
+ s+=`<rect x="${BX+BW/2-22}" y="46" width="44" height="14" rx="4" fill="#9aa3a0"/>`+t(BX+BW/2,56,'USB-C','font-size="8" font-weight="800" fill="#fff" text-anchor="middle"');
+ s+=`<rect x="${BX}" y="58" width="${BW}" height="${Y(6)-Y(0)+76}" rx="12" fill="#1c3b2a"/>`+t(BX+BW/2,Y(3)+22,'XIAO','font-size="16" font-weight="800" fill="#f4efe1" text-anchor="middle"')+t(BX+BW/2,Y(3)+36,'ESP32-S3 Sense','font-size="10" font-weight="700" fill="#d9c6ee" text-anchor="middle"')+t(BX+BW/2,Y(3)+48,'+ camera board','font-size="9" font-weight="600" fill="#d9c6ee" text-anchor="middle"');
+ [[XIAO_LEFT,BX,'start',1],[XIAO_RIGHT,BX+BW,'end',-1]].forEach(([pins,x,anchor,dir])=>pins.forEach(pin=>{
+  const y=pinY(pin),used=ipWiring.some(w=>w.pin===pin&&w.part),note=ipWiring.find(w=>w.pin===pin&&!w.part),gpio=(ipWiring.find(w=>w.pin===pin&&w.gpio)||{}).gpio;
+  s+=`<g><title>${escH(pin+(gpio?' · '+gpio:'')+(note?': '+note.why:''))}</title><circle cx="${x}" cy="${y}" r="5" fill="${used?'#f4efe1':'#5d6b63'}" stroke="#b48fd9" stroke-width="1.5"/>`+t(x+dir*10,y+4,pin,`font-size="11" font-weight="800" fill="${used?'#f4efe1':'#8a958e'}" text-anchor="${anchor}"`)+`</g>`;
+  if(note&&!(dir<0&&y<Y(3)))s+=t(x-dir*10,y+4,note.why.split(/[:(]/)[0].trim(),`font-size="9" font-weight="700" fill="#7d8a76" text-anchor="${dir>0?'end':'start'}"`);
+ }));
+ return `<svg class="ipd-svg" viewBox="0 0 740 ${Y(6)+50}" role="img" aria-label="Camera box wiring diagram">${s}</svg>`}
 function ganttDetail(i){const g=gantt[i];$('ip-gantt-detail').innerHTML=`<b style="color:var(--pine)">${g.task}</b> — owned by ${g.who} · iterations: ${g.iters.map((it,k)=>`<span class="tag">${k+1}. ${it}</span>`).join(' ')} <span class="hint">(photos of each version show here in the real app)</span>`}
 function renderCV(){
  const contrib={};TEAM.forEach(m=>contrib[m.n]=0);entries.forEach(e=>e.who.forEach(w=>contrib[w]++));
@@ -521,6 +685,7 @@ function renderCoding(){
  $('code-note').textContent=settings.coding_note||'';
  $('code-summary').textContent=coded.length+' of '+started.length+' started missions have a program';
  $('code-missions').innerHTML=codeMissionTable();
+ renderRobotCode();
  const list=[...entries].filter(e=>/program|coding|coded|code\b/i.test(e.t)).sort((a,b)=>b.d.localeCompare(a.d));
  $('code-entries').innerHTML=list.map(entryHtml).join('')||'<div class="hint">No coding entries yet — write one on the Daily Log page.</div>';
 }
@@ -532,6 +697,38 @@ function codeMissionTable(){
  const btns=`<div class="filterbar lav">${['All',...missions.map(m=>m.id)].map(id=>`<button class="${id===codeMission?'on':''}" title="${id==='All'?'Every started mission':missions.find(m=>m.id===id).name}" onclick="pickCodeMission('${id}')">${id}</button>`).join('')}</div>`;
  return `${btns}<table><tr><th>Mission</th><th>Attachment</th><th>Built by</th><th>Coded by</th><th>Program</th></tr>${rows.map(m=>`<tr><td><b>${m.id}</b> ${m.name}</td><td>${m.att}</td><td>${who(m.built)}</td><td>${m.prog.length?who(m.prog):fill('/api/missions/'+m.id,'prog','','names')}</td><td>${m.prog.length?'<span class="pill" style="background:var(--pine)">Written ✅</span>':'<span class="pill" style="background:var(--lavender);color:var(--forest)">Needs a program</span>'}</td></tr>`).join('')}</table><div class="hint">A mission scores zero until it has BOTH an attachment and a program. "Needs a program" rows are the to-do list for the coders.</div>`;
 }
+/* ---------- Our Robot Code (Nov 2): every program in code/, every practice it changed, and what changed ---------- */
+function renderRobotCode(){
+ const {dates,programs:P}=robotCode,runs=settings.robot_code_runs||{},sig=JSON.stringify(robotCode)+JSON.stringify(missions.map(m=>m.prog))+JSON.stringify(runs);
+ if($('rc').dataset.sig===sig)return; /* don't snap open code shut when something else saves */
+ $('rc').dataset.sig=sig;
+ if(!P.length){$('rc-sum').textContent='';$('rc').innerHTML='<div class="hint">No code yet. Put each practice\'s Pybricks backup in the <b>code</b> folder, in a folder named by the date (like <b>11-1</b>), and it shows up here.</div>';return}
+ const changes=P.reduce((n,p)=>n+p.versions.length-1,0);
+ $('rc-sum').textContent=`${P.length} programs · ${dates.length} practices saved · ${changes} times we changed a program`;
+ const name=p=>p.missions.map(id=>`<b>${id}</b> ${escH((missions.find(m=>m.id===id)||{}).name||'')}`).join(' + ')||'<span class="hint">no mission number in the file name</span>';
+ const label=p=>`<code>${escH(p.file)}</code>${p.copy?` <span class="tag">copy ${p.copy}</span>`:''}${!p.copy||!runs[p.file]?'':runs[p.file]===p.seen[0].d?' <span class="pill" style="background:var(--pine)">✅ the robot runs this one</span>':' <span class="hint" style="margin:0">not the one the robot runs</span>'}`; /* which copy: settings.robot_code_runs, file → date that copy was first saved */
+ const cell=(p,d)=>{const i=p.seen.findIndex(s=>s.d===d);if(i<0)return '';const s=p.seen[i];
+  return i===0?'<span class="rc-dot rc-new" title="First time saved"></span>':s.v!==p.seen[i-1].v?'<span class="rc-dot rc-chg" title="Changed"></span>':'<span class="rc-dot rc-same" title="Same as before"></span>'};
+ const grid=`<div class="rc-wrap"><table class="rc-grid"><tr><th>Program</th>${dates.map(d=>`<th>${fmt(d)}</th>`).join('')}<th>Versions</th></tr>${P.map((p,i)=>`<tr class="rc-row" onclick="rcShow(${i})"><td>${label(p)}<br><span class="hint" style="margin:0">${p.missions.join(' + ')}</span></td>${dates.map(d=>`<td>${cell(p,d)}</td>`).join('')}<td><b>${p.versions.length}</b></td></tr>`).join('')}</table></div>
+  <div class="hint"><span class="rc-dot rc-new"></span> first time saved · <span class="rc-dot rc-chg"></span> changed · <span class="rc-dot rc-same"></span> saved, same as before. 👆 Click a program to see its code and what changed each time.</div>`;
+ const copies=[...new Set(P.filter(p=>p.copy&&!runs[p.file]).map(p=>p.file))];
+ const ask=copies.length?`<div class="ipd-todo" style="margin-top:10px">🤔 There are two different <b>${copies.map(escH).join(', ')}</b> programs saved (copy A and copy B). Is one an old try? Which one does the robot really run?</div>`:'';
+ const coders=p=>[...new Set(p.missions.flatMap(id=>(missions.find(m=>m.id===id)||{prog:[]}).prog))];
+ const vers=(p,i)=>p.versions.map((v,j)=>({v,j})).reverse().map(({v,j})=>{const dif=j?lineDiff(p.versions[j-1].code,v.code):null,add=dif?dif.filter(l=>l.t==='a').length:0,del=dif?dif.filter(l=>l.t==='d').length:0;
+  return `<details class="ipd-f"${j===p.versions.length-1?' open':''}><summary>${j?'✏️':'🌱'} <b>${fmt(v.d)}</b> <span class="hint">${j?`version ${j+1} · <span style="color:var(--grass)">+${add}</span> <span style="color:#d64545">−${del}</span> lines changed`:'first version'} · saved in <code>${escH(v.src)}</code></span></summary>
+   <div class="ipd-body"><div class="codebar"><span>${v.code.split('\n').length} lines${j?' · green = added, red = taken out':''}</span><button class="btn sm ghost" onclick="rcCopy(${i},${j})">📋 Copy</button></div><pre class="code">${(dif||v.code.split('\n').map(s=>({t:'',s}))).map(l=>`<span class="ln ${l.t}"><i>${l.t==='a'?'+':l.t==='d'?'−':''}</i>${escH(l.s)||' '}</span>`).join('')}</pre></div></details>`}).join('');
+ $('rc').innerHTML=grid+ask+P.map((p,i)=>`<details class="rc" id="rc-${i}"><summary>💻 ${label(p)} · ${name(p)} ${coders(p).map(n=>av(n,1)).join('')} <span class="hint">${p.versions.length} version${p.versions.length>1?'s':''} · first saved ${fmt(p.seen[0].d)} · last changed ${fmt(p.versions[p.versions.length-1].d)}</span></summary><div class="rc-body">${vers(p,i)}</div></details>`).join('');
+}
+function rcShow(i){const d=$('rc-'+i);d.open=true;d.scrollIntoView({behavior:'smooth',block:'start'})}
+async function rcCopy(i,j){try{await navigator.clipboard.writeText(robotCode.programs[i].versions[j].code);toast('📋 Copied')}catch(e){toast('⚠️ Couldn\'t copy')}}
+/* Line-by-line "what changed" between two versions: [{t:''|'a'|'d', s}] (a = added, d = taken out). */
+function lineDiff(a,b){
+ const A=a.replace(/\r/g,'').split('\n'),B=b.replace(/\r/g,'').split('\n'),L=A.map(()=>Array(B.length+1).fill(0));L.push(Array(B.length+1).fill(0));
+ for(let i=A.length-1;i>=0;i--)for(let j=B.length-1;j>=0;j--)L[i][j]=A[i]===B[j]?L[i+1][j+1]+1:Math.max(L[i+1][j],L[i][j+1]);
+ const out=[];let i=0,j=0;
+ while(i<A.length&&j<B.length){if(A[i]===B[j]){out.push({t:'',s:B[j]});i++;j++}else if(L[i+1][j]>=L[i][j+1])out.push({t:'d',s:A[i++]});else out.push({t:'a',s:B[j++]})}
+ while(i<A.length)out.push({t:'d',s:A[i++]});while(j<B.length)out.push({t:'a',s:B[j++]});
+ return out}
 function renderAll(){renderDash();renderGame();renderDesign();renderCoding();renderIP();renderCV();renderLog();renderRubric()}
 
 /* ===================== ACTIONS (each one saves to the database) ===================== */

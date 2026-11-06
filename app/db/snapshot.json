@@ -1,5 +1,5 @@
 {
- "written_at": "2026-10-25T22:24:17.245Z",
+ "written_at": "2026-11-06T02:15:16.894Z",
  "applied_updates": [
   {
    "file": "2026-09-28-profile-photos.sql",
@@ -96,6 +96,38 @@
   {
    "file": "2026-10-23-isla-ring-mango.sql",
    "applied_at": "2026-10-23 23:12:04"
+  },
+  {
+   "file": "2026-10-26-ip-gantt.sql",
+   "applied_at": "2026-10-26 23:16:54"
+  },
+  {
+   "file": "2026-10-26-ip-communication.sql",
+   "applied_at": "2026-10-26 23:29:19"
+  },
+  {
+   "file": "2026-10-26-remove-share-test.sql",
+   "applied_at": "2026-10-26 23:32:32"
+  },
+  {
+   "file": "2026-11-01-m04-m05-m11-solder.sql",
+   "applied_at": "2026-11-01 21:53:16"
+  },
+  {
+   "file": "2026-11-02-ip-details.sql",
+   "applied_at": "2026-11-02 19:49:29"
+  },
+  {
+   "file": "2026-11-02-m13-code-copy.sql",
+   "applied_at": "2026-11-02 22:20:07"
+  },
+  {
+   "file": "2026-11-02-ip-solder-photos.sql",
+   "applied_at": "2026-11-02 22:29:35"
+  },
+  {
+   "file": "2026-11-02-attachment-photos.sql",
+   "applied_at": "2026-11-02 22:51:44"
   }
  ],
  "attachment_versions": [
@@ -245,6 +277,69 @@
    "date": "2026-10-23",
    "note": "v1 built ✅ (Weston)",
    "photo": null
+  },
+  {
+   "id": 22,
+   "attachment_id": 13,
+   "date": "2026-10-26",
+   "note": "v1 built ✅ (Nolan)",
+   "photo": null
+  },
+  {
+   "id": 23,
+   "attachment_id": 14,
+   "date": "2026-10-26",
+   "note": "v1 built ✅ (Nolan)",
+   "photo": null
+  },
+  {
+   "id": 24,
+   "attachment_id": 11,
+   "date": "2026-10-26",
+   "note": "Nolan built an attachment for M11",
+   "photo": null
+  },
+  {
+   "id": 25,
+   "attachment_id": 13,
+   "date": "2026-11-01",
+   "note": "worked on (Weston, Nolan) · needs a program",
+   "photo": null
+  },
+  {
+   "id": 26,
+   "attachment_id": 14,
+   "date": "2026-11-01",
+   "note": "worked on (Weston, Nolan) · needs a program",
+   "photo": null
+  },
+  {
+   "id": 27,
+   "attachment_id": 10,
+   "date": "2026-11-01",
+   "note": "mostly finished (Adeline, Fynn)",
+   "photo": null
+  },
+  {
+   "id": 28,
+   "attachment_id": 12,
+   "date": "2026-11-01",
+   "note": "mostly finished except the seed (Adeline, Fynn)",
+   "photo": null
+  },
+  {
+   "id": 29,
+   "attachment_id": 10,
+   "date": "2026-11-02",
+   "note": "📷 photo: one attachment does both M08 + M09",
+   "photo": null
+  },
+  {
+   "id": 30,
+   "attachment_id": 12,
+   "date": "2026-11-02",
+   "note": "📷 photo: one attachment does both M08 + M09",
+   "photo": null
   }
  ],
  "attachments": [
@@ -255,7 +350,8 @@
    "purpose": "Launch the drone off the mat (M01 Drone Survey)",
    "built_by": "[\"Isla\"]",
    "size": "—",
-   "sort_order": 1
+   "sort_order": 1,
+   "photo": null
   },
   {
    "id": 2,
@@ -264,7 +360,8 @@
    "purpose": "Pull the leaves out of the nest without moving the katydid (M04 Lucky Leaves)",
    "built_by": "[\"Fynn\"]",
    "size": "—",
-   "sort_order": 2
+   "sort_order": 2,
+   "photo": "11-2-mission-4.jpg"
   },
   {
    "id": 3,
@@ -273,7 +370,8 @@
    "purpose": "Knock the research flag down, then put the rock back (M03 Flip the Rock)",
    "built_by": "[\"Nolan\"]",
    "size": "—",
-   "sort_order": 3
+   "sort_order": 3,
+   "photo": null
   },
   {
    "id": 4,
@@ -282,7 +380,8 @@
    "purpose": "Pop the seeds off the stalk (M02 Exploding Seeds)",
    "built_by": "[\"Adeline\"]",
    "size": "—",
-   "sort_order": 4
+   "sort_order": 4,
+   "photo": null
   },
   {
    "id": 5,
@@ -291,7 +390,8 @@
    "purpose": "One attachment for Exploding Seeds AND Flip the Rock in the same run",
    "built_by": "[\"Nolan\"]",
    "size": "—",
-   "sort_order": 5
+   "sort_order": 5,
+   "photo": "11-2-mission-2-3.jpg"
   },
   {
    "id": 6,
@@ -300,7 +400,8 @@
    "purpose": "Raise the cane and hook the support tie on the post (M12 Forest Elder)",
    "built_by": "[\"Fynn\",\"Isla\",\"Adeline\"]",
    "size": "—",
-   "sort_order": 6
+   "sort_order": 6,
+   "photo": "11-2-mission-12.jpg"
   },
   {
    "id": 7,
@@ -309,7 +410,8 @@
    "purpose": "Carry our team mascot — the team-built keystone species — onto the restoration platform (M13 Keystone Species, \"the mascot mission\")",
    "built_by": "[\"Thea\",\"Nolan\"]",
    "size": "—",
-   "sort_order": 7
+   "sort_order": 7,
+   "photo": null
   },
   {
    "id": 8,
@@ -318,7 +420,8 @@
    "purpose": "Raise the nesting canopy, push the skylight in, open the compost hatch (M15 Biocentric Architecture, \"mission 15\")",
    "built_by": "[\"Isla\"]",
    "size": "—",
-   "sort_order": 8
+   "sort_order": 8,
+   "photo": "11-2-mission-15.jpg"
   },
   {
    "id": 9,
@@ -327,7 +430,8 @@
    "purpose": "Drop the seeds into the replantation station (M14 Seeds of Renewal, \"number 14\")",
    "built_by": "[\"Weston\"]",
    "size": "—",
-   "sort_order": 9
+   "sort_order": 9,
+   "photo": "11-2-mission-14.jpg"
   },
   {
    "id": 10,
@@ -336,16 +440,18 @@
    "purpose": "Pull the vine down until it touches the mat (M08 Tangled, \"number 8\")",
    "built_by": "[\"Nolan\"]",
    "size": "—",
-   "sort_order": 10
+   "sort_order": 10,
+   "photo": "11-2-mission-8-9.jpg"
   },
   {
    "id": 11,
    "name": "Mission 11 attachment",
    "mission": "M11",
    "purpose": "Put the root cover down so it touches the mat (M11 Window to the Past, \"mission 11\")",
-   "built_by": "[\"Weston\"]",
+   "built_by": "[\"Weston\",\"Nolan\"]",
    "size": "—",
-   "sort_order": 11
+   "sort_order": 11,
+   "photo": null
   },
   {
    "id": 12,
@@ -354,7 +460,28 @@
    "purpose": "Raise the research platform, deploy the camera trap, knock the seed off the big tree (M09 Research Platform, \"the big tree mission\")",
    "built_by": "[\"Weston\"]",
    "size": "—",
-   "sort_order": 9
+   "sort_order": 9,
+   "photo": "11-2-mission-8-9.jpg"
+  },
+  {
+   "id": 13,
+   "name": "Mission 6 attachment",
+   "mission": "M06",
+   "purpose": "Get the ant and the leaf fragments into the nest (M06 Leafcutter Frenzy, \"mission 6\")",
+   "built_by": "[\"Nolan\",\"Weston\"]",
+   "size": "—",
+   "sort_order": 12,
+   "photo": null
+  },
+  {
+   "id": 14,
+   "name": "Mission 7 attachment",
+   "mission": "M07",
+   "purpose": "Extend the mycelium all the way (M07 Humongous Fungus, \"mission 7\")",
+   "built_by": "[\"Nolan\",\"Weston\"]",
+   "size": "—",
+   "sort_order": 13,
+   "photo": null
   }
  ],
  "entries": [
@@ -987,6 +1114,146 @@
    "source": "update",
    "sample": 0,
    "created_at": "2026-10-23 22:50:38"
+  },
+  {
+   "id": 46,
+   "date": "2026-10-26",
+   "who": "[\"Weston\"]",
+   "component": "Robot Game",
+   "phase": "DESIGN",
+   "text": "Weston programed Mission 9.",
+   "core_values": "[]",
+   "success": 0,
+   "photo": null,
+   "source": "app",
+   "sample": 0,
+   "created_at": "2026-10-26 23:36:31"
+  },
+  {
+   "id": 47,
+   "date": "2026-10-26",
+   "who": "[\"Fynn\"]",
+   "component": "Robot Game",
+   "phase": "DESIGN",
+   "text": "Fynn helped Weston with mission 9.",
+   "core_values": "[\"Teamwork\"]",
+   "success": 0,
+   "photo": null,
+   "source": "app",
+   "sample": 0,
+   "created_at": "2026-10-27 00:28:41"
+  },
+  {
+   "id": 48,
+   "date": "2026-10-26",
+   "who": "[\"Thea\"]",
+   "component": "Innovation Project",
+   "phase": "DESIGN",
+   "text": "Thea worked on the app. She compared the rubric and made adjustments to the app.",
+   "core_values": "[\"Innovation\"]",
+   "success": 1,
+   "photo": null,
+   "source": "app",
+   "sample": 0,
+   "created_at": "2026-10-27 00:29:43"
+  },
+  {
+   "id": 49,
+   "date": "2026-10-26",
+   "who": "[\"Isla\"]",
+   "component": "Robot Game",
+   "phase": "DESIGN",
+   "text": "Isla programmed missions 4 and 5.",
+   "core_values": "[]",
+   "success": 0,
+   "photo": null,
+   "source": "app",
+   "sample": 0,
+   "created_at": "2026-10-27 00:30:11"
+  },
+  {
+   "id": 50,
+   "date": "2026-10-26",
+   "who": "[\"Nolan\"]",
+   "component": "Robot Game",
+   "phase": "CREATE",
+   "text": "Nolan built an attachment for 6,7, and 11.",
+   "core_values": "[]",
+   "success": 0,
+   "photo": null,
+   "source": "app",
+   "sample": 0,
+   "created_at": "2026-10-27 00:31:05"
+  },
+  {
+   "id": 51,
+   "date": "2026-11-01",
+   "who": "[\"Weston\",\"Nolan\"]",
+   "component": "Robot Design",
+   "phase": "CREATE",
+   "text": "Weston and Nolan worked on missions 6, 7, and 11. They programmed mission 11 (Window to the Past), our first program for it.",
+   "core_values": "[\"Teamwork\"]",
+   "success": 1,
+   "photo": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-01 21:53:16"
+  },
+  {
+   "id": 52,
+   "date": "2026-11-01",
+   "who": "[\"Adeline\",\"Fynn\"]",
+   "component": "Robot Design",
+   "phase": "ITERATE",
+   "text": "Adeline and Fynn worked on missions 8 and 9 (Tangled, Research Platform). They are mostly finished besides the seed.",
+   "core_values": "[\"Teamwork\"]",
+   "success": 1,
+   "photo": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-01 21:53:16"
+  },
+  {
+   "id": 53,
+   "date": "2026-11-01",
+   "who": "[\"Adeline\"]",
+   "component": "Robot Game",
+   "phase": "ITERATE",
+   "text": "Adeline finished missions 4 and 5 (Lucky Leaves, Reaching Roots). Pretty consistent: 4 out of 5.",
+   "core_values": "[]",
+   "success": 1,
+   "photo": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-01 21:53:16"
+  },
+  {
+   "id": 54,
+   "date": "2026-11-01",
+   "who": "[\"Adeline\",\"Fynn\",\"Nolan\",\"Weston\"]",
+   "component": "Robot Game",
+   "phase": "DESIGN",
+   "text": "We have an attachment for all the missions! The only thing left to program is missions 6 and 7.",
+   "core_values": "[]",
+   "success": 1,
+   "photo": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-01 21:53:16"
+  },
+  {
+   "id": 55,
+   "date": "2026-11-01",
+   "who": "[\"Nolan\",\"Weston\"]",
+   "component": "Innovation Project",
+   "phase": "CREATE",
+   "text": "Nolan and Weston did soldering for the camera.",
+   "core_values": "[\"Teamwork\"]",
+   "success": 1,
+   "photo": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-01 21:53:16"
   }
  ],
  "experts": [
@@ -1004,7 +1271,365 @@
    "questions": "[{\"q\":\"How many big crashes happen every year in Flagstaff, with the animals?\",\"a\":\"About 300 animal strikes in a year, on I-17.\"},{\"q\":\"Another one of our ideas is to make the camera send a blinking light to warn drivers that there is an animal crossing.\",\"a\":\"A camera with a flashing light has been done before.\"},{\"q\":\"Do you ever use live stream cameras?\",\"a\":\"Yes, they have a live stream to watch the animals. For our camera: not using a live stream prevents bad stuff.\"},{\"q\":\"How long does it usually take for animals to figure out if a new bridge is safe, and to know the bridge is there for them, with big animals?\",\"a\":\"The animals go where their mom goes, so if their mom goes on the bridge, they will. (No time given.)\"},{\"q\":\"For the big new overpass being built on the I-17 at Willard Springs, how are you planning to count the animals? Regular trail cameras from the store, or special expensive equipment?\",\"a\":\"There might be one camera on the bridge, but he is not sure.\"}]"
   }
  ],
- "gantt": [],
+ "gantt": [
+  {
+   "id": 8,
+   "task": "Choose the camera design",
+   "owner": "Thea",
+   "start_pos": 2.03,
+   "end_pos": 2.1,
+   "iterations": "[\"Oct 2: idea, AI forest wildlife camera\",\"Oct 3: Option B, Raspberry Pi build\",\"Oct 3: research (Gemini): low-power XIAO camera\",\"Oct 3: XIAO camera + Pi 4 gets the pictures over Wi-Fi\",\"Oct 3: two cameras (house + forest) + mode switch\"]",
+   "sample": 0,
+   "source": "update",
+   "created_at": "2026-10-26 12:00:00"
+  },
+  {
+   "id": 9,
+   "task": "Expert interview: Nate Reagan, Game and Fish",
+   "owner": "Whole team",
+   "start_pos": 2.13,
+   "end_pos": 2.16,
+   "iterations": "[\"Oct 5: wrote 5 questions\",\"Oct 5: met Nate, notes and answers saved\"]",
+   "sample": 0,
+   "source": "update",
+   "created_at": "2026-10-26 12:00:01"
+  },
+  {
+   "id": 10,
+   "task": "Buy the camera parts",
+   "owner": "Whole team",
+   "start_pos": 2.06,
+   "end_pos": 2.39,
+   "iterations": "[\"Oct 3: parts list\",\"Oct 12: parts bought (batteries delayed)\"]",
+   "sample": 0,
+   "source": "update",
+   "created_at": "2026-10-26 12:00:02"
+  },
+  {
+   "id": 11,
+   "task": "Wire the camera box",
+   "owner": "Nolan",
+   "start_pos": 2.35,
+   "end_pos": 2.74,
+   "iterations": "[\"Oct 12: wiring plan v1\",\"Oct 23: Nolan wired it, Thea helped\"]",
+   "sample": 0,
+   "source": "update",
+   "created_at": "2026-10-26 12:00:03"
+  },
+  {
+   "id": 12,
+   "task": "Decide what to change from Nate's advice",
+   "owner": "Whole team",
+   "start_pos": 2.13,
+   "end_pos": 2.84,
+   "iterations": "[\"Oct 5: open: live stream, bridge or squirrel nest, how many cameras, warning light\",\"Oct 25: people get blurred, and we review photos before publishing\",\"Still open\"]",
+   "sample": 0,
+   "source": "update",
+   "created_at": "2026-10-26 12:00:04"
+  },
+  {
+   "id": 13,
+   "task": "Program the camera",
+   "owner": "Thea",
+   "start_pos": 2.74,
+   "end_pos": 2.84,
+   "iterations": "[\"Oct 24: v1, picture every 2 s + motion sensor\",\"Oct 25: v2, picture changed + motion sensor, saves to microSD\",\"Oct 25: v3, sends photos to the Pi\",\"Not tested on the real camera yet\"]",
+   "sample": 0,
+   "source": "update",
+   "created_at": "2026-10-26 12:00:05"
+  },
+  {
+   "id": 14,
+   "task": "Pi Camera Station (with Coach CJ)",
+   "owner": "Whole team",
+   "start_pos": 2.77,
+   "end_pos": 2.84,
+   "iterations": "[\"Oct 25: collector\",\"Oct 25: tagger (SpeciesNet), blurs people\",\"Oct 25: Camera Station: visits, review, publish by hand\",\"Oct 26: Camera Wi-Fi / House Wi-Fi switch\"]",
+   "sample": 0,
+   "source": "update",
+   "created_at": "2026-10-26 12:00:06"
+  },
+  {
+   "id": 15,
+   "task": "Test the camera + Pi for real (suggested)",
+   "owner": "Thea",
+   "start_pos": 2.84,
+   "end_pos": 3.23,
+   "iterations": "[\"Suggested: dates are a guess, change if needed\",\"First real test: camera v3 → Pi\"]",
+   "sample": 0,
+   "source": "update",
+   "created_at": "2026-10-26 12:00:07"
+  },
+  {
+   "id": 16,
+   "task": "Practice our presentation (suggested)",
+   "owner": "Whole team",
+   "start_pos": 3,
+   "end_pos": 3.47,
+   "iterations": "[\"Suggested: dates are a guess, change if needed\",\"Regionals Nov 14\"]",
+   "sample": 0,
+   "source": "update",
+   "created_at": "2026-10-26 12:00:08"
+  }
+ ],
+ "ip_parts": [
+  {
+   "id": 1,
+   "grp": "Camera box",
+   "part": "Seeed Studio XIAO ESP32-S3 Sense (camera, microphone, microSD slot)",
+   "qty": null,
+   "status": "Bought",
+   "date": "2026-10-12",
+   "note": "The camera's brain. Sleeps on very little power",
+   "sort_order": 1,
+   "source": "update"
+  },
+  {
+   "id": 2,
+   "grp": "Camera box",
+   "part": "AM312 mini PIR motion sensor (HC-SR312)",
+   "qty": "5-pack",
+   "status": "Bought",
+   "date": "2026-10-12",
+   "note": "Feels warm animals move",
+   "sort_order": 2,
+   "source": "update"
+  },
+  {
+   "id": 3,
+   "grp": "Camera box",
+   "part": "DS3231 AT24C32 I2C real-time clock module (with jumper wires)",
+   "qty": "2-pack",
+   "status": "Bought",
+   "date": "2026-10-12",
+   "note": "Keeps the time when the Pi is out of range. The second one can go on the Pi",
+   "sort_order": 3,
+   "source": "update"
+  },
+  {
+   "id": 4,
+   "grp": "Camera box",
+   "part": "32 GB high-endurance microSD card (FAT32)",
+   "qty": null,
+   "status": "Need",
+   "date": null,
+   "note": "On the Oct 12 \"still need\" list",
+   "sort_order": 4,
+   "source": "update"
+  },
+  {
+   "id": 5,
+   "grp": "Camera box",
+   "part": "SPDT mini toggle switch",
+   "qty": null,
+   "status": "Need",
+   "date": null,
+   "note": "The mode switch (always-on / solar). On the Oct 12 \"still need\" list",
+   "sort_order": 5,
+   "source": "update"
+  },
+  {
+   "id": 6,
+   "grp": "Camera box",
+   "part": "CR2032 coin cell for the clock",
+   "qty": null,
+   "status": "Need",
+   "date": null,
+   "note": "Only if the clock module didn't come with one",
+   "sort_order": 6,
+   "source": "update"
+  },
+  {
+   "id": 7,
+   "grp": "Camera box",
+   "part": "Waterproof box + USB-C panel jack (or a short USB-C extension)",
+   "qty": null,
+   "status": "Need",
+   "date": null,
+   "note": "On the Oct 12 \"still need\" list",
+   "sort_order": 7,
+   "source": "update"
+  },
+  {
+   "id": 8,
+   "grp": "Camera box",
+   "part": "Breadboard + jumper wires",
+   "qty": null,
+   "status": "Need",
+   "date": null,
+   "note": "For testing. On the Oct 12 \"still need\" list",
+   "sort_order": 8,
+   "source": "update"
+  },
+  {
+   "id": 9,
+   "grp": "Camera box",
+   "part": "LED + 220 Ω resistor",
+   "qty": "1 each",
+   "status": "Optional",
+   "date": null,
+   "note": "Status light",
+   "sort_order": 9,
+   "source": "update"
+  },
+  {
+   "id": 10,
+   "grp": "Solar box",
+   "part": "ZPSHYD 6V 3W mini monocrystalline solar panel (DC5521 plug)",
+   "qty": null,
+   "status": "Bought",
+   "date": "2026-10-12",
+   "note": "The Waveshare board needs 6 V or more, so this fits",
+   "sort_order": 10,
+   "source": "update"
+  },
+  {
+   "id": 11,
+   "grp": "Solar box",
+   "part": "Waveshare Solar Power Manager Module (D)",
+   "qty": null,
+   "status": "Bought",
+   "date": "2026-10-12",
+   "note": "Takes the solar panel (or a USB-C charger), gives 5 V out, holds the battery",
+   "sort_order": 11,
+   "source": "update"
+  },
+  {
+   "id": 12,
+   "grp": "Solar box",
+   "part": "2600 mAh 3.7 V button-top 18650 rechargeable batteries",
+   "qty": "2-pack",
+   "status": "Shipping",
+   "date": "2026-10-12",
+   "note": "Delayed in shipping (Oct 12)",
+   "sort_order": 12,
+   "source": "update"
+  },
+  {
+   "id": 13,
+   "grp": "Pi Camera Station",
+   "part": "Raspberry Pi 4 Model B, 8 GB",
+   "qty": "1",
+   "status": "Have",
+   "date": "2026-10-03",
+   "note": "We already had it",
+   "sort_order": 13,
+   "source": "update"
+  },
+  {
+   "id": 14,
+   "grp": "Pi Camera Station",
+   "part": "microSD card for the Pi",
+   "qty": "1",
+   "status": "Have",
+   "date": "2026-10-03",
+   "note": "A USB SSD would last longer (pi/INSTALL.md)",
+   "sort_order": 14,
+   "source": "update"
+  },
+  {
+   "id": 15,
+   "grp": "Pi Camera Station",
+   "part": "7\" Raspberry Pi Touchscreen",
+   "qty": null,
+   "status": "Not sure",
+   "date": null,
+   "note": "For reviewing and publishing photos [unclear: do we have it yet?]",
+   "sort_order": 15,
+   "source": "update"
+  },
+  {
+   "id": 16,
+   "grp": "Pi Camera Station",
+   "part": "USB Wi-Fi adapter with an antenna (~$30)",
+   "qty": null,
+   "status": "Later",
+   "date": null,
+   "note": "Only for two radios at once (pi/NETWORKING.md setup 2). Not needed with the Wi-Fi switch",
+   "sort_order": 16,
+   "source": "update"
+  },
+  {
+   "id": 17,
+   "grp": "Pi Camera Station",
+   "part": "\"m5cam\" camera module",
+   "qty": null,
+   "status": "Have",
+   "date": "2026-10-03",
+   "note": "We already had it. Not in the current plan (the XIAO does its job)",
+   "sort_order": 17,
+   "source": "update"
+  }
+ ],
+ "ip_photos": [
+  {
+   "id": 1,
+   "date": "2026-11-01",
+   "who": "[\"Nolan\",\"Weston\"]",
+   "caption": "Soldering for the camera, with the helping-hands magnifier.",
+   "photo": "11-1-soldering-1.jpg",
+   "sort_order": 1,
+   "source": "update",
+   "created_at": "2026-11-02 12:00:00"
+  },
+  {
+   "id": 2,
+   "date": "2026-11-01",
+   "who": "[\"Nolan\",\"Weston\"]",
+   "caption": "Soldering for the camera while teammates watch.",
+   "photo": "11-1-soldering-2.jpg",
+   "sort_order": 2,
+   "source": "update",
+   "created_at": "2026-11-02 12:00:01"
+  }
+ ],
+ "ip_platforms": [
+  {
+   "id": "esp32",
+   "icon": "🎥",
+   "name": "Wildlife Camera",
+   "device": "Seeed Studio XIAO ESP32-S3 Sense",
+   "job": "Takes a picture every second and shows it live. Saves it to the microSD card when the motion sensor fires or the picture changed. Sends every saved picture to the Pi over the Pi's camera Wi-Fi, then deletes it from the card. Out of range, pictures wait on the card.",
+   "version": "Camera v3 (Oct 25)",
+   "status": "Compiles · not tested on the real camera yet",
+   "built": 1,
+   "docs": "[{\"label\":\"How to install\",\"path\":\"camera/INSTALL.md\"}]",
+   "files": "[{\"path\":\"camera/camera-v3/camera-v3.ino\",\"what\":\"The camera program\"},{\"path\":\"camera/camera-v3/secrets.example.h\",\"what\":\"Copy to secrets.h: camera Wi-Fi, the Pi's address, the camera key (the real secrets.h stays on the laptop)\"},{\"path\":\"camera/camera-v2/camera-v2.ino\",\"what\":\"Older: v2 (Oct 25), saves to microSD, the Pi pulls pictures\"},{\"path\":\"camera/camera-v1/camera-v1.ino\",\"what\":\"Older: v1 (Oct 24), live view + motion sensor\"}]",
+   "updated": "2026-10-25",
+   "sort_order": 1,
+   "source": "update"
+  },
+  {
+   "id": "pi",
+   "icon": "🍓",
+   "name": "Camera Station",
+   "device": "Raspberry Pi 4 (8 GB) + 7\" touchscreen",
+   "job": "Runs its own camera Wi-Fi, takes the camera's pictures, tags them with SpeciesNet (Google's camera-trap AI), blurs people, sets empty pictures aside, and groups pictures into visits. We review every visit on the touchscreen and pick what to publish. Nothing goes online by itself.",
+   "version": "Station v1 (Oct 25) + Wi-Fi switch (Oct 26)",
+   "status": "Tested on a Mac in practice mode · not installed on the Pi yet",
+   "built": 1,
+   "docs": "[{\"label\":\"How it works\",\"path\":\"pi/README.md\"},{\"label\":\"How to install\",\"path\":\"pi/INSTALL.md\"},{\"label\":\"Networking (camera Wi-Fi + house Wi-Fi)\",\"path\":\"pi/NETWORKING.md\"}]",
+   "files": "[{\"path\":\"pi/station/server.py\",\"what\":\"The Camera Station: receives photos, runs the tagging, answers the touchscreen page\"},{\"path\":\"pi/station/store.py\",\"what\":\"The station's memory, and how visits are grouped and counted\"},{\"path\":\"pi/station/ai.py\",\"what\":\"Talking to SpeciesNet, blurring people, practice-mode answers\"},{\"path\":\"pi/station/network.py\",\"what\":\"The 📡 Camera Wi-Fi / 🌐 House Wi-Fi switch\"},{\"path\":\"pi/station/public/index.html\",\"what\":\"The touchscreen page (ours to change)\"},{\"path\":\"pi/station/camera-station.service\",\"what\":\"Starts the station when the Pi boots\"},{\"path\":\"pi/station/50-camera-station.rules\",\"what\":\"Lets the station flip the Wi-Fi switch\"},{\"path\":\"pi/settings.example.json\",\"what\":\"Copy to settings.json (the real one stays on the Pi)\"},{\"path\":\"pi/collector.py\",\"what\":\"Backup: fetches photos from a camera still on v2\"},{\"path\":\"pi/station/uploader.py\",\"what\":\"Sends the visits we picked to our website\"}]",
+   "updated": "2026-10-26",
+   "sort_order": 2,
+   "source": "update"
+  },
+  {
+   "id": "droplet",
+   "icon": "🌐",
+   "name": "Team Website",
+   "device": "DigitalOcean droplet (Ubuntu)",
+   "job": "Shows the animal visits we picked on the Pi (people already blurred), behind a team password. Later it also hosts this Engineering Notebook app.",
+   "version": "Plan only",
+   "status": "Not built yet · plan waiting on Coach CJ",
+   "built": 0,
+   "docs": "[{\"label\":\"Plan + how to install (draft)\",\"path\":\"droplet/INSTALL.md\"}]",
+   "files": "[{\"path\":\"droplet/camera-site/server.mjs\",\"what\":\"Takes uploads from the Pi (checks its key), saves photos and visits, serves the website\"},{\"path\":\"droplet/camera-site/public/index.html\",\"what\":\"The website page: our animal visits, in the notebook colors\"},{\"path\":\"droplet/camera-site.service\",\"what\":\"Starts the camera website when the droplet boots\"},{\"path\":\"droplet/Caddyfile\",\"what\":\"HTTPS for both sites + one team password per site\"}]",
+   "updated": "2026-11-02",
+   "sort_order": 3,
+   "source": "update"
+  }
+ ],
  "ip_steps": [
   {
    "n": 1,
@@ -1037,6 +1662,255 @@
   {
    "n": 8,
    "name": "Present"
+  }
+ ],
+ "ip_wiring": [
+  {
+   "id": 1,
+   "pin": "D0",
+   "gpio": "GPIO1",
+   "part": "Motion sensor (AM312)",
+   "part_pin": "OUT",
+   "color": "#e0a100",
+   "why": "Wakes the camera when an animal moves",
+   "optional": 0,
+   "in_code": 1,
+   "sort_order": 1,
+   "source": "update"
+  },
+  {
+   "id": 2,
+   "pin": "3V3",
+   "gpio": null,
+   "part": "Motion sensor (AM312)",
+   "part_pin": "+",
+   "color": "#d64545",
+   "why": "Power",
+   "optional": 0,
+   "in_code": 1,
+   "sort_order": 2,
+   "source": "update"
+  },
+  {
+   "id": 3,
+   "pin": "GND",
+   "gpio": null,
+   "part": "Motion sensor (AM312)",
+   "part_pin": "−",
+   "color": "#2b2b2b",
+   "why": "Ground",
+   "optional": 0,
+   "in_code": 1,
+   "sort_order": 3,
+   "source": "update"
+  },
+  {
+   "id": 4,
+   "pin": "D1",
+   "gpio": "GPIO2",
+   "part": "Mode switch (SPDT)",
+   "part_pin": "middle",
+   "color": "#ef7d22",
+   "why": "Mode switch: 3V3 = always-on, GND = solar mode",
+   "optional": 0,
+   "in_code": 0,
+   "sort_order": 4,
+   "source": "update"
+  },
+  {
+   "id": 5,
+   "pin": "3V3",
+   "gpio": null,
+   "part": "Mode switch (SPDT)",
+   "part_pin": "end 1",
+   "color": "#d64545",
+   "why": "Holds D1 HIGH in always-on mode",
+   "optional": 0,
+   "in_code": 0,
+   "sort_order": 5,
+   "source": "update"
+  },
+  {
+   "id": 6,
+   "pin": "GND",
+   "gpio": null,
+   "part": "Mode switch (SPDT)",
+   "part_pin": "end 2",
+   "color": "#2b2b2b",
+   "why": "Holds D1 LOW in solar mode",
+   "optional": 0,
+   "in_code": 0,
+   "sort_order": 6,
+   "source": "update"
+  },
+  {
+   "id": 7,
+   "pin": "D2",
+   "gpio": "GPIO3",
+   "part": "Status light (LED + 220 Ω)",
+   "part_pin": "+ (through 220 Ω)",
+   "color": "#3f9b4c",
+   "why": "Status light (the XIAO's own orange LED is taken by the microSD card)",
+   "optional": 1,
+   "in_code": 0,
+   "sort_order": 7,
+   "source": "update"
+  },
+  {
+   "id": 8,
+   "pin": "GND",
+   "gpio": null,
+   "part": "Status light (LED + 220 Ω)",
+   "part_pin": "−",
+   "color": "#2b2b2b",
+   "why": "Ground",
+   "optional": 1,
+   "in_code": 0,
+   "sort_order": 8,
+   "source": "update"
+  },
+  {
+   "id": 9,
+   "pin": "D3",
+   "gpio": "GPIO4",
+   "part": "Clock (DS3231)",
+   "part_pin": "SQW",
+   "color": "#b48fd9",
+   "why": "Wakes the camera on a clock alarm (a check-in every few hours)",
+   "optional": 0,
+   "in_code": 0,
+   "sort_order": 9,
+   "source": "update"
+  },
+  {
+   "id": 10,
+   "pin": "D4",
+   "gpio": "GPIO5",
+   "part": "Clock (DS3231)",
+   "part_pin": "SDA",
+   "color": "#20b5c9",
+   "why": "Clock data",
+   "optional": 0,
+   "in_code": 1,
+   "sort_order": 10,
+   "source": "update"
+  },
+  {
+   "id": 11,
+   "pin": "D5",
+   "gpio": "GPIO6",
+   "part": "Clock (DS3231)",
+   "part_pin": "SCL",
+   "color": "#2a6fdb",
+   "why": "Clock timing signal",
+   "optional": 0,
+   "in_code": 1,
+   "sort_order": 11,
+   "source": "update"
+  },
+  {
+   "id": 12,
+   "pin": "3V3",
+   "gpio": null,
+   "part": "Clock (DS3231)",
+   "part_pin": "VCC",
+   "color": "#d64545",
+   "why": "Power (3.3 V, so it can't push current into the coin cell)",
+   "optional": 0,
+   "in_code": 1,
+   "sort_order": 12,
+   "source": "update"
+  },
+  {
+   "id": 13,
+   "pin": "GND",
+   "gpio": null,
+   "part": "Clock (DS3231)",
+   "part_pin": "GND",
+   "color": "#2b2b2b",
+   "why": "Ground",
+   "optional": 0,
+   "in_code": 1,
+   "sort_order": 13,
+   "source": "update"
+  },
+  {
+   "id": 14,
+   "pin": "5V",
+   "gpio": null,
+   "part": null,
+   "part_pin": null,
+   "color": null,
+   "why": "Not used: power comes in through the XIAO's own USB-C port (phone charger or the solar box)",
+   "optional": 0,
+   "in_code": 0,
+   "sort_order": 14,
+   "source": "update"
+  },
+  {
+   "id": 15,
+   "pin": "D6",
+   "gpio": "GPIO43",
+   "part": null,
+   "part_pin": null,
+   "color": null,
+   "why": "Free (can't wake the camera from sleep)",
+   "optional": 0,
+   "in_code": 0,
+   "sort_order": 15,
+   "source": "update"
+  },
+  {
+   "id": 16,
+   "pin": "D7",
+   "gpio": "GPIO44",
+   "part": null,
+   "part_pin": null,
+   "color": null,
+   "why": "Free (can't wake the camera from sleep)",
+   "optional": 0,
+   "in_code": 0,
+   "sort_order": 16,
+   "source": "update"
+  },
+  {
+   "id": 17,
+   "pin": "D8",
+   "gpio": "GPIO7",
+   "part": null,
+   "part_pin": null,
+   "color": null,
+   "why": "Don't use: the microSD card uses it",
+   "optional": 0,
+   "in_code": 0,
+   "sort_order": 17,
+   "source": "update"
+  },
+  {
+   "id": 18,
+   "pin": "D9",
+   "gpio": "GPIO8",
+   "part": null,
+   "part_pin": null,
+   "color": null,
+   "why": "Don't use: the microSD card uses it",
+   "optional": 0,
+   "in_code": 0,
+   "sort_order": 18,
+   "source": "update"
+  },
+  {
+   "id": 19,
+   "pin": "D10",
+   "gpio": "GPIO9",
+   "part": null,
+   "part_pin": null,
+   "color": null,
+   "why": "Don't use: the microSD card uses it",
+   "optional": 0,
+   "in_code": 0,
+   "sort_order": 19,
+   "source": "update"
   }
  ],
  "matches": [],
@@ -1100,9 +1974,9 @@
    "run_number": 3,
    "attachment": "Lucky Leaves attachment",
    "built_by": "[\"Fynn\"]",
-   "programmed_by": "[\"Adeline\",\"Fynn\"]",
-   "reliability": 0,
-   "status": "Prototyping",
+   "programmed_by": "[\"Adeline\",\"Fynn\",\"Isla\"]",
+   "reliability": 80,
+   "status": "Working",
    "est_seconds": 30
   },
   {
@@ -1116,9 +1990,9 @@
    "run_number": null,
    "attachment": "—",
    "built_by": "[]",
-   "programmed_by": "[\"Fynn\"]",
-   "reliability": 0,
-   "status": "Prototyping",
+   "programmed_by": "[\"Fynn\",\"Isla\",\"Adeline\"]",
+   "reliability": 80,
+   "status": "Working",
    "est_seconds": 30
   },
   {
@@ -1130,11 +2004,11 @@
    "no_equipment": 0,
    "difficulty": 0,
    "run_number": null,
-   "attachment": "—",
-   "built_by": "[]",
+   "attachment": "Mission 6 attachment",
+   "built_by": "[\"Nolan\",\"Weston\"]",
    "programmed_by": "[]",
    "reliability": 0,
-   "status": "Not started",
+   "status": "Prototyping",
    "est_seconds": 30
   },
   {
@@ -1146,11 +2020,11 @@
    "no_equipment": 1,
    "difficulty": 0,
    "run_number": null,
-   "attachment": "—",
-   "built_by": "[]",
+   "attachment": "Mission 7 attachment",
+   "built_by": "[\"Nolan\",\"Weston\"]",
    "programmed_by": "[]",
    "reliability": 0,
-   "status": "Not started",
+   "status": "Prototyping",
    "est_seconds": 30
   },
   {
@@ -1166,7 +2040,7 @@
    "built_by": "[\"Nolan\"]",
    "programmed_by": "[]",
    "reliability": 20,
-   "status": "Prototyping",
+   "status": "Working",
    "est_seconds": 30
   },
   {
@@ -1211,8 +2085,8 @@
    "difficulty": 0,
    "run_number": null,
    "attachment": "Mission 11 attachment",
-   "built_by": "[\"Weston\"]",
-   "programmed_by": "[]",
+   "built_by": "[\"Weston\",\"Nolan\"]",
+   "programmed_by": "[\"Weston\",\"Nolan\"]",
    "reliability": 0,
    "status": "Prototyping",
    "est_seconds": 30
@@ -1337,6 +2211,17 @@
    "source": "update",
    "sample": 0,
    "created_at": "2026-10-23 12:00:00"
+  },
+  {
+   "id": 13,
+   "date": "2026-10-26",
+   "value": "Teamwork",
+   "who": "[\"Fynn\",\"Weston\"]",
+   "text": "Fynn helped Weston with mission 9 (Research Platform).",
+   "help": "[\"Fynn\",\"Weston\"]",
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-10-26 12:00:00"
   }
  ],
  "programs": [
@@ -1371,7 +2256,7 @@
    "id": 4,
    "program": "Lucky Leaves (M04) program",
    "mission": "M04",
-   "coded_by": "[\"Adeline\",\"Fynn\"]",
+   "coded_by": "[\"Adeline\",\"Fynn\",\"Isla\"]",
    "sensors": "—",
    "innovative_bit": "Adeline's second mission program (Sep 19) — the katydid has to stay put, so how does the program keep it safe?",
    "sort_order": 4
@@ -1407,7 +2292,7 @@
    "id": 8,
    "program": "Reaching Roots (M05) program",
    "mission": "M05",
-   "coded_by": "[\"Fynn\"]",
+   "coded_by": "[\"Fynn\",\"Isla\",\"Adeline\"]",
    "sensors": "—",
    "innovative_bit": "First M05 program (Oct 12); Isla helped Fynn",
    "sort_order": 8
@@ -1429,6 +2314,15 @@
    "sensors": "—",
    "innovative_bit": "First M09 program (Oct 23, \"the big tree mission\")",
    "sort_order": 10
+  },
+  {
+   "id": 11,
+   "program": "Window to the Past (M11) program",
+   "mission": "M11",
+   "coded_by": "[\"Weston\",\"Nolan\"]",
+   "sensors": "—",
+   "innovative_bit": "First M11 program (Nov 1)",
+   "sort_order": 11
   }
  ],
  "quotes": [
@@ -1774,6 +2668,33 @@
    "key": "ip_progress",
    "value": "{\"now\":3}",
    "note": "typed in the app 2026-10-12 22:58:21"
+  },
+  {
+   "key": "robot_code_runs",
+   "value": "{\"mission13.py\":\"2026-10-05\"}",
+   "note": "Coding page: which copy of a program the robot runs (Nov 2)"
+  }
+ ],
+ "shares": [
+  {
+   "id": 1,
+   "date": "2026-10-05",
+   "shared_with": "Nate Reagan (Arizona Game and Fish)",
+   "who": "[\"Whole team\"]",
+   "what_they_said": "A camera with a flashing light has been done before. Don't live stream. Use AI to blur out people. Cameras spread over a wide area work best.",
+   "what_we_changed": "Oct 25: our Camera Station blurs people, and we review every photo before anything is published.",
+   "source": "update",
+   "created_at": "2026-10-26 12:00:00"
+  },
+  {
+   "id": 3,
+   "date": "2026-10-11",
+   "shared_with": "Thea's family",
+   "who": "[\"Thea\"]",
+   "what_they_said": "They really liked it.",
+   "what_we_changed": "",
+   "source": "app",
+   "created_at": "2026-10-26 23:33:15"
   }
  ],
  "team": [
@@ -1814,7 +2735,7 @@
    "role": "programmer and innovation project",
    "fav_value": "Fun",
    "fav_color": "Pink",
-   "worked_on_most": "Team games & presentation",
+   "worked_on_most": "Programming",
    "learned": "",
    "worked_with_most": "",
    "notebook_entries": "",
@@ -1892,6 +2813,18 @@
    "result": "100%",
    "source": "update",
    "created_at": "2026-10-02 23:25:27"
+  },
+  {
+   "id": 3,
+   "date": "2026-11-01",
+   "attachment": "Missions 4 + 5 (Lucky Leaves + Reaching Roots)",
+   "tries": 5,
+   "successes": 4,
+   "observed": "Adeline finished missions 4 and 5 and tested them: 4 out of 5 worked. \"Pretty consistent.\"",
+   "changed": "",
+   "result": "80%",
+   "source": "update",
+   "created_at": "2026-11-01 12:00:00"
   }
  ],
  "tradeoffs": [

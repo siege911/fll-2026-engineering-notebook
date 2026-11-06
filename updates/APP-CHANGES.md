@@ -14,6 +14,59 @@ Backfilled 2026-09-06 from `../DECISIONS.md`, `../PROGRESS.md`, and `../mockups/
 
 **From 2026-09-28 on**, the live app is `../app/` (page: `app/public/index.html`, data: `app/db/`). Data-only changes get one line naming their `app/db/updates/` file.
 
+## 2026-11-02 — Robot Design: each attachment card shows its photo on the mat
+- **Files:** `app/images/11-2-mission-{15,12,14,8-9,2-3,4}.jpg` (sent as .webp, saved as .jpg), `app/db/updates/2026-11-02-attachment-photos.sql` (new column `attachments.photo`; M08 + M09 share one photo + a version note "one attachment does both"), `app/server.mjs` (`photo` in the attachments API), `app/public/index.html` (Attachments Over Time: photo under the purpose, whole picture shown, click to see it big).
+- **Why / who asked:** [who?] "these are the photos of the attachments with the missions. put these in the app". Mission per photo answered by the student.
+- **Still not shown:** the older photos `8-31-…`, `9-4-…`, `9-25-mission-*.jpg` in `app/images/`.
+
+## 2026-11-02 — Innovation Project: new "Project Photos" card (Nov 1 soldering photos)
+- **Files:** `app/images/11-1-soldering-1.jpg`, `11-1-soldering-2.jpg` (sent as .webp, saved as .jpg), `app/db/updates/2026-11-02-ip-solder-photos.sql` (new table `ip_photos`: date, who, caption, photo), `app/server.mjs` (`ip_photos` in the API), `app/public/index.html` (Project Photos card above Innovation Project Details: photo grid, click to open full size, who + date + caption under each).
+- **Why / who asked:** [who?] "nov 1 we did sodering so put these pictures in innovation progect for the app". The app had no spot for Innovation Project photos, so this adds one (small card, rule 7). Evidence for Innovation Project CREATE.
+
+## 2026-11-02 — Coding: Our Robot Code marks which copy the robot runs
+- **Files:** `app/db/updates/2026-11-02-m13-code-copy.sql` (new setting `robot_code_runs`: file name → date the copy was first saved; `mission13.py` → copy B, Oct 5), `app/public/index.html` (`renderRobotCode`: "✅ the robot runs this one" / "not the one the robot runs"; the 🤔 question only shows for files not decided yet).
+- **Why / who asked:** [who?] answered "Copy B (Oct 5)".
+
+## 2026-11-02 — Coding: new "Our Robot Code" card (the code/ folder in the app)
+- **Files:** `app/robotcode.mjs` (new: reads `code/` — one `M-D` folder per practice, Pybricks backup zips and loose `.py` files; tells apart new / changed / same-as-before; read-only, `.py` only), `app/server.mjs` (`robot_code` in `GET /api/data`), `app/public/index.html` (`#page-coding`: Our Robot Code card: history grid program × practice, then each program's versions newest first with what changed (green added, red taken out) and Copy; `renderRobotCode`, `lineDiff`).
+- **No database change:** the code is read straight from the folder, like the camera code on the Innovation Project page, so new practice folders show up by themselves. Written record: `updates/ROBOT-CODE.md`.
+- **Why / who asked:** [who?] "we have all of our code in the code folder. Incorporate it into the app."
+
+## 2026-11-02 — Innovation Project: new "Innovation Project Details" section
+- **Files:** `app/db/updates/2026-11-02-ip-details.sql` (new tables `ip_parts`, `ip_wiring`, `ip_platforms` + their rows), `app/server.mjs` (the three tables; `GET /api/file?path=…` read-only viewer for the code/guides listed in `ip_platforms`, never secrets; `exists` flag per file), `app/public/index.html` (`#page-ip`: section header + Parts We Ordered, Camera Wiring Diagram (SVG drawn from `ip_wiring`), The Code & How to Install It (3 computers, click to open each guide/file); `renderIPDetails`, `wiringSvg`, `ipdOpen`, `md` mini markdown reader).
+- **New docs:** `camera/INSTALL.md`, `droplet/INSTALL.md` (placeholder plan).
+- **Why / who asked:** Coach CJ: parts, wiring diagram, click-to-open code for the ESP32 / Pi / DigitalOcean, install steps for each, placeholders for what isn't built. Keep it updated with major changes (rule in `CLAUDE.md`).
+
+## 2026-11-01 — Data: Adeline's practice update (+ Oct 26 app entries)
+- `app/db/updates/2026-11-01-m04-m05-m11-solder.sql` — M04 + M05 Working at 80% (4/5 test, Adeline); first M11 program (Weston, Nolan); M08 Working; M06 + M07 attachments (Nolan, Oct 26; Weston worked on them Nov 1); Isla added to M04/M05 coders (Oct 26); Fynn-helped-Weston moment (Oct 26); 5 notebook entries incl. camera soldering (Nolan, Weston). Told by Adeline.
+
+## 2026-10-26 — Dashboard: swapped Rubric Map and Latest Notebook Entries
+- **File:** app/public/index.html
+- **What:** "Latest Notebook Entries" (still the full-width box) moved up to where the rubric box was, right under Best Match Score and Mission Inventory. The rubric box (same 4 count boxes, same size) moved to the bottom, next to "Who's Been Doing What", and is renamed "Rubric Heat Map" → "Rubric Map".
+- **Why / who asked:** Thea: "on the dashboard can you switch the rubric heat map and change the name to rubric map with the latest notebook entries but keep the same shapes".
+
+## 2026-10-26 — Data: removed a share Thea typed in Communication
+- `app/db/updates/2026-10-26-remove-share-test.sql` — deleted the share typed in the app at 23:31 (Oct 11, "Theas family", Thea, "They really liked it."). Thea: "I just loged somthing in communication can you take it out and delete it." Saving from the Communication form works (this row proved it).
+
+## 2026-10-26 — Innovation Project: new "Communication" section
+- **Files:** `app/db/updates/2026-10-26-ip-communication.sql` (new `shares` table + first row: Oct 5, Nate Reagan), `app/server.mjs` (`shares` table; the page may add rows), `app/public/index.html` (`#page-ip`: new Communication card at the bottom, after Experts; `renderShares`, `addShare`).
+- **What:** a table of every time we shared our project (date, who we shared with, who shared, what they said, what we changed) and a form under it to add a new one (date, who we shared with, pick who shared, what they said, what we changed).
+- **Why / who asked:** Thea: "in innovation can you make a new section that is called communication." Picked "Sharing our project" from 4 options.
+- **Not tested:** saving a new row from the form (it would add a fake share to the real notebook).
+
+## 2026-10-26 — Innovation Project: Project Plan (Gantt) filled in
+- **Data:** `app/db/updates/2026-10-26-ip-gantt.sql` — 9 bars from the dated notes in `INNOVATION-PROJECT.md` / `CAMERA-BUILD.md` (7 real, Oct 2 – Oct 26; 2 marked "suggested" with guessed dates: real camera + Pi test, presentation practice to Nov 14). Same table in `INNOVATION-PROJECT.md` 2026-10-26.
+- **File:** `app/public/index.html` (`.gantt .gbar` + `renderIP`): a bar too short to fit the owner's name no longer squashes it; the name is hidden there (the picture next to the task, and hovering the bar, still show who).
+- **Why / who asked:** Thea: "for the gantt chart can you fill it out using all the information you have."
+
+## 2026-10-26 — Innovation Project: Research Collection and 8-Step Progress swapped
+- **File:** `app/public/index.html` (`#page-ip`): Research Collection now comes right after Problem / Solution / How We Got Here, and 8-Step Progress moved to where Research Collection was (after the Project Plan, before Experts). New order: Problem/Solution/How → Research Collection → Project Plan → 8-Step Progress → Experts.
+- **Why / who asked:** Thea: "in innovation project switch the research collection and the 8-step progress."
+
+## 2026-10-26 — Dashboard: Rubric Heat Map shows how many of each number
+- **File:** `app/public/index.html` (`renderDash` `#d-heat`, new `.heatcount` styles): the 20 little rating boxes are replaced by 4 big count boxes, in the same colors: how many rows are rated 4 (Exceeds, green), 3 (Accomplished, teal), 2 (Developing, lavender), 1 (Beginning, beige). Hovering a box lists which rubric rows have that number; tapping goes to Rubric Check. The line under it now just says "Grow every row to 3+ by Nov 14!" (the counts it used to list are in the boxes).
+- **Why / who asked:** Thea: "change it to how many of each number is there." Picked "4 count boxes only" from 3 options (4 count boxes only / count boxes + the 20 / count bars).
+
 ## 2026-10-23 — Robot Game: Score History + Log a Practice Match move with the other boxes
 - **File:** `app/public/index.html` (`#page-game` Leaderboard card: `grid-row:span 2; align-self:start`). On a narrower screen (two columns) Score History and Log a Practice Match used to drop to a new row below the very tall Points-per-Second Leaderboard, far from the Run Plan, so they didn't move up and down with it when a mission button was tapped. Now the Leaderboard takes up two rows on the right, and Score History + Log tuck right under the Run Plan on the left and move with it. On a wide screen (three columns) they stay in their own column on the right.
 - **Why / who asked:** Thea: "when i press a mission on robot game score history and log a practice match didnt move with everything else. like up or down. please fix that."

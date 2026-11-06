@@ -8,6 +8,25 @@ Backfilled 2026-09-06 from `../DECISIONS.md` and `../PROGRESS.md`.
 
 ---
 
+## 2026-11-01 (Sunday) — attachments for every mission; only M06 + M07 left to program (told by Adeline)
+- **Team milestone:** "we have an attachment for all the missions, the only thing left to program is mission 6 and 7." [unclear: the app has no attachment or program for **M10** and no attachment for **M05**; ask]
+- **M04 Lucky Leaves + M05 Reaching Roots:** **Adeline** finished them. **Test: 4 / 5 (80%)**, "pretty consistent." Both → **Working**, reliability 80%. Programmed by now: M04 Adeline, Fynn, Isla · M05 Fynn, Isla, Adeline.
+- **M08 Tangled:** **Adeline + Fynn** worked on it, "mostly finished" → **Working**. [unclear: who programmed it?]
+- **M09 Research Platform:** **Adeline + Fynn** worked on it. Platform + camera trap mostly done; **the seed is still left** → stays **Prototyping**.
+- **M11 Window to the Past:** first program, **Weston + Nolan**.
+- **M06 Leafcutter Frenzy + M07 Humongous Fungus:** **Weston + Nolan** worked on them; not programmed yet.
+
+---
+
+## 2026-10-26 (Monday) — typed into the app (copied here Nov 1)
+- **M06 Leafcutter Frenzy + M07 Humongous Fungus:** first attachments, built by **Nolan** → status **Prototyping** (was Not started).
+- **M11 Window to the Past:** **Nolan** built an attachment [unclear: rebuild of Weston's Oct 12 one, or new?]. Built by now Weston, Nolan.
+- **M09 Research Platform:** **Weston** programmed it again, **Fynn** helped.
+- **M04 Lucky Leaves + M05 Reaching Roots:** programmed by **Isla**.
+- No tries / successes counted.
+
+---
+
 ## 2026-10-23 (Friday) — M09 started, M13 programmed
 - **M09 Research Platform** ("the big tree mission"): first attachment **and** first program, both by **Weston** → status **Prototyping** (was Not started).
 - **M13 Keystone Species** ("the mascot mission"): first program, by **Isla**. Programmed by now Isla.

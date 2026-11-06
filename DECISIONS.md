@@ -4,6 +4,39 @@ Newest at top. Capture-field and design decisions come from the students; archit
 
 ---
 
+## 2026-11-02 — Robot code folder shows on the Coding page, read straight from `code/`
+
+**Ask ([who?]):** "we have all of our code in the code folder. Incorporate it into the app."
+**Built (Claude):** Coding page → **Our Robot Code**: a grid of every program × every practice (new / changed / same), and for each program its versions with what changed each time. It reads `code/` directly (same idea as the camera code viewer), so the team only has to drop each practice's Pybricks backup into a new `code/M-D/` folder. History written down in `updates/ROBOT-CODE.md`.
+**Why it matters for judging:** Robot Design ITERATE: the code shows 18 changes since Sep 7 (`mission4.py` changed at 4 practices in a row).
+**Answered same day ([who?]):** the robot runs **copy B** of `mission13.py` (first saved Oct 5). The app marks it.
+**Open (for the team):** a few dates that don't match the mission list (see `updates/ROBOT-CODE.md`).
+
+---
+
+## 2026-11-02 — Innovation Project Details section (Coach CJ): parts, wiring, code + install guides, kept up to date
+
+**CJ:** "I want to have a whole section for 'Innovation Project Details'. I want a list of the parts we ordered. I want to add the Wiring diagram to this. I want a link where you can click and expand a section to see the code that is going on the ESP32 and another for the code that's going on the Raspberry Pi and a 3rd for what will be hosted on DigitalOcean. Use placeholders for what's not been built yet. Also give an instruction set for how to install each of these on their respective platforms. Going forward, make sure to update this with any major changes to the code, the plan or instructions."
+**Built (Claude):** the parts list and wiring are rows in the app (from `updates/CAMERA-BUILD.md`), and the wiring diagram is drawn from those rows. The code and install guides are **not copied** into the app: the page opens the real files (`camera/`, `pi/`, `droplet/`) through a read-only viewer that only shows files on the list and never `secrets.h` or `settings.json`. So code changes show up by themselves; new files, new versions (e.g. camera v4), status and plan changes need an update file. Files that don't exist yet show as 🚧 "not built yet" placeholders.
+**New guides:** `camera/INSTALL.md` (XIAO, Arduino IDE), `droplet/INSTALL.md` (DigitalOcean plan, a draft with choices for CJ marked). The Pi's are the existing `pi/INSTALL.md` + `pi/NETWORKING.md`.
+**Standing rule (CJ):** after any major change to the camera/Pi/website code, the plan, or install steps, update this section in the same session (see `CLAUDE.md`).
+
+---
+
+## 2026-10-26 — Innovation Project: new "Communication" section (Thea)
+
+**Request (her words):** "in innovation can you make a new section that is called communication."
+**Options shown:** Messages log (emails/calls with outside people) / Sharing our project / Both / Empty for now. **Picked:** Sharing our project. Each row: date, who we shared with, who shared, what they said, what we changed. Starts with the Oct 5 Nate Reagan meeting. Fits the rubric's Innovation Project COMMUNICATE row (sharing the solution and acting on feedback).
+
+---
+
+## 2026-10-26 — Dashboard Rubric Heat Map: counts instead of 20 boxes (Thea)
+
+**Request (her words):** "change it to how many of each number is there."
+**Options shown:** 4 count boxes only / count boxes + the 20 / count bars. **Picked:** 4 count boxes only. The Dashboard now shows how many rows are 4s, 3s, 2s and 1s; each row's own rating is still on the Rubric Check page.
+
+---
+
 ## 2026-10-26 (later) — Wi-Fi switch stays where you put it; Publish switches to House Wi-Fi (CJ)
 
 **CJ:** "The Publish should automatically try to connect to House Wi-Fi." And: remove the 15-minute return to Camera Wi-Fi: "If you select Camera Wi-Fi, it stays on that mode. If you click House Wi-Fi it stays on that mode."
