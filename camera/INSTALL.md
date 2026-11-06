@@ -2,6 +2,8 @@
 
 For **camera v3** (`camera-v3/`), from a Mac with Arduino IDE 2. Takes about 20 minutes the first time. Parts and wiring: `../updates/CAMERA-BUILD.md`.
 
+The camera code is on the coach's laptop in `camera/`, and also in our private GitHub repo: **https://github.com/siege911/fll-2026-engineering-notebook** (folder `camera/`). On another computer, sign in to GitHub as siege911 and use **Code → Download ZIP**, or `git clone https://github.com/siege911/fll-2026-engineering-notebook.git`. You'll still need to make `secrets.h` (step 4 below): it's never on GitHub.
+
 ## 1. Before you plug in
 
 - Clip the **antenna** onto the XIAO, and snap the **camera board** on top.

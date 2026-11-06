@@ -4,6 +4,14 @@ Newest at top. Capture-field and design decisions come from the students; archit
 
 ---
 
+## 2026-11-05 — The notebook is on GitHub, private, under siege911 (CJ)
+
+**Decision (CJ):** the whole folder is backed up to a **private** GitHub repo, https://github.com/siege911/fll-2026-engineering-notebook, on CJ's **siege911** account (not the williamcjperry work account). Private because it has the students' names and photos.
+**How the Pi and the droplet get the code:** each gets its own read-only **deploy key** on that repo (can download this one repo, can't change it). Steps in `pi/INSTALL.md` step 3 and `droplet/INSTALL.md` step 4; `camera/INSTALL.md` points to the repo too.
+**Never on GitHub:** `secrets.h`, `pi/settings.json`, `pi/data/`, the live database file (`.gitignore`).
+
+---
+
 ## 2026-11-02 — Robot code folder shows on the Coding page, read straight from `code/`
 
 **Ask ([who?]):** "we have all of our code in the code folder. Incorporate it into the app."

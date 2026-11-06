@@ -14,6 +14,10 @@ Backfilled 2026-09-06 from `../DECISIONS.md`, `../PROGRESS.md`, and `../mockups/
 
 **From 2026-09-28 on**, the live app is `../app/` (page: `app/public/index.html`, data: `app/db/`). Data-only changes get one line naming their `app/db/updates/` file.
 
+## 2026-11-05 — Innovation Project install guides point to our GitHub repo
+- **Files:** `pi/INSTALL.md` (step 3: deploy key + clone `siege911/fll-2026-engineering-notebook`; new "Getting new code later"), `droplet/INSTALL.md` (step 4, same), `camera/INSTALL.md` (where to get the code). Shown in Innovation Project Details by themselves; no data change.
+- **Why / who asked:** Coach CJ, "Update the instructions for the Innovation Project to this repo", after the folder went up to GitHub.
+
 ## 2026-11-02 — Robot Design: each attachment card shows its photo on the mat
 - **Files:** `app/images/11-2-mission-{15,12,14,8-9,2-3,4}.jpg` (sent as .webp, saved as .jpg), `app/db/updates/2026-11-02-attachment-photos.sql` (new column `attachments.photo`; M08 + M09 share one photo + a version note "one attachment does both"), `app/server.mjs` (`photo` in the attachments API), `app/public/index.html` (Attachments Over Time: photo under the purpose, whole picture shown, click to see it big).
 - **Why / who asked:** [who?] "these are the photos of the attachments with the missions. put these in the app". Mission per photo answered by the student.

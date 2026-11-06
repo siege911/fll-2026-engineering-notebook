@@ -50,9 +50,17 @@ node --version        # 22.13 or newer
 ```
 
 ### 4. Get our code
+Our code is in the **private** GitHub repo **https://github.com/siege911/fll-2026-engineering-notebook**. The droplet gets its own read-only **deploy key**, like the Pi (it can only read this one repo).
 ```bash
-git clone git@github.com:siege911/<repo>.git ~/rooted-warriors
+ssh-keygen -t ed25519 -C "team-website-droplet" -f ~/.ssh/id_ed25519 -N ""
+cat ~/.ssh/id_ed25519.pub
 ```
+**(CJ, signed in as siege911)** https://github.com/siege911/fll-2026-engineering-notebook/settings/keys → **Add deploy key** → Title `Team Website droplet`, paste the key, **Allow write access** off → **Add key**. Then:
+```bash
+ssh -T git@github.com          # "yes" the first time; should say "Hi siege911/fll-2026-engineering-notebook!"
+git clone git@github.com:siege911/fll-2026-engineering-notebook.git ~/rooted-warriors
+```
+New code later: push from the laptop, then on the droplet `cd ~/rooted-warriors && git pull` and restart the services.
 
 ### 5. Start the sites at boot
 Each site runs on the droplet only (`127.0.0.1`), and Caddy puts HTTPS in front:

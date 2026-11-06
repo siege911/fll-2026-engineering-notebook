@@ -21,9 +21,23 @@ Leave the Pi on the house Wi-Fi for now. Steps 3–4 download a lot (our code, P
 
 ## 3. Get our code
 
+Our code is on GitHub in a **private** repo: **https://github.com/siege911/fll-2026-engineering-notebook**. Private means the Pi needs its own key before it can download it. We use a **deploy key**: it can only *read* this one repo, so the Pi can never change our code or see anything else on the account.
+
+**3a. Make the Pi's key** (on the Pi):
+
 ```bash
 sudo apt update && sudo apt install -y git python3-venv
-git clone git@github.com:siege911/<repo>.git ~/rooted-warriors   # or copy the pi/ folder over
+ssh-keygen -t ed25519 -C "camera-station-pi" -f ~/.ssh/id_ed25519 -N ""
+cat ~/.ssh/id_ed25519.pub
+```
+
+**3b. Add it on GitHub (Coach CJ, signed in as siege911):** open https://github.com/siege911/fll-2026-engineering-notebook/settings/keys → **Add deploy key** → Title `Camera Station Pi`, paste the line that `cat` printed, leave **Allow write access** off → **Add key**.
+
+**3c. Download the code** (on the Pi):
+
+```bash
+ssh -T git@github.com          # type "yes" the first time; it should say "Hi siege911/fll-2026-engineering-notebook!"
+git clone git@github.com:siege911/fll-2026-engineering-notebook.git ~/rooted-warriors
 cd ~/rooted-warriors/pi
 cp settings.example.json settings.json
 nano settings.json
@@ -133,3 +147,14 @@ To run it every 5 minutes: `crontab -e` and add
 | `pi/settings.json` | settings (not on GitHub: it has the camera key) |
 
 `pi/data/` isn't on GitHub either. Back it up once in a while: `cp ~/rooted-warriors/pi/data/station.db ~/station-backup-$(date +%F).db`
+
+## Getting new code later
+
+When we change the Pi's code on the laptop, commit and push it to GitHub, then on the Pi (in 🌐 House Wi-Fi mode, it needs internet):
+
+```bash
+cd ~/rooted-warriors && git pull
+sudo systemctl restart camera-station
+```
+
+`settings.json` and `pi/data/` aren't on GitHub, so a pull never touches them.
