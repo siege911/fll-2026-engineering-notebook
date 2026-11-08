@@ -47,6 +47,7 @@ DEFAULTS = {
     "keep_empty_days": 7,
     "port": 8080,
     "speciesnet_python": "",  # e.g. /home/pi/speciesnet-env/bin/python (blank = the Python running this)
+    "speciesnet_model": "",   # downloaded model folder (blank = find the one the warm-up test downloaded)
     # One Wi-Fi radio? Show the Camera Wi-Fi / House Wi-Fi switch (see pi/NETWORKING.md).
     "wifi_switch": False,
     "camera_connection": "camera-wifi",
@@ -121,7 +122,8 @@ class Station:
             predictions = ai.fake_predictions(paths)
         else:
             predictions = ai.run_speciesnet(paths, self.settings["country"], self.settings["admin1_region"],
-                                            self.settings["speciesnet_python"] or None)
+                                            self.settings["speciesnet_python"] or None,
+                                            self.settings.get("speciesnet_model") or None)
         for photo in batch:
             prediction = predictions.get(photo["name"])
             if prediction is None or prediction.get("failures"):

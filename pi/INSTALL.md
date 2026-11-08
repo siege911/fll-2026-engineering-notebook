@@ -49,6 +49,7 @@ In `settings.json`, set **`camera_key`** to the same `CAMERA_KEY` as in the came
 |---|---|---|
 | `camera_key` | the camera must send this to upload photos | match `secrets.h` |
 | `team` | names on the "Who checked it?" buttons | our six names |
+| `speciesnet_model` | the downloaded model folder. Blank = find it by itself (in `~/.cache/kagglehub/`) | `""` |
 | `country`, `admin1_region` | SpeciesNet only picks animals found here | `USA`, `AZ` |
 | `min_confidence` | AI boxes weaker than this are ignored | `0.2` |
 | `visit_gap_minutes` | photos of the same species closer together than this are one visit | `10` |
@@ -81,7 +82,16 @@ cat ~/ai-test/out.json
 
 Expect several seconds or more per photo on the Pi's CPU. That's fine: the station tags in batches as photos arrive.
 
-**Do this warm-up before the camera Wi-Fi is set up.** Tagging must work without internet in 📡 Camera Wi-Fi mode, so the models need to be downloaded already. To check: after networking is done (Camera Wi-Fi mode, no internet), run the warm-up command again. If it still works, tagging works offline. If it tries to download and fails, tell Coach CJ.
+**Do this warm-up before the camera Wi-Fi is set up.** Tagging must work without internet in 📡 Camera Wi-Fi mode, so the models need to be downloaded already. To check: after networking is done (Camera Wi-Fi mode, no internet), run the warm-up command again. (That test asks SpeciesNet by its online name, so it **will** fail with no internet: `Failed to resolve 'api.kaggle.com'`. That's expected.) The station doesn't use the online name: it finds the downloaded model in `~/.cache/kagglehub/models/google/speciesnet/` and hands SpeciesNet that folder, so tagging works offline. To check offline the way the station does it, add `--model` with that folder:
+
+```bash
+ls -d ~/.cache/kagglehub/models/google/speciesnet/*/*/*      # the downloaded model folder
+~/speciesnet-env/bin/python -m speciesnet.scripts.run_model \
+  --folders ~/ai-test --predictions_json ~/ai-test/out.json --country USA --admin1_region AZ \
+  --model THAT-FOLDER
+```
+
+If `ls` finds nothing, the warm-up never finished: do it again in 🌐 House Wi-Fi mode.
 
 ## 5. Try the station by hand
 

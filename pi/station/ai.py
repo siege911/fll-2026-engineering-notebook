@@ -6,10 +6,16 @@ photos are from Arizona so it only picks species that live here.
 
 `fake_predictions` makes up answers so the station can be tried on a
 laptop without installing the AI.
+
+Offline: SpeciesNet's normal model name ("kaggle:...") makes it check the
+internet every run, even when the model is already downloaded. In 📡 Camera
+Wi-Fi mode there's no internet, so we hand it the downloaded folder instead
+(`find_local_model`). Then it never goes online.
 """
 
 import hashlib
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -17,8 +23,19 @@ import tempfile
 from pathlib import Path
 
 
-def run_speciesnet(paths, country, admin1_region, python=None):
-    """Runs SpeciesNet on copies of the photos. Returns {file name: prediction}."""
+def find_local_model():
+    """The SpeciesNet model the warm-up test downloaded (the newest one), or None.
+    It lives in kagglehub's cache, e.g.
+    ~/.cache/kagglehub/models/google/speciesnet/pyTorch/v4.0.3a/1/info.json"""
+    cache = Path(os.environ.get("KAGGLEHUB_CACHE") or Path.home() / ".cache" / "kagglehub")
+    found = [p.parent for p in (cache / "models" / "google" / "speciesnet").glob("*/*/*/info.json")]
+    return str(max(found, key=lambda p: p.stat().st_mtime)) if found else None
+
+
+def run_speciesnet(paths, country, admin1_region, python=None, model=None):
+    """Runs SpeciesNet on copies of the photos. Returns {file name: prediction}.
+    model: a downloaded model folder (works with no internet); None = find it."""
+    model = model or find_local_model()
     with tempfile.TemporaryDirectory() as work:
         work = Path(work)
         inbox = work / "photos"
@@ -32,6 +49,7 @@ def run_speciesnet(paths, country, admin1_region, python=None):
             "--predictions_json", str(out_file),
             "--country", country,
             "--admin1_region", admin1_region,
+            *(["--model", model] if model else []),  # no folder found: SpeciesNet downloads it (needs internet)
         ], check=True)
         data = json.loads(out_file.read_text())
         return {Path(p["filepath"]).name: p for p in data.get("predictions", [])}

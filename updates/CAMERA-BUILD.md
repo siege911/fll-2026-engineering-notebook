@@ -4,6 +4,15 @@ The Innovation Project wildlife camera: what we bought, how it's wired, and ever
 
 ---
 
+## 2026-11-08 (even later) — Tagger fixed to work with no internet
+**Told by:** [who?] · **Code by:** Claude · **Code:** `../pi/station/ai.py`, `../pi/station/server.py`; guide `../pi/INSTALL.md` step 4
+- **The error** (from `journalctl -u camera-station`, 14:27): SpeciesNet failed with `Failed to resolve 'api.kaggle.com'`. Photos from the camera reached the Pi, but tagging failed.
+- **Why:** SpeciesNet is normally asked for its model by its online name, and then it checks the internet **every run**, even though the warm-up test already downloaded the model. In 📡 Camera Wi-Fi mode the Pi has no internet.
+- **Fix:** the station finds the downloaded model folder (`~/.cache/kagglehub/models/google/speciesnet/…`) and gives SpeciesNet that folder (`--model`). SpeciesNet's own code then loads it straight from the Pi with no internet. New optional setting `speciesnet_model` (blank = find it by itself).
+- Checked: on the Mac with a pretend SpeciesNet (model downloaded → uses the folder, newest version if two; nothing downloaded → old way; folder in settings → uses that). **Not on the real Pi yet.** [result: not yet]
+
+---
+
 ## 2026-11-08 (later) — Camera sends to the Pi ✓ · Live page and tagger error message fixed
 **Told by:** [who?] · **Code by:** Claude · **Code:** `../pi/station/server.py`, `../pi/station/public/index.html`
 - **We built two cameras. One works, one doesn't** [unclear: what's wrong with the second one?]. The working one now saves to its microSD card and sends to the Pi ("I think I have it working").

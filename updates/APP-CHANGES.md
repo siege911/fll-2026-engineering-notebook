@@ -14,6 +14,10 @@ Backfilled 2026-09-06 from `../DECISIONS.md`, `../PROGRESS.md`, and `../mockups/
 
 **From 2026-09-28 on**, the live app is `../app/` (page: `app/public/index.html`, data: `app/db/`). Data-only changes get one line naming their `app/db/updates/` file.
 
+## 2026-11-08 — Pi station: tagging works with no internet
+- **Files:** `pi/station/ai.py` (finds the downloaded SpeciesNet model and passes `--model`), `pi/station/server.py` (`speciesnet_model` setting), `pi/INSTALL.md` (offline check).
+- **Why / who asked:** [who?] sent the tagger error: `Failed to resolve 'api.kaggle.com'` in 📡 Camera Wi-Fi mode.
+
 ## 2026-11-08 — Pi station: Live picture through the Pi; real tagger error on screen
 - **Files:** `pi/station/server.py` (`/api/live.jpg` gets the camera's picture; `/api/time` and Live count as hearing from the camera), `pi/station/public/index.html` (Live page loads from the Pi, one picture at a time, says why if the camera doesn't answer; error banner shows the error's last lines). Data: `app/db/updates/2026-11-08-camera-sends.sql`.
 - **Why / who asked:** [who?]: "The Live page on the Pi just shows 'Camera at IP address'. I want the actual live camera." and the "tagger helper had a problem" banner.
