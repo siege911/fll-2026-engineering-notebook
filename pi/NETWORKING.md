@@ -8,7 +8,7 @@ The Pi has two network jobs:
 ```
 
 - **Camera Wi-Fi:** the Pi makes its own network. The camera joins it (that's what goes in the camera's `secrets.h`), gets an address from the Pi, and sends photos to `http://10.42.0.1:8080`. It works anywhere the Pi is, even with no house Wi-Fi nearby.
-- **House Wi-Fi:** the Pi joins it like a laptop, for the internet (publishing to the website, the correct time, updates).
+- **House Wi-Fi (🌐):** the Pi joins a Wi-Fi it already remembers, like a laptop, for the internet (publishing to the website, the correct time, updates). It can be the house, the office, or a phone hotspot: 🌐 picks whichever remembered Wi-Fi is in range, strongest signal first.
 
 ## Pick a setup
 
@@ -26,16 +26,13 @@ The Pi 4's one built-in radio *can* run a hotspot and join a network at the same
 
 ## Setup 1: one radio with a switch
 
-### 1. House Wi-Fi
+### 1. Teach the Pi your Wi-Fi networks
 
-If you typed the house Wi-Fi into Raspberry Pi Imager, it's already there, called `preconfigured`. Give it a low priority so the Pi starts in Camera Wi-Fi mode after a reboot:
+Join each Wi-Fi you'll use (house, office, phone hotspot) **once**, with the Pi's own Wi-Fi menu (top-right of the desktop) or Raspberry Pi Imager (it calls that one `preconfigured`). The Pi remembers them. Later, 🌐 House Wi-Fi joins whichever remembered one is in range. Nothing else to set up, and no names to type in settings.
 
-```bash
-nmcli connection show                         # find the house Wi-Fi connection's name
-sudo nmcli connection modify preconfigured connection.interface-name wlan0 connection.autoconnect-priority 0
-```
+New Wi-Fi networks start at priority 0, lower than the camera Wi-Fi (10, next step), so the Pi still starts up in 📡 Camera Wi-Fi mode.
 
-(Not set up yet? `sudo nmcli device wifi connect "HOUSE-WIFI-NAME" password "HOUSE-PASSWORD" ifname wlan0`, then the `modify` line above with that connection's name.)
+(No desktop? `sudo nmcli device wifi connect "WIFI-NAME" password "WIFI-PASSWORD" ifname wlan0`.)
 
 ### 2. Camera Wi-Fi on the same radio
 
@@ -68,7 +65,8 @@ sudo nmcli connection up camera-wifi
 The station runs as your user, and NetworkManager needs permission for that user to switch networks. First test whether you already have it:
 
 ```bash
-nmcli connection up preconfigured     # no sudo. "Not authorized"? Then install the rule below.
+nmcli connection show                 # the names of your remembered Wi-Fi networks
+nmcli connection up "ONE-OF-THOSE"    # no sudo. "Not authorized"? Then install the rule below.
 nmcli connection up camera-wifi
 ```
 
@@ -84,9 +82,11 @@ In `pi/settings.json`:
 ```json
 "wifi_switch": true,
 "camera_connection": "camera-wifi",
-"house_connection": "preconfigured",
+"house_connection": "",
 "auto_return_minutes": 0
 ```
+`house_connection` blank = any remembered Wi-Fi in range. (Put one connection's name there only if you want it tried first when several are in range.)
+
 Restart the station (`sudo systemctl restart camera-station`). The Home page now shows **📡 Camera Wi-Fi | 🌐 House Wi-Fi**.
 
 ### Using it
@@ -99,7 +99,9 @@ Restart the station (`sudo systemctl restart camera-station`). The Home page now
 - Switching takes 5–20 seconds.
 - **It stays in the mode you picked.** After publishing or updates, remember to tap **📡 Camera Wi-Fi** so the camera can send again (its photos wait on its card until then). (Want it to go back by itself? Set `auto_return_minutes` to e.g. `15`. It's `0`, off, to start.)
 - **Publish** on the Publish page switches to 🌐 House Wi-Fi by itself, so the photos can go to the website.
-- If the Pi can't join the house Wi-Fi (wrong password, out of range), it goes straight back to Camera Wi-Fi and shows why.
+- 🌐 shows which Wi-Fi it joined, e.g. *Internet is on (CityGuest)*.
+- If no remembered Wi-Fi is in range, or joining fails (wrong password), it goes straight back to Camera Wi-Fi and shows why. At a new place, join its Wi-Fi once in the Pi's Wi-Fi menu (step 1).
+- **`unknown connection 'camera-wifi'`?** Step 2 (making the camera Wi-Fi) hasn't been done on this Pi yet.
 - **Getting to the Pi from the Mac in Camera Wi-Fi mode:** join the Mac to **RootedWarriorsCam**, then `ssh <user>@10.42.0.1`, and the station is at `http://10.42.0.1:8080`.
 
 ### ⏰ The Pi's clock

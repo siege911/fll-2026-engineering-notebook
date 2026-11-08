@@ -33,7 +33,7 @@ cat ~/.ssh/id_ed25519.pub
 
 **3b. Add it on GitHub (Coach CJ, signed in as siege911):** open https://github.com/siege911/fll-2026-engineering-notebook/settings/keys → **Add deploy key** → Title `Camera Station Pi`, paste the line that `cat` printed, leave **Allow write access** off → **Add key**.
 
-**3c. Download the code** (on the Pi):
+**3c. Download the code** (on the Pi). **Already did this once?** `git clone` will say the folder already exists. Don't clone again: use [Getting new code later](#getting-new-code-later) at the bottom instead.
 
 ```bash
 ssh -T git@github.com          # type "yes" the first time; it should say "Hi siege911/fll-2026-engineering-notebook!"
@@ -55,7 +55,8 @@ In `settings.json`, set **`camera_key`** to the same `CAMERA_KEY` as in the came
 | `keep_empty_days` | empty photos are deleted after this many days | `7` |
 | `port` | the station's web address port | `8080` |
 | `wifi_switch` | show the 📡 Camera Wi-Fi / 🌐 House Wi-Fi switch (one radio) | `true` |
-| `camera_connection`, `house_connection` | NetworkManager names of the two Wi-Fi connections | `camera-wifi`, `preconfigured` |
+| `camera_connection` | NetworkManager name of the camera Wi-Fi | `camera-wifi` |
+| `house_connection` | blank = 🌐 joins any Wi-Fi the Pi remembers that's in range (house, office, hotspot). A connection name here is tried first | `""` |
 | `auto_return_minutes` | House Wi-Fi mode goes back to Camera Wi-Fi after this long (0 = never, stays until someone taps 📡) | `0` |
 
 ## 4. SpeciesNet (the AI)

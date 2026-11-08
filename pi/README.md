@@ -12,7 +12,7 @@ The Pi is the base station for our wildlife camera. It runs its own Wi-Fi for th
 3. **We review.** Photos of the same species close together in time are grouped into one **visit**, so one deer standing there for 40 photos counts as one deer, not 40. On the touchscreen we check each visit: right animal? how many? same animal as the visit before? Then **✓ Looks right** or **✗ Hide it**, and tap who checked it.
 4. **We publish.** Nothing goes online by itself. On the Publish page we pick which approved visits go on the website. (The website part isn't connected yet; picked visits wait in line.)
 
-The Pi has one Wi-Fi radio, so the Home page has a switch: **📡 Camera Wi-Fi** (the camera can send photos) or **🌐 House Wi-Fi** (internet, for publishing). It stays in the mode you pick. **Publish** switches to House Wi-Fi by itself. While on House Wi-Fi the camera keeps its photos on its card, so tap 📡 Camera Wi-Fi when you're done. Tagging keeps going in both modes.
+The Pi has one Wi-Fi radio, so the Home page has a switch: **📡 Camera Wi-Fi** (the camera can send photos) or **🌐 House Wi-Fi** (internet, for publishing: joins whichever Wi-Fi the Pi remembers is in range, e.g. house, office or phone hotspot). It stays in the mode you pick. **Publish** switches to House Wi-Fi by itself. While on House Wi-Fi the camera keeps its photos on its card, so tap 📡 Camera Wi-Fi when you're done. Tagging keeps going in both modes.
 
 There's also a **Test** page for our experiment: did "picture changed" or the motion sensor catch more animals, and which one had more false alarms?
 

@@ -17,6 +17,6 @@
   "speciesnet_python": "",
   "wifi_switch": true,
   "camera_connection": "camera-wifi",
-  "house_connection": "preconfigured",
+  "house_connection": "",
   "auto_return_minutes": 0
 }

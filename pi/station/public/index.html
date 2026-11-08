@@ -169,12 +169,12 @@ function home() {
     </div>`}`;
 }
 
-// One Wi-Fi radio: it's either the camera's Wi-Fi or on the house Wi-Fi, not both.
+// One Wi-Fi radio: it's either the camera's Wi-Fi or on a Wi-Fi the Pi remembers (house, office, hotspot), not both.
 function networkSwitch(n) {
   const busy = !!n.switching;
-  const why = busy ? `Switching to ${n.switching === 'camera' ? 'Camera Wi-Fi' : 'House Wi-Fi'}… (up to 20 seconds)`
+  const why = busy ? `${n.switching === 'camera' ? 'Switching to Camera Wi-Fi… (up to 20 seconds)' : 'Looking for a Wi-Fi the Pi remembers… (up to 40 seconds)'}`
     : n.mode === 'camera' ? '📷 The camera can send photos. No internet right now.'
-    : n.mode === 'internet' ? `🌐 Internet is on. The camera can't send right now: its photos wait on its card.${n.returns_at ? ' Back to Camera Wi-Fi at ' + clock(n.returns_at) + '.' : ''}`
+    : n.mode === 'internet' ? `🌐 Internet is on${n.wifi_name ? ' (' + esc(n.wifi_name) + ')' : ''}. The camera can't send right now: its photos wait on its card.${n.returns_at ? ' Back to Camera Wi-Fi at ' + clock(n.returns_at) + '.' : ''}`
     : '⚠️ Not on any Wi-Fi. Tap one.';
   return `<div class="net">
     <div class="switch">

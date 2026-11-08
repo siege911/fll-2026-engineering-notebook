@@ -14,6 +14,14 @@ Backfilled 2026-09-06 from `../DECISIONS.md`, `../PROGRESS.md`, and `../mockups/
 
 **From 2026-09-28 on**, the live app is `../app/` (page: `app/public/index.html`, data: `app/db/`). Data-only changes get one line naming their `app/db/updates/` file.
 
+## 2026-11-08 — Pi station: 🌐 House Wi-Fi joins any remembered Wi-Fi
+- **Files:** `pi/station/network.py` (finds remembered Wi-Fi in range, strongest first; keeps the failure reason after falling back), `pi/station/public/index.html` (shows which Wi-Fi it's on), `pi/station/server.py` + `pi/settings.example.json` (`house_connection` blank by default), `pi/NETWORKING.md`, `pi/INSTALL.md`, `pi/README.md`. Data: `app/db/updates/2026-11-08-pi-wifi-any-remembered.sql` (Pi row's version/updated).
+- **Why / who asked:** [who?] at the office: "Can we just have the Home Wifi automatically connect to a WiFi that it already remembers from the OS?"
+
+## 2026-11-08 — Camera install guide: how to format the microSD card on a Mac
+- **File:** `camera/INSTALL.md` (step 1, new "Formatting the microSD card on a Mac": Disk Utility, MS-DOS (FAT), Master Boot Record). Shown in Innovation Project Details by itself; no data change.
+- **Why / who asked:** [who?] asked "What do we need to do to format the micro SD for the camera on a Mac?"
+
 ## 2026-11-05 — Innovation Project install guides point to our GitHub repo
 - **Files:** `pi/INSTALL.md` (step 3: deploy key + clone `siege911/fll-2026-engineering-notebook`; new "Getting new code later"), `droplet/INSTALL.md` (step 4, same), `camera/INSTALL.md` (where to get the code). Shown in Innovation Project Details by themselves; no data change.
 - **Why / who asked:** Coach CJ, "Update the instructions for the Innovation Project to this repo", after the folder went up to GitHub.

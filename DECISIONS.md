@@ -4,6 +4,14 @@ Newest at top. Capture-field and design decisions come from the students; archit
 
 ---
 
+## 2026-11-08 — 🌐 House Wi-Fi = any Wi-Fi the Pi remembers [who?]
+
+**Decision:** the Pi's 🌐 button no longer needs one named house Wi-Fi. It joins whichever Wi-Fi the Pi already remembers is in range (house, office, phone hotspot), strongest first. Teach the Pi a new place by joining its Wi-Fi once in the Pi's Wi-Fi menu.
+**Why:** the team works at the house **and** the office, and may use a hotspot outdoors; the old switch said "Not on any WiFi" at the office. Still one radio, so still switching (no second Wi-Fi adapter).
+**Details:** `updates/CAMERA-BUILD.md` 2026-11-08, `pi/NETWORKING.md` setup 1.
+
+---
+
 ## 2026-11-05 — The notebook is on GitHub, private, under siege911 (CJ)
 
 **Decision (CJ):** the whole folder is backed up to a **private** GitHub repo, https://github.com/siege911/fll-2026-engineering-notebook, on CJ's **siege911** account (not the williamcjperry work account). Private because it has the students' names and photos.

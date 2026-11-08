@@ -49,7 +49,7 @@ DEFAULTS = {
     # One Wi-Fi radio? Show the Camera Wi-Fi / House Wi-Fi switch (see pi/NETWORKING.md).
     "wifi_switch": False,
     "camera_connection": "camera-wifi",
-    "house_connection": "preconfigured",
+    "house_connection": "",  # blank = 🌐 joins any Wi-Fi the Pi remembers that's in range
     "auto_return_minutes": 0,  # 0 = stay in House Wi-Fi mode until someone taps Camera Wi-Fi
 }
 

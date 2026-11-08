@@ -4,6 +4,25 @@ The Innovation Project wildlife camera: what we bought, how it's wired, and ever
 
 ---
 
+## 2026-11-08 — Pi: 🌐 House Wi-Fi joins any Wi-Fi it remembers
+**Asked by:** [who?] (at the office, not at the house) · **Code by:** Claude · **Code:** `../pi/station/network.py`, `../pi/station/public/index.html`; guide `../pi/NETWORKING.md`
+- **What happened:** at the office the Pi was on the office Wi-Fi, but the touchscreen said *"Not on any WiFi. Tap one. Last try didn't work. Error: unknown connection 'camera-wifi'"*. Two reasons: the switch only knew the house Wi-Fi by name (`preconfigured`), and the camera Wi-Fi hadn't been made on this Pi yet (NETWORKING.md setup 1, step 2).
+- **Asked for:** "Can we just have the Home Wifi automatically connect to a WiFi that it already remembers from the OS? So if we're at home, it connects to that. If we're at the office, it will connect to that. If we're at a hotspot, it will connect to that."
+- **Now:** 🌐 turns off the camera Wi-Fi, looks around, and joins the remembered Wi-Fi with the strongest signal. The screen says which one (e.g. *Internet is on (CityGuest)*). None in range or it fails → back to 📡 Camera Wi-Fi, and the reason stays on screen (before, the reason got wiped when it switched back).
+- **The station is installed and running on the real Pi** (its touchscreen showed the Wi-Fi switch). The camera isn't connected to it yet.
+- Still one radio (built-in Pi Wi-Fi), so it's camera Wi-Fi **or** internet, never both.
+- Checked: tested on the Mac with a pretend Wi-Fi (office in range; house + hotspot → strongest; preferred one first; nothing in range; join fails → back to camera). **Not tested on the real Pi yet.** [result: not yet]
+- Still to do on the Pi: make the camera Wi-Fi (NETWORKING.md step 2), pull the new code, restart the station.
+
+---
+
+## 2026-11-08 — How to format the camera's microSD card on a Mac
+**Asked by:** [who?] · **Written by:** Claude · **Guide:** `../camera/INSTALL.md` step 1
+- The camera needs the card in **FAT32**, 32 GB or smaller. On a Mac: Disk Utility → View → Show All Devices → pick the whole card → Erase → Format **MS-DOS (FAT)**, Scheme **Master Boot Record**, Name `CAMERA`.
+- Not tried on our card yet. [result: not yet]
+
+---
+
 ## 2026-11-02 — Parts list for the whole project (for the app's Innovation Project Details)
 **Asked by:** Coach CJ · **Put together by:** Claude, from the Oct 3 and Oct 12 entries and the Pi plan · **In the app:** Innovation Project → Innovation Project Details (`app/db/updates/2026-11-02-ip-details.sql`)
 

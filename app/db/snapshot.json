@@ -1,5 +1,5 @@
 {
- "written_at": "2026-11-06T02:15:16.894Z",
+ "written_at": "2026-11-08T20:31:38.014Z",
  "applied_updates": [
   {
    "file": "2026-09-28-profile-photos.sql",
@@ -128,6 +128,14 @@
   {
    "file": "2026-11-02-attachment-photos.sql",
    "applied_at": "2026-11-02 22:51:44"
+  },
+  {
+   "file": "2026-11-08-pi-wifi-any-remembered.sql",
+   "applied_at": "2026-11-08 20:30:44"
+  },
+  {
+   "file": "2026-11-08-pi-installed.sql",
+   "applied_at": "2026-11-08 20:31:21"
   }
  ],
  "attachment_versions": [
@@ -1605,12 +1613,12 @@
    "name": "Camera Station",
    "device": "Raspberry Pi 4 (8 GB) + 7\" touchscreen",
    "job": "Runs its own camera Wi-Fi, takes the camera's pictures, tags them with SpeciesNet (Google's camera-trap AI), blurs people, sets empty pictures aside, and groups pictures into visits. We review every visit on the touchscreen and pick what to publish. Nothing goes online by itself.",
-   "version": "Station v1 (Oct 25) + Wi-Fi switch (Oct 26)",
-   "status": "Tested on a Mac in practice mode · not installed on the Pi yet",
+   "version": "Station v1 (Oct 25) + Wi-Fi switch (Oct 26, any remembered Wi-Fi Nov 8)",
+   "status": "Installed on the Pi (Nov 8) · camera Wi-Fi not made yet, camera not connected yet",
    "built": 1,
    "docs": "[{\"label\":\"How it works\",\"path\":\"pi/README.md\"},{\"label\":\"How to install\",\"path\":\"pi/INSTALL.md\"},{\"label\":\"Networking (camera Wi-Fi + house Wi-Fi)\",\"path\":\"pi/NETWORKING.md\"}]",
    "files": "[{\"path\":\"pi/station/server.py\",\"what\":\"The Camera Station: receives photos, runs the tagging, answers the touchscreen page\"},{\"path\":\"pi/station/store.py\",\"what\":\"The station's memory, and how visits are grouped and counted\"},{\"path\":\"pi/station/ai.py\",\"what\":\"Talking to SpeciesNet, blurring people, practice-mode answers\"},{\"path\":\"pi/station/network.py\",\"what\":\"The 📡 Camera Wi-Fi / 🌐 House Wi-Fi switch\"},{\"path\":\"pi/station/public/index.html\",\"what\":\"The touchscreen page (ours to change)\"},{\"path\":\"pi/station/camera-station.service\",\"what\":\"Starts the station when the Pi boots\"},{\"path\":\"pi/station/50-camera-station.rules\",\"what\":\"Lets the station flip the Wi-Fi switch\"},{\"path\":\"pi/settings.example.json\",\"what\":\"Copy to settings.json (the real one stays on the Pi)\"},{\"path\":\"pi/collector.py\",\"what\":\"Backup: fetches photos from a camera still on v2\"},{\"path\":\"pi/station/uploader.py\",\"what\":\"Sends the visits we picked to our website\"}]",
-   "updated": "2026-10-26",
+   "updated": "2026-11-08",
    "sort_order": 2,
    "source": "update"
   },

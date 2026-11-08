@@ -7,7 +7,21 @@ The camera code is on the coach's laptop in `camera/`, and also in our private G
 ## 1. Before you plug in
 
 - Clip the **antenna** onto the XIAO, and snap the **camera board** on top.
-- Put a **microSD card** (FAT32, 32 GB or smaller) in the camera board's slot. No card? The live view still works, but nothing is saved.
+- Put a **microSD card** (FAT32, 32 GB or smaller) in the camera board's slot. No card? The live view still works, but nothing is saved. New card, or not sure it's FAT32? Format it first (below).
+- Wiring: motion sensor OUT → **D0**, + → 3V3, − → GND. The clock module is optional (SDA → D4, SCL → D5).
+
+### Formatting the microSD card on a Mac
+
+⚠️ This **erases everything** on the card.
+
+1. Put the card in the Mac (SD adapter or USB card reader).
+2. Open **Disk Utility** (⌘ + Space, type "Disk Utility").
+3. **View → Show All Devices** (needed so you can pick the whole card).
+4. In the sidebar, click the **top line for the card** (check the size, so it's not the Mac's own drive).
+5. Click **Erase** and set: **Name** `CAMERA` (capitals, 11 letters max), **Format** **MS-DOS (FAT)** (that's FAT32), **Scheme** **Master Boot Record**.
+6. **Erase** → **Done**, then eject the card and put it in the camera board's slot.
+
+No **Scheme** box in step 5? You picked the part inside the card: go back to step 3.
 - Wiring: motion sensor OUT → **D0**, + → 3V3, − → GND. The clock module is optional (SDA → D4, SCL → D5).
 
 ## 2. Set up Arduino IDE (once per computer)
