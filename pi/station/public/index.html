@@ -143,13 +143,13 @@ async function refreshStatus() {
 // ---------- Home: the four steps ----------
 function home() {
   const s = status;
-  const cam = s.camera_online ? `Connected<br><span class="muted">last photo ${clock(s.camera.last_seen)}</span>`
+  const cam = s.camera_online ? `Connected<br><span class="muted">last heard from ${clock(s.camera.last_seen)}</span>`
                               : s.camera?.last_seen ? `Out of range<br><span class="muted">last seen ${day(s.camera.last_seen)} ${clock(s.camera.last_seen)}</span>`
                               : 'Not connected yet';
   main.innerHTML = `
     <h1>Camera Station</h1>
     ${s.fake_ai ? '<div class="banner">🧪 Practice mode: the AI answers are made up.</div>' : ''}
-    ${s.error ? '<div class="banner">⚠️ The tagging helper had a problem. Ask Coach CJ.</div>' : ''}
+    ${s.error ? `<div class="banner">⚠️ The tagging helper had a problem. Ask Coach CJ.<br><span class="muted" style="font-family:monospace;font-size:11px;white-space:pre-wrap">${esc(s.error.trim().split('\n').slice(-3).join('\n'))}</span></div>` : ''}
     <div class="steps">
       <div class="step ${s.camera_online ? 'ok' : ''}"><div class="num">1</div><b>Camera sends</b>
         <div>${cam}</div><div class="muted">${s.photos_today ?? 0} photos today</div>
@@ -194,23 +194,29 @@ async function switchNetwork(mode) {
 // ---------- Live: what the camera sees right now ----------
 let liveTimer;
 function live() {
-  clearInterval(liveTimer);
+  clearTimeout(liveTimer);
   if (status.network && status.network.mode !== 'camera') {
     main.innerHTML = `<h1>Live</h1><div class="card">The Pi is on the house Wi-Fi, so it can't see the camera. Switch to 📡 Camera Wi-Fi on the Home page.</div>`;
     return;
   }
-  if (!status.camera_online) {
-    main.innerHTML = `<h1>Live</h1><div class="card">The camera isn't connected to the Pi right now. When it's in range of the camera Wi-Fi, its picture shows up here.</div>`;
+  if (!status.camera?.ip) {
+    main.innerHTML = `<h1>Live</h1><div class="card">The Pi hasn't heard from the camera yet. Turn the camera on (or press R on it) near the Pi, and its picture shows up here.</div>`;
     return;
   }
-  const url = `http://${status.camera.ip}/picture.jpg`;
-  main.innerHTML = `<h1>Live</h1><div class="live"><img id="liveImg" src="${url}?n=${Date.now()}"></div>
-    <p class="muted" style="margin-top:6px">Camera at ${esc(status.camera.ip)} · new picture every second</p>`;
-  liveTimer = setInterval(() => {
-    const img = document.getElementById('liveImg');
-    if (!img || page !== 'live') return clearInterval(liveTimer);
-    img.src = `${url}?n=${Date.now()}`;
-  }, 1000);
+  // The Pi fetches the camera's picture for us (/api/live.jpg). Ask for the next one
+  // only after the last one finished, so a slow camera never gets a pile of requests.
+  main.innerHTML = `<h1>Live</h1><div class="live"><img id="liveImg" alt=""></div>
+    <p class="muted" id="liveNote" style="margin-top:6px">Asking the camera for a picture…</p>`;
+  const img = document.getElementById('liveImg'), note = document.getElementById('liveNote');
+  const next = () => { liveTimer = setTimeout(() => { if (page === 'live' && document.getElementById('liveImg') === img) img.src = `/api/live.jpg?n=${Date.now()}`; }, 1000); };
+  img.onload = () => { note.textContent = `Camera at ${status.camera.ip} · new picture every second`; next(); };
+  img.onerror = async () => {
+    let why = '';
+    try { why = (await (await fetch(`/api/live.jpg?n=${Date.now()}`)).json()).error || ''; } catch {}
+    note.textContent = `The camera didn't answer${why ? ': ' + why : ''}. Trying again…`;
+    next();
+  };
+  img.src = `/api/live.jpg?n=${Date.now()}`;
 }
 
 // ---------- Review: one card per visit ----------

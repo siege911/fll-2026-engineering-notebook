@@ -14,6 +14,10 @@ Backfilled 2026-09-06 from `../DECISIONS.md`, `../PROGRESS.md`, and `../mockups/
 
 **From 2026-09-28 on**, the live app is `../app/` (page: `app/public/index.html`, data: `app/db/`). Data-only changes get one line naming their `app/db/updates/` file.
 
+## 2026-11-08 — Pi station: Live picture through the Pi; real tagger error on screen
+- **Files:** `pi/station/server.py` (`/api/live.jpg` gets the camera's picture; `/api/time` and Live count as hearing from the camera), `pi/station/public/index.html` (Live page loads from the Pi, one picture at a time, says why if the camera doesn't answer; error banner shows the error's last lines). Data: `app/db/updates/2026-11-08-camera-sends.sql`.
+- **Why / who asked:** [who?]: "The Live page on the Pi just shows 'Camera at IP address'. I want the actual live camera." and the "tagger helper had a problem" banner.
+
 ## 2026-11-08 — Pi station: 🌐 House Wi-Fi joins any remembered Wi-Fi
 - **Files:** `pi/station/network.py` (finds remembered Wi-Fi in range, strongest first; keeps the failure reason after falling back), `pi/station/public/index.html` (shows which Wi-Fi it's on), `pi/station/server.py` + `pi/settings.example.json` (`house_connection` blank by default), `pi/NETWORKING.md`, `pi/INSTALL.md`, `pi/README.md`. Data: `app/db/updates/2026-11-08-pi-wifi-any-remembered.sql` (Pi row's version/updated).
 - **Why / who asked:** [who?] at the office: "Can we just have the Home Wifi automatically connect to a WiFi that it already remembers from the OS?"

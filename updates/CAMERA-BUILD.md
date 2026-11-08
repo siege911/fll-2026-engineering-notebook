@@ -4,6 +4,16 @@ The Innovation Project wildlife camera: what we bought, how it's wired, and ever
 
 ---
 
+## 2026-11-08 (later) — Camera sends to the Pi ✓ · Live page and tagger error message fixed
+**Told by:** [who?] · **Code by:** Claude · **Code:** `../pi/station/server.py`, `../pi/station/public/index.html`
+- **We built two cameras. One works, one doesn't** [unclear: what's wrong with the second one?]. The working one now saves to its microSD card and sends to the Pi ("I think I have it working").
+- **Problem 1:** the Pi's Live page only said "Camera at <address>", no picture. **Fix:** the Pi now gets the camera's picture itself and hands it to the touchscreen (`/api/live.jpg`), asking for the next one only after the last one arrives. If the camera doesn't answer, the page says why and keeps trying.
+- **Problem 2:** Home page said *"The tagging helper had a problem. Ask Coach CJ."* with no details. **Fix:** the banner now shows the last lines of the real error. [unclear: what the error is: see it after the update]
+- **Also:** the Pi now counts the camera as heard from when it asks the time (every start-up) or answers for Live, not only when a photo arrives. Home says "last heard from" instead of "last photo".
+- Checked: on the Mac with a pretend camera (no address yet → clear message; camera asks time → Connected; Live picture comes through; camera off → "didn't answer"). **Not on the real Pi yet.** [result: not yet]
+
+---
+
 ## 2026-11-08 — Pi: 🌐 House Wi-Fi joins any Wi-Fi it remembers
 **Asked by:** [who?] (at the office, not at the house) · **Code by:** Claude · **Code:** `../pi/station/network.py`, `../pi/station/public/index.html`; guide `../pi/NETWORKING.md`
 - **What happened:** at the office the Pi was on the office Wi-Fi, but the touchscreen said *"Not on any WiFi. Tap one. Last try didn't work. Error: unknown connection 'camera-wifi'"*. Two reasons: the switch only knew the house Wi-Fi by name (`preconfigured`), and the camera Wi-Fi hadn't been made on this Pi yet (NETWORKING.md setup 1, step 2).
@@ -12,6 +22,10 @@ The Innovation Project wildlife camera: what we bought, how it's wired, and ever
 - **The station is installed and running on the real Pi** (its touchscreen showed the Wi-Fi switch). The camera isn't connected to it yet.
 - Still one radio (built-in Pi Wi-Fi), so it's camera Wi-Fi **or** internet, never both.
 - Checked: tested on the Mac with a pretend Wi-Fi (office in range; house + hotspot → strongest; preferred one first; nothing in range; join fails → back to camera). **Not tested on the real Pi yet.** [result: not yet]
+- **Result on the real Pi (Nov 8, at the office):** pulled the new code; 🌐 House Wi-Fi works (joined the office Wi-Fi by itself). 📡 Camera Wi-Fi still says `unknown connection 'camera-wifi'`: the camera Wi-Fi hasn't been made yet.
+- **Later Nov 8:** made the camera Wi-Fi over SSH, installed the permission rule (`Not authorized to control networking` before that). 📡 works; `RootedWarriorsCam` shows up. **14:08: the camera joined the Pi's Wi-Fi for the first time** (Pi gave it 10.42.0.100).
+- Touchscreen still said *Camera sends: Not connected yet*. Why: the Pi only marks the camera "connected" when a picture arrives (in the last 2 minutes), and no picture had been saved yet. - **14:12 Serial Monitor:** `On the Pi's Wi-Fi. Live page: http://10.42.0.100` and `Time from the Pi: 2026-11-08 14:12:37` (camera ↔ Pi talking ✓). The camera's live page opened from the Pi ✓. Hand-waves: `changed: YES (17–23%)` ✓, but **nothing saved**: the camera said `No microSD card found` even with a card in. No saved pictures → nothing sent → Pi still says *Not connected yet*, and the Pi's Live page says the camera isn't connected. Clock module not found either (probably wiring, later). Some `cam_hal: FB-OVF` lines (camera making pictures faster than the code takes them; harmless for now).
+- Next: get the microSD card working (format FAT32 + Master Boot Record, click in, press R). [result: not yet]
 - Still to do on the Pi: make the camera Wi-Fi (NETWORKING.md step 2), pull the new code, restart the station.
 
 ---

@@ -23,6 +23,7 @@ import threading
 import time
 import traceback
 import urllib.parse
+import urllib.request
 from datetime import datetime
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -81,7 +82,21 @@ class Station:
         temp.write_bytes(body)
         temp.replace(path)
         self.store.add_photo(rel, name, taken_at, trigger)
+        self.seen_camera(camera_ip)
+
+    def seen_camera(self, camera_ip):
+        """The camera just talked to us (sent a photo, asked the time, or answered for the Live page)."""
         self.camera = {"ip": camera_ip, "last_seen": now()}
+
+    def live_picture(self):
+        """Gets the camera's newest picture for the Live page. The touchscreen only talks to the Pi."""
+        ip = self.camera["ip"]
+        if not ip:
+            raise ConnectionError("The Pi doesn't know the camera's address yet. Restart the camera (press R).")
+        with urllib.request.urlopen(f"http://{ip}/picture.jpg", timeout=5) as answer:
+            jpg = answer.read()
+        self.seen_camera(ip)
+        return jpg
 
     # ---------- the background helper ----------
     def tag_forever(self):
@@ -226,8 +241,14 @@ def make_handler(station):
                 return self.send_file(public / "index.html", "text/html; charset=utf-8")
             if parts[0] in ("photos", "empty") and ".." not in parts:
                 return self.send_file(station.data.joinpath(*parts), "image/jpeg")
-            if url.path == "/api/time":  # the camera sets its clock from this
+            if url.path == "/api/time":  # the camera sets its clock from this (and we learn its address)
+                station.seen_camera(self.client_address[0])
                 return self.reply(200, {"epoch": int(time.time())})
+            if url.path == "/api/live.jpg":
+                try:
+                    return self.reply(200, station.live_picture(), "image/jpeg")
+                except Exception as error:  # camera off, out of range, busy
+                    return self.reply(502, {"error": str(error)[:200]})
             if url.path == "/api/status":
                 return self.reply(200, station.status())
             if url.path == "/api/visits":
