@@ -25,7 +25,7 @@ const TABLES = {
   team:        { key: 'name', map: { n: 'name', c: 'color', face: 'face', role: 'role', fav: 'fav_value', color: 'fav_color', most: 'worked_on_most', learned: 'learned', with: 'worked_with_most', entries: 'notebook_entries', photo: 'photo', ring: 'ring_color' }, order: 'sort_order' },
   missions:    { key: 'id', map: { id: 'id', name: 'name', aka: 'aka', pts: 'max_points', how: 'how_it_scores', noeq: 'no_equipment', diff: 'difficulty', run: 'run_number', att: 'attachment', built: 'built_by', prog: 'programmed_by', rel: 'reliability', st: 'status', sec: 'est_seconds' }, order: 'id' },
   scoring_extras: { map: { name: 'name', pts: 'max_points', how: 'how' }, order: 'rowid' },
-  runs:        { key: 'run_number', map: { n: 'run_number', m: 'missions', t: 'est_seconds', l: 'launcher' }, order: 'run_number' },
+  runs:        { key: 'run_number', map: { n: 'run_number', m: 'missions', t: 'est_seconds', l: 'launcher', timed: 'timed_on', note: 'note', part: 'part_points' }, order: 'run_number' }, // timed/note added Nov 8
   matches:     { map: { id: 'id', d: 'date', s: 'score', r: 'runs_completed', f: 'what_failed', c: 'what_changed' }, order: 'date, id' },
   rubric:      { key: 'id', map: { id: 'id', sec: 'section', ph: 'phase', row: 'row_name', cv: 'core_values', l: 'level' }, order: 'id' },
   entries:     { map: { id: 'id', d: 'date', who: 'who', comp: 'component', ph: 'phase', t: 'text', cv: 'core_values', succ: 'success', photo: 'photo', sample: 'sample' }, order: 'date DESC, id DESC' },
@@ -47,7 +47,7 @@ const TABLES = {
   ip_wiring:   { map: { pin: 'pin', gpio: 'gpio', part: 'part', ppin: 'part_pin', color: 'color', why: 'why', opt: 'optional', code: 'in_code' }, order: 'sort_order, id' },
   ip_platforms:{ map: { id: 'id', icon: 'icon', name: 'name', device: 'device', job: 'job', ver: 'version', st: 'status', built: 'built', docs: 'docs', files: 'files', upd: 'updated' }, order: 'sort_order' },
 };
-const JSON_COLS = new Set(['built_by', 'programmed_by', 'missions', 'who', 'core_values', 'help', 'coded_by', 'iterations', 'notes', 'questions', 'docs', 'files']);
+const JSON_COLS = new Set(['built_by', 'programmed_by', 'missions', 'who', 'core_values', 'help', 'coded_by', 'iterations', 'notes', 'questions', 'docs', 'files', 'part_points']);
 // What the page may change. Everything else is changed through db/updates/ files.
 const CAN_ADD = { entries: ['d', 'who', 'comp', 'ph', 't', 'cv', 'succ'], moments: ['d', 'v', 'who', 't', 'help'], matches: ['d', 's', 'r', 'f', 'c'], tests: ['d', 'att', 'tries', 'succ', 'obs', 'chg', 'res'], quotes: ['q', 'by', 'd'], gantt: ['task', 'who', 's', 'e'], shares: ['d', 'to', 'who', 'said', 'chg'] };
 // Settings the page may fill in (merged into the JSON value; note records that it was typed in the app).

@@ -4,6 +4,15 @@ Newest at top. Capture-field and design decisions come from the students; archit
 
 ---
 
+## 2026-11-08 — Run plan = Fynn + Isla's timing list (9 runs) [who? sent Nov 9]
+
+**What:** the Robot Game run plan in the app now follows the 9 run groups Fynn and Isla tested and timed (M01 · M02+M03 · M04+M05 · M08+M09 · M10+M14 · M12 · M15 · M13+M12 · M06+M07+M11), replacing the 8-run draft from September. Runs with a real time show ⏱; the rest are still guesses. Their margin notes ("needs help," "needs work," "fix yellow arm") show next to each run.
+**Why:** first real stopwatch times of the season; the old plan was all 30-second guesses.
+**M12 in two runs (answered Nov 9):** M12 has two parts: the support tie (10 pts) in its own run, the cane raise (20 pts) as part of the M13 run.
+**Open (for the team):** is this the match order or just the order they tested?
+
+---
+
 ## 2026-11-09 — Errors get their own ⚠️ Problems page, not the Home page [who?]
 
 **Decision:** problems (like the AI crashing) go on a new **⚠️ Problems** page with a badge, not in a big banner on Home. Home only shows a small "retrying" note on the Pi tags card.

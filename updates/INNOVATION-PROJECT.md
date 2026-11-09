@@ -8,6 +8,9 @@ Backfilled 2026-09-06 from `../DECISIONS.md` and `../PROGRESS.md`.
 
 ---
 
+## 2026-11-08 — Trifold boards for the competition (Thea + Adeline)
+- **Thea and Adeline worked on the trifold boards for the competition** (tournament Nov 14). [unclear: which boards (Innovation Project, Robot Design, or both), and what's on them so far? A photo would be great evidence.]
+
 ## 2026-11-02 — New "Innovation Project Details" section in the app (Coach CJ asked)
 **Asked by:** Coach CJ. At the bottom of the Innovation Project page: **Parts We Ordered** (every part, by box, with status), the **Camera Wiring Diagram** (drawn from the wiring plan, with a wire-by-wire table), and **The Code & How to Install It**: click the camera (ESP32), the Pi, or the website (DigitalOcean) to open its install guide and each code file. The website is a placeholder (not built yet). The page reads the real code files, so it always shows the newest version. Parts list: `CAMERA-BUILD.md` 2026-11-02.
 

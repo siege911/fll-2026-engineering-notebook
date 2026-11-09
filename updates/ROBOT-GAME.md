@@ -8,6 +8,18 @@ Backfilled 2026-09-06 from `../DECISIONS.md` and `../PROGRESS.md`.
 
 ---
 
+## 2026-11-08 (Sunday) — every mission tested and timed (Fynn + Isla)
+- **Fynn and Isla** tested all of the missions and timed them (notes: `PRACTICE-LOG.md` 2026-11-08, photo `../app/images/11-8-mission-timing-notes.webp`).
+- **Timed:** M01 = **12 s** · M04 + M05 = **17 s** · M12 = **7 s** · M13 + M12 = **17 s** · M06 + M07 + M11 = **17 s**.
+- **Not timed yet:** M02 + M03 "needs help" · M08 + M09 "needs work" · M10 + M14 "needs work" · M15 "fix yellow arm".
+- **Run groups (as written, top to bottom):** 1 M01 · 2 M02+M03 · 3 M04+M05 · 4 M08+M09 · 5 M10+M14 · 6 M12 · 7 M15 · 8 M13+M12 · 9 M06+M07+M11. The app's run plan now follows these 9 runs (was 8 guessed runs). Untimed runs keep the old 30 s guess (35 s for M02+M03) and are marked "guess." [unclear: match order or test order?]
+- **M12 Forest Elder is split across two runs** (answered 2026-11-09): "Mission 12 has two parts and we do one part by itself and the second as part of mission 13." Run 6 = M12 part 1 alone: **support tie around the post, 10 pts** (7 s); run 8 = M13 + M12 part 2: **cane raised, touching the tree, 20 pts** (17 s).
+- **M10 Fragile Microhabitats:** first time in testing, run with M14 → status **Prototyping** (was Not started).
+- **M06 + M07** run with M11 and got a time, so they have programs now. [unclear: who programmed them?]
+- No tries / successes written down → reliability unchanged.
+
+---
+
 ## 2026-11-01 (Sunday) — attachments for every mission; only M06 + M07 left to program (told by Adeline)
 - **Team milestone:** "we have an attachment for all the missions, the only thing left to program is mission 6 and 7." [unclear: the app has no attachment or program for **M10** and no attachment for **M05**; ask]
 - **M04 Lucky Leaves + M05 Reaching Roots:** **Adeline** finished them. **Test: 4 / 5 (80%)**, "pretty consistent." Both → **Working**, reliability 80%. Programmed by now: M04 Adeline, Fynn, Isla · M05 Fynn, Isla, Adeline.

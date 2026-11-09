@@ -66,9 +66,12 @@ In `settings.json`, set **`camera_key`** to the same `CAMERA_KEY` as in the came
 ```bash
 python3 -m venv ~/speciesnet-env
 ~/speciesnet-env/bin/pip install --upgrade pip
+~/speciesnet-env/bin/pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
 ~/speciesnet-env/bin/pip install speciesnet pillow
 ~/speciesnet-env/bin/python -m speciesnet.scripts.run_model --help
 ```
+
+**Install PyTorch from the `cpu` link first (2nd pip line).** Without it, pip picks the NVIDIA graphics-card build (`+cu…`), made for big ARM servers. It loads fine on the Pi but crashes partway through tagging with `SIGILL` (we hit this Nov 8–9). Check: `~/speciesnet-env/bin/python -c "import torch; print(torch.__version__)"` must end in **`+cpu`**.
 
 This downloads PyTorch and friends (a few GB, be patient). Nobody on the team has tried it on a Pi yet: if `pip install` fails, copy the last 20 lines of the error for Coach CJ / Claude.
 

@@ -8,6 +8,50 @@ One entry per practice, **newest at top**. This is the raw material for the team
 
 ---
 
+## 2026-11-08 (Sunday) — Every mission tested and timed (Fynn + Isla); trifold boards (Thea + Adeline)
+**Who was there:** Fynn, Isla, Thea, Adeline (named in the update) [unclear: were Nolan and Weston there?]
+**Told by:** [who?] (sent 2026-11-09)
+
+**Raw update (their words):**
+> Yesterday Fynn and Isla worked on testing all of the missions and timing them. Attached is their notes.
+> Thea and Adeline worked on the trifold boards for the competition.
+
+**Fynn and Isla's notes (handwritten page, copied as written; saved as `app/images/11-8-mission-timing-notes.webp`):**
+
+| Note in the margin | What they wrote | Official missions |
+|---|---|---|
+| | mission 1 = 12 sec | M01 Drone Survey |
+| needs help | mission 2,3 = | M02 Exploding Seeds + M03 Flip the Rock |
+| | missions 4,5 = 17 sec | M04 Lucky Leaves + M05 Reaching Roots |
+| needs work | mission 8,9 = | M08 Tangled + M09 Research Platform |
+| needs work | mission 10,14 = | M10 Fragile Microhabitats + M14 Seeds of Renewal |
+| | mission 12 = 7 sec | M12 Forest Elder |
+| fix yellow arm | mission 15 = | M15 Biocentric Architecture |
+| | mission 13,12 = 17 | M13 Keystone Species + M12 Forest Elder |
+| | missions 6,7,11 = 17 sec (first number crossed out, 17 written above) | M06 Leafcutter Frenzy + M07 Humongous Fungus + M11 Window to the Past |
+
+**What happened**
+- Robot Game: **Fynn and Isla tested every mission and timed each run.** 5 runs got a time: **M01 12 s, M04+M05 17 s, M12 7 s, M13+M12 17 s, M06+M07+M11 17 s** = 70 s of driving for those five. 4 runs have no time yet because they still need work: M02+M03 ("needs help"), M08+M09 and M10+M14 ("needs work"), M15 ("fix yellow arm").
+  - This is the **first real timing** of the season: until now every run in the app's run plan was a 30-second guess.
+  - **M06, M07 and M11 run together** and got a time, so M06 + M07 have programs now (on Nov 1 they were the only two left to program). [unclear: who programmed M06 + M07?]
+  - **M10 runs with M14.** First sign of M10 in testing (the Nov 1 question "where is M10?" is partly answered). [unclear: does M10 use the M14 attachment, and who built/programmed that part?]
+  - **M12 is on the list twice on purpose** (answered 2026-11-09): "Mission 12 has two parts and we do one part by itself and the second as part of mission 13." So run 6 = M12 part 1, the **support tie around the post (10 pts)**, 7 s; run 8 = M13 + M12 part 2, **cane raised touching the tree (20 pts)**, 17 s (answered 2026-11-09).
+  - [unclear: is the order on the page the order we'll run them in a match, or just the order they tested?]
+  - No tries / successes were written down, so no reliability % changes.
+- Robot Design: **M15's yellow arm needs fixing** (Fynn + Isla's note). [unclear: what's wrong with it?]
+- Innovation Project / competition: **Thea and Adeline worked on the trifold boards for the competition** (the tournament is Nov 14). [unclear: which boards (Innovation Project, Robot Design, or both) and what's on them so far?]
+- Core Values: two pairs worked together all practice (Fynn + Isla, Thea + Adeline): Teamwork.
+
+**Wins / celebrate:** First real stopwatch times! Five runs timed, and three of them are super quick (7 to 17 seconds). Plus every mission got tested in one practice, and the trifold boards are underway with six days to go.
+**Problems / open questions:**
+- Four runs still need work before they can be timed (M02+M03, M08+M09, M10+M14, M15).
+- M15's yellow arm needs a fix.
+**Next practice:** Fix the M15 yellow arm; get M02+M03, M08+M09 and M10+M14 working and timed. Run each mission several times and count tries and successes (the judges' "tested over and over" evidence). Finish the trifold boards.
+**App changes made:** `app/db/updates/2026-11-08-mission-times-trifold.sql` (Robot Game run plan rebuilt from the notes, with real times and the margin notes; M01 + M12 mission times; M10 → Prototyping; two notebook entries; Teamwork moment). Run plan now shows ⏱ timed vs. guessed and a Notes column (`public/index.html`, `server.mjs`).
+**Rubric rows touched:** Robot Game strategy / run plan (150 s budget); Robot Design ITERATE (testing every mission, "needs work" list); Innovation Project + Robot Design COMMUNICATE (trifold boards); Core Values Teamwork.
+
+---
+
 ## 2026-11-02 (Monday) — Attachment photos sent (not a practice)
 **Told by:** [who?]
 

@@ -65,6 +65,9 @@ Learned / Worked with most / Notebook entries: still blank for everyone.
 
 ---
 
+## 2026-11-08 (Sunday) — Teamwork: two pairs
+- **Teamwork:** Fynn + Isla tested and timed every mission together; Thea + Adeline made the trifold boards together. (Not counted in the tally as help given/received: no one said who helped whom.)
+
 ## 2026-11-01 (Sunday) — Teamwork: working in pairs (told by Adeline)
 - **Teamwork:** Weston + Nolan worked together on M06, M07, M11 and on soldering the camera; Adeline + Fynn worked together on M08 + M09. (Not counted in the tally: no one said who helped whom.)
 

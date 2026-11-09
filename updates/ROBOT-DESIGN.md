@@ -39,6 +39,11 @@ Backfilled 2026-09-06 from `../DECISIONS.md` and `../PROGRESS.md`.
 
 ---
 
+## 2026-11-08 (Sunday) — Testing every mission: what needs work (Fynn + Isla)
+- Observation from testing all missions: **M15 Biocentric Architecture — "fix yellow arm."** [unclear: what is the yellow arm doing wrong?] Also marked "needs work": M08+M09 and M10+M14; "needs help": M02+M03. Times and the full list: `ROBOT-GAME.md` 2026-11-08.
+
+---
+
 ## 2026-11-02 (Monday) — Photos of the attachments with their missions
 **Sent by:** [who?] · "these are the photos of the attachments with the missions. put these in the app" · mission for each photo confirmed by the student who sent them. [unclear: taken Nov 1 or Nov 2?]
 

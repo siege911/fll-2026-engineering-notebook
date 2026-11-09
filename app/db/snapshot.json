@@ -1,5 +1,5 @@
 {
- "written_at": "2026-11-08T21:25:17.428Z",
+ "written_at": "2026-11-09T22:05:07.979Z",
  "applied_updates": [
   {
    "file": "2026-09-28-profile-photos.sql",
@@ -140,6 +140,26 @@
   {
    "file": "2026-11-08-camera-sends.sql",
    "applied_at": "2026-11-08 21:25:13"
+  },
+  {
+   "file": "2026-11-08-mission-times-trifold.sql",
+   "applied_at": "2026-11-09 21:43:59"
+  },
+  {
+   "file": "2026-11-08b-moment-help-fix.sql",
+   "applied_at": "2026-11-09 21:44:16"
+  },
+  {
+   "file": "2026-11-09-m12-two-parts.sql",
+   "applied_at": "2026-11-09 21:48:16"
+  },
+  {
+   "file": "2026-11-09b-m12-parts-points.sql",
+   "applied_at": "2026-11-09 21:51:12"
+  },
+  {
+   "file": "2026-11-09-pi-tagging-works.sql",
+   "applied_at": "2026-11-09 22:04:36"
   }
  ],
  "attachment_versions": [
@@ -351,6 +371,13 @@
    "attachment_id": 12,
    "date": "2026-11-02",
    "note": "📷 photo: one attachment does both M08 + M09",
+   "photo": null
+  },
+  {
+   "id": 31,
+   "attachment_id": 8,
+   "date": "2026-11-08",
+   "note": "tested by Fynn + Isla: fix yellow arm",
    "photo": null
   }
  ],
@@ -1266,6 +1293,34 @@
    "source": "update",
    "sample": 0,
    "created_at": "2026-11-01 21:53:16"
+  },
+  {
+   "id": 56,
+   "date": "2026-11-08",
+   "who": "[\"Fynn\",\"Isla\"]",
+   "component": "Robot Game",
+   "phase": "ITERATE",
+   "text": "Fynn and Isla tested all of the missions and timed them. Mission 1 = 12 sec, missions 4+5 = 17 sec, mission 12 = 7 sec, missions 13+12 = 17 sec, missions 6+7+11 = 17 sec. Still to fix: missions 2+3 (needs help), 8+9 and 10+14 (needs work), mission 15 (fix yellow arm).",
+   "core_values": "[\"Teamwork\"]",
+   "success": 1,
+   "photo": "11-8-mission-timing-notes.webp",
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-09 21:43:59"
+  },
+  {
+   "id": 57,
+   "date": "2026-11-08",
+   "who": "[\"Thea\",\"Adeline\"]",
+   "component": "Innovation Project",
+   "phase": "COMMUNICATE",
+   "text": "Thea and Adeline worked on the trifold boards for the competition.",
+   "core_values": "[\"Teamwork\"]",
+   "success": 1,
+   "photo": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-09 21:43:59"
   }
  ],
  "experts": [
@@ -1618,11 +1673,11 @@
    "device": "Raspberry Pi 4 (8 GB) + 7\" touchscreen",
    "job": "Runs its own camera Wi-Fi, takes the camera's pictures, tags them with SpeciesNet (Google's camera-trap AI), blurs people, sets empty pictures aside, and groups pictures into visits. We review every visit on the touchscreen and pick what to publish. Nothing goes online by itself.",
    "version": "Station v1 (Oct 25) + Wi-Fi switch (Oct 26, any remembered Wi-Fi Nov 8)",
-   "status": "Installed on the Pi (Nov 8) · camera connected · Live page + tagger error being fixed",
+   "status": "Working on the Pi (Nov 9): camera → Pi → AI tagging, no crashes · first real animal still to come",
    "built": 1,
    "docs": "[{\"label\":\"How it works\",\"path\":\"pi/README.md\"},{\"label\":\"How to install\",\"path\":\"pi/INSTALL.md\"},{\"label\":\"Networking (camera Wi-Fi + house Wi-Fi)\",\"path\":\"pi/NETWORKING.md\"}]",
    "files": "[{\"path\":\"pi/station/server.py\",\"what\":\"The Camera Station: receives photos, runs the tagging, answers the touchscreen page\"},{\"path\":\"pi/station/store.py\",\"what\":\"The station's memory, and how visits are grouped and counted\"},{\"path\":\"pi/station/ai.py\",\"what\":\"Talking to SpeciesNet, blurring people, practice-mode answers\"},{\"path\":\"pi/station/network.py\",\"what\":\"The 📡 Camera Wi-Fi / 🌐 House Wi-Fi switch\"},{\"path\":\"pi/station/public/index.html\",\"what\":\"The touchscreen page (ours to change)\"},{\"path\":\"pi/station/camera-station.service\",\"what\":\"Starts the station when the Pi boots\"},{\"path\":\"pi/station/50-camera-station.rules\",\"what\":\"Lets the station flip the Wi-Fi switch\"},{\"path\":\"pi/settings.example.json\",\"what\":\"Copy to settings.json (the real one stays on the Pi)\"},{\"path\":\"pi/collector.py\",\"what\":\"Backup: fetches photos from a camera still on v2\"},{\"path\":\"pi/station/uploader.py\",\"what\":\"Sends the visits we picked to our website\"}]",
-   "updated": "2026-11-08",
+   "updated": "2026-11-09",
    "sort_order": 2,
    "source": "update"
   },
@@ -1941,7 +1996,7 @@
    "programmed_by": "[\"Adeline\"]",
    "reliability": 0,
    "status": "Prototyping",
-   "est_seconds": 30
+   "est_seconds": 12
   },
   {
    "id": "M02",
@@ -1999,7 +2054,7 @@
    "how_it_scores": "Plant root partly extended 10 OR fully extended 20",
    "no_equipment": 1,
    "difficulty": 0,
-   "run_number": null,
+   "run_number": 3,
    "attachment": "—",
    "built_by": "[]",
    "programmed_by": "[\"Fynn\",\"Isla\",\"Adeline\"]",
@@ -2015,7 +2070,7 @@
    "how_it_scores": "Ant touching nest + 10 per leaf fragment inside (4 fragments)",
    "no_equipment": 0,
    "difficulty": 0,
-   "run_number": null,
+   "run_number": 9,
    "attachment": "Mission 6 attachment",
    "built_by": "[\"Nolan\",\"Weston\"]",
    "programmed_by": "[]",
@@ -2031,7 +2086,7 @@
    "how_it_scores": "Mycelium fully extended 20 · +10 if other team's plant root is fully extended too",
    "no_equipment": 1,
    "difficulty": 0,
-   "run_number": null,
+   "run_number": 9,
    "attachment": "Mission 7 attachment",
    "built_by": "[\"Nolan\",\"Weston\"]",
    "programmed_by": "[]",
@@ -2047,7 +2102,7 @@
    "how_it_scores": "Vine touching the mat 30",
    "no_equipment": 0,
    "difficulty": 0,
-   "run_number": 8,
+   "run_number": 4,
    "attachment": "Mission 8 attachment",
    "built_by": "[\"Nolan\"]",
    "programmed_by": "[]",
@@ -2063,7 +2118,7 @@
    "how_it_scores": "Platform raised 10 · camera trap deployed 10 · seed off the tree 10",
    "no_equipment": 1,
    "difficulty": 0,
-   "run_number": null,
+   "run_number": 4,
    "attachment": "Mission 9 attachment",
    "built_by": "[\"Weston\"]",
    "programmed_by": "[\"Weston\"]",
@@ -2079,12 +2134,12 @@
    "how_it_scores": "Spider habitat untouched 10 · snail habitat untouched 10 (don't bump them!)",
    "no_equipment": 1,
    "difficulty": 0,
-   "run_number": null,
+   "run_number": 5,
    "attachment": "—",
    "built_by": "[]",
    "programmed_by": "[]",
    "reliability": 0,
-   "status": "Not started",
+   "status": "Prototyping",
    "est_seconds": 30
   },
   {
@@ -2095,7 +2150,7 @@
    "how_it_scores": "Root cover down, touching the mat 20",
    "no_equipment": 0,
    "difficulty": 0,
-   "run_number": null,
+   "run_number": 9,
    "attachment": "Mission 11 attachment",
    "built_by": "[\"Weston\",\"Nolan\"]",
    "programmed_by": "[\"Weston\",\"Nolan\"]",
@@ -2111,13 +2166,13 @@
    "how_it_scores": "Cane raised & touching tree 20 · support tie around post 10",
    "no_equipment": 1,
    "difficulty": 0,
-   "run_number": 4,
+   "run_number": 6,
    "attachment": "Mission 12 attachment",
    "built_by": "[\"Fynn\",\"Isla\",\"Adeline\"]",
    "programmed_by": "[\"Isla\",\"Fynn\",\"Thea\",\"Adeline\"]",
    "reliability": 0,
    "status": "Prototyping",
-   "est_seconds": 30
+   "est_seconds": 7
   },
   {
    "id": "M13",
@@ -2127,7 +2182,7 @@
    "how_it_scores": "Our own keystone species on the platform + young trees raised 30 (build it from bag 20)",
    "no_equipment": 0,
    "difficulty": 0,
-   "run_number": 5,
+   "run_number": 8,
    "attachment": "Keystone Species (mascot) attachment",
    "built_by": "[\"Thea\",\"Nolan\"]",
    "programmed_by": "[\"Isla\"]",
@@ -2143,7 +2198,7 @@
    "how_it_scores": "5 per seed in the replantation station · +5 each if touching the mat (3 seeds)",
    "no_equipment": 0,
    "difficulty": 0,
-   "run_number": 6,
+   "run_number": 5,
    "attachment": "Mission 14 attachment",
    "built_by": "[\"Weston\"]",
    "programmed_by": "[\"Fynn\"]",
@@ -2234,6 +2289,17 @@
    "source": "update",
    "sample": 0,
    "created_at": "2026-10-26 12:00:00"
+  },
+  {
+   "id": 14,
+   "date": "2026-11-08",
+   "value": "Teamwork",
+   "who": "[\"Fynn\",\"Isla\",\"Thea\",\"Adeline\"]",
+   "text": "Two pairs: Fynn + Isla tested and timed every mission; Thea + Adeline made the trifold boards.",
+   "help": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-08 12:00:00"
   }
  ],
  "programs": [
@@ -2602,50 +2668,83 @@
   {
    "run_number": 1,
    "missions": "[\"M01\"]",
-   "est_seconds": 30,
-   "launcher": "—"
+   "est_seconds": 12,
+   "launcher": "—",
+   "timed_on": "2026-11-08",
+   "note": "Timed by Fynn + Isla",
+   "part_points": "{}"
   },
   {
    "run_number": 2,
    "missions": "[\"M02\",\"M03\"]",
    "est_seconds": 35,
-   "launcher": "—"
+   "launcher": "—",
+   "timed_on": null,
+   "note": "needs help",
+   "part_points": "{}"
   },
   {
    "run_number": 3,
-   "missions": "[\"M04\"]",
-   "est_seconds": 30,
-   "launcher": "—"
+   "missions": "[\"M04\",\"M05\"]",
+   "est_seconds": 17,
+   "launcher": "—",
+   "timed_on": "2026-11-08",
+   "note": "Timed by Fynn + Isla",
+   "part_points": "{}"
   },
   {
    "run_number": 4,
-   "missions": "[\"M12\"]",
+   "missions": "[\"M08\",\"M09\"]",
    "est_seconds": 30,
-   "launcher": "—"
+   "launcher": "—",
+   "timed_on": null,
+   "note": "needs work",
+   "part_points": "{}"
   },
   {
    "run_number": 5,
-   "missions": "[\"M13\"]",
+   "missions": "[\"M10\",\"M14\"]",
    "est_seconds": 30,
-   "launcher": "—"
+   "launcher": "—",
+   "timed_on": null,
+   "note": "needs work",
+   "part_points": "{}"
   },
   {
    "run_number": 6,
-   "missions": "[\"M14\"]",
-   "est_seconds": 30,
-   "launcher": "—"
+   "missions": "[\"M12\"]",
+   "est_seconds": 7,
+   "launcher": "—",
+   "timed_on": "2026-11-08",
+   "note": "Timed by Fynn + Isla · M12 part 1: support tie around the post (cane is in run 8)",
+   "part_points": "{\"M12\":10}"
   },
   {
    "run_number": 7,
    "missions": "[\"M15\"]",
    "est_seconds": 30,
-   "launcher": "—"
+   "launcher": "—",
+   "timed_on": null,
+   "note": "fix yellow arm",
+   "part_points": "{}"
   },
   {
    "run_number": 8,
-   "missions": "[\"M08\"]",
-   "est_seconds": 30,
-   "launcher": "—"
+   "missions": "[\"M13\",\"M12\"]",
+   "est_seconds": 17,
+   "launcher": "—",
+   "timed_on": "2026-11-08",
+   "note": "Timed by Fynn + Isla · M12 part 2: cane raised to the tree (support tie is in run 6)",
+   "part_points": "{\"M12\":20}"
+  },
+  {
+   "run_number": 9,
+   "missions": "[\"M06\",\"M07\",\"M11\"]",
+   "est_seconds": 17,
+   "launcher": "—",
+   "timed_on": "2026-11-08",
+   "note": "Timed by Fynn + Isla",
+   "part_points": "{}"
   }
  ],
  "scoring_extras": [
