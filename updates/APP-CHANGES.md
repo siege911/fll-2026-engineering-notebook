@@ -14,6 +14,10 @@ Backfilled 2026-09-06 from `../DECISIONS.md`, `../PROGRESS.md`, and `../mockups/
 
 **From 2026-09-28 on**, the live app is `../app/` (page: `app/public/index.html`, data: `app/db/`). Data-only changes get one line naming their `app/db/updates/` file.
 
+## 2026-11-09 — Pi station: Problems page; tagging survives AI crashes
+- **Files:** `pi/station/server.py` (batches of 5, one at a time after a crash, set aside after 2 crashes, problem list + `/api/problems`, `/api/problems/retry`), `store.py` (`retry_failed`), `ai.py` (plain-words error, `-X faulthandler`), `public/index.html` (⚠️ Problems page + badge, purple Home banner removed, shorter menu buttons), `pi/README.md`, `pi/INSTALL.md`.
+- **Why / who asked:** [who?]: "maybe we create a dedicated page for viewing errors so we can see them if needed but not on the Home page", after SIGILL crashes.
+
 ## 2026-11-08 — Pi station: tagging works with no internet
 - **Files:** `pi/station/ai.py` (finds the downloaded SpeciesNet model and passes `--model`), `pi/station/server.py` (`speciesnet_model` setting), `pi/INSTALL.md` (offline check).
 - **Why / who asked:** [who?] sent the tagger error: `Failed to resolve 'api.kaggle.com'` in 📡 Camera Wi-Fi mode.

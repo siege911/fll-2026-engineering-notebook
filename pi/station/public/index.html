@@ -24,7 +24,7 @@
   /* Sidebar */
   nav{width:96px;background:var(--forest);display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:4px;border-right:4px solid var(--lavender)}
   nav .logo{color:#fff;font-weight:800;font-size:11px;text-align:center;line-height:1.2;margin-bottom:6px}
-  nav button{width:80px;height:72px;border-radius:14px;background:transparent;color:#cfe3d2;font-size:12px;font-weight:700;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;position:relative}
+  nav button{width:80px;height:62px;border-radius:14px;background:transparent;color:#cfe3d2;font-size:12px;font-weight:700;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;position:relative}
   nav button span.i{font-size:24px}
   nav button.on{background:var(--lavender);color:var(--forest)}
   nav .badge{position:absolute;top:4px;right:6px;background:var(--warn);color:var(--forest);border-radius:10px;font-size:11px;padding:0 6px;font-weight:800}
@@ -106,6 +106,7 @@
   <button data-page="review"><span class="i">🔍</span>Review<span class="badge" id="badgeReview" hidden></span></button>
   <button data-page="publish"><span class="i">🌐</span>Publish<span class="badge" id="badgePublish" hidden></span></button>
   <button data-page="experiment"><span class="i">🧪</span>Test</button>
+  <button data-page="problems"><span class="i">⚠️</span>Problems<span class="badge" id="badgeProblems" hidden></span></button>
 </nav>
 <main id="main"></main>
 
@@ -129,7 +130,7 @@ document.querySelectorAll('nav button').forEach(b => b.onclick = () => show(b.da
 function show(name, arg) {
   page = name;
   document.querySelectorAll('nav button').forEach(b => b.classList.toggle('on', b.dataset.page === name));
-  ({home, live, review, publish, experiment})[name](arg);
+  ({home, live, review, publish, experiment, problems})[name](arg);
 }
 
 async function refreshStatus() {
@@ -137,7 +138,9 @@ async function refreshStatus() {
   const badge = (id, n) => { const el = document.getElementById(id); el.hidden = !n; el.textContent = n; };
   badge('badgeReview', status.to_review);
   badge('badgePublish', status.approved);
+  badge('badgeProblems', page === 'problems' ? 0 : Math.max(0, (status.problem_count || 0) - problemsSeen));
   if (page === 'home') home();
+  if (page === 'problems' && (status.problem_count || 0) !== problemsSeen) problems();
 }
 
 // ---------- Home: the four steps ----------
@@ -149,13 +152,14 @@ function home() {
   main.innerHTML = `
     <h1>Camera Station</h1>
     ${s.fake_ai ? '<div class="banner">🧪 Practice mode: the AI answers are made up.</div>' : ''}
-    ${s.error ? `<div class="banner">⚠️ The tagging helper had a problem. Ask Coach CJ.<br><span class="muted" style="font-family:monospace;font-size:11px;white-space:pre-wrap">${esc(s.error.trim().split('\n').slice(-3).join('\n'))}</span></div>` : ''}
     <div class="steps">
       <div class="step ${s.camera_online ? 'ok' : ''}"><div class="num">1</div><b>Camera sends</b>
         <div>${cam}</div><div class="muted">${s.photos_today ?? 0} photos today</div>
         <button class="big plain" onclick="show('live')">📷 Live</button></div>
       <div class="step ${s.waiting ? 'todo' : 'ok'}"><div class="num">2</div><b>Pi tags</b>
-        <div class="n">${s.waiting ?? 0}</div><div class="muted">${s.tagging_now ? 'tagging ' + s.tagging_now + ' now…' : s.waiting ? 'waiting' : 'all tagged ✓'}</div></div>
+        <div class="n">${s.waiting ?? 0}</div><div class="muted">${s.tagging_now ? 'tagging ' + s.tagging_now + ' now…' : s.waiting ? 'waiting' : 'all tagged ✓'}</div>
+        ${s.error ? `<a class="muted" style="color:var(--forest)" onclick="show('problems')">⚠️ retrying · see Problems</a>` : ''}
+        ${s.failed ? `<a class="muted" style="color:var(--forest)" onclick="show('problems')">${s.failed} set aside</a>` : ''}</div>
       <div class="step ${s.to_review ? 'todo' : 'ok'}"><div class="num">3</div><b>We review</b>
         <div class="n">${s.to_review ?? 0}</div><div class="muted">visits to check</div>
         <button class="big ${s.to_review ? 'go' : 'plain'}" onclick="show('review')">🔍 Review</button></div>
@@ -342,6 +346,29 @@ async function experiment() {
       <table><tr><th></th><th>📷 Changed</th><th>Both</th><th>🔥 Sensor</th></tr>
         ${row('🦌 Animal', 'animal')}${row('🧍 Person (blurred)', 'person')}${row('🚗 Vehicle', 'vehicle')}${row('🍃 Empty (false alarm)', 'empty')}</table>
     </div>`;
+}
+
+// ---------- Problems: what went wrong, for whoever is fixing it ----------
+// Kept off the Home page so it doesn't scare anyone. The ⚠️ badge counts new ones.
+let problemsSeen = 0;
+async function problems() {
+  const r = await api('/api/problems');
+  problemsSeen = status.problem_count || 0;
+  document.getElementById('badgeProblems').hidden = true;
+  main.innerHTML = `<h1>Problems</h1>
+    <p class="muted" style="margin-bottom:8px">Things that went wrong since the station started, newest first. The station keeps trying by itself. Send the grey details to Coach CJ / Claude if something keeps happening.</p>
+    ${r.failed ? `<div class="card" style="margin-bottom:10px"><b>${r.failed} photo${r.failed > 1 ? 's' : ''} set aside</b>: the AI crashed on ${r.failed > 1 ? 'them' : 'it'} twice.
+      <button class="big plain" onclick="retryFailed()">🔁 Try again</button></div>` : ''}
+    ${r.problems.length ? r.problems.map(p => `<div class="card" style="margin-bottom:8px">
+        <b>${day(p.time)} ${clock(p.time)}</b> · ${esc(p.what)}
+        ${p.details ? `<details><summary class="muted">details</summary><pre style="white-space:pre-wrap;font-size:11px;margin:4px 0 0">${esc(p.details)}</pre></details>` : ''}
+      </div>`).join('') : '<div class="card">No problems since the station started. ✓</div>'}`;
+}
+
+async function retryFailed() {
+  await api('/api/problems/retry', {});
+  await refreshStatus();
+  problems();
 }
 
 refreshStatus().then(() => show('home'));

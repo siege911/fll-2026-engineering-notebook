@@ -4,6 +4,13 @@ Newest at top. Capture-field and design decisions come from the students; archit
 
 ---
 
+## 2026-11-09 — Errors get their own ⚠️ Problems page, not the Home page [who?]
+
+**Decision:** problems (like the AI crashing) go on a new **⚠️ Problems** page with a badge, not in a big banner on Home. Home only shows a small "retrying" note on the Pi tags card.
+**Why:** "If this isn't really an issue, it shouldn't be there." The station retries by itself, so it's usually not something the reviewers need to act on, but whoever fixes the station still needs the details.
+
+---
+
 ## 2026-11-08 — 🌐 House Wi-Fi = any Wi-Fi the Pi remembers [who?]
 
 **Decision:** the Pi's 🌐 button no longer needs one named house Wi-Fi. It joins whichever Wi-Fi the Pi already remembers is in range (house, office, phone hotspot), strongest first. Teach the Pi a new place by joining its Wi-Fi once in the Pi's Wi-Fi menu.

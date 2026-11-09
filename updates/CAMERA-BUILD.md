@@ -4,11 +4,31 @@ The Innovation Project wildlife camera: what we bought, how it's wired, and ever
 
 ---
 
+## 2026-11-09 — AI crashes (SIGILL): station keeps going; errors moved to a Problems page
+**Asked by:** [who?] · **Code by:** Claude · **Code:** `../pi/station/server.py`, `store.py`, `ai.py`, `public/index.html`
+- **What happened (Nov 8, 15:05):** SpeciesNet crashed again with `SIGILL`, about 8 minutes into a batch. Each crash started the same 50 photos over, so the first batch might never finish. And the Home page showed a big purple error.
+- **Asked for:** "If this isn't really an issue, it shouldn't be there. Or maybe we create a dedicated page for viewing errors so we can see them if needed but not on the Home page."
+- **Now:**
+  - **⚠️ Problems page** (new, in the side menu, with a badge counting new problems): each problem in plain words ("The AI crashed (SIGILL…)"), time, and the full details folded away. Home just says *⚠️ retrying · see Problems* on the "Pi tags" card while it's failing.
+  - **Batches of 5 photos** instead of 50 (`tag_batch_size`): answers show up sooner, and a crash loses less.
+  - **After a crash, one photo at a time** until that batch is done. A photo that crashes twice on its own is **set aside** (not lost); **🔁 Try again** on Problems puts set-aside photos back in line.
+  - The AI now runs with `-X faulthandler`, so the next crash prints **where** it crashed in `journalctl` (to find the cause).
+- Side menu buttons a bit shorter so six fit on the 7" screen (800×480).
+- Checked on the Mac with a pretend AI that crashes on one photo of 8: one crashed batch → one at a time → the bad photo tried twice, set aside → the other 7 tagged. Try again → tried twice more, set aside again. Page checked at 800×480. **Not on the real Pi yet.** [result: not yet]
+- [unclear: why SIGILL: does it crash on the same photo every time (a photo problem), or randomly (a PyTorch/Pi problem)? The Problems page will show.]
+
+---
+
 ## 2026-11-08 (even later) — Tagger fixed to work with no internet
 **Told by:** [who?] · **Code by:** Claude · **Code:** `../pi/station/ai.py`, `../pi/station/server.py`; guide `../pi/INSTALL.md` step 4
 - **The error** (from `journalctl -u camera-station`, 14:27): SpeciesNet failed with `Failed to resolve 'api.kaggle.com'`. Photos from the camera reached the Pi, but tagging failed.
 - **Why:** SpeciesNet is normally asked for its model by its online name, and then it checks the internet **every run**, even though the warm-up test already downloaded the model. In 📡 Camera Wi-Fi mode the Pi has no internet.
 - **Fix:** the station finds the downloaded model folder (`~/.cache/kagglehub/models/google/speciesnet/…`) and gives SpeciesNet that folder (`--model`). SpeciesNet's own code then loads it straight from the Pi with no internet. New optional setting `speciesnet_model` (blank = find it by itself).
+- **On the real Pi (14:41):** pulled the fix. SpeciesNet now loads from the Pi's folder (`…/speciesnet/pyTorch/v4.0.3a/1`) with no internet ✓, but stops at the next step: `PytorchStreamReader failed reading zip archive … checkpoint file is corrupted`. The **detector file** (MegaDetector, the part that finds the animal boxes) only half-downloaded, probably during the warm-up when the Wi-Fi changed or it was stopped. SpeciesNet never re-downloads a file that's already there. **Fix:** delete that one file, download it again on 🌐 House Wi-Fi.
+- **14:35–14:36:** the folder's file times showed the whole model was downloaded right then (the station, while the Pi was on 🌐 for the update) and cut off when it went back to 📡: detector `md_v5a.0.1.pt` was **80.5 MB** of about 280 MB. Deleted it and ran the warm-up with `--model` on 🌐.
+- **14:49:** classifier loaded in 1.07 s, **detector loaded in 1.24 s** ✓ (no more "corrupted"). The warm-up itself stopped because the `~/ai-test` folder didn't exist (no test photo); not a tagging problem. Detector file now **280,767,041 bytes (≈281 MB, complete)** ✓. Next: 📡 + wave at the camera, see if photos get tagged. [result: not yet]
+- **14:56:** one tagging try crashed with `SIGILL` (the processor was handed an instruction it doesn't understand) [unclear: why; watch whether it happens again]. The station retried by itself 40 s later (14:56:58): **models loaded and it started tagging**, progress lines about every 42 s (journalctl showed them as `[blob data]`). The station tags up to 50 photos per batch and saves the answers when the whole batch is done. [result: not yet, waiting for the batch]
+- Lesson: don't switch to 📡 while anything is downloading; a half-file stays and SpeciesNet never re-downloads it.
 - Checked: on the Mac with a pretend SpeciesNet (model downloaded → uses the folder, newest version if two; nothing downloaded → old way; folder in settings → uses that). **Not on the real Pi yet.** [result: not yet]
 
 ---

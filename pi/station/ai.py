@@ -44,7 +44,9 @@ def run_speciesnet(paths, country, admin1_region, python=None, model=None):
             shutil.copy2(path, inbox / Path(path).name)  # names include the date and time, so they never clash
         out_file = work / "predictions.json"
         subprocess.run([
-            python or sys.executable, "-m", "speciesnet.scripts.run_model",
+            python or sys.executable,
+            "-X", "faulthandler",  # if it crashes, print where (shows up in journalctl)
+            "-m", "speciesnet.scripts.run_model",
             "--folders", str(inbox),
             "--predictions_json", str(out_file),
             "--country", country,
@@ -53,6 +55,21 @@ def run_speciesnet(paths, country, admin1_region, python=None, model=None):
         ], check=True)
         data = json.loads(out_file.read_text())
         return {Path(p["filepath"]).name: p for p in data.get("predictions", [])}
+
+
+def explain_error(error):
+    """One plain sentence about why tagging failed, for the Problems page."""
+    code = getattr(error, "returncode", None)
+    if code == -4:
+        return "The AI crashed (SIGILL: the Pi's processor was given an instruction it doesn't have)."
+    if code is not None and code < 0:
+        return f"The AI crashed (signal {-code})."
+    text = str(error)
+    if "api.kaggle.com" in text or "Failed to resolve" in text:
+        return "The AI tried to use the internet (no internet in Camera Wi-Fi mode)."
+    if "corrupted" in text:
+        return "An AI model file is damaged. Delete it and download it again (pi/INSTALL.md step 4)."
+    return f"The AI had a problem: {text[:160]}"
 
 
 FAKE_SPECIES = ["mule deer", "elk", "abert's squirrel", "gray fox", "wild turkey", "coyote"]

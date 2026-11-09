@@ -15,6 +15,7 @@ Then open:  http://localhost:8080
 """
 
 import argparse
+import collections
 import json
 import re
 import shutil
@@ -47,7 +48,8 @@ DEFAULTS = {
     "keep_empty_days": 7,
     "port": 8080,
     "speciesnet_python": "",  # e.g. /home/pi/speciesnet-env/bin/python (blank = the Python running this)
-    "speciesnet_model": "",   # downloaded model folder (blank = find the one the warm-up test downloaded)
+    "speciesnet_model": "",
+    "tag_batch_size": 5,      # photos per SpeciesNet run (smaller = answers show up sooner, a crash loses less)   # downloaded model folder (blank = find the one the warm-up test downloaded)
     # One Wi-Fi radio? Show the Camera Wi-Fi / House Wi-Fi switch (see pi/NETWORKING.md).
     "wifi_switch": False,
     "camera_connection": "camera-wifi",
@@ -65,7 +67,11 @@ class Station:
         self.store = Store(self.data / "station.db")
         self.camera = {"ip": None, "last_seen": None}
         self.tagging_now = 0
-        self.last_error = ""
+        self.last_error = ""         # the last tagging try failed (cleared when one works)
+        self.problems = collections.deque(maxlen=30)  # newest last, for the Problems page
+        self.problem_count = 0       # all problems since start-up (the page's badge)
+        self.solo = set()            # photo ids from a crashed batch: tag these one per try to find a bad one
+        self.tries = {}              # photo id -> failed tries on its own
         self._internet = (0, False)
         self.network = Network(settings) if settings["wifi_switch"] else None
 
@@ -102,17 +108,54 @@ class Station:
     # ---------- the background helper ----------
     def tag_forever(self):
         while True:
+            batch = []
             try:
-                batch = self.store.waiting_photos()
+                size = 1 if self.solo else max(1, int(self.settings.get("tag_batch_size", 5)))
+                batch = self.store.waiting_photos(size)
+                if self.solo and (not batch or batch[0]["id"] not in self.solo):
+                    self.solo.clear()  # the crashed batch is all done (or set aside): back to normal
+                    continue
                 if batch:
                     self.tag_batch(batch)
                 else:
                     self.clean_old_empties()
                     time.sleep(3)
-            except Exception:
-                self.last_error = traceback.format_exc(limit=2)
-                print(self.last_error, flush=True)
-                time.sleep(30)
+            except Exception as error:
+                self.tagging_now = 0
+                self.tagging_failed(batch, error)
+                time.sleep(10)
+
+    def tagging_failed(self, batch, error):
+        """A tagging try crashed. Retry the photos one at a time; a photo that
+        crashes twice on its own is set aside (Problems page can try it again)."""
+        details = traceback.format_exc(limit=3)
+        print(details, flush=True)
+        self.last_error = details
+        what = ai.explain_error(error)
+        if len(batch) == 1:
+            photo = batch[0]
+            self.tries[photo["id"]] = self.tries.get(photo["id"], 0) + 1
+            if self.tries[photo["id"]] >= 2:
+                self.store.mark_failed(photo["id"])
+                self.tries.pop(photo["id"])
+                self.solo.discard(photo["id"])
+                what += f" Gave up on {photo['name']} after 2 tries."
+            else:
+                what += f" Trying {photo['name']} once more."
+        elif batch:
+            self.solo = {p["id"] for p in batch}
+            what += f" Trying those {len(batch)} photos one at a time."
+        self.add_problem(what, details)
+
+    def add_problem(self, what, details=""):
+        self.problems.append({"time": now(), "what": what, "details": details})
+        self.problem_count += 1
+
+    def retry_failed(self):
+        n = self.store.retry_failed()
+        if n:
+            self.add_problem(f"Trying {n} set-aside photo{'s' if n != 1 else ''} again (someone tapped Try again).")
+        return n
 
     def tag_batch(self, batch):
         self.tagging_now = len(batch)
@@ -141,6 +184,9 @@ class Station:
             self.store.save_tags(photo["id"], tags, new_file)
             if tags["result"] == "animal":
                 self.store.add_to_visit(photo["id"], self.settings["visit_gap_minutes"])
+        for photo in batch:
+            self.tries.pop(photo["id"], None)
+            self.solo.discard(photo["id"])
         self.tagging_now = 0
         self.last_error = ""
 
@@ -178,7 +224,9 @@ class Station:
             "published": count("SELECT COUNT(*) n FROM visits WHERE status='published'"),
             "internet": self.internet_ok(),
             "fake_ai": self.fake_ai,
-            "error": self.last_error,
+            "error": bool(self.last_error),     # the last tagging try failed (details: Problems page)
+            "problem_count": self.problem_count,
+            "failed": count("SELECT COUNT(*) n FROM photos WHERE status='failed'"),
             "team": self.settings["team"],
             "network": self.network.status() if self.network else None,
         }
@@ -258,6 +306,9 @@ def make_handler(station):
             if parts[:2] == ["api", "visits"] and len(parts) == 3 and parts[2].isdigit():
                 found = station.visit(int(parts[2]))
                 return self.reply(200 if found else 404, found or {"error": "not found"})
+            if url.path == "/api/problems":
+                return self.reply(200, {"problems": list(reversed(station.problems)),
+                                        "failed": station.status()["failed"]})
             if url.path == "/api/experiment":
                 return self.reply(200, station.experiment())
             self.reply(404, {"error": "not found"})
@@ -279,6 +330,9 @@ def make_handler(station):
                 except ValueError:
                     return self.reply(400, {"error": "bad name"})
                 return self.reply(200, {"ok": True})
+
+            if url.path == "/api/problems/retry":
+                return self.reply(200, {"retrying": station.retry_failed()})
 
             data = json.loads(body or b"{}")
             if parts[:2] == ["api", "visits"] and len(parts) >= 3 and parts[2].isdigit():

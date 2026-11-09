@@ -86,6 +86,12 @@ class Store:
                  (tags["result"], tags["species"], tags["confidence"], tags["animals"], tags["people"],
                   tags["vehicles"], file, photo_id))
 
+    def retry_failed(self):
+        """Puts set-aside photos back in line for tagging. Returns how many."""
+        n = self.query("SELECT COUNT(*) n FROM photos WHERE status='failed'")[0]["n"]
+        self.run("UPDATE photos SET status='waiting' WHERE status='failed'")
+        return n
+
     def mark_failed(self, photo_id):
         self.run("UPDATE photos SET status='failed' WHERE id=?", (photo_id,))
 

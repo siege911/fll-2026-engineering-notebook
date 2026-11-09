@@ -50,6 +50,7 @@ In `settings.json`, set **`camera_key`** to the same `CAMERA_KEY` as in the came
 | `camera_key` | the camera must send this to upload photos | match `secrets.h` |
 | `team` | names on the "Who checked it?" buttons | our six names |
 | `speciesnet_model` | the downloaded model folder. Blank = find it by itself (in `~/.cache/kagglehub/`) | `""` |
+| `tag_batch_size` | photos per AI run. Smaller = answers show up sooner, and a crash loses less | `5` |
 | `country`, `admin1_region` | SpeciesNet only picks animals found here | `USA`, `AZ` |
 | `min_confidence` | AI boxes weaker than this are ignored | `0.2` |
 | `visit_gap_minutes` | photos of the same species closer together than this are one visit | `10` |
