@@ -161,7 +161,7 @@ The Innovation Project wildlife camera: what we bought, how it's wired, and ever
 ## 2026-10-25 (later) — Pi tagger (step 2 of the Pi)
 **Told by:** Coach CJ (the Pi 4 has **8 GB** RAM, from the original order) · **Code by:** Claude · **Code:** `../pi/tagger.py`
 - Uses **SpeciesNet** (Google's camera-trap AI): MegaDetector finds animal / person / vehicle, then a classifier names the species, limited to species found in Arizona.
-- **Animal** → kept, species + confidence in `pi/photos/tags.csv`. **Person / vehicle** → blurred, unblurred original deleted (Nate Reagan's advice). **Empty** → moved to `photos/empty/`, deleted after 7 days.
+- **Animal** → kept, species + confidence in `pi/photos/tags.csv`. **Person / vehicle** → blurred, unblurred original deleted (Nate Ragan's advice). **Empty** → moved to `photos/empty/`, deleted after 7 days.
 - `tags.csv` keeps the trigger (S / C / SC) with each result: the data for "picture changed vs. motion sensor" (real animals and false alarms for each).
 - Checked: tested with made-up SpeciesNet answers (a mule deer kept and tagged 0.87, a person blurred, a weak guess counted as empty; a second run did nothing). SpeciesNet itself is **not installed or tested on the Pi yet**.
 

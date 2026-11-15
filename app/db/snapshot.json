@@ -1,5 +1,5 @@
 {
- "written_at": "2026-11-09T22:05:07.979Z",
+ "written_at": "2026-11-15T17:51:23.365Z",
  "applied_updates": [
   {
    "file": "2026-09-28-profile-photos.sql",
@@ -160,6 +160,62 @@
   {
    "file": "2026-11-09-pi-tagging-works.sql",
    "applied_at": "2026-11-09 22:04:36"
+  },
+  {
+   "file": "2026-11-13-judging-talks.sql",
+   "applied_at": "2026-11-13 22:59:41"
+  },
+  {
+   "file": "2026-11-13b-talk-swap.sql",
+   "applied_at": "2026-11-13 23:10:48"
+  },
+  {
+   "file": "2026-11-13c-nolan-problem-wording.sql",
+   "applied_at": "2026-11-13 23:10:57"
+  },
+  {
+   "file": "2026-11-13d-adeline-fynn-swap.sql",
+   "applied_at": "2026-11-13 23:21:02"
+  },
+  {
+   "file": "2026-11-13e-weston-adeline-swap.sql",
+   "applied_at": "2026-11-13 23:23:53"
+  },
+  {
+   "file": "2026-11-13f-ip-one-turn-each.sql",
+   "applied_at": "2026-11-13 23:37:46"
+  },
+  {
+   "file": "2026-11-13g-rd-one-turn-each.sql",
+   "applied_at": "2026-11-13 23:40:48"
+  },
+  {
+   "file": "2026-11-14-remove-talk-parts.sql",
+   "applied_at": "2026-11-14 14:30:53"
+  },
+  {
+   "file": "2026-11-14b-nolan-crossing-research.sql",
+   "applied_at": "2026-11-14 14:37:03"
+  },
+  {
+   "file": "2026-11-15-camera-v4.sql",
+   "applied_at": "2026-11-15 15:36:03"
+  },
+  {
+   "file": "2026-11-15b-practices-nov9-14.sql",
+   "applied_at": "2026-11-15 16:45:45"
+  },
+  {
+   "file": "2026-11-15c-tournament-nov21.sql",
+   "applied_at": "2026-11-15 16:49:54"
+  },
+  {
+   "file": "2026-11-15d-final-code.sql",
+   "applied_at": "2026-11-15 17:12:58"
+  },
+  {
+   "file": "2026-11-15e-no-final-v3.sql",
+   "applied_at": "2026-11-15 17:51:23"
   }
  ],
  "attachment_versions": [
@@ -378,6 +434,55 @@
    "attachment_id": 8,
    "date": "2026-11-08",
    "note": "tested by Fynn + Isla: fix yellow arm",
+   "photo": null
+  },
+  {
+   "id": 32,
+   "attachment_id": 13,
+   "date": "2026-11-09",
+   "note": "fine-tuned, final form (Fynn)",
+   "photo": null
+  },
+  {
+   "id": 33,
+   "attachment_id": 14,
+   "date": "2026-11-09",
+   "note": "fine-tuned, final form (Fynn)",
+   "photo": null
+  },
+  {
+   "id": 34,
+   "attachment_id": 9,
+   "date": "2026-11-09",
+   "note": "fine-tuned, final form (Fynn)",
+   "photo": null
+  },
+  {
+   "id": 35,
+   "attachment_id": 5,
+   "date": "2026-11-09",
+   "note": "started fine-tuning (Fynn)",
+   "photo": null
+  },
+  {
+   "id": 36,
+   "attachment_id": 5,
+   "date": "2026-11-13",
+   "note": "finished fine-tuning, final form (Fynn)",
+   "photo": null
+  },
+  {
+   "id": 37,
+   "attachment_id": 10,
+   "date": "2026-11-13",
+   "note": "worked on (Fynn)",
+   "photo": null
+  },
+  {
+   "id": 38,
+   "attachment_id": 12,
+   "date": "2026-11-13",
+   "note": "worked on (Fynn)",
    "photo": null
   }
  ],
@@ -1006,7 +1111,7 @@
    "who": "[\"Whole team\"]",
    "component": "Innovation Project",
    "phase": "RESEARCH",
-   "text": "We met our first expert, Nate Reagan from Arizona Game and Fish. There are about 300 animal strikes in a year on I-17, and the I-17 wildlife bridge is supposed to reduce collisions by 90%. Baby animals follow their mom across. He said not to live stream, to use AI to blur out people, and that cameras over a wide area work best. We need ADOT's permission to use the bridge; if that doesn't work out, we could watch the squirrel nest.",
+   "text": "We met our first expert, Nate Ragan from Arizona Game and Fish. There are about 300 animal strikes in a year on I-17, and the I-17 wildlife bridge is supposed to reduce collisions by 90%. Baby animals follow their mom across. He said not to live stream, to use AI to blur out people, and that cameras over a wide area work best. We need ADOT's permission to use the bridge; if that doesn't work out, we could watch the squirrel nest.",
    "core_values": "[\"Discovery\"]",
    "success": 1,
    "photo": null,
@@ -1020,7 +1125,7 @@
    "who": "[\"Whole team\"]",
    "component": "Innovation Project",
    "phase": "RESEARCH",
-   "text": "We brought 5 questions for Nate Reagan (Game and Fish): how many animal crashes happen in Flagstaff, our blinking warning light idea, live stream cameras, how long animals take to trust a new bridge, and how they will count animals on the new I-17 overpass at Willard Springs. New idea: the camera makes a blinking light to warn drivers about an animal crossing (Nate said it has been done before).",
+   "text": "We brought 5 questions for Nate Ragan (Game and Fish): how many animal crashes happen in Flagstaff, our blinking warning light idea, live stream cameras, how long animals take to trust a new bridge, and how they will count animals on the new I-17 overpass at Willard Springs. New idea: the camera makes a blinking light to warn drivers about an animal crossing (Nate said it has been done before).",
    "core_values": "[\"Discovery\",\"Innovation\"]",
    "success": 0,
    "photo": null,
@@ -1321,12 +1426,138 @@
    "source": "update",
    "sample": 0,
    "created_at": "2026-11-09 21:43:59"
+  },
+  {
+   "id": 58,
+   "date": "2026-11-14",
+   "who": "[\"Nolan\"]",
+   "component": "Innovation Project",
+   "phase": "RESEARCH",
+   "text": "Nolan researched whether wildlife crossings work and found 9 sources (KJZZ, LA Times, WWF, Leave No Trace and more). Almost all say crossings cut crashes 70–96%, but only if animals actually use them, and someone has to check: in Nepal they proved it with camera traps. That is what our camera on the I-17 Willard Springs bridge would do.",
+   "core_values": "[\"Discovery\"]",
+   "success": 0,
+   "photo": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-14 14:37:03"
+  },
+  {
+   "id": 59,
+   "date": "2026-11-09",
+   "who": "[\"Fynn\"]",
+   "component": "Robot Design",
+   "phase": "ITERATE",
+   "text": "Fynn fine-tuned the attachments for Missions 6, 7 and 14, and a little of the 2 + 3 attachment. All the other missions were tested and worked well. (Coach CJ, from memory)",
+   "core_values": "[]",
+   "success": 1,
+   "photo": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-15 16:45:45"
+  },
+  {
+   "id": 60,
+   "date": "2026-11-13",
+   "who": "[\"Fynn\"]",
+   "component": "Robot Design",
+   "phase": "ITERATE",
+   "text": "Fynn finished fine-tuning the 2 + 3 attachment and worked on the 8 + 9 attachment. Every attachment should now be in its final form. Still to do: a full timed run of the whole board.",
+   "core_values": "[]",
+   "success": 1,
+   "photo": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-15 16:45:45"
+  },
+  {
+   "id": 61,
+   "date": "2026-11-14",
+   "who": "[\"Isla\",\"Fynn\"]",
+   "component": "Innovation Project",
+   "phase": "CREATE",
+   "text": "Isla and Fynn got the solar panels working!",
+   "core_values": "[]",
+   "success": 1,
+   "photo": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-15 16:45:45"
+  },
+  {
+   "id": 62,
+   "date": "2026-11-14",
+   "who": "[\"Whole team\"]",
+   "component": "Innovation Project",
+   "phase": "COMMUNICATE",
+   "text": "Practice focused on the Innovation Project and building our display trifold board materials for the competition.",
+   "core_values": "[\"Teamwork\"]",
+   "success": 0,
+   "photo": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-15 16:45:45"
+  },
+  {
+   "id": 63,
+   "date": "2026-11-15",
+   "who": "[\"Whole team\"]",
+   "component": "Innovation Project",
+   "phase": "ITERATE",
+   "text": "We shared our camera with Thea's older brother. He developed his own custom circuit board and is willing to help us build ours. Coach CJ talked to the ADOT District Administrator for the Northcentral District, and we have the paperwork needed to ask for the bridge. (Dates not known.)",
+   "core_values": "[]",
+   "success": 0,
+   "photo": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-15 16:45:45"
+  },
+  {
+   "id": 64,
+   "date": "2026-11-03",
+   "who": "[\"Adeline\"]",
+   "component": "Robot Design",
+   "phase": "CREATE",
+   "text": "Saved all our programs as Final v1. Adeline built the mission menu: one program where we pick each run with the hub buttons, plus robot.py so the ports and wheels are set up in one place.",
+   "core_values": "[]",
+   "success": 0,
+   "photo": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-15 17:12:58"
+  },
+  {
+   "id": 65,
+   "date": "2026-11-09",
+   "who": "[\"Adeline\",\"Fynn\"]",
+   "component": "Robot Design",
+   "phase": "ITERATE",
+   "text": "We tested Adeline's mission menu (Final v2) on the robot. Fynn started fine-tuning the code for the missions.",
+   "core_values": "[]",
+   "success": 1,
+   "photo": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-15 17:12:58"
+  },
+  {
+   "id": 66,
+   "date": "2026-11-13",
+   "who": "[\"Fynn\"]",
+   "component": "Robot Design",
+   "phase": "ITERATE",
+   "text": "Fynn finished fine-tuning the code for all the missions (new path for Missions 2 + 3, smaller arm moves for Mission 15, new distances for Mission 1). Saved together with Adeline's menu as Final v2.",
+   "core_values": "[]",
+   "success": 1,
+   "photo": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-15 17:12:58"
   }
  ],
  "experts": [
   {
    "id": 4,
-   "name": "Nate Reagan",
+   "name": "Nate Ragan",
    "role": "Arizona Game and Fish Department",
    "face": "🦌",
    "feedback": "Don't live stream: that prevents bad stuff. Use AI to edit the video or blur out any people. Cameras over a wide area work best. Get our own data, and ask ADOT before using the I-17 wildlife bridge.",
@@ -1352,7 +1583,7 @@
   },
   {
    "id": 9,
-   "task": "Expert interview: Nate Reagan, Game and Fish",
+   "task": "Expert interview: Nate Ragan, Game and Fish",
    "owner": "Whole team",
    "start_pos": 2.13,
    "end_pos": 2.16,
@@ -1437,6 +1668,39 @@
    "sample": 0,
    "source": "update",
    "created_at": "2026-10-26 12:00:08"
+  },
+  {
+   "id": 17,
+   "task": "Solar panels (Isla + Fynn)",
+   "owner": "Isla",
+   "start_pos": 2.35,
+   "end_pos": 3.45,
+   "iterations": "[\"Oct 12: solar parts bought\",\"Nov 14: Isla and Fynn got the solar panels working\"]",
+   "sample": 0,
+   "source": "update",
+   "created_at": "2026-11-15 12:00:02"
+  },
+  {
+   "id": 18,
+   "task": "Trifold boards (Thea + Adeline)",
+   "owner": "Thea",
+   "start_pos": 3.23,
+   "end_pos": 3.45,
+   "iterations": "[\"Nov 8: Thea and Adeline started the trifold boards\",\"Nov 14: practice on the display trifold materials\"]",
+   "sample": 0,
+   "source": "update",
+   "created_at": "2026-11-15 12:00:03"
+  },
+  {
+   "id": 19,
+   "task": "ADOT permission for the bridge (Coach CJ)",
+   "owner": "Whole team",
+   "start_pos": 2.13,
+   "end_pos": 3.5,
+   "iterations": "[\"Oct 5: Nate said we need ADOT's OK\",\"Coach CJ talked to the Northcentral District Administrator (date?)\",\"Nov 15: we have the paperwork needed\"]",
+   "sample": 0,
+   "source": "update",
+   "created_at": "2026-11-15 12:00:04"
   }
  ],
  "ip_parts": [
@@ -1657,12 +1921,12 @@
    "name": "Wildlife Camera",
    "device": "Seeed Studio XIAO ESP32-S3 Sense",
    "job": "Takes a picture every second and shows it live. Saves it to the microSD card when the motion sensor fires or the picture changed. Sends every saved picture to the Pi over the Pi's camera Wi-Fi, then deletes it from the card. Out of range, pictures wait on the card.",
-   "version": "Camera v3 (Oct 25)",
-   "status": "Works on a real camera (Nov 8): joins the Pi, saves to microSD, sends · 1 of 2 cameras works",
+   "version": "Camera v4 (Nov 15)",
+   "status": "v3 froze while sending to the Pi (Nov 15) · v4 compiles, restarts itself if stuck · not on the real camera yet · 1 of 2 cameras works",
    "built": 1,
    "docs": "[{\"label\":\"How to install\",\"path\":\"camera/INSTALL.md\"}]",
-   "files": "[{\"path\":\"camera/camera-v3/camera-v3.ino\",\"what\":\"The camera program\"},{\"path\":\"camera/camera-v3/secrets.example.h\",\"what\":\"Copy to secrets.h: camera Wi-Fi, the Pi's address, the camera key (the real secrets.h stays on the laptop)\"},{\"path\":\"camera/camera-v2/camera-v2.ino\",\"what\":\"Older: v2 (Oct 25), saves to microSD, the Pi pulls pictures\"},{\"path\":\"camera/camera-v1/camera-v1.ino\",\"what\":\"Older: v1 (Oct 24), live view + motion sensor\"}]",
-   "updated": "2026-11-08",
+   "files": "[{\"path\":\"camera/camera-v4/camera-v4.ino\",\"what\":\"The camera program\"},{\"path\":\"camera/camera-v4/secrets.example.h\",\"what\":\"Copy to secrets.h: camera Wi-Fi, the Pi's address, the camera key (the real secrets.h stays on the laptop)\"},{\"path\":\"camera/camera-v3/camera-v3.ino\",\"what\":\"Older: v3 (Oct 25), sends to the Pi, could freeze while sending\"},{\"path\":\"camera/camera-v2/camera-v2.ino\",\"what\":\"Older: v2 (Oct 25), saves to microSD, the Pi pulls pictures\"},{\"path\":\"camera/camera-v1/camera-v1.ino\",\"what\":\"Older: v1 (Oct 24), live view + motion sensor\"}]",
+   "updated": "2026-11-15",
    "sort_order": 1,
    "source": "update"
   },
@@ -1677,7 +1941,7 @@
    "built": 1,
    "docs": "[{\"label\":\"How it works\",\"path\":\"pi/README.md\"},{\"label\":\"How to install\",\"path\":\"pi/INSTALL.md\"},{\"label\":\"Networking (camera Wi-Fi + house Wi-Fi)\",\"path\":\"pi/NETWORKING.md\"}]",
    "files": "[{\"path\":\"pi/station/server.py\",\"what\":\"The Camera Station: receives photos, runs the tagging, answers the touchscreen page\"},{\"path\":\"pi/station/store.py\",\"what\":\"The station's memory, and how visits are grouped and counted\"},{\"path\":\"pi/station/ai.py\",\"what\":\"Talking to SpeciesNet, blurring people, practice-mode answers\"},{\"path\":\"pi/station/network.py\",\"what\":\"The 📡 Camera Wi-Fi / 🌐 House Wi-Fi switch\"},{\"path\":\"pi/station/public/index.html\",\"what\":\"The touchscreen page (ours to change)\"},{\"path\":\"pi/station/camera-station.service\",\"what\":\"Starts the station when the Pi boots\"},{\"path\":\"pi/station/50-camera-station.rules\",\"what\":\"Lets the station flip the Wi-Fi switch\"},{\"path\":\"pi/settings.example.json\",\"what\":\"Copy to settings.json (the real one stays on the Pi)\"},{\"path\":\"pi/collector.py\",\"what\":\"Backup: fetches photos from a camera still on v2\"},{\"path\":\"pi/station/uploader.py\",\"what\":\"Sends the visits we picked to our website\"}]",
-   "updated": "2026-11-09",
+   "updated": "2026-11-15",
    "sort_order": 2,
    "source": "update"
   },
@@ -1993,9 +2257,9 @@
    "run_number": 1,
    "attachment": "Drone Survey attachment",
    "built_by": "[\"Isla\"]",
-   "programmed_by": "[\"Adeline\"]",
+   "programmed_by": "[\"Adeline\",\"Fynn\"]",
    "reliability": 0,
-   "status": "Prototyping",
+   "status": "Working",
    "est_seconds": 12
   },
   {
@@ -2009,7 +2273,7 @@
    "run_number": 2,
    "attachment": "Mission 2 attachment · Combined 2+3",
    "built_by": "[\"Adeline\",\"Nolan\"]",
-   "programmed_by": "[\"Nolan\"]",
+   "programmed_by": "[\"Nolan\",\"Fynn\"]",
    "reliability": 100,
    "status": "Working",
    "est_seconds": 30
@@ -2025,7 +2289,7 @@
    "run_number": 2,
    "attachment": "Flip the Rock attachment · Combined 2+3",
    "built_by": "[\"Nolan\"]",
-   "programmed_by": "[\"Nolan\"]",
+   "programmed_by": "[\"Nolan\",\"Fynn\"]",
    "reliability": 100,
    "status": "Reliable",
    "est_seconds": 30
@@ -2073,9 +2337,9 @@
    "run_number": 9,
    "attachment": "Mission 6 attachment",
    "built_by": "[\"Nolan\",\"Weston\"]",
-   "programmed_by": "[]",
+   "programmed_by": "[\"Fynn\"]",
    "reliability": 0,
-   "status": "Prototyping",
+   "status": "Working",
    "est_seconds": 30
   },
   {
@@ -2089,9 +2353,9 @@
    "run_number": 9,
    "attachment": "Mission 7 attachment",
    "built_by": "[\"Nolan\",\"Weston\"]",
-   "programmed_by": "[]",
+   "programmed_by": "[\"Fynn\"]",
    "reliability": 0,
-   "status": "Prototyping",
+   "status": "Working",
    "est_seconds": 30
   },
   {
@@ -2105,7 +2369,7 @@
    "run_number": 4,
    "attachment": "Mission 8 attachment",
    "built_by": "[\"Nolan\"]",
-   "programmed_by": "[]",
+   "programmed_by": "[\"Fynn\"]",
    "reliability": 20,
    "status": "Working",
    "est_seconds": 30
@@ -2121,9 +2385,9 @@
    "run_number": 4,
    "attachment": "Mission 9 attachment",
    "built_by": "[\"Weston\"]",
-   "programmed_by": "[\"Weston\"]",
+   "programmed_by": "[\"Weston\",\"Fynn\"]",
    "reliability": 0,
-   "status": "Prototyping",
+   "status": "Working",
    "est_seconds": 30
   },
   {
@@ -2139,7 +2403,7 @@
    "built_by": "[]",
    "programmed_by": "[]",
    "reliability": 0,
-   "status": "Prototyping",
+   "status": "Working",
    "est_seconds": 30
   },
   {
@@ -2153,9 +2417,9 @@
    "run_number": 9,
    "attachment": "Mission 11 attachment",
    "built_by": "[\"Weston\",\"Nolan\"]",
-   "programmed_by": "[\"Weston\",\"Nolan\"]",
+   "programmed_by": "[\"Weston\",\"Nolan\",\"Fynn\"]",
    "reliability": 0,
-   "status": "Prototyping",
+   "status": "Working",
    "est_seconds": 30
   },
   {
@@ -2171,7 +2435,7 @@
    "built_by": "[\"Fynn\",\"Isla\",\"Adeline\"]",
    "programmed_by": "[\"Isla\",\"Fynn\",\"Thea\",\"Adeline\"]",
    "reliability": 0,
-   "status": "Prototyping",
+   "status": "Working",
    "est_seconds": 7
   },
   {
@@ -2185,7 +2449,7 @@
    "run_number": 8,
    "attachment": "Keystone Species (mascot) attachment",
    "built_by": "[\"Thea\",\"Nolan\"]",
-   "programmed_by": "[\"Isla\"]",
+   "programmed_by": "[\"Isla\",\"Fynn\"]",
    "reliability": 0,
    "status": "Working",
    "est_seconds": 30
@@ -2217,9 +2481,9 @@
    "run_number": 7,
    "attachment": "Mission 15 attachment",
    "built_by": "[\"Isla\"]",
-   "programmed_by": "[\"Isla\",\"Adeline\"]",
+   "programmed_by": "[\"Isla\",\"Adeline\",\"Fynn\"]",
    "reliability": 0,
-   "status": "Prototyping",
+   "status": "Working",
    "est_seconds": 30
   }
  ],
@@ -2316,7 +2580,7 @@
    "id": 2,
    "program": "Drone Survey (M01) program",
    "mission": "M01",
-   "coded_by": "[\"Adeline\"]",
+   "coded_by": "[\"Adeline\",\"Fynn\"]",
    "sensors": "—",
    "innovative_bit": "First mission program of the season (Sep 11) — fill in what's clever about it",
    "sort_order": 2
@@ -2352,7 +2616,7 @@
    "id": 6,
    "program": "Biocentric Architecture (M15) program",
    "mission": "M15",
-   "coded_by": "[\"Isla\",\"Adeline\"]",
+   "coded_by": "[\"Isla\",\"Adeline\",\"Fynn\"]",
    "sensors": "—",
    "innovative_bit": "Isla built the attachment AND wrote its program (Sep 25) — the 40-point mission. Fill in what's clever about it",
    "sort_order": 6
@@ -2361,7 +2625,7 @@
    "id": 7,
    "program": "Exploding Seeds + Flip the Rock (M02 + M03) program",
    "mission": "M02",
-   "coded_by": "[\"Nolan\"]",
+   "coded_by": "[\"Nolan\",\"Fynn\"]",
    "sensors": "—",
    "innovative_bit": "Nolan's first program, for his combined 2 + 3 attachment (Oct 2) — tested 5/5",
    "sort_order": 7
@@ -2379,7 +2643,7 @@
    "id": 9,
    "program": "Keystone Species (M13) program",
    "mission": "M13",
-   "coded_by": "[\"Isla\"]",
+   "coded_by": "[\"Isla\",\"Fynn\"]",
    "sensors": "—",
    "innovative_bit": "First M13 program (Oct 23, \"the mascot mission\")",
    "sort_order": 9
@@ -2388,7 +2652,7 @@
    "id": 10,
    "program": "Research Platform (M09) program",
    "mission": "M09",
-   "coded_by": "[\"Weston\"]",
+   "coded_by": "[\"Weston\",\"Fynn\"]",
    "sensors": "—",
    "innovative_bit": "First M09 program (Oct 23, \"the big tree mission\")",
    "sort_order": 10
@@ -2397,10 +2661,19 @@
    "id": 11,
    "program": "Window to the Past (M11) program",
    "mission": "M11",
-   "coded_by": "[\"Weston\",\"Nolan\"]",
+   "coded_by": "[\"Weston\",\"Nolan\",\"Fynn\"]",
    "sensors": "—",
    "innovative_bit": "First M11 program (Nov 1)",
    "sort_order": 11
+  },
+  {
+   "id": 12,
+   "program": "Mission menu (main_base.py + robot.py)",
+   "mission": null,
+   "coded_by": "[\"Adeline\"]",
+   "sensors": "Hub buttons, light, speaker",
+   "innovative_bit": "One program for the whole match: pick runs 1–9 with the hub buttons, CENTER stops a run and stays on it to retry, the next run is ready (orange light) as soon as one finishes. Ports and wheels set once in robot.py. Built Nov 3, tested Nov 9.",
+   "sort_order": 12
   }
  ],
  "quotes": [
@@ -2444,15 +2717,98 @@
    "type": "AI research",
    "found_by": "Coach CJ + Thea",
    "note": "Pi 4 uses 3–5 W all the time and takes ~30 s to start. A Seeed XIAO ESP32S3 Sense camera board sleeps between animals and runs on a small 6 V solar panel + one 18650 battery. Missing: night vision, species tagging.",
-   "sample": 0
+   "sample": 0,
+   "url": null
   },
   {
    "id": 6,
-   "source": "Nate Reagan, Arizona Game and Fish — interview",
+   "source": "Nate Ragan, Arizona Game and Fish — interview",
    "type": "Expert",
    "found_by": "Whole team",
    "note": "~300 animal strikes a year on I-17; the I-17 wildlife bridge should cut collisions 90%. Game and Fish use GPS collars, thermal goggles, satellite cameras and drones, not much AI.",
-   "sample": 0
+   "sample": 0,
+   "url": null
+  },
+  {
+   "id": 7,
+   "source": "KJZZ radio — This I-17 Willard Springs Wildlife Overpass near Flagstaff allows animals to safely cross highway",
+   "type": "Radio interview",
+   "found_by": "Nolan",
+   "note": "Our bridge! ADOT is building it south of Flagstaff with money from a federal pilot program. Mostly to stop elk crashes: Game and Fish (Jeff Gagnon) collared elk starting around 2007 to find where they cross. Fences steer animals to the bridge, and plants on the bridge make it feel natural. Some crossings went from about 400 crashes a year to zero; elk take time to learn, and crashes drop about 40% a year. Even shy pronghorn use bridges.",
+   "sample": 0,
+   "url": "https://www.kjzz.org/the-show/2026-07-23/this-i-17-willard-springs-wildlife-overpass-near-flagstaff-allows-animals-to-safely-cross-highway"
+  },
+  {
+   "id": 8,
+   "source": "Los Angeles Times — Wildlife crossings aren't enough to curb roadkill hot spots, researchers say",
+   "type": "News",
+   "found_by": "Nolan",
+   "note": "UC Davis: cars kill about 780 mountain lions (18%) and 44,000 mule deer a year in California. Crossings need long fences too: \"just building a crossing doesn't mean wildlife will use it.\" Best fence: at least 8 ft tall, fine mesh at the bottom, overhang on top. Crossings + fencing can cut big-animal crashes by more than 80% (Pew).",
+   "sample": 0,
+   "url": "https://www.latimes.com/california/story/2026-11-10/wildlife-crossings-arent-enough-to-curb-roadkill-hot-spots-researchers-say"
+  },
+  {
+   "id": 9,
+   "source": "WWF — Wildlife Crossings Reduce Collisions and Save Lives",
+   "type": "Article (nonprofit)",
+   "found_by": "Nolan",
+   "note": "US cars hit large animals 1–2 million times a year: $8 billion+ in costs and 200 people killed. Banff (6 bridges + 38 underpasses) cut crashes 80%. Montana Hwy 93: 42 crossings, 22,000+ animals a year, crashes down 70%+. Nepal used camera traps to prove 13 species used 4 underpasses (like our camera idea!).",
+   "sample": 0,
+   "url": "https://www.worldwildlife.org/news/magazine/fall-2023/wildlife-crossings-help-avoid-roadway-collisions/"
+  },
+  {
+   "id": 10,
+   "source": "Think Wildlife Foundation — How effective are wildlife crossings?",
+   "type": "Article (nonprofit)",
+   "found_by": "Nolan",
+   "note": "Banff's 44 crossings cut big-animal crashes 80%+. Netherlands: roadkill down 96% for some species. A study of 89 crossings found more animals cross where structures are. Crossings only work if they are in the right place, kept clear, and the right size for the animal.",
+   "sample": 0,
+   "url": "https://thinkwildlifefoundation.com/how-effective-are-wildlife-crossings/"
+  },
+  {
+   "id": 11,
+   "source": "Leave No Trace — Up, Under and Across: How Do Wildlife Cross a Road?",
+   "type": "Article (nonprofit)",
+   "found_by": "Nolan",
+   "note": "Kinds of crossings: bridge, underpass, tunnel, culvert, canopy bridge. First US wildlife bridge: Utah, 1975. Arizona is one of the crash hot-spot states with crossings. Fits Leave No Trace Principle #6, Respect Wildlife.",
+   "sample": 0,
+   "url": "https://lnt.org/up-under-and-across-how-do-wildlife-cross-a-road/"
+  },
+  {
+   "id": 12,
+   "source": "All That's Interesting — Wildlife Crossings: 25 Stunning Animal Bridges From Around The World",
+   "type": "Article (photo gallery)",
+   "found_by": "Nolan",
+   "note": "Over a million animals are killed by cars every day (estimate). Expert Ben Goldfarb: crossings + fences cut crashes \"by 90 percent or so.\" Banff: 150,000+ animals used its crossings 1996–2016. Arizona: about 20 wildlife bridges since 2000 (page gives no source).",
+   "sample": 0,
+   "url": "https://allthatsinteresting.com/wildlife-crossings"
+  },
+  {
+   "id": 13,
+   "source": "Sigma Earth — Can Wildlife Bridge Truly Make A Difference In Conserving Endangered Species?",
+   "type": "Article (blog)",
+   "found_by": "Nolan",
+   "note": "Bridges + fences cut deer, bear and mountain lion roadkill by about 90%. Netherlands: 600+ green bridges. Not every animal uses them (shy or night animals may not), so each design has to fit its animals. Bridges need upkeep and checking after they're built.",
+   "sample": 0,
+   "url": "https://sigmaearth.com/can-wildlife-bridge-truly-make-a-difference-in-conserving-endangered-species/"
+  },
+  {
+   "id": 14,
+   "source": "Gokce Capital — Wildlife Crossings: 11 Things (2026) You Have to Know",
+   "type": "Article (business blog)",
+   "found_by": "Nolan",
+   "note": "Banff: crashes down 80–90% (about 100 a year before, fewer than 6 now), but animals can take years to start using a crossing. A crossing costs $500,000 to $6 million; underpasses cost less. US Wildlife Crossings Pilot Program (2021): $350 million in grants over 5 years.",
+   "sample": 0,
+   "url": "https://gokcecapital.com/wildlife-crossings/"
+  },
+  {
+   "id": 15,
+   "source": "ResearchGate — Twenty years of research, do animals use wildlife crossings?",
+   "type": "Science paper",
+   "found_by": "Nolan",
+   "note": "[unclear: the site blocked Claude from opening it. Nolan, what did you learn from this one?]",
+   "sample": 0,
+   "url": "https://www.researchgate.net/publication/283315702_Twenty_years_of_research_do_animals_use_wildlife_crossings"
   }
  ],
  "robot_specs": [
@@ -2680,7 +3036,7 @@
    "est_seconds": 35,
    "launcher": "—",
    "timed_on": null,
-   "note": "needs help",
+   "note": "needs help · not timed in a full run yet (Nov 15)",
    "part_points": "{}"
   },
   {
@@ -2698,7 +3054,7 @@
    "est_seconds": 30,
    "launcher": "—",
    "timed_on": null,
-   "note": "needs work",
+   "note": "needs work · not timed in a full run yet (Nov 15)",
    "part_points": "{}"
   },
   {
@@ -2707,7 +3063,7 @@
    "est_seconds": 30,
    "launcher": "—",
    "timed_on": null,
-   "note": "needs work",
+   "note": "needs work · not timed in a full run yet (Nov 15)",
    "part_points": "{}"
   },
   {
@@ -2725,7 +3081,7 @@
    "est_seconds": 30,
    "launcher": "—",
    "timed_on": null,
-   "note": "fix yellow arm",
+   "note": "fix yellow arm · not timed in a full run yet (Nov 15)",
    "part_points": "{}"
   },
   {
@@ -2762,7 +3118,7 @@
  "settings": [
   {
    "key": "tournament",
-   "value": "{\"name\":\"Regionals\",\"date\":\"2026-11-14\"}",
+   "value": "{\"name\":\"Regionals\",\"date\":\"2026-11-21\"}",
    "note": "sidebar countdown"
   },
   {
@@ -2784,13 +3140,18 @@
    "key": "robot_code_runs",
    "value": "{\"mission13.py\":\"2026-10-05\"}",
    "note": "Coding page: which copy of a program the robot runs (Nov 2)"
+  },
+  {
+   "key": "robot_code_who",
+   "value": "{\"2026-11-09\":[\"Adeline\",\"Fynn\"]}",
+   "note": "Coding page: who made each saved version of the code, by code-folder date (Nov 15)"
   }
  ],
  "shares": [
   {
    "id": 1,
    "date": "2026-10-05",
-   "shared_with": "Nate Reagan (Arizona Game and Fish)",
+   "shared_with": "Nate Ragan (Arizona Game and Fish)",
    "who": "[\"Whole team\"]",
    "what_they_said": "A camera with a flashing light has been done before. Don't live stream. Use AI to blur out people. Cameras spread over a wide area work best.",
    "what_we_changed": "Oct 25: our Camera Station blurs people, and we review every photo before anything is published.",
@@ -2806,6 +3167,26 @@
    "what_we_changed": "",
    "source": "app",
    "created_at": "2026-10-26 23:33:15"
+  },
+  {
+   "id": 4,
+   "date": null,
+   "shared_with": "Thea's older brother",
+   "who": "[\"Whole team\"]",
+   "what_they_said": "He developed his own custom circuit board last year. He suggested we build our own circuit board, and he is willing to help us with the next version.",
+   "what_we_changed": "Next camera version: our own circuit board, with his help (planned).",
+   "source": "update",
+   "created_at": "2026-11-15 12:00:00"
+  },
+  {
+   "id": 5,
+   "date": null,
+   "shared_with": "ADOT District Administrator, Northcentral District (Coach CJ talked to them)",
+   "who": "[\"Whole team\"]",
+   "what_they_said": "We have the paperwork needed to ask to put our camera on the Willard Springs wildlife bridge.",
+   "what_we_changed": "Coach CJ is filling out the paperwork. Bridge cost: $21 million (ADOT's current projection).",
+   "source": "update",
+   "created_at": "2026-11-15 12:00:01"
   }
  ],
  "team": [

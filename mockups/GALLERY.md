@@ -63,3 +63,9 @@ These five all use the **official logo palette** (forest green, lavender, teal c
 | # | File | What it is | Verdict |
 |---|---|---|---|
 | 17 | `17-camera-app-v1-option-c.html` | Thea picked Option C for camera v1. Camera app screen: live view (new picture every 2 s), two lights ("App saw motion" / "Motion sensor felt heat"), experiment scoreboard (App only / Both / Sensor only, day vs. night, false alarms), saved pictures tagged by AI with people blurred. Below it: a small Camera card as it could look inside the notebook app, linking to the camera app. | 👍 Thea: Option C + separate camera app with a Camera card in the notebook (Oct 24) |
+
+## Logo files (added Nov 13)
+
+- `rooted-warriors-logo.svg` — **true vector** logo (traced from the original 1024×1536 art in `../Robotics App/Logo.png`, background removed, dark-green outline). Scales to any size for print, banners, shirts.
+- `rooted-warriors-logo-4096.png` — high-res transparent PNG (2877×4096) rendered from that SVG.
+- Older small files (`rooted-warriors-logo-transparent.*`, `-outlined.*`, 256 px) are kept; their `.svg` versions only wrap the small picture.

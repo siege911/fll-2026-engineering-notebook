@@ -8,6 +8,34 @@ Backfilled 2026-09-06 from `../DECISIONS.md` and `../PROGRESS.md`.
 
 ---
 
+## 2026-11-15 — Thea's brother, ADOT paperwork, bridge cost (Coach CJ)
+- **Sharing: Thea's older brother** developed his own custom circuit board and is willing to help us build one for the next camera version. Added to the Communication table. [unclear: date we shared with him; his name]
+- **ADOT:** Coach CJ talked to the **ADOT District Administrator for the Northcentral District** about putting our camera on the Willard Springs bridge, and **we have the paperwork needed**. Added to Communication and the Gantt chart. [unclear: date]
+- **Bridge cost: $21 million** (ADOT's current projection; it may go up to $24 million). Nate Ragan's Oct 5 number was $24 million. We say $21 million.
+- **Spelling:** Nate **Ragan** (fixed everywhere on Nov 15).
+
+## 2026-11-14 (Saturday) — Solar panels working (Isla + Fynn); trifold boards
+- **Isla and Fynn got the solar panels working** (the solar box for the forest camera). [unclear: what was tested]
+- Practice focused on the **Innovation Project and the display trifold board materials** for the competition. [unclear: who worked on the trifold]
+
+## 2026-11-14 — Nolan's research: do wildlife crossings work? (9 websites)
+**Told by:** [who?] (sent 2026-11-14): "Nolan did a bunch of Research for the team. Please add this Research to our App including some key points from each of these websites." [unclear: what day Nolan did the research]
+**Found by:** Nolan. Key points were pulled from each page by Claude on 2026-11-14 (numbers as each page states them).
+
+| # | Source | Type | Key points |
+|---|---|---|---|
+| 1 | [KJZZ radio: "This I-17 Willard Springs Wildlife Overpass near Flagstaff allows animals to safely cross highway"](https://www.kjzz.org/the-show/2026-07-23/this-i-17-willard-springs-wildlife-overpass-near-flagstaff-allows-animals-to-safely-cross-highway) (Mark Brodie, Jul 23, 2026) | Radio interview | **Our bridge!** ADOT is building it south of Flagstaff with money from a federal pilot program. Mostly to stop elk crashes: Game and Fish (Jeff Gagnon) collared elk starting around 2007 to find where they cross. Fences steer animals to the bridge, and plants on the bridge make it feel natural. Some crossings went from about 400 crashes a year to zero; elk take time to learn, and crashes drop about 40% a year. Even shy pronghorn use bridges. |
+| 2 | [Los Angeles Times: "Wildlife crossings aren't enough to curb roadkill hot spots, researchers say"](https://www.latimes.com/california/story/2026-11-10/wildlife-crossings-arent-enough-to-curb-roadkill-hot-spots-researchers-say) (Karen Garcia, Nov 10, 2026) | News | UC Davis: cars kill about 780 mountain lions (18%) and 44,000 mule deer a year in California. Crossings need long fences too: "just building a crossing doesn't mean wildlife will use it." Best fence: at least 8 ft tall, fine mesh at the bottom, overhang on top. Crossings + fencing can cut big-animal crashes by more than 80% (Pew). |
+| 3 | [WWF: "Wildlife Crossings Reduce Collisions and Save Lives"](https://www.worldwildlife.org/news/magazine/fall-2023/wildlife-crossings-help-avoid-roadway-collisions/) (Fall 2023) | Article (nonprofit) | US cars hit large animals 1–2 million times a year: $8 billion+ in costs and 200 people killed. Banff (6 bridges + 38 underpasses) cut crashes 80%. Montana Hwy 93: 42 crossings, 22,000+ animals a year, crashes down 70%+. **Nepal used camera traps** to prove 13 species used 4 underpasses (like our camera idea!). |
+| 4 | [Think Wildlife Foundation: "How effective are wildlife crossings?"](https://thinkwildlifefoundation.com/how-effective-are-wildlife-crossings/) (Aditi Dave, Mar 25, 2023) | Article (nonprofit) | Banff's 44 crossings cut big-animal crashes 80%+. Netherlands: roadkill down 96% for some species. A study of 89 crossings found more animals cross where structures are. Crossings only work if they are in the right place, kept clear, and the right size for the animal. |
+| 5 | [Leave No Trace: "Up, Under and Across: How Do Wildlife Cross a Road?"](https://lnt.org/up-under-and-across-how-do-wildlife-cross-a-road/) | Article (nonprofit) | Kinds of crossings: bridge, underpass, tunnel, culvert, canopy bridge. First US wildlife bridge: Utah, 1975. Arizona is one of the crash hot-spot states with crossings. Fits Leave No Trace Principle #6, Respect Wildlife. |
+| 6 | [All That's Interesting: "Wildlife Crossings: 25 Stunning Animal Bridges From Around The World"](https://allthatsinteresting.com/wildlife-crossings) (Erin Kelly, Jul 13, 2026) | Article (photo gallery) | Over a million animals are killed by cars every day (estimate). Expert Ben Goldfarb: crossings + fences cut crashes "by 90 percent or so." Banff: 150,000+ animals used its crossings 1996–2016. Arizona: about 20 wildlife bridges since 2000 (page gives no source). |
+| 7 | [Sigma Earth: "Can Wildlife Bridge Truly Make A Difference In Conserving Endangered Species?"](https://sigmaearth.com/can-wildlife-bridge-truly-make-a-difference-in-conserving-endangered-species/) (Jul 14, 2025) | Article (blog) | Bridges + fences cut deer, bear and mountain lion roadkill by about 90%. Netherlands: 600+ green bridges. Not every animal uses them (shy or night animals may not), so each design has to fit its animals. Bridges need upkeep and checking after they're built. |
+| 8 | [Gokce Capital: "Wildlife Crossings: 11 Things (2026) You Have to Know"](https://gokcecapital.com/wildlife-crossings/) | Article (business blog) | Banff: crashes down 80–90% (about 100 a year before, fewer than 6 now), but animals can take years to start using a crossing. A crossing costs $500,000 to $6 million; underpasses cost less. US Wildlife Crossings Pilot Program (2021): $350 million in grants over 5 years. |
+| 9 | [ResearchGate: "Twenty years of research, do animals use wildlife crossings?"](https://www.researchgate.net/publication/283315702_Twenty_years_of_research_do_animals_use_wildlife_crossings) | Science paper | [unclear: the site blocked Claude from opening it. Nolan, what did you learn from this one?] |
+
+**What it means for our project:** almost every source says crossings work (70–96% fewer crashes), **but only if someone checks that animals actually use them**: the LA Times says building one doesn't mean animals will use it, elk take years to learn, and WWF-Nepal proved it with camera traps. That's exactly what our wildlife camera on the Willard Springs bridge would do. Ties to Nate Ragan (Oct 5): Game and Fish might only put one camera on the bridge.
+
 ## 2026-11-08 — Trifold boards for the competition (Thea + Adeline)
 - **Thea and Adeline worked on the trifold boards for the competition** (tournament Nov 14). [unclear: which boards (Innovation Project, Robot Design, or both), and what's on them so far? A photo would be great evidence.]
 
@@ -26,7 +54,7 @@ Shown in the app on the Innovation Project page, **Project Photos** card.
 
 | Date | Who we shared with | Who shared | What they said | What we changed |
 |---|---|---|---|---|
-| Oct 5 | Nate Reagan (Arizona Game and Fish) | Whole team | A camera with a flashing light has been done before. Don't live stream. Use AI to blur out people. Cameras spread over a wide area work best. | Oct 25: our Camera Station blurs people, and we review every photo before anything is published. |
+| Oct 5 | Nate Ragan (Arizona Game and Fish) | Whole team | A camera with a flashing light has been done before. Don't live stream. Use AI to blur out people. Cameras spread over a wide area work best. | Oct 25: our Camera Station blurs people, and we review every photo before anything is published. |
 
 ## 2026-10-26 — Project Plan (Gantt) filled in from these notes (Thea asked)
 **Asked by:** Thea ("for the gantt chart can you fill it out using all the information you have"). Built by Claude from the dated entries in this file and `CAMERA-BUILD.md`. Rows 1–7 are things that already happened (real dates). Rows 8–9 are **suggested** next steps with guessed dates: change them if they're wrong.
@@ -34,7 +62,7 @@ Shown in the app on the Innovation Project page, **Project Photos** card.
 | # | Task | Owner | Dates | Versions / steps |
 |---|---|---|---|---|
 | 1 | Choose the camera design | Thea | Oct 2 – Oct 3 | Oct 2 idea: AI forest wildlife camera · Oct 3 Option B, Raspberry Pi build · Oct 3 research (Gemini): low-power XIAO camera · Oct 3 XIAO camera + Pi 4 gets the pictures over Wi-Fi · Oct 3 two cameras (house + forest) + mode switch |
-| 2 | Expert interview: Nate Reagan, Game and Fish | Whole team | Oct 5 | Wrote 5 questions · met Nate, notes and answers saved |
+| 2 | Expert interview: Nate Ragan, Game and Fish | Whole team | Oct 5 | Wrote 5 questions · met Nate, notes and answers saved |
 | 3 | Buy the camera parts | Whole team [who? not recorded] | Oct 3 – Oct 12 | Oct 3 parts list · Oct 12 parts bought (batteries delayed) |
 | 4 | Wire the camera box | Nolan (Thea helped) | Oct 12 – Oct 23 | Oct 12 wiring plan v1 · Oct 23 Nolan wired it, Thea helped |
 | 5 | Decide what to change from Nate's advice | Whole team | Oct 5 – Oct 26 (still open) | Oct 5 open: live stream, bridge or squirrel nest, how many cameras, warning light · Oct 25 people get blurred and the team reviews photos before publishing |
@@ -52,7 +80,7 @@ Shown in the app on the Innovation Project page, **Project Photos** card.
 
 ## Status (as of 2026-10-05)
 
-**Latest: first expert, Nate Reagan (Arizona Game and Fish), Oct 5.** Before that: camera = Seeed XIAO ESP32-S3 Sense; Pi 4 collects the pictures over Wi-Fi (Oct 3).** **Solution idea logged Oct 2 (AI forest wildlife camera); Option B (Raspberry Pi build) picked Oct 3, parts list drafted.** No problem statement logged yet. Research: 2 sources (Gemini, Oct 3; Nate Reagan, Oct 5). Experts: 1.
+**Latest: first expert, Nate Ragan (Arizona Game and Fish), Oct 5.** Before that: camera = Seeed XIAO ESP32-S3 Sense; Pi 4 collects the pictures over Wi-Fi (Oct 3).** **Solution idea logged Oct 2 (AI forest wildlife camera); Option B (Raspberry Pi build) picked Oct 3, parts list drafted.** No problem statement logged yet. Research: 2 sources (Gemini, Oct 3; Nate Ragan, Oct 5). Experts: 1.
 
 (Sep 6 status:) **Nothing real recorded yet.** The Innovation Project page in app v3 is entirely sample data and is labelled as such. No problem statement, research, experts, or solution have been logged.
 
@@ -101,9 +129,9 @@ What we do know:
 
 ---
 
-## 2026-10-05 — Expert: Nate Reagan, Arizona Game and Fish Department
+## 2026-10-05 — Expert: Nate Ragan, Arizona Game and Fish Department
 **Met by:** whole team · **Told by:** Adeline and Thea
-- **Who he is:** Nate Reagan, Arizona Game and Fish Department. **First real expert.**
+- **Who he is:** Nate Ragan, Arizona Game and Fish Department. **First real expert.**
 - **Problem facts he gave:** ~300 animal strikes in a year **on I-17** (just I-17, confirmed by Adeline and Thea). The I-17 wildlife bridge is supposed to reduce collisions by 90%. Cost: **$24 million** (the notes said "billion"; corrected by Adeline and Thea).
 - **How animals use the bridge:** the babies go where their mom goes, so if the mom crosses the bridge, they will too.
 - **How Game and Fish watches animals:** GPS collars on elk (tranquilized to put them on; battery lasts 3 years, then the collar falls off on its own) · a live stream to watch the animals · maybe one camera on the bridge (he's not sure) · officers' satellite cameras that send a notification to a phone · thermal goggles for seeing animals at night · drones for law-enforcement investigations · not a lot of AI.

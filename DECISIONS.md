@@ -4,6 +4,105 @@ Newest at top. Capture-field and design decisions come from the students; archit
 
 ---
 
+## 2026-11-15 — One menu program for competition (Adeline, Final v2)
+
+The robot now runs **one program, `main_base.py`, with a mission menu**, instead of picking a separate program for each run. Missions that run together are joined into one file (M04 + M05, M08 + M09, M06 + M07 + M11; M12 is split into part a, the support tie, and part b, the cane, run with M13). The menu order (1–9) is the run plan. Ports and wheels are set once in `robot.py`. Built by Adeline (Nov 3), tested Nov 9, fine-tuned by Fynn (Nov 9 + Nov 13). Told by Coach CJ.
+- Why (from the code's own notes): faster between runs (the next run is ready as soon as one finishes), CENTER stops a run safely and stays on the same number to retry, and one place to change ports/wheel size instead of every file. [unclear: Adeline's own reasons, in Adeline's words, for the talk.]
+- App: the Coding page reads folders named like `Final v2 - Nov 9` (date at the end). `code/Final v1` was renamed `Final v1 - Nov 3` for this.
+- **No Final v3 (Coach CJ, same day):** the v3 folder and the Nov 15 hub backup were the same code as Final v2, so the latest code is kept as **Final v2** (Adeline's menu + Fynn's fine-tuning) and v3 was removed. Why: the backups weren't made between Adeline's and Fynn's work, so there's no separate v3 to show.
+
+---
+
+## 2026-11-15 — Regional Tournament is Nov 21 (Coach CJ)
+
+"November 21 is the Regional Tournament." The app's countdown, the Word doc and the practice timer said Nov 14; all now say **Nov 21**. Data: `app/db/updates/2026-11-15c-tournament-nov21.sql`. (The timer's file name still has "2026-11-14" in it so links keep working.)
+
+---
+
+## 2026-11-15 (later) — Facts and fixes for the talks (Coach CJ)
+
+- **Bridge cost: say $21 million** (ADOT's current projection; may rise to $24 million). Why: it's the newest number, from the agency building the bridge.
+- **Nate's last name is Ragan.** Fixed in the talks, the markdown and the app.
+- **Weston's favorite attachment is Mission 14** (Mission 11 was a typo). Typos fixed; motion sensor line now matches our AM312 sensor (about 15 feet) and camera v4 (a picture every second).
+- **Talk length:** not cutting words now. The team will practice with the timer and then adjust.
+- **Mission statuses:** every mission set to Working (from Fynn's Nov 9 testing, from memory); reliability % unchanged until tries are counted.
+
+---
+
+## 2026-11-15 — The talks are now the team's own words (Coach CJ's account) [who?]
+
+**Sent:** the team's hand-edited Word doc ("We manually edited it. Please change the Show and Notes sections to more accurately represent what we're doing.")
+**Done:** their words went into `presentation/Rooted-Warriors-Judging-Talks.docx`, the practice timer (`presentation/2026-11-14-judging-script.html`) and `updates/PRESENTATION.md` unchanged. Every **Show** (what to hold up / which app card) and **Note** (what to fix or check) was rewritten to match. Typos and facts to check are flagged in the Notes, not changed (their words, their call).
+**For the team:** both talks are now too long at the calm pace: Innovation about 6:28, Robot Design about 6:52 (limit 5:00).
+**Also:** `updates/APP-TALK-ORDER-AND-TODO.md`: suggested app reorder to follow the talks + the documentation gaps list. Suggestions only; nothing in the app changed.
+
+---
+
+## 2026-11-14 — Judging talks out of the Season App; Word doc instead (Coach CJ)
+
+**CJ:** "Remove the presentation talking points from the Season App and just give me a Word Doc to download."
+**Done:** the 🎤 Our Judging Talk cards (Innovation Project + Robot Game pages), their save route and the `/presentation` page in the app are gone; `app/public/index.html` and `app/server.mjs` are back to how they were before Nov 13. The talk data is removed (`app/db/updates/2026-11-14-remove-talk-parts.sql`). No part had been edited in the app, so nothing was lost. **The talks are now `presentation/Rooted-Warriors-Judging-Talks.docx`** (both talks, one paragraph per student, rubric order, who/words/time table, what to show, notes). The words are also in `updates/PRESENTATION.md`; the double-click practice timer (`presentation/2026-11-14-judging-script.html`) still works on its own.
+
+---
+
+## 2026-11-13 (round 6) — Robot Design talk: one paragraph each too [who?]
+
+**Asked:** "everybody needs to only say 1 paragraph, it needs to match the judges rubric, keep all the paragraphs you have already."
+**Done:** the Robot Design talk now matches the Innovation talk: each student says **one paragraph covering two rubric rows in a row**, in the judges' order, with all the existing words kept. Isla = Meet our robot + Mission strategy · Adeline = Use of resources + All members contributed · Weston = Skills in all members + Attachments · Fynn = Code/sensors + Testing · Thea = Improvements + Process & lessons · Nolan = Pride & enthusiasm + Closing. Two words changed so they stay true: Weston says "Nolan built one for 6, 7 and 11"; Fynn says "Isla and I tested every mission." Times: Innovation ≈ 4:29, Robot Design ≈ 4:17 (of 5:00).
+**Data:** `app/db/updates/2026-11-13g-rd-one-turn-each.sql`; text in `updates/PRESENTATION.md`.
+
+---
+
+## 2026-11-13 (round 5) — Innovation talk: one turn each, still in rubric order [who?]
+
+**Asked:** "on the innovation combine the 2 students paragraphs into one 'do that for everybody'." The examples given (Isla: introduction + explanation & impact; Adeline: problem definition + sharing) were the first-version pairs, which sit far apart in the rubric. **Options shown:** one turn each in rubric order / exactly the first-version pairs (order breaks) / today's pairs together (order breaks). **Picked:** one turn each, in rubric order.
+**Now:** Isla = Opening + Problem definition · Adeline = Research + Project plan · Thea = Team involvement + Innovation · Nolan = Model/drawing + Sharing · Weston = Improvements + Explanation & impact · Fynn = Pride & enthusiasm + Closing. Small wording changes so each paragraph flows (Thea's part says "I" now). 5 hand-offs instead of 11 → **≈ 4:29 of 5:00**. Words: Thea 107, Isla 105, Weston 88, Adeline 87, Nolan 86, Fynn 78. The Robot Design talk is unchanged (each student still talks twice there).
+**Data:** `app/db/updates/2026-11-13f-ip-one-turn-each.sql`; text in `updates/PRESENTATION.md`.
+
+---
+
+## 2026-11-13 (round 4) — Judging talk: Weston ↔ Adeline [who?]
+
+**Asked:** "switch westons improvements with adelines sharing"
+**Done:** **Weston now says Sharing and Adeline says Improvements** (rubric order unchanged). Innovation talk still ≈ 4:48. Words per person in that talk: Nolan 110, Adeline 95, Weston 94, Isla 90, Thea 82, Fynn 78.
+**Data:** `app/db/updates/2026-11-13e-weston-adeline-swap.sql`; text in `updates/PRESENTATION.md`.
+**For CJ:** twice today the running dev server kept showing old data after `npm run db:apply` until it was restarted (the database file is in OneDrive; the server probably kept the old copy open after OneDrive replaced the file). Restarting the server fixes it.
+
+---
+
+## 2026-11-13 (latest) — Judging talk, round 3: Adeline ↔ Fynn [who?]
+
+**Asked:** "switch adelines pride and enthusiasm with fynns research."
+**Done:** **Adeline now says Research and Fynn says Pride & enthusiasm** (rubric order unchanged). Also fixed Weston's Improvements line: "After Fynn's research" → "After our research". Fynn no longer gives that part, and the notebook says Thea and Coach CJ did the Oct 3 Gemini research. Innovation talk still ≈ 4:48. Words per person in that talk: Nolan 110, Adeline 101, Isla 90, Weston 88, Thea 82, Fynn 78 (Fynn also leads the closing cheer).
+**Data:** `app/db/updates/2026-11-13d-adeline-fynn-swap.sql`; text in `updates/PRESENTATION.md`.
+
+---
+
+## 2026-11-13 (even later) — Judging talk, round 2: Isla's opening back, Nolan takes the problem [who?]
+
+**Asked:** "for islas first innovation paragraph change it back to what you had originally. switch adelines problem definition paragraph with nolans pride and enthusiasm paragraph. then once you do that give more information to nolans problem definition paragraph but stay in the 5 minute limit"
+**Done:** Isla's opening is back to the short first version. **Nolan now says Problem definition and Adeline says Pride & enthusiasm** (rubric order unchanged). Nolan's problem part got more facts from the Oct 5 Nate Ragan notes: almost one crash a day (300 a year), the bridge is at Willard Springs, Game and Fish might only put one camera on it, and we won't get their data. The Innovation talk is about **4:48 of 5:00**. Words per person in that talk: Nolan 110, Adeline 92, Isla 90, Weston 88, Fynn 87, Thea 82.
+**Data:** `app/db/updates/2026-11-13b-talk-swap.sql` + `2026-11-13c-nolan-problem-wording.sql`; text in `updates/PRESENTATION.md`.
+
+---
+
+## 2026-11-13 (later) — Judging talk changes + edit the talks in the app [who?]
+
+**Asked:** "give islas first paragraph on the innovation more detail and more to say but stay in the 5 minute limit. switch westons team involvement paragraph with islas explanation and impact paragraph. also make it to where we can make manual changes to the innovation and robot game paragraphs through the app."
+**Done:** Isla's opening is longer (65 words, about 30 s). **Isla now says Team involvement and Weston says Explanation & impact.** The rubric order stays the same. To stay under 5:00, Problem, Project plan, Model, Sharing and Explanation & impact got a little shorter. The Innovation talk is now about 4:49. Isla now says the most (121 words in the Innovation talk; the others say 82–90).
+**Where to edit:** the 🎤 Our Judging Talk card on the Innovation Project page and the Robot Game page (✏️ Edit, or change who says a part). Practice timer and printable script: the link on that card (`/presentation`). Text record: `updates/PRESENTATION.md`.
+
+---
+
+## 2026-11-13 — Judging script for Nov 14: rubric order, everyone 2 parts per talk [who? asked in Claude Code]
+
+**Ask:** "take all the information from the engineering notebook and make an innovation presentation… follow the order [of the judges' rubric] perfectly… 5 minutes for the innovation presentation and 5 minutes for the robot game presentation. everyone has to say about the same amount."
+**Built:** `presentation/2026-11-14-judging-script.html` (opens offline, prints as paper scripts). Two talks, each = opening + the 10 rubric rows in order (IDENTIFY → DESIGN → CREATE → ITERATE → COMMUNICATE) + closing. The robot game talk follows the **Robot Design** rubric, since that's what the judges score it with. Every teammate has 2 parts per talk (166–193 words each across both); each talk is ≈ 4:40 at a calm pace. Includes a practice timer and a "who says how much" check.
+**Facts used:** only what's in the notebook (`updates/*.md`). The problem statement is a draft from the Nate Ragan notes (the team never wrote one).
+**Gaps flagged in yellow, for the team to fill before Saturday:** what Isla and Fynn did on the Innovation Project; who else they shared the project with (only Nate is logged, "Accomplished" needs multiple groups); why the Forest Elder was rebuilt; why three robot bases; any test counts since Nov 8; Nolan's favorite moment.
+
+---
+
 ## 2026-11-08 — Run plan = Fynn + Isla's timing list (9 runs) [who? sent Nov 9]
 
 **What:** the Robot Game run plan in the app now follows the 9 run groups Fynn and Isla tested and timed (M01 · M02+M03 · M04+M05 · M08+M09 · M10+M14 · M12 · M15 · M13+M12 · M06+M07+M11), replacing the 8-run draft from September. Runs with a real time show ⏱; the rest are still guesses. Their margin notes ("needs help," "needs work," "fix yellow arm") show next to each run.
@@ -58,7 +157,7 @@ Newest at top. Capture-field and design decisions come from the students; archit
 ## 2026-10-26 — Innovation Project: new "Communication" section (Thea)
 
 **Request (her words):** "in innovation can you make a new section that is called communication."
-**Options shown:** Messages log (emails/calls with outside people) / Sharing our project / Both / Empty for now. **Picked:** Sharing our project. Each row: date, who we shared with, who shared, what they said, what we changed. Starts with the Oct 5 Nate Reagan meeting. Fits the rubric's Innovation Project COMMUNICATE row (sharing the solution and acting on feedback).
+**Options shown:** Messages log (emails/calls with outside people) / Sharing our project / Both / Empty for now. **Picked:** Sharing our project. Each row: date, who we shared with, who shared, what they said, what we changed. Starts with the Oct 5 Nate Ragan meeting. Fits the rubric's Innovation Project COMMUNICATE row (sharing the solution and acting on feedback).
 
 ---
 
@@ -130,7 +229,7 @@ Newest at top. Capture-field and design decisions come from the students; archit
 **Their words:** "We want to create an app that we can host online, where this camera will stream to the app... In future versions, we might use the motion sensor to turn on the camera, but for now we're going to have it on all the time. We're wondering if it would be simpler and easier to use the app to sense motion, take pictures, and do all the animal tagging."
 **Decided:** v1 camera is **always on** (Camera 1 at the house, wall power). Motion-sensor wake-up is for a later version.
 **Options offered (team picks):** A) App does everything: camera sends a picture every 1–2 s; app spots motion, saves, tags. B) Camera's motion sensor decides, sends only motion pictures; app tags. C) A + the camera adds "motion sensor: yes/no" to every picture, so the team can test which finds more animals. Claude suggested C (one wire already planned; gives a test to compare).
-**Nudges given:** day vs. night (the motion sensor sees body heat in the dark, the camera can't without IR); wind/shadows fool picture-comparing; Nate Reagan said no live stream and blur people. How will they keep strangers and people out of an online app?
+**Nudges given:** day vs. night (the motion sensor sees body heat in the dark, the camera can't without IR); wind/shadows fool picture-comparing; Nate Ragan said no live stream and blur people. How will they keep strangers and people out of an online app?
 **For CJ:** where the app is hosted, how the camera sends pictures to it (picture uploads, not true video), keeping it private (sign-in), animal-tagging model (e.g. MegaDetector finds animal/person/vehicle; SpeciesNet for species).
 
 ---
@@ -189,9 +288,9 @@ Newest at top. Capture-field and design decisions come from the students; archit
 
 ---
 
-## 2026-10-05 — Innovation Project: expert advice from Nate Reagan (Game and Fish) — OPEN, for the students
+## 2026-10-05 — Innovation Project: expert advice from Nate Ragan (Game and Fish) — OPEN, for the students
 
-Nate Reagan (Arizona Game and Fish) gave advice that touches decisions we already made. **Nothing changed yet. The team picks, and writes down why:**
+Nate Ragan (Arizona Game and Fish) gave advice that touches decisions we already made. **Nothing changed yet. The team picks, and writes down why:**
 1. **Live stream?** Oct 3 plan: Camera 1 live streams. Nate: no live stream prevents bad stuff. Options: keep it / drop it / keep it but AI blurs people.
 2. **Where does the camera go?** The I-17 wildlife bridge (needs ADOT's permission) or the squirrel nest (backup).
 3. **How many cameras?** Nate: cameras over a wide area work best.

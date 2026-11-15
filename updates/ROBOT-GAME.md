@@ -8,6 +8,17 @@ Backfilled 2026-09-06 from `../DECISIONS.md` and `../PROGRESS.md`.
 
 ---
 
+## 2026-11-15 — The hub menu follows the run plan (Final v2 code)
+- The new mission menu (Adeline, tested Nov 9) has 9 slots, the same order as our 9 runs: 1 M01 · 2 M02 + M03 · 3 M04 + M05 · 4 M08 + M09 · 5 M14 · 6 M12 part 1 (support tie) · 7 M15 · 8 M13 + M12 part 2 (cane) · 9 M06 + M07 + M11.
+- After a run finishes the hub shows the next number (orange light): press RIGHT or CENTER to go. CENTER during a run stops it and stays on that number to retry.
+- [unclear: run 5 in the run plan is M10 + M14, but the menu's slot 5 is `mission14.py` only. Is M10 scored by the M14 program?]
+- Fynn added to "Coded by" on M01, M02, M03, M06, M07, M08, M09, M11, M12, M13, M15 (Fynn fine-tuned every mission, Nov 9 + Nov 13). Told by Coach CJ.
+
+## 2026-11-09 → 11-13 — every mission working; no full timed run yet
+- **Nov 9 (Mon):** Fynn fine-tuned M06, M07, M14 and some of M02 + M03; **the rest were tested and worked well** (Coach CJ, from memory). **Nov 13 (Fri):** Fynn finished M02 + M03 and worked on M08 + M09.
+- So every mission is now **Working** in the app (was Prototyping: M01, M06, M07, M09, M10, M11, M12, M15). Reliability % not changed: no tries / successes were counted.
+- **Still to do: a full timed run-through of the whole board** (all nine runs back to back). Runs 2, 4, 5 and 7 still have guessed times.
+
 ## 2026-11-08 (Sunday) — every mission tested and timed (Fynn + Isla)
 - **Fynn and Isla** tested all of the missions and timed them (notes: `PRACTICE-LOG.md` 2026-11-08, photo `../app/images/11-8-mission-timing-notes.webp`).
 - **Timed:** M01 = **12 s** · M04 + M05 = **17 s** · M12 = **7 s** · M13 + M12 = **17 s** · M06 + M07 + M11 = **17 s**.

@@ -444,7 +444,7 @@
 const CVALS=['Teamwork','Discovery','Fun','Innovation','Inclusion','Impact'];
 const STATUSES=['Not started','Prototyping','Working','Reliable','Competition-ready'];
 let TEAM=[],missions=[],EXTRAS=[],runs=[],matches=[],rubric=[],entries=[],moments=[],tests=[],atts=[],tradeoffs=[],programs=[],specs=[],
-    ipSteps=[],gantt=[],research=[],experts=[],shares=[],ipPhotos=[],quotes=[],settings={},ipNow=null,ipParts=[],ipWiring=[],ipPlatforms=[],robotCode={dates:[],programs:[]};
+    ipSteps=[],gantt=[],research=[],experts=[],shares=[],ipPhotos=[],quotes=[],settings={},ipNow=null,ipParts=[],ipWiring=[],ipPlatforms=[],robotCode={dates:[],labels:{},programs:[]};
 async function api(method,url,body){
  const r=await fetch(url,{method,headers:{'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined});
  if(!r.ok)throw new Error((await r.json().catch(()=>({}))).error||r.statusText);return r.json()}
@@ -452,7 +452,7 @@ async function load(){
  const d=await api('GET','/api/data');
  TEAM=d.team;missions=d.missions;EXTRAS=d.scoring_extras;runs=d.runs;matches=d.matches;rubric=d.rubric;entries=d.entries;moments=d.moments;tests=d.tests;
  atts=d.attachments;tradeoffs=d.tradeoffs;programs=d.programs;specs=d.robot_specs;ipSteps=d.ip_steps.map(s=>s.name);gantt=d.gantt;research=d.research;experts=d.experts;shares=d.shares;ipPhotos=d.ip_photos||[];
- ipParts=d.ip_parts||[];ipWiring=d.ip_wiring||[];ipPlatforms=d.ip_platforms||[];robotCode=d.robot_code||{dates:[],programs:[]}; /* || []: an older server (before Nov 2) doesn't send these */
+ ipParts=d.ip_parts||[];ipWiring=d.ip_wiring||[];ipPlatforms=d.ip_platforms||[];robotCode=d.robot_code||{dates:[],labels:{},programs:[]}; /* || []: an older server (before Nov 2) doesn't send these */
  quotes=d.quotes.length?d.quotes:[{q:'Your proudest moment goes here.',by:'—'}];settings=d.settings;
  ipNow=(settings.ip_progress||{}).now??null;
  renderAll()}
@@ -478,7 +478,7 @@ function saveFill(el){
  save('PATCH',url,{[key]:v},'💾 Saved!')}
 const cap=t=>t?String(t).charAt(0).toUpperCase()+String(t).slice(1):t; /* display only: first letter capital */
 const member=n=>TEAM.find(t=>t.n===n)||{c:'#999',face:'🙂'};
-const fmt=d=>{const [y,m,dd]=d.split('-');return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]+' '+(+dd)};
+const fmt=d=>{if(!d)return 'date?';const [y,m,dd]=d.split('-'); /* Nov 15: some shares have no known date */return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]+' '+(+dd)};
 const pic=m=>m.photo?`<img src="/images/${encodeURIComponent(m.photo)}" alt="${m.n}" loading="lazy">`:'';
 const av=(n,sm)=>`<span class="avatar ${sm?'sm':''}" style="background:${member(n).c};border-color:${member(n).c}" title="${n}">${pic(member(n))||n[0]}</span>`;
 function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)}
@@ -551,7 +551,7 @@ function renderIP(){
  $('ip-gantt-detail').innerHTML=gantt.length?'👆 Click a bar':'Nothing in the plan yet. Add your first task below: what needs to happen before the tournament, and who owns it?';
  $('ip-gantt').innerHTML=gantt.map((g,i)=>`<div>${av(g.who,1)} ${g.task}</div><div class="lane"><div class="gbar" style="left:${g.s/4*100}%;width:${(g.e-g.s)/4*100}%;background:${member(g.who).c}" onclick="ganttDetail(${i})" title="${g.who}">${(g.e-g.s)>=g.who.length*0.045?g.who:''}</div></div>`).join('');
  renderShares();renderIPPhotos();renderIPDetails();
- $('ip-research').innerHTML=`<table><tr><th>Source</th><th>Type</th><th style="white-space:nowrap">Found by</th><th>What we learned</th></tr>${research.map(r=>`<tr><td>${r.src}</td><td><span class="tag" style="white-space:nowrap">${r.type}</span></td><td>${av(r.by,1)}</td><td style="font-weight:500">${cap(r.note)}</td></tr>`).join('')}</table>`;
+ $('ip-research').innerHTML=`<table><tr><th>Source</th><th>Type</th><th style="white-space:nowrap">Found by</th><th>What we learned</th></tr>${research.map(r=>`<tr><td>${r.url?`<a href="${r.url}" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">${r.src} ↗</a>`:r.src}</td><td><span class="tag" style="white-space:nowrap">${r.type}</span></td><td>${av(r.by,1)}</td><td style="font-weight:500">${cap(r.note)}</td></tr>`).join('')}</table>`;
  $('ip-experts').innerHTML=experts.length?experts.map(e=>`<div class="expert"><div class="face">${e.face}</div><div><b>${e.n}</b><span class="hint">${e.role}${e.d?` · met ${fmt(e.d)}`:''}${e.by?` · ${e.by}`:''}</span><div class="fb">${e.fb}</div><div class="fb"><span class="arrow">→ improvement:</span> ${e.imp}</div>${e.notes&&e.notes.length?`<details class="fb"><summary>What we learned (${e.notes.length} notes)</summary><ul style="margin:4px 0 0;padding-left:18px">${e.notes.map(x=>`<li>${x}</li>`).join('')}</ul></details>`:''}${e.qs&&e.qs.length?`<details class="fb"><summary>Our questions (${e.qs.length})</summary><ol style="margin:4px 0 0;padding-left:18px">${e.qs.map(x=>`<li style="margin-bottom:4px"><b style="display:inline">${x.q}</b><br><span class="arrow">→</span> ${x.a}</li>`).join('')}</ol></details>`:''}</div></div>`).join(''):'<p class="hint">No experts yet. Who knows a lot about our problem?</p>';
 }
 const IP_BOX={problem:'What problem are we solving? Who does it affect? (Nate said: about 300 animal strikes a year on I-17)',solution:'What is our solution, in one or two sentences?',how:'How did we get here? (ideas we had, research, experts, what we changed)'};
@@ -699,34 +699,38 @@ function codeMissionTable(){
 }
 /* ---------- Our Robot Code (Nov 2): every program in code/, every practice it changed, and what changed ---------- */
 function renderRobotCode(){
- const {dates,programs:P}=robotCode,runs=settings.robot_code_runs||{},sig=JSON.stringify(robotCode)+JSON.stringify(missions.map(m=>m.prog))+JSON.stringify(runs);
+ const {dates,programs:P}=robotCode,labels=robotCode.labels||{},byWho=settings.robot_code_who||{},runs=settings.robot_code_runs||{},sig=JSON.stringify(robotCode)+JSON.stringify(byWho)+JSON.stringify(missions.map(m=>m.prog))+JSON.stringify(runs);
  if($('rc').dataset.sig===sig)return; /* don't snap open code shut when something else saves */
  $('rc').dataset.sig=sig;
  if(!P.length){$('rc-sum').textContent='';$('rc').innerHTML='<div class="hint">No code yet. Put each practice\'s Pybricks backup in the <b>code</b> folder, in a folder named by the date (like <b>11-1</b>), and it shows up here.</div>';return}
  const changes=P.reduce((n,p)=>n+p.versions.length-1,0);
  $('rc-sum').textContent=`${P.length} programs · ${dates.length} practices saved · ${changes} times we changed a program`;
- const name=p=>p.missions.map(id=>`<b>${id}</b> ${escH((missions.find(m=>m.id===id)||{}).name||'')}`).join(' + ')||'<span class="hint">no mission number in the file name</span>';
+ const about=p=>(p.versions[p.versions.length-1].code.match(/^#\s*\S+\.py\s*[-–:]\s*(.+)/)||[])[1]; /* first comment line, e.g. "# robot.py - shared hardware setup…" */
+ const name=p=>p.missions.map(id=>`<b>${id}</b> ${escH((missions.find(m=>m.id===id)||{}).name||'')}`).join(' + ')||(about(p)?escH(about(p)):'<span class="hint">no mission number in the file name</span>');
+ const tag=p=>p.file+(p.copy?' copy '+p.copy:''),next=p=>P.filter(q=>q.from===tag(p)).map(q=>q.file); /* Nov 15: mission4.py → mission4_5.py */
+ const grew=p=>`${p.from?` <span class="tag" title="This program started as a copy of ${escH(p.from)}">grew from ${escH(p.from)}</span>`:''}${next(p).length?` <span class="hint" style="margin:0">→ now ${next(p).map(escH).join(', ')}</span>`:''}`;
  const label=p=>`<code>${escH(p.file)}</code>${p.copy?` <span class="tag">copy ${p.copy}</span>`:''}${!p.copy||!runs[p.file]?'':runs[p.file]===p.seen[0].d?' <span class="pill" style="background:var(--pine)">✅ the robot runs this one</span>':' <span class="hint" style="margin:0">not the one the robot runs</span>'}`; /* which copy: settings.robot_code_runs, file → date that copy was first saved */
  const cell=(p,d)=>{const i=p.seen.findIndex(s=>s.d===d);if(i<0)return '';const s=p.seen[i];
   return i===0?'<span class="rc-dot rc-new" title="First time saved"></span>':s.v!==p.seen[i-1].v?'<span class="rc-dot rc-chg" title="Changed"></span>':'<span class="rc-dot rc-same" title="Same as before"></span>'};
- const grid=`<div class="rc-wrap"><table class="rc-grid"><tr><th>Program</th>${dates.map(d=>`<th>${fmt(d)}</th>`).join('')}<th>Versions</th></tr>${P.map((p,i)=>`<tr class="rc-row" onclick="rcShow(${i})"><td>${label(p)}<br><span class="hint" style="margin:0">${p.missions.join(' + ')}</span></td>${dates.map(d=>`<td>${cell(p,d)}</td>`).join('')}<td><b>${p.versions.length}</b></td></tr>`).join('')}</table></div>
+ const grid=`<div class="rc-wrap"><table class="rc-grid"><tr><th>Program</th>${dates.map(d=>`<th>${fmt(d)}${labels[d]?`<br><span class="tag">${escH(labels[d])}</span>`:''}</th>`).join('')}<th>Versions</th></tr>${P.map((p,i)=>`<tr class="rc-row" onclick="rcShow(${i})"><td>${label(p)}<br><span class="hint" style="margin:0">${p.missions.join(' + ')||escH(about(p)||'')}</span>${grew(p)}</td>${dates.map(d=>`<td>${cell(p,d)}</td>`).join('')}<td><b>${p.versions.length}</b></td></tr>`).join('')}</table></div>
   <div class="hint"><span class="rc-dot rc-new"></span> first time saved · <span class="rc-dot rc-chg"></span> changed · <span class="rc-dot rc-same"></span> saved, same as before. 👆 Click a program to see its code and what changed each time.</div>`;
  const copies=[...new Set(P.filter(p=>p.copy&&!runs[p.file]).map(p=>p.file))];
  const ask=copies.length?`<div class="ipd-todo" style="margin-top:10px">🤔 There are two different <b>${copies.map(escH).join(', ')}</b> programs saved (copy A and copy B). Is one an old try? Which one does the robot really run?</div>`:'';
- const coders=p=>[...new Set(p.missions.flatMap(id=>(missions.find(m=>m.id===id)||{prog:[]}).prog))];
- const vers=(p,i)=>p.versions.map((v,j)=>({v,j})).reverse().map(({v,j})=>{const dif=j?lineDiff(p.versions[j-1].code,v.code):null,add=dif?dif.filter(l=>l.t==='a').length:0,del=dif?dif.filter(l=>l.t==='d').length:0;
-  return `<details class="ipd-f"${j===p.versions.length-1?' open':''}><summary>${j?'✏️':'🌱'} <b>${fmt(v.d)}</b> <span class="hint">${j?`version ${j+1} · <span style="color:var(--grass)">+${add}</span> <span style="color:#d64545">−${del}</span> lines changed`:'first version'} · saved in <code>${escH(v.src)}</code></span></summary>
-   <div class="ipd-body"><div class="codebar"><span>${v.code.split('\n').length} lines${j?' · green = added, red = taken out':''}</span><button class="btn sm ghost" onclick="rcCopy(${i},${j})">📋 Copy</button></div><pre class="code">${(dif||v.code.split('\n').map(s=>({t:'',s}))).map(l=>`<span class="ln ${l.t}"><i>${l.t==='a'?'+':l.t==='d'?'−':''}</i>${escH(l.s)||' '}</span>`).join('')}</pre></div></details>`}).join('');
- $('rc').innerHTML=grid+ask+P.map((p,i)=>`<details class="rc" id="rc-${i}"><summary>💻 ${label(p)} · ${name(p)} ${coders(p).map(n=>av(n,1)).join('')} <span class="hint">${p.versions.length} version${p.versions.length>1?'s':''} · first saved ${fmt(p.seen[0].d)} · last changed ${fmt(p.versions[p.versions.length-1].d)}</span></summary><div class="rc-body">${vers(p,i)}</div></details>`).join('');
+ const coders=p=>[...new Set([...p.missions.flatMap(id=>(missions.find(m=>m.id===id)||{prog:[]}).prog),...p.versions.flatMap(v=>byWho[v.d]||[])])]; /* + who made a saved version (robot_code_who, Nov 15) */
+ const vers=(p,i)=>p.versions.map((v,j)=>({v,j})).reverse().map(({v,j})=>{const prev=j?p.versions[j-1].code:v.base,dif=prev!=null?lineDiff(prev,v.code):null,add=dif?dif.filter(l=>l.t==='a').length:0,del=dif?dif.filter(l=>l.t==='d').length:0;
+  return `<details class="ipd-f"${j===p.versions.length-1?' open':''}><summary>${j?'✏️':'🌱'} <b>${fmt(v.d)}</b>${labels[v.d]?` <span class="tag">${escH(labels[v.d])}</span>`:''}${(byWho[v.d]||[]).map(n=>av(n,1)).join('')} <span class="hint">${j?`version ${j+1} · `:`first version${dif?` · grew from ${escH(p.from)} · `:''}`}${dif?`<span style="color:var(--grass)">+${add}</span> <span style="color:#d64545">−${del}</span> lines changed`:''} · saved in <code>${escH(v.src)}</code></span></summary>
+   <div class="ipd-body"><div class="codebar"><span>${v.code.split('\n').length} lines${dif?` · green = added, red = taken out${j?'':` (compared with ${escH(p.from)})`}`:''}</span><button class="btn sm ghost" onclick="rcCopy(${i},${j})">📋 Copy</button></div><pre class="code">${(dif||v.code.split('\n').map(s=>({t:'',s}))).map(l=>`<span class="ln ${l.t}"><i>${l.t==='a'?'+':l.t==='d'?'−':''}</i>${escH(l.s)||' '}</span>`).join('')}</pre></div></details>`}).join('');
+ $('rc').innerHTML=grid+ask+P.map((p,i)=>`<details class="rc" id="rc-${i}"><summary>💻 ${label(p)}${grew(p)} · ${name(p)} ${coders(p).map(n=>av(n,1)).join('')} <span class="hint">${p.versions.length} version${p.versions.length>1?'s':''} · first saved ${fmt(p.seen[0].d)} · last changed ${fmt(p.versions[p.versions.length-1].d)}</span></summary><div class="rc-body">${vers(p,i)}</div></details>`).join('');
 }
 function rcShow(i){const d=$('rc-'+i);d.open=true;d.scrollIntoView({behavior:'smooth',block:'start'})}
 async function rcCopy(i,j){try{await navigator.clipboard.writeText(robotCode.programs[i].versions[j].code);toast('📋 Copied')}catch(e){toast('⚠️ Couldn\'t copy')}}
-/* Line-by-line "what changed" between two versions: [{t:''|'a'|'d', s}] (a = added, d = taken out). */
+/* Line-by-line "what changed" between two versions: [{t:''|'a'|'d', s}] (a = added, d = taken out).
+   Nov 15: indenting a line (e.g. moving code into run()) doesn't count as a change. */
 function lineDiff(a,b){
- const A=a.replace(/\r/g,'').split('\n'),B=b.replace(/\r/g,'').split('\n'),L=A.map(()=>Array(B.length+1).fill(0));L.push(Array(B.length+1).fill(0));
- for(let i=A.length-1;i>=0;i--)for(let j=B.length-1;j>=0;j--)L[i][j]=A[i]===B[j]?L[i+1][j+1]+1:Math.max(L[i+1][j],L[i][j+1]);
+ const A=a.replace(/\r/g,'').split('\n'),B=b.replace(/\r/g,'').split('\n'),At=A.map(l=>l.trim()),Bt=B.map(l=>l.trim()),L=A.map(()=>Array(B.length+1).fill(0));L.push(Array(B.length+1).fill(0));
+ for(let i=A.length-1;i>=0;i--)for(let j=B.length-1;j>=0;j--)L[i][j]=At[i]===Bt[j]?L[i+1][j+1]+1:Math.max(L[i+1][j],L[i][j+1]);
  const out=[];let i=0,j=0;
- while(i<A.length&&j<B.length){if(A[i]===B[j]){out.push({t:'',s:B[j]});i++;j++}else if(L[i+1][j]>=L[i][j+1])out.push({t:'d',s:A[i++]});else out.push({t:'a',s:B[j++]})}
+ while(i<A.length&&j<B.length){if(At[i]===Bt[j]){out.push({t:'',s:B[j]});i++;j++}else if(L[i+1][j]>=L[i][j+1])out.push({t:'d',s:A[i++]});else out.push({t:'a',s:B[j++]})}
  while(i<A.length)out.push({t:'d',s:A[i++]});while(j<B.length)out.push({t:'a',s:B[j++]});
  return out}
 function renderAll(){renderDash();renderGame();renderDesign();renderCoding();renderIP();renderCV();renderLog();renderRubric()}

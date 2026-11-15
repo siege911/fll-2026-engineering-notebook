@@ -8,6 +8,123 @@ One entry per practice, **newest at top**. This is the raw material for the team
 
 ---
 
+## 2026-11-15 (Sunday) — Robot code: Final v1 and Final v2 added to the code folder (not a practice)
+**Told by:** Coach CJ (sent 2026-11-15)
+
+**Raw update (their words):**
+> I updated our "code" folder with the latest Code iterations. Final v1 is just the capture of everything on November 3. Adeline did the main work on Nov 3 to move to the Final v2 which includes the code for selecting the missions during the competition. We tested it on Nov 9. Fynn did the updates on Nov 9 and Nov 13 to the code for Final v3 to fine-tune all of the missions.
+
+**Follow-up, same day (Coach CJ):**
+> Does this file have different data? This is the absolute latest backup from the active code so should be v3. If these are the same then just use this as v2 and remove the v3. Fynn did do some fine tuning work be we may not have created the backups at the right time.
+
+**What happened**
+- Robot Design (CODE): new folders in `code/`: **Final v1** (everything as of Nov 3) and **Final v2** (Adeline's mission menu, tested Nov 9, with Fynn's fine-tuning from Nov 9 + Nov 13 in it; includes the Nov 15 hub backup). A `Final v3` folder was removed: it was the same code, and so was the Nov 15 backup. Also the `11-2` backup (Nov 2). Full write-up: `ROBOT-CODE.md` 2026-11-15.
+- Adeline's menu (`main_base.py` + `robot.py`): pick any of the 9 runs with the hub buttons, CENTER stops a run, the next run is ready right after one finishes. The 9 menu slots match our run plan.
+
+**Problems / open questions**
+- Answered same day: no separate backup of Adeline's menu before Fynn's fine-tuning exists, so Final v2 holds both.
+- [unclear: run 5 in the run plan is M10 + M14, but no program has M10 in its name.]
+- [unclear: `main_base.py` says "Quantum Warriors" at the top.]
+
+**App changes made:** Coding page reads the `Final …` folders and shows "grew from" for joined-up programs; `2026-11-15d-final-code.sql` + `2026-11-15e-no-final-v3.sql` (Fynn added to "Coded by", Adeline's menu in "Programs We've Written", who made each Final version, notebook entries for Nov 3, Nov 9, Nov 13).
+**Rubric rows touched:** Robot Design CODE (clear, modular code: one shared `robot.py`, one `run()` per mission), ITERATE (v1 → v2 → v3), Robot Game strategy (menu matches the run plan).
+
+---
+
+## 2026-11-15 (Sunday) — Notes from Coach CJ: Thea's brother, ADOT, bridge cost (not a practice)
+**Told by:** Coach CJ (sent 2026-11-15, together with the Nov 9, Nov 13 and Nov 14 practices below)
+
+**Raw update (their words):**
+> We mentioned Thea's brother. He developed a custom circuit board and is willing to help the team. Isla and Fynn got the Solar Panels working yesterday. We did a practice yesterday which focused on Innovation Project and building our display trifold board materials for the competition.
+>
+> We also had a practice two days ago (Friday) and the previous Monday where Fynn finished fine-tuning all of the attachments. So every attachment should be in it's final form. I know she specifically worked on the following Missions:
+> Monday - 6, 7, 14 and a little bit of 2 & 3 - The rest were just tested and tested as working well.
+> Friday - Finished 2 & 3 and worked on 8 & 9
+> Note: This is from memory so if you have more specific data, use your data.
+> We still haven't done a full timed run through of the whole board yet.
+>
+> The ADOT contact occurred a while ago. I don't have a date but we have the paperwork needed.
+>
+> Regarding facts: The bridge current cost is at $21 million. It may go up to $24 million, but current projections from ADOT show $21 million so let's use that.
+
+**What happened**
+- Innovation Project (ITERATE, sharing): **Thea's older brother** has developed his own custom circuit board and is willing to help the team build ours (next version of the camera). Same as Nolan's paragraph in the judging talk. [unclear: when we shared it with him, and his name if he's OK being named]
+- Innovation Project (sharing / plan): **Coach CJ talked to the ADOT District Administrator for the Northcentral District** about putting our camera on the Willard Springs wildlife bridge, and **we have the paperwork needed**. [unclear: date of the talk]
+- Innovation Project (problem facts): **the bridge costs $21 million**, ADOT's current projection. It may go up to $24 million later (that's the number Nate Ragan gave on Oct 5). We use $21 million.
+- Spelling: our Game and Fish expert is **Nate Ragan** (the notebook had it wrong until today; fixed everywhere).
+
+**App changes made:** `app/db/updates/2026-11-15b-practices-nov9-14.sql` (shares: Thea's brother + ADOT; notebook entries; Gantt: ADOT paperwork; Ragan spelling).
+**Rubric rows touched:** Innovation Project ITERATE (sharing with multiple people/groups); IDENTIFY (problem definition).
+
+---
+
+## 2026-11-14 (Saturday) — Innovation Project + trifold boards; solar panels work (Isla + Fynn)
+**Who was there:** Isla, Fynn (named) [unclear: who else came?]
+**Told by:** Coach CJ (sent 2026-11-15; raw words in the 2026-11-15 entry above)
+
+**What happened**
+- Innovation Project (CREATE): **Isla and Fynn got the solar panels working.** [unclear: what "working" was tested: charging the battery, powering the camera?]
+- Innovation Project / competition (COMMUNICATE): practice focused on the **Innovation Project and building the display trifold board materials** for the competition. [unclear: who worked on the trifold, and what's on it now? A photo would be great evidence.]
+- Tournament: **the Regional Tournament is Saturday, Nov 21** (Coach CJ, Nov 15). The app's countdown said Nov 14 by mistake; fixed (`2026-11-15c-tournament-nov21.sql`).
+
+**Wins / celebrate:** The solar box works! Now the camera can run in the forest without a plug.
+**Next practice:** Practice both judging talks out loud with the timer and adjust.
+**App changes made:** `2026-11-15b-practices-nov9-14.sql` (notebook entries; Gantt task "Solar panels" for Isla + Fynn).
+**Rubric rows touched:** Innovation Project DESIGN (team involvement: Isla + Fynn), CREATE (model), COMMUNICATE (trifold).
+
+---
+
+## 2026-11-13 (Friday) — Fynn finished Missions 2 + 3, worked on 8 + 9
+**Who was there:** Fynn [unclear: who else?]
+**Told by:** Coach CJ (sent 2026-11-15, from memory)
+
+**What happened**
+- Robot Design (ITERATE): **Fynn finished fine-tuning the combined 2 + 3 attachment** (M02 Exploding Seeds + M03 Flip the Rock) and **worked on the 8 + 9 attachment** (M08 Tangled + M09 Research Platform).
+- After Nov 9 and today, **every attachment should be in its final form.**
+- Robot Design (CODE, added 2026-11-15 from Coach CJ): **Fynn finished fine-tuning the code for all the missions** (saved in `code/Final v2 - Nov 9/`; no separate backup). E.g. a new path for M02 + M03, smaller arm moves for M15.
+- Not done yet: **a full timed run-through of the whole board.**
+
+**Next practice:** Full timed run of all nine runs, counting tries and successes for each mission.
+**App changes made:** `2026-11-15b-practices-nov9-14.sql` (attachment versions for 2 + 3, 8, 9; notebook entry).
+**Rubric rows touched:** Robot Design ITERATE (improvements based on testing).
+
+---
+
+## 2026-11-09 (Monday) — Fynn fine-tuned the attachments; every other mission tested working
+**Who was there:** Fynn [unclear: who else?]
+**Told by:** Coach CJ (sent 2026-11-15, from memory)
+
+**What happened**
+- Robot Design (ITERATE): **Fynn fine-tuned the attachments for M06 Leafcutter Frenzy, M07 Humongous Fungus and M14 Seeds of Renewal**, and a little of the 2 + 3 attachment.
+- Robot Game (testing): **the rest of the missions were tested and worked well.** [unclear: how many tries per mission; no counts were written down]
+- In the app, every mission that still said Prototyping now says **Working** (M01, M06, M07, M09, M10, M11, M12, M15). Reliability % stays as it was until we have tries and successes.
+- Same day: the Pi tagged its first photos (camera → Pi → AI worked end to end, `CAMERA-BUILD.md` 2026-11-09).
+- Robot Design (CODE, added 2026-11-15 from Coach CJ): **we tested Adeline's mission menu (Final v2)**, and Fynn started updating the code to fine-tune the missions (saved in Final v2). See `ROBOT-CODE.md` 2026-11-15.
+
+**App changes made:** `2026-11-15b-practices-nov9-14.sql` (attachment versions for M06, M07, M14, 2 + 3; mission statuses; notebook entry).
+**Rubric rows touched:** Robot Design ITERATE (repeated testing, improvements); Robot Game mission inventory.
+
+---
+
+## 2026-11-14 (Saturday) — Nolan's wildlife-crossing research added (not a practice)
+**Told by:** [who?]
+
+**Raw update (their words):**
+> Nolan did a bunch of Research for the team. Please add this Research to our App including some key points from each of these websites:
+> (9 links: All That's Interesting, ResearchGate, Los Angeles Times, KJZZ, WWF, Sigma Earth, Gokce Capital, Leave No Trace, Think Wildlife Foundation)
+
+**What happened**
+- Innovation Project (RESEARCH): **Nolan found 9 sources on whether wildlife crossings work.** Key points from each are in `INNOVATION-PROJECT.md` 2026-11-14. Big idea: crossings cut crashes 70–96%, but only if animals actually use them, and someone has to check (camera traps did it in Nepal). That supports our camera on the I-17 Willard Springs bridge. [unclear: what day Nolan did the research]
+- The KJZZ link was cut off ("...cross-highw"); the working link ends in "...cross-highway".
+- The ResearchGate paper couldn't be opened (the site blocks robots). [unclear: key point from it, ask Nolan]
+
+**Wins / celebrate:** 9 sources in one go, including a local one about our own bridge, and a brand-new LA Times article from Nov 10!
+**Problems / open questions:** Key point from the ResearchGate paper still needed.
+**App changes made:** `app/db/updates/2026-11-14b-nolan-crossing-research.sql` (9 research rows + notebook entry; new link column so each source in the Research Collection opens its website). `public/index.html`, `server.mjs`.
+**Rubric rows touched:** Innovation Project IDENTIFY (research, problem definition); Core Values Discovery.
+
+---
+
 ## 2026-11-08 (Sunday) — Every mission tested and timed (Fynn + Isla); trifold boards (Thea + Adeline)
 **Who was there:** Fynn, Isla, Thea, Adeline (named in the update) [unclear: were Nolan and Weston there?]
 **Told by:** [who?] (sent 2026-11-09)
@@ -49,6 +166,19 @@ One entry per practice, **newest at top**. This is the raw material for the team
 **Next practice:** Fix the M15 yellow arm; get M02+M03, M08+M09 and M10+M14 working and timed. Run each mission several times and count tries and successes (the judges' "tested over and over" evidence). Finish the trifold boards.
 **App changes made:** `app/db/updates/2026-11-08-mission-times-trifold.sql` (Robot Game run plan rebuilt from the notes, with real times and the margin notes; M01 + M12 mission times; M10 → Prototyping; two notebook entries; Teamwork moment). Run plan now shows ⏱ timed vs. guessed and a Notes column (`public/index.html`, `server.mjs`).
 **Rubric rows touched:** Robot Game strategy / run plan (150 s budget); Robot Design ITERATE (testing every mission, "needs work" list); Innovation Project + Robot Design COMMUNICATE (trifold boards); Core Values Teamwork.
+
+---
+
+## 2026-11-03 (Tuesday) — Code saved as Final v1; Adeline built the mission menu
+**Who was there:** Adeline [unclear: practice or at home? who else?]
+**Told by:** Coach CJ (sent 2026-11-15)
+
+**What happened**
+- Robot Design (CODE): every program saved as **Final v1** (`code/Final v1 - Nov 3/`). New since Nov 1: `mission12.py` (speed 600, back-up 150 → 160), `mission1.py` and `mission14.py` (new distances and turns).
+- **Adeline did the main work on the mission menu** (Final v2): one program, `main_base.py`, that lets the driver pick each run with the hub buttons, plus `robot.py` so the ports and wheels are set up in one place. Tested Nov 9.
+
+**App changes made:** `2026-11-15d-final-code.sql` (notebook entry).
+**Rubric rows touched:** Robot Design CODE, ITERATE.
 
 ---
 
@@ -199,12 +329,12 @@ One entry per practice, **newest at top**. This is the raw material for the team
 
 ---
 
-## 2026-10-05 (Monday) — Innovation Project: expert meeting with Nate Reagan (Arizona Game and Fish)
+## 2026-10-05 (Monday) — Innovation Project: expert meeting with Nate Ragan (Arizona Game and Fish)
 **Who was there:** whole team (Thea, Adeline, Fynn, Isla, Nolan, Weston)
 **Told by:** Adeline and Thea
 
 **Raw update (their words, from their meeting notes; the notes were pasted twice, this is the fuller second copy):**
-> We met with an expert His name is Nate Reagan from Game and Fish. Here are some of our notes. 300 animal strikes in a year. The bridge on I-17 is $24 billion. The bridge is supposed to reduce collisions by 90%. They have a live stream to watch the animals. The animals go where their mom goes, so if their mom goes on the bridge, they will. They put GPS tracking collars on the animals, like the elk. They tranquilize them and put the collars on. The batteries last three years, so once it dies, it falls off the animals automatically. There might be one camera on the bridge, but he's not sure. A camera with flashing light has been done before. The officers use cameras that use satellites and they send a notification to your phone. We prevent bad stuff from happening by not using a live stream. Um, we could use an AI to end the video or blur out any human. We won't get track of any data from Game and Fish, so we can get our own. If the bridge doesn't work out, we could put the camera on the squirrel nest and track that. We need... ADOT's permission to use the bridge. If we did cameras in a wide perimeter, it would be effective. The most effective. Game and fish use thermal seeing goggles that you can see through at night to look at animals. They don't use a lot of AI. They use drones for investigations in law enforcement.
+> We met with an expert His name is Nate Ragan from Game and Fish. Here are some of our notes. 300 animal strikes in a year. The bridge on I-17 is $24 billion. The bridge is supposed to reduce collisions by 90%. They have a live stream to watch the animals. The animals go where their mom goes, so if their mom goes on the bridge, they will. They put GPS tracking collars on the animals, like the elk. They tranquilize them and put the collars on. The batteries last three years, so once it dies, it falls off the animals automatically. There might be one camera on the bridge, but he's not sure. A camera with flashing light has been done before. The officers use cameras that use satellites and they send a notification to your phone. We prevent bad stuff from happening by not using a live stream. Um, we could use an AI to end the video or blur out any human. We won't get track of any data from Game and Fish, so we can get our own. If the bridge doesn't work out, we could put the camera on the squirrel nest and track that. We need... ADOT's permission to use the bridge. If we did cameras in a wide perimeter, it would be effective. The most effective. Game and fish use thermal seeing goggles that you can see through at night to look at animals. They don't use a lot of AI. They use drones for investigations in law enforcement.
 
 
 **Our questions for the expert (their words, sent as a second update the same day; also pasted twice, cleaned up):**
@@ -220,7 +350,7 @@ One entry per practice, **newest at top**. This is the raw material for the team
 | Willard Springs overpass on I-17: how will you count animals? Store trail cameras or special equipment? | There might be one camera on the bridge, but he's not sure. Game and Fish use GPS collars, satellite cameras that notify a phone, thermal goggles, drones [unclear: no answer on store vs. special cameras] |
 
 **What happened**
-- Innovation Project: **first real expert: Nate Reagan, Arizona Game and Fish Department.** What he told the team:
+- Innovation Project: **first real expert: Nate Ragan, Arizona Game and Fish Department.** What he told the team:
   - **The problem:** about **300 animal strikes in a year on I-17** (just I-17, confirmed by Adeline and Thea). The **I-17 wildlife bridge** (an overpass for animals) is supposed to cut collisions by **90%**. Cost: **$24 million** (the notes said "billion"; corrected by Adeline and Thea, Oct 5).
   - **How animals use it:** young animals follow their mom, so if the mom uses the bridge, they will too.
   - **How Game and Fish tracks animals:** GPS collars on elk (tranquilize, put the collar on). The battery lasts **3 years**, then the collar falls off by itself. They have a **live stream** of the animals. There **might** be one camera on the bridge (he wasn't sure). Officers use **satellite cameras that send a notification to your phone**. They use **thermal goggles** to see animals at night, **drones** for law-enforcement investigations, and **not a lot of AI**.

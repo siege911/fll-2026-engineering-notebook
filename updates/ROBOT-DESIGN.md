@@ -8,6 +8,13 @@ Backfilled 2026-09-06 from `../DECISIONS.md` and `../PROGRESS.md`.
 
 ---
 
+## 2026-11-15 — Robot code: mission menu (Adeline) + fine-tuning (Fynn) = Final v2
+- **Nov 3:** all programs saved as Final v1. **Adeline** built the mission menu (`main_base.py`) and `robot.py` (ports + wheels set up once; every mission file now has a `run()`). Tested **Nov 9**.
+- **Nov 9 + Nov 13:** **Fynn** fine-tuned the code for all the missions, saved in **Final v2** with the menu (the latest code on the hub, backed up Nov 15) (new M02 + M03 path, smaller M15 arm moves, M01 distances, fixed two bugs in the M06 + M07 ending).
+- Programs joined to match the 9 runs: `mission4_5`, `mission8_9`, `mission6_7_11`, `mission12a`, `mission13_12b`. Details and history: `ROBOT-CODE.md` 2026-11-15. Told by Coach CJ.
+
+---
+
 **Code:** the history of every robot program (which practice it changed, what changed) is in `ROBOT-CODE.md`, from the `../code/` folder (added 2026-11-02).
 
 ## Robot specs (current, as of 2026-09-06)
@@ -38,6 +45,14 @@ Backfilled 2026-09-06 from `../DECISIONS.md` and `../PROGRESS.md`.
 | Sep 4 → open | Which Mission 2 attachment: Adeline's M02-only, or Nolan's combined M02+M03? | two builds | [not decided] | — |
 
 ---
+
+## 2026-11-13 (Friday) — Fynn finished the 2 + 3 attachment, worked on 8 + 9
+- **Fynn** finished fine-tuning the **combined 2 + 3 attachment** (M02 + M03) and worked on the **8 + 9 attachment** (M08 + M09). Told by Coach CJ from memory (Nov 15).
+- Coach CJ: after Nov 9 and Nov 13, **every attachment should be in its final form.**
+- The judging talk says the 2 + 3 attachment was rebuilt to line up with the base and lower the grabber, and the Research Platform (8 + 9) went from a motorized lifter to a passive push. [unclear: were those changes these fine-tuning days, or earlier?]
+
+## 2026-11-09 (Monday) — Fynn fine-tuned the attachments for M06, M07, M14 (+ some 2 + 3)
+- **Fynn** fine-tuned the attachments for **M06 Leafcutter Frenzy, M07 Humongous Fungus, M14 Seeds of Renewal** and a little of the **2 + 3** attachment. Every other attachment was tested and worked well. Told by Coach CJ from memory (Nov 15). [unclear: tries / successes]
 
 ## 2026-11-08 (Sunday) — Testing every mission: what needs work (Fynn + Isla)
 - Observation from testing all missions: **M15 Biocentric Architecture — "fix yellow arm."** [unclear: what is the yellow arm doing wrong?] Also marked "needs work": M08+M09 and M10+M14; "needs help": M02+M03. Times and the full list: `ROBOT-GAME.md` 2026-11-08.

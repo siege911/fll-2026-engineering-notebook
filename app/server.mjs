@@ -37,7 +37,7 @@ const TABLES = {
   tradeoffs:   { key: 'id', map: { id: 'id', d: 'date', q: 'question', opts: 'options', pick: 'pick', why: 'why' }, order: 'sort_order, id' },
   ip_steps:    { map: { n: 'n', name: 'name' }, order: 'n' },
   gantt:       { map: { task: 'task', who: 'owner', s: 'start_pos', e: 'end_pos', iters: 'iterations', sample: 'sample' }, order: 'id' },
-  research:    { map: { src: 'source', type: 'type', by: 'found_by', note: 'note', sample: 'sample' }, order: 'id' },
+  research:    { map: { src: 'source', type: 'type', by: 'found_by', note: 'note', url: 'url', sample: 'sample' }, order: 'id' },
   experts:     { map: { n: 'name', role: 'role', face: 'face', fb: 'feedback', imp: 'improvement', d: 'date', by: 'met_by', notes: 'notes', qs: 'questions', sample: 'sample' }, order: 'id' },
   quotes:      { map: { q: 'quote', by: 'by_line', d: 'date' }, order: 'id DESC' },
   shares:      { map: { id: 'id', d: 'date', to: 'shared_with', who: 'who', said: 'what_they_said', chg: 'what_we_changed' }, order: 'date DESC, id DESC' }, // Communication: who we shared our project with (Oct 26)

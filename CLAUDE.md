@@ -31,6 +31,9 @@ The app they're building turns their daily Engineering Notebook log into a **vis
 | `droplet/` | The DigitalOcean website (camera website + later this app). **Placeholder:** only the plan, `droplet/INSTALL.md`. |
 | `pi/` | Raspberry Pi 4 **Camera Station** for the wildlife camera: camera Wi-Fi, AI tagging, visits, touchscreen review/publish page (`pi/station/public/index.html`, the students' to edit). Start at `pi/README.md`. |
 | `updates/APP-CHANGES.md` | Changelog of the app itself: date, file, what changed, why, who asked. |
+| `updates/PRESENTATION.md` | Our two 5-minute judging talks (Innovation Project, Robot Design), one paragraph per student in rubric order. Not in the app (removed Nov 14, CJ). Since Nov 15 the words are the team's own hand edits. |
+| `updates/APP-TALK-ORDER-AND-TODO.md` | Nov 15 to-do list: reorder the app's pages/cards to follow the talks, and every gap left before the app is "complete" as documentation. Check items off with a date. |
+| `presentation/` | The judging talks as a Word doc (`Rooted-Warriors-Judging-Talks.docx`) plus the practice timer / printable script (`2026-11-14-judging-script.html`, double-click to open). |
 | `app/` | **The live app (v5, since Sept 28).** `app/public/index.html` is the page, `app/server.mjs` is the dev server, and `app/db/` holds the database (schema, baseline seed, dated update files). How-to: `app/README.md`. |
 | `mockups/` + `mockups/GALLERY.md` | All prototypes. `14-rooted-warriors-app-v4.html` is the last single-file build; frozen, kept for comparison. New look/layout ideas still start here. |
 | `App Notes.md` | **The students' own wish-list.** Freeform notes from the students on what they want in the app, in their words. Treat every item as a standing feature request / future build instruction: work these into designs and prototypes, and check them off as they get covered. Where their wording differs from docs `00`–`05`, keep *their* words in the UI. |

@@ -12,8 +12,56 @@ Format:
 
 Backfilled 2026-09-06 from `../DECISIONS.md`, `../PROGRESS.md`, and `../mockups/GALLERY.md`.
 
+## 2026-11-15 — Coding page: "Final" code folders
+- **Files:** `app/robotcode.mjs`, `app/public/index.html`; data `app/db/updates/2026-11-15d-final-code.sql`; folder `code/Final v1` → `code/Final v1 - Nov 3`
+- **What:** Our Robot Code now reads folders named `<name> - Mon D` (e.g. `Final v2 - Nov 9`) and shows the name under the date. A loose `.py` beats a zip copy of the same name in one folder. Mission numbers read from names like `mission12a.py` / `mission13_12b.py`. A new program that grew out of an old one (`mission4.py` → `mission4_5.py`) shows "grew from …" and its first version shows what changed from the old one. Files with no mission number (`main_base.py`, `robot.py`) show their first comment line. Each version shows who made it (`robot_code_who`). Data: Fynn in "Coded by" for 11 missions, Adeline's mission menu in Programs We've Written, notebook entries Nov 3 / 9 / 13.
+- **Why / who asked:** Coach CJ added Final v1, v2, v3 to the code folder.
+- **Later same day:** `code/Final v3 - Nov 13` removed (moved to the Trash): same files as Final v2 and as the Nov 15 hub backup, which was added to `Final v2 - Nov 9`. Data: `app/db/updates/2026-11-15e-no-final-v3.sql` (Final v2 credited to Adeline + Fynn; Nov 13 notebook entry no longer says "Final v3"). Coach CJ asked.
+
+## 2026-11-15 — Tournament date: Regionals Nov 21
+- **Data:** `app/db/updates/2026-11-15c-tournament-nov21.sql` (sidebar countdown). Word doc + practice timer headers say Nov 21 too. Who asked: Coach CJ.
+
+## 2026-11-15 — Nov 9 / 13 / 14 practices + Coach CJ's notes
+- **Data:** `app/db/updates/2026-11-15b-practices-nov9-14.sql`: Communication (Thea's brother, ADOT), Gantt (solar panels, trifold, ADOT), Fynn's attachment fine-tuning, every mission → Working, 5 notebook entries, "Reagan" → "Ragan".
+- **File:** `app/public/index.html`: dates with no known day show "date?" instead of breaking the Communication table.
+- **Also (not the app):** judging talks fixed (research lines, facts, spelling, typos, Mission 14) in the Word doc, timer and `PRESENTATION.md`.
+- **Who asked:** Coach CJ.
+
+## 2026-11-15 — Judging talks: team's own words (not part of the app)
+- **File:** `presentation/Rooted-Warriors-Judging-Talks.docx`, `presentation/2026-11-14-judging-script.html`
+- **What:** talk words replaced with the team's hand edits; Show + Notes rewritten; the timer now says how far over 5:00 a talk is. No app change.
+- **Why / who asked:** Coach CJ's account, for the team. Suggested app reorder + documentation to-do: `APP-TALK-ORDER-AND-TODO.md`.
+
 ## 2026-11-15 — Camera v4 in Innovation Project Details (data only)
 - `app/db/updates/2026-11-15-camera-v4.sql`: Wildlife Camera row → Camera v4 (Nov 15), new status, v4 files first, v3 listed as older. Camera Station "last big change" → Nov 15 (stalled-send fix). Facts in `updates/CAMERA-BUILD.md` 2026-11-15. [who? asked]
+
+## 2026-11-14 — Nolan's research + links in the Research Collection
+- **Files:** `app/db/updates/2026-11-14b-nolan-crossing-research.sql` (9 research rows found by Nolan + notebook entry; new `research.url` column), `app/server.mjs` (sends `url`), `app/public/index.html` (each source in the Research Collection is a link that opens its website, with ↗).
+- **Why / who asked:** [who?]: "Nolan did a bunch of Research for the team. Please add this Research to our App including some key points from each of these websites." Links added so judges can open the real sources.
+
+## 2026-11-14 — Removed Our Judging Talk from the app (Coach CJ)
+- **Files:** `app/public/index.html`, `app/server.mjs` (talk cards, talk save route and `/presentation` route removed; both files back to their pre-Nov 13 versions), `app/README.md`, `app/db/updates/2026-11-14-remove-talk-parts.sql` (drops `talk_parts`).
+- **Why / who asked:** Coach CJ: "Remove the presentation talking points from the Season App and just give me a Word Doc to download." → `presentation/Rooted-Warriors-Judging-Talks.docx`.
+
+## 2026-11-13 (round 6) — Robot Design talk: one turn each (data + script page)
+- `app/db/updates/2026-11-13g-rd-one-turn-each.sql`: 12 Robot Design parts merged into 6 (one per student, two rubric rows each, in order). `presentation/2026-11-14-judging-script.html`: same merge in its built-in copy; "Who Says How Much" now says everyone talks once in each talk. [who? asked]
+
+## 2026-11-13 (round 5) — Innovation talk: one turn each (data + script page)
+- `app/db/updates/2026-11-13f-ip-one-turn-each.sql`: 12 Innovation parts merged into 6 (one per student, two rubric rows each, in order). `presentation/2026-11-14-judging-script.html`: same merge in its built-in copy; intro and "Who Says How Much" text updated. [who? asked]
+
+## 2026-11-13 (round 4) — Judging talk (data only)
+- `app/db/updates/2026-11-13e-weston-adeline-swap.sql`: Weston ↔ Adeline (Sharing / Improvements). Same in `presentation/2026-11-14-judging-script.html` and `updates/PRESENTATION.md`. [who? asked]
+
+## 2026-11-13 (latest) — Judging talk round 3 (data only)
+- `app/db/updates/2026-11-13d-adeline-fynn-swap.sql`: Adeline ↔ Fynn (Research / Pride); Weston's line "After Fynn's research" → "After our research". Same in `presentation/2026-11-14-judging-script.html` and `updates/PRESENTATION.md`. [who? asked]
+
+## 2026-11-13 (even later) — Judging talk round 2 (data only)
+- `app/db/updates/2026-11-13b-talk-swap.sql`, `2026-11-13c-nolan-problem-wording.sql`: Isla's opening back to the first version; Nolan ↔ Adeline (Problem definition / Pride); Nolan's problem part longer. Same text in `presentation/2026-11-14-judging-script.html` (built-in copy) and `updates/PRESENTATION.md`. [who? asked]
+
+## 2026-11-13 — Our Judging Talk, editable in the app
+- **Files:** `app/db/updates/2026-11-13-judging-talks.sql` (new table `talk_parts`, 24 parts), `app/server.mjs` (talk parts in `/api/data`; `PATCH /api/talk_parts/<id>` can change the words, who says it, and what to show, and records `edited_at` + `source = 'app'`; serves `/presentation`), `app/public/index.html` (new **🎤 Our Judging Talk** card at the top of the Innovation Project page and the Robot Game page), `presentation/2026-11-14-judging-script.html` (when opened from the app at `/presentation`, it shows the app's words; double-clicked, it uses its own Nov 13 copy).
+- **What:** every part of both talks, in rubric order, with ✏️ Edit, a speaker picker, the time estimate (calm pace, with hand-offs) vs. 5:00, and each person's word count. The text is also in `updates/PRESENTATION.md`.
+- **Why / who asked:** [who?] "make it to where we can make manual changes to the innovation and robot game paragraphs through the app." Same request: Isla's opening got more detail; Isla and Weston switched Team involvement ↔ Explanation & impact.
 
 **From 2026-09-28 on**, the live app is `../app/` (page: `app/public/index.html`, data: `app/db/`). Data-only changes get one line naming their `app/db/updates/` file.
 
@@ -85,7 +133,7 @@ Backfilled 2026-09-06 from `../DECISIONS.md`, `../PROGRESS.md`, and `../mockups/
 - `app/db/updates/2026-10-26-remove-share-test.sql` — deleted the share typed in the app at 23:31 (Oct 11, "Theas family", Thea, "They really liked it."). Thea: "I just loged somthing in communication can you take it out and delete it." Saving from the Communication form works (this row proved it).
 
 ## 2026-10-26 — Innovation Project: new "Communication" section
-- **Files:** `app/db/updates/2026-10-26-ip-communication.sql` (new `shares` table + first row: Oct 5, Nate Reagan), `app/server.mjs` (`shares` table; the page may add rows), `app/public/index.html` (`#page-ip`: new Communication card at the bottom, after Experts; `renderShares`, `addShare`).
+- **Files:** `app/db/updates/2026-10-26-ip-communication.sql` (new `shares` table + first row: Oct 5, Nate Ragan), `app/server.mjs` (`shares` table; the page may add rows), `app/public/index.html` (`#page-ip`: new Communication card at the bottom, after Experts; `renderShares`, `addShare`).
 - **What:** a table of every time we shared our project (date, who we shared with, who shared, what they said, what we changed) and a form under it to add a new one (date, who we shared with, pick who shared, what they said, what we changed).
 - **Why / who asked:** Thea: "in innovation can you make a new section that is called communication." Picked "Sharing our project" from 4 options.
 - **Not tested:** saving a new row from the form (it would add a fake share to the real notebook).
@@ -268,8 +316,8 @@ Backfilled 2026-09-06 from `../DECISIONS.md`, `../PROGRESS.md`, and `../mockups/
 - **Files:** `app/server.mjs` (`qs` field, parsed as JSON) · `app/public/index.html` (fold-out "Our questions" list on each expert card).
 - **Why / who asked:** Adeline and Thea sent the questions the team asked Nate; pairing each question with its answer shows judges we prepared for the interview.
 
-## 2026-10-05 — Innovation Project: first real expert (Nate Reagan)
-- **Data:** `app/db/updates/2026-10-05-ip-expert-nate.sql`: Nate Reagan (Arizona Game and Fish) on the Experts card, research row, notebook entry. The sample (GlowCast) experts and research rows deleted, now that real ones exist. New `experts` columns: `date`, `met_by`, `notes` (JSON list).
+## 2026-10-05 — Innovation Project: first real expert (Nate Ragan)
+- **Data:** `app/db/updates/2026-10-05-ip-expert-nate.sql`: Nate Ragan (Arizona Game and Fish) on the Experts card, research row, notebook entry. The sample (GlowCast) experts and research rows deleted, now that real ones exist. New `experts` columns: `date`, `met_by`, `notes` (JSON list).
 - **Files:** `app/server.mjs` (experts map: `d`, `by`, `notes`; `notes` parsed as JSON) · `app/public/index.html` (Experts card shows "met <date> · who", a fold-out "What we learned" list, and a hint when there are no experts).
 - **Why / who asked:** Adeline and Thea's expert-meeting notes had 16 facts; the card only had room for one feedback line. The rubric asks for experts with dates and what they said.
 
