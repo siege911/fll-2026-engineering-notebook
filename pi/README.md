@@ -14,7 +14,7 @@ The Pi is the base station for our wildlife camera. It runs its own Wi-Fi for th
 
 The Pi has one Wi-Fi radio, so the Home page has a switch: **📡 Camera Wi-Fi** (the camera can send photos) or **🌐 House Wi-Fi** (internet, for publishing: joins whichever Wi-Fi the Pi remembers is in range, e.g. house, office or phone hotspot). It stays in the mode you pick. **Publish** switches to House Wi-Fi by itself. While on House Wi-Fi the camera keeps its photos on its card, so tap 📡 Camera Wi-Fi when you're done. Tagging keeps going in both modes.
 
-There's also a **⚠️ Problems** page: anything that went wrong (like the AI crashing), newest first, with details for Coach CJ and a **Try again** button for set-aside photos. It's kept off Home on purpose; the ⚠️ badge counts new ones.
+There's also a **⚠️ Problems** page: anything that went wrong (like the AI crashing), newest first, with details for Coach CJ and a **Try again** button for set-aside photos. It's kept off Home on purpose; the ⚠️ badge counts new ones. At the bottom, **🗑️ Start over → Delete all photos…** deletes every photo and visit on the Pi (two taps: it asks "Are you sure?" first). Use it to clear out test pictures. Pictures still waiting on the camera's microSD card aren't touched.
 
 There's also a **Test** page for our experiment: did "picture changed" or the motion sensor catch more animals, and which one had more false alarms?
 

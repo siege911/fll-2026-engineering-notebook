@@ -4,6 +4,42 @@ The Innovation Project wildlife camera: what we bought, how it's wired, and ever
 
 ---
 
+## 2026-11-15 (even later) — Pi: "Delete all photos" to start over
+**Asked by:** [who?]: "Can you also add a 'Delete all photos' option to the Pi so we could clean it up and start over if needed?" · **Code by:** Claude · **Code:** `../pi/station/server.py`, `store.py`, `public/index.html`; guide `../pi/README.md`
+- **Where:** bottom of the ⚠️ Problems page, a **🗑️ Start over** card showing how many photos and visits the Pi has. **Delete all photos…** → *Are you sure? This deletes N photos and N visits for good* → **Yes, delete everything** (red) or **No, keep them**. Two taps so nobody does it by accident.
+- **What it deletes:** every photo on the Pi (including empty ones and set-aside ones), every visit, and the old Problems list. A line on Problems says how many were deleted. If the AI is in the middle of tagging, its answers are thrown away. **Not touched:** pictures still waiting on the camera's microSD card (they'll still be sent), and anything already on the website.
+- Why it's useful now: clear out the 22 test pictures of people and the photo the AI keeps crashing on, so the next test starts clean.
+- Checked on the Mac (practice mode, 6 pretend photos, touchscreen size 800×480): "No, keep them" goes back ✓, "Yes, delete everything" → 0 photos, files gone from the folder ✓, Problems shows "Started over: deleted 6 photos" ✓. **Not on the real Pi yet.** [result: not yet]
+
+---
+
+## 2026-11-15 (later) — Camera v4 + Pi fix for the freeze
+**Asked by:** [who?] ("Yes, build v4") · **Code by:** Claude · **Code:** `../camera/camera-v4/camera-v4.ino`, `../pi/station/server.py`; guide `../camera/INSTALL.md`
+- **Camera v4:**
+  - **Restarts by itself** if it's stuck for 30 s (watchdog). After the restart, the Serial Monitor and the live page say **which step** it was stuck on (e.g. `stuck … while sending no-time-…jpg`).
+  - Reads the **whole picture** from the card first and checks it's complete (starts FF D8, ends FF D9, every byte read). Broken pictures go to **`/photos-bad`** on the card instead of the Pi.
+  - Sends **one picture at a time** (3 s to connect, 8 s for an answer), so the live view and motion checks keep running. Pi not answering → waits 5 s and tries again.
+  - A picture the Pi refuses goes to `/photos-bad` instead of being tried forever. Live page shows how many were set aside.
+  - Every send is printed: `Sending … (40 KB)... OK in 420 ms`.
+- **Pi station:** drops a send that stalls for 30 s (before, it could wait forever), and refuses a picture that isn't whole, so broken pictures never reach the AI.
+- Checked: v4 **compiles** for the XIAO ESP32-S3 (esp32 3.3.12, 36% of space). Pi change tested on the Mac with a pretend camera: whole picture → accepted ✓, broken picture → refused ✓, stalled send → dropped after 30 s ✓. **Not on the real camera or Pi yet.** [result: not yet]
+- To try it: upload v4 to camera 1 (`camera/INSTALL.md`), pull the new code on the Pi and restart the station, then switch the Pi to 🌐 House Wi-Fi for a minute to fix its clock. Watch the Serial Monitor for `Sending …` and `Set aside …` lines.
+
+---
+
+## 2026-11-15 — Camera 1 freezes after it joins the Pi's Wi-Fi
+**Told by:** [who?] (troubleshooting session) · **Code:** `../camera/camera-v3/camera-v3.ino`, `../pi/station/server.py`
+- **What happened:** turned on fine, took pictures, 2 saved before Wi-Fi (`no-time-66288-149_SC.jpg`, `no-time-67289-650_SC.jpg`), joined the Pi's Wi-Fi (`10.42.0.51`), got the time from the Pi (08:13:57)… then **no more Serial lines at all** (no `Picture 24`) for 10+ minutes, and no restart message. Powered from a solid wired source (not a power problem).
+- The Pi got **4 or 5 pictures** [unclear: exact number] and tagged them. Live never showed a picture. Pi now says *Camera sends: Out of range*, last seen ~10 min before.
+- **Problems page:** *1 photo set aside, the AI crashed twice on it.* **Try again** fails every time. [unclear: is that photo a broken/half picture? Open it to check.]
+- The little light on the XIAO is off. The clock module's light is on (it gets power from the XIAO, so power is fine). Note: the XIAO has no power light; its orange light is on the same pin as the microSD card (GPIO21), so it only shows card activity.
+- **Camera 2:** Live works and it never freezes, but it **can't see the microSD card**. Camera 1 sees the card but freezes. [unclear: both could be connection problems with the microSD card pins. The card uses D8, D9, D10 on the XIAO. Check for solder bridges or wires on those pins.]
+- **What the Serial output tells us:** the camera prints a line every second, so it got stuck **inside one step and never came back**, almost surely while **sending a picture to the Pi** (the first thing it does after getting the time) or reading it from the card. v3 has no time limit that covers every part of that step, and no automatic restart if it gets stuck.
+- **Also found:** the Pi's clock is wrong. It told the camera **2026-11-13 18:48**, but it was **Nov 15, 08:13**. On 📡 Camera Wi-Fi the Pi has no internet to fix its clock, so photo names, dates and "photos today" are off. Fix: a few minutes on 🌐 House Wi-Fi, or the spare DS3231 clock module on the Pi.
+- **Ideas for camera v4** (not built yet): print every send step in the Serial Monitor; read the whole picture from the card first and check it's complete (move bad ones to a "bad" folder instead of sending them); one picture per turn with short time limits so the live view keeps working; skip a picture the Pi refuses; **auto-restart if the camera is stuck for 30 s**, and say so after it restarts. On the Pi: drop a send that stalls for 30 s.
+
+---
+
 ## 2026-11-09 — AI crashes (SIGILL): station keeps going; errors moved to a Problems page
 **Asked by:** [who?] · **Code by:** Claude · **Code:** `../pi/station/server.py`, `store.py`, `ai.py`, `public/index.html`
 - **What happened (Nov 8, 15:05):** SpeciesNet crashed again with `SIGILL`, about 8 minutes into a batch. Each crash started the same 50 photos over, so the first batch might never finish. And the Home page showed a big purple error.

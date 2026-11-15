@@ -1,6 +1,6 @@
 # Installing the camera code on the XIAO ESP32-S3 Sense
 
-For **camera v3** (`camera-v3/`), from a Mac with Arduino IDE 2. Takes about 20 minutes the first time. Parts and wiring: `../updates/CAMERA-BUILD.md`.
+For **camera v4** (`camera-v4/`), from a Mac with Arduino IDE 2. Takes about 20 minutes the first time. Parts and wiring: `../updates/CAMERA-BUILD.md`.
 
 The camera code is on the coach's laptop in `camera/`, and also in our private GitHub repo: **https://github.com/siege911/fll-2026-engineering-notebook** (folder `camera/`). On another computer, sign in to GitHub as siege911 and use **Code → Download ZIP**, or `git clone https://github.com/siege911/fll-2026-engineering-notebook.git`. You'll still need to make `secrets.h` (step 4 below): it's never on GitHub.
 
@@ -30,7 +30,7 @@ No **Scheme** box in step 5? You picked the part inside the card: go back to ste
 2. Arduino IDE → **Settings** → "Additional boards manager URLs", paste:
    `https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json`
 3. **Boards Manager** (left sidebar) → search **esp32** → install **esp32 by Espressif Systems** (the code was checked with 3.3.12).
-4. No extra libraries are needed for v3. Everything it uses comes with the esp32 package.
+4. No extra libraries are needed for v4. Everything it uses comes with the esp32 package.
 
 ## 3. Pick the board
 
@@ -46,7 +46,7 @@ Plug the XIAO in with a **USB-C data cable** (some charge-only cables don't carr
 
 ## 4. Fill in secrets.h
 
-1. Open `camera-v3/camera-v3.ino` in Arduino IDE.
+1. Open `camera-v4/camera-v4.ino` in Arduino IDE.
 2. Copy `secrets.example.h` to **`secrets.h`** in the same folder (on the Mac it's already there, filled in).
 3. Check the four lines:
 
@@ -61,7 +61,7 @@ Plug the XIAO in with a **USB-C data cable** (some charge-only cables don't carr
 ## 5. Upload
 
 1. Click **Upload** (→ arrow). It takes a minute or two.
-2. Open **Serial Monitor** at **115200** baud. You should see `Rooted Warriors Wildlife Camera v3 starting...`, then the microSD card and clock lines.
+2. Open **Serial Monitor** at **115200** baud. You should see `Rooted Warriors Wildlife Camera v4 starting...`, then the microSD card and clock lines, and `Watchdog on: restarts by itself if stuck for 30 seconds.`
 3. If the Pi's camera Wi-Fi is on, it prints the **live page** address (or use `http://rooted-camera.local`). Open it on a device that's on the camera Wi-Fi.
 
 ## 6. Test it
@@ -79,8 +79,12 @@ Plug the XIAO in with a **USB-C data cable** (some charge-only cables don't carr
 | `Camera didn't start` | Tools → PSRAM → OPI PSRAM, and check the camera board is snapped on |
 | `No microSD card found` | Card in all the way? Formatted FAT32? |
 | `The Pi says the camera key is wrong` | `CAMERA_KEY` in secrets.h must match `camera_key` in the Pi's settings.json |
+| `Sending … OK in 420 ms` | Normal: one waiting picture reached the Pi and was deleted from the card |
+| `Sending … no answer from the Pi` | Pi busy, off, or on 🌐 House Wi-Fi. The picture stays on the card; it tries again in 5 seconds |
+| `Set aside … (the card didn't read all of it)` or `(not a whole picture)` | The microSD card gave back a broken picture. It's kept in `/photos-bad` on the card, not sent. Lots of these = check the card and the D8, D9, D10 pins |
+| `!! Last restart: the camera was stuck … while …` | The camera froze and restarted itself after 30 s. The step it names is where it got stuck: write it in CAMERA-BUILD.md |
 | `Out of range of the Pi` | Normal when the Pi is on 🌐 House Wi-Fi or far away. Pictures wait on the card and go when it's back |
 
 ## Older versions
 
-`camera-v1/` (Oct 24: live view + motion sensor) and `camera-v2/` (Oct 25: saves to microSD, the Pi pulls pictures) install the same way. v2's `secrets.h` uses the **house** Wi-Fi instead.
+`camera-v1/` (Oct 24: live view + motion sensor), `camera-v2/` (Oct 25: saves to microSD, the Pi pulls pictures) and `camera-v3/` (Oct 25: sends to the Pi, but could freeze for good while sending, Nov 15) install the same way. v2's `secrets.h` uses the **house** Wi-Fi instead.

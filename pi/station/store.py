@@ -92,6 +92,16 @@ class Store:
         self.run("UPDATE photos SET status='waiting' WHERE status='failed'")
         return n
 
+    def delete_everything(self):
+        """Start over: forgets every photo and visit. Returns how many there were."""
+        with self.lock:
+            photos = self.db.execute("SELECT COUNT(*) FROM photos").fetchone()[0]
+            visits = self.db.execute("SELECT COUNT(*) FROM visits").fetchone()[0]
+            self.db.execute("DELETE FROM photos")
+            self.db.execute("DELETE FROM visits")
+            self.db.commit()
+        return {"photos": photos, "visits": visits}
+
     def mark_failed(self, photo_id):
         self.run("UPDATE photos SET status='failed' WHERE id=?", (photo_id,))
 

@@ -37,6 +37,7 @@
   .big{font-size:16px;font-weight:800;border-radius:14px;padding:14px 18px;min-height:56px}
   .go{background:var(--grass);color:#fff}
   .plain{background:var(--soft);color:var(--forest)}
+  .danger{background:#c0443a;color:#fff}
   .lav{background:var(--lavender);color:var(--forest)}
   .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
   .actions{position:sticky;bottom:-12px;background:var(--cream);padding:8px 0 12px;margin-top:6px}
@@ -362,7 +363,30 @@ async function problems() {
     ${r.problems.length ? r.problems.map(p => `<div class="card" style="margin-bottom:8px">
         <b>${day(p.time)} ${clock(p.time)}</b> · ${esc(p.what)}
         ${p.details ? `<details><summary class="muted">details</summary><pre style="white-space:pre-wrap;font-size:11px;margin:4px 0 0">${esc(p.details)}</pre></details>` : ''}
-      </div>`).join('') : '<div class="card">No problems since the station started. ✓</div>'}`;
+      </div>`).join('') : '<div class="card">No problems since the station started. ✓</div>'}
+    <div class="card" id="startOver" style="margin-top:16px">${startOverCard()}</div>`;
+}
+
+// ---------- Start over: delete every photo on the Pi (two taps, so nobody does it by accident) ----------
+let startOverAsk = false;
+function startOverCard() {
+  const p = status.photos_total || 0, v = status.visits_total || 0;
+  if (!startOverAsk) return `<b>🗑️ Start over</b>
+    <p class="muted" style="margin:4px 0 8px">Deletes every photo and visit on the Pi (${p} photo${p !== 1 ? 's' : ''}, ${v} visit${v !== 1 ? 's' : ''}). Use it to clear out test pictures. Photos still waiting on the camera's card aren't touched.</p>
+    <button class="big plain" onclick="startOverAsk = true; document.getElementById('startOver').innerHTML = startOverCard()">🗑️ Delete all photos…</button>`;
+  return `<b>Are you sure?</b>
+    <p style="margin:4px 0 8px">This deletes <b>${p} photo${p !== 1 ? 's' : ''}</b> and <b>${v} visit${v !== 1 ? 's' : ''}</b> for good${status.published ? `, including ${status.published} we already published (they stay on the website)` : ''}. It can't be undone.</p>
+    <div class="row"><button class="big danger" onclick="deleteAllPhotos()">Yes, delete everything</button>
+      <button class="big plain" onclick="startOverAsk = false; document.getElementById('startOver').innerHTML = startOverCard()">No, keep them</button></div>`;
+}
+
+async function deleteAllPhotos() {
+  const r = await api('/api/photos/delete-all', {sure: 'delete everything'});
+  startOverAsk = false;
+  await refreshStatus();
+  await problems();
+  document.getElementById('startOver').insertAdjacentHTML('afterbegin',
+    `<p style="margin-bottom:8px">✓ Deleted ${r.photos} photo${r.photos !== 1 ? 's' : ''} and ${r.visits} visit${r.visits !== 1 ? 's' : ''}. Fresh start!</p>`);
 }
 
 async function retryFailed() {

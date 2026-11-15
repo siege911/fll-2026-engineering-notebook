@@ -72,6 +72,7 @@ class Station:
         self.problem_count = 0       # all problems since start-up (the page's badge)
         self.solo = set()            # photo ids from a crashed batch: tag these one per try to find a bad one
         self.tries = {}              # photo id -> failed tries on its own
+        self.start_overs = 0         # goes up on "Delete all photos": a tagging batch from before is thrown away
         self._internet = (0, False)
         self.network = Network(settings) if settings["wifi_switch"] else None
 
@@ -80,6 +81,8 @@ class Station:
         match = PHOTO_NAME.match(name)
         if not match:
             raise ValueError("bad name")
+        if not (body.startswith(b"\xff\xd8") and b"\xff\xd9" in body[-16:]):
+            raise ValueError("not a whole picture")  # broken on the camera's card: don't hand it to the AI
         day, hh, mm, ss, trigger = match.groups()
         taken_at = f"{day} {hh}:{mm}:{ss}" if day else now()  # no time from the camera: use when it arrived
         rel = f"photos/{taken_at[:10]}/{name}"
@@ -109,6 +112,7 @@ class Station:
     def tag_forever(self):
         while True:
             batch = []
+            start_overs = self.start_overs
             try:
                 size = 1 if self.solo else max(1, int(self.settings.get("tag_batch_size", 5)))
                 batch = self.store.waiting_photos(size)
@@ -122,6 +126,8 @@ class Station:
                     time.sleep(3)
             except Exception as error:
                 self.tagging_now = 0
+                if start_overs != self.start_overs:
+                    continue  # the photos were deleted while the AI was working: not a real problem
                 self.tagging_failed(batch, error)
                 time.sleep(10)
 
@@ -157,7 +163,24 @@ class Station:
             self.add_problem(f"Trying {n} set-aside photo{'s' if n != 1 else ''} again (someone tapped Try again).")
         return n
 
+    def delete_all_photos(self):
+        """Start over: deletes every photo (and the empty ones) and every visit.
+        A tagging batch that's running right now finishes, and its answers are thrown away."""
+        self.start_overs += 1
+        counts = self.store.delete_everything()
+        for folder in ("photos", "empty"):
+            shutil.rmtree(self.data / folder, ignore_errors=True)
+        (self.data / "photos").mkdir(parents=True, exist_ok=True)
+        self.solo.clear()
+        self.tries.clear()
+        self.problems.clear()
+        self.last_error = ""
+        self.add_problem(f"Started over: deleted {counts['photos']} photo{'s' if counts['photos'] != 1 else ''} "
+                         f"and {counts['visits']} visit{'s' if counts['visits'] != 1 else ''} (someone tapped Delete all photos).")
+        return counts
+
     def tag_batch(self, batch):
+        start_overs = self.start_overs
         self.tagging_now = len(batch)
         paths = [self.data / p["file"] for p in batch]
         if self.fake_ai:
@@ -167,6 +190,9 @@ class Station:
             predictions = ai.run_speciesnet(paths, self.settings["country"], self.settings["admin1_region"],
                                             self.settings["speciesnet_python"] or None,
                                             self.settings.get("speciesnet_model") or None)
+        if start_overs != self.start_overs:  # someone deleted all photos while the AI was working
+            self.tagging_now = 0
+            return
         for photo in batch:
             prediction = predictions.get(photo["name"])
             if prediction is None or prediction.get("failures"):
@@ -227,6 +253,8 @@ class Station:
             "error": bool(self.last_error),     # the last tagging try failed (details: Problems page)
             "problem_count": self.problem_count,
             "failed": count("SELECT COUNT(*) n FROM photos WHERE status='failed'"),
+            "photos_total": count("SELECT COUNT(*) n FROM photos"),
+            "visits_total": count("SELECT COUNT(*) n FROM visits"),
             "team": self.settings["team"],
             "network": self.network.status() if self.network else None,
         }
@@ -264,6 +292,8 @@ def make_handler(station):
     public = HERE / "public"
 
     class Handler(BaseHTTPRequestHandler):
+        timeout = 30  # a send that stalls for 30 s is dropped (Nov 15: a stuck camera send held on forever)
+
         def log_message(self, *args):
             pass
 
@@ -320,16 +350,27 @@ def make_handler(station):
             length = int(self.headers.get("Content-Length") or 0)
             if length > MAX_UPLOAD:
                 return self.reply(413, {"error": "too big"})
-            body = self.rfile.read(length)
+            try:
+                body = self.rfile.read(length)
+            except OSError:  # stalled for 30 s (timeout) or the camera hung up
+                self.close_connection = True
+                return
+            if len(body) < length:
+                return self.reply(400, {"error": "only part of it arrived"})
 
             if url.path == "/api/upload":
                 if not station.settings["camera_key"] or q.get("key", [""])[0] != station.settings["camera_key"]:
                     return self.reply(403, {"error": "wrong key"})
                 try:
                     station.receive(q.get("name", [""])[0], body, self.client_address[0])
-                except ValueError:
-                    return self.reply(400, {"error": "bad name"})
+                except ValueError as error:
+                    return self.reply(400, {"error": str(error)})
                 return self.reply(200, {"ok": True})
+
+            if url.path == "/api/photos/delete-all":
+                if json.loads(body or b"{}").get("sure") != "delete everything":
+                    return self.reply(400, {"error": "not confirmed"})
+                return self.reply(200, station.delete_all_photos())
 
             if url.path == "/api/problems/retry":
                 return self.reply(200, {"retrying": station.retry_failed()})

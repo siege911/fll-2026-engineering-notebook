@@ -12,6 +12,9 @@ Format:
 
 Backfilled 2026-09-06 from `../DECISIONS.md`, `../PROGRESS.md`, and `../mockups/GALLERY.md`.
 
+## 2026-11-15 — Camera v4 in Innovation Project Details (data only)
+- `app/db/updates/2026-11-15-camera-v4.sql`: Wildlife Camera row → Camera v4 (Nov 15), new status, v4 files first, v3 listed as older. Camera Station "last big change" → Nov 15 (stalled-send fix). Facts in `updates/CAMERA-BUILD.md` 2026-11-15. [who? asked]
+
 **From 2026-09-28 on**, the live app is `../app/` (page: `app/public/index.html`, data: `app/db/`). Data-only changes get one line naming their `app/db/updates/` file.
 
 ## 2026-11-09 (practice 2026-11-08)
