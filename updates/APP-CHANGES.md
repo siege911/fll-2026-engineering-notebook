@@ -12,6 +12,11 @@ Format:
 
 Backfilled 2026-09-06 from `../DECISIONS.md`, `../PROGRESS.md`, and `../mockups/GALLERY.md`.
 
+## 2026-11-20 — New photos: robot base, team photo, profile pictures, final attachment photos
+- **Files:** `app/db/updates/2026-11-20-new-photos.sql`, `app/images/11-20-*.jpg` (smaller copies of `photos/`), `app/public/index.html`, `site/` (export)
+- **What:** Robot Design → The Main Robot shows the robot base photo (`settings.robot_photo`). Core Values → Team Profile shows the team photo on top (`settings.team_photo`). New profile pictures for all six. Each attachment's main photo is now the Nov 20 final-form one; the little version boxes in Attachments Over Time now show their photo (Nov 2 and Nov 20), click to see it big. Lucky Leaves attachment now listed for M04 + M05; mascot attachment for M13 + M12 (cane).
+- **Why / who asked:** [who?] added the `photos/` folder: "There is a picture of the base robot to add to Robot Design… updated pictures of all of the attachments… a Team picture and updated each of the student pictures." `mission 12a.jpg` not used (same file as `mission 14.jpg`).
+
 ## 2026-11-19 — View-only website copy for Regionals (`site/`)
 - **Files:** `app/export-static.mjs` (new), `app/package.json` (`npm run export`), `app/public/index.html`, `site/` (generated), `.claude/launch.json` (`site-preview`)
 - **What:** `npm run export` (from `app/`) builds `site/`: the app page with all the database data and the shared code files / install guides baked in (`window.VIEW_ONLY`), plus `logo.png` and `images/`. In that copy nothing can be typed or saved: forms and "Tap to fill in" blanks are hidden, status menus and rubric buttons are locked, and the sidebar says "👀 View-only copy · saved <date>". It also tells search engines not to list it. The laptop app works exactly as before. The database is only read.

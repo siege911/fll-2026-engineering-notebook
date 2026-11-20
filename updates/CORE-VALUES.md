@@ -52,6 +52,8 @@ Learned / Worked with most / Notebook entries: still blank for everyone.
 
 **Sep 19 (student request):** for every teammate other than Thea, the **Learned**, **Worked with most**, and **Notebook entries** fields are to be filled in by that teammate themselves. The app v3 still had sample text in those three fields (e.g. "Gyro drift is real") — cleared to "tap to fill in." All other fields left as Thea entered them. Note: the app's Role field for Fynn, Isla, Nolan, Weston still shows sample text ("Research captain," "Core Values keeper," "Lead programmer," "Project designer") that does not match this table — flagged to the student, who then asked (same day) to blank those four roles too so each teammate fills in their own. Done. Then "do it for Thea too" — Thea's role line ("Innovation Project," also leftover sample text) cleared as well. Adeline's "Programmer" (entered by Thea Sep 4) is the only role kept.
 
+**Nov 20 — team photo + new profile pictures:** [who?] added a **team photo** (all six in the purple Rooted Warriors shirts, Arizona flag behind, competition table to the side) and a new picture of each student (Adeline, Fynn, Isla, Nolan, Thea, Weston). Originals in `../photos/`; the app uses `app/images/11-20-team-photo.jpg` (top of the Team Profile card) and `11-20-profile-<name>.jpg` (every card and avatar). The Sep 28 pictures are kept in `app/images/`.
+
 ## Six-value tally (moments so far)
 
 | Value | Count | Evidence |

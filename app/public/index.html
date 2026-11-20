@@ -218,6 +218,8 @@
   .cal .day .dots i{width:5px;height:5px;border-radius:50%;background:var(--grass)}
   .cal .day.blank{background:transparent}
   .att{border:1.5px solid var(--line);border-radius:12px;padding:12px;background:#fffdf6}
+  .bigpic{display:block;margin:0 0 12px}.bigpic img{width:100%;max-height:420px;object-fit:contain;background:#f3eee2;border-radius:12px;display:block}.bigpic figcaption{font-size:12px;color:var(--dim);margin-top:4px} /* Nov 20: robot + team photos */
+  .ver .ph.has{display:block;width:90px;height:60px;background:none}.ver .ph img{width:90px;height:60px;object-fit:cover;border-radius:5px;display:block} /* Nov 20: version photos */
   .att-pic{display:block;margin:8px 0}.att-pic img{width:100%;height:260px;object-fit:contain;background:#f3eee2;border-radius:10px;display:block} /* Nov 2: attachment photo on the mat */
   .att b{font-size:14px}
   .vers{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
@@ -309,7 +311,7 @@
     <div class="pagehead"><h1>Robot Design<small>The main robot · attachments · testing · tradeoffs</small></h1><span class="chip">IDENTIFY → DESIGN → CREATE → ITERATE → COMMUNICATE</span></div>
     <div class="grid">
       <div class="card wide"><h2><span><i class="leafdot"></i>The Main Robot</span></h2>
-        <div class="spec" id="rd-specs"></div></div>
+        <div id="rd-robot-pic"></div><div class="spec" id="rd-specs"></div></div> <!-- Nov 20: robot base photo (settings.robot_photo) -->
       <div class="card wide"><h2><span><i class="leafdot"></i>Tradeoff Decisions</span></h2><div id="rd-trade"></div></div> <!-- Isla (moved up to follow the judging script, Nov 17) -->
       <div class="card wide"><h2><span><i class="leafdot"></i>Run Plan &amp; Time Check</span><span class="hint">Same as the Robot Game page</span></h2><div data-mirror="g-runplan"></div></div> <!-- Isla: live copy of the card on another page (Nov 17) -->
       <div class="card wide"><h2><span><i class="leafdot"></i>Who's Been Doing What</span><span class="hint">Same as the Dashboard</span></h2><div data-mirror="d-balance"></div></div> <!-- Adeline: live copy of the card on another page (Nov 17) -->
@@ -392,7 +394,7 @@
   <section class="page" id="page-cv">
     <div class="pagehead"><h1>Core Values<small>Team spotlight · daily moments · who helped who</small></h1><span class="chip">25% OF CHAMPION'S SCORE</span></div>
     <div class="grid">
-      <div class="card wide"><h2><span><i class="leafdot"></i>Team Profile</span></h2><div class="spot" id="cv-spot"></div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>Team Profile</span></h2><div id="cv-team-pic"></div><div class="spot" id="cv-spot"></div></div> <!-- Nov 20: team photo (settings.team_photo) -->
       <div class="card"><h2><span><i class="leafdot"></i>Six-Value Tally</span></h2><div class="cv" id="cv-tally"></div></div>
       <div class="card"><h2><span><i class="leafdot"></i>Team Mascot</span><span class="hint" id="cv-mascot-by"></span></h2><div id="cv-mascot"></div></div>
       <div class="card"><h2><span><i class="leafdot"></i>Add a Core Values Moment</span></h2>
@@ -500,6 +502,7 @@ function saveFill(el){
 const cap=t=>t?String(t).charAt(0).toUpperCase()+String(t).slice(1):t; /* display only: first letter capital */
 const member=n=>TEAM.find(t=>t.n===n)||{c:'#999',face:'🙂'};
 const fmt=d=>{if(!d)return 'date?';const [y,m,dd]=d.split('-'); /* Nov 15: some shares have no known date */return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]+' '+(+dd)};
+const bigPic=p=>p&&p.photo?`<figure class="bigpic"><a href="/images/${encodeURIComponent(p.photo)}" target="_blank" title="Click to see it big"><img src="/images/${encodeURIComponent(p.photo)}" alt="${escH(p.caption||'')}" loading="lazy"></a><figcaption>📷 ${fmt(p.date)} · ${escH(p.caption||'')}</figcaption></figure>`:''; /* Nov 20: settings.robot_photo / team_photo */
 const pic=m=>m.photo?`<img src="/images/${encodeURIComponent(m.photo)}" alt="${m.n}" loading="lazy">`:'';
 const av=(n,sm)=>`<span class="avatar ${sm?'sm':''}" style="background:${member(n).c};border-color:${member(n).c}" title="${n}">${pic(member(n))||n[0]}</span>`;
 function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)}
@@ -558,8 +561,9 @@ function renderGame(){
  $('g-matches').innerHTML=`<table style="margin-top:8px"><tr><th>Date</th><th>Score</th><th>Runs</th><th>What failed</th><th>What we changed</th></tr>${matches.length?'':'<tr><td colspan="5" class="hint">No matches yet. Run the robot for 2.5 minutes, count the points, and log it here — confetti guaranteed on the first one.</td></tr>'}${[...matches].sort((a,b)=>b.d.localeCompare(a.d)).map(m=>`<tr><td>${fmt(m.d)}</td><td><b>${m.s}</b></td><td>${m.r}</td><td>${m.f}</td><td class="arrow">→ <span style="color:var(--ink);font-weight:600">${m.c}</span></td></tr>`).join('')}</table>`;
 }
 function renderDesign(){
+ $('rd-robot-pic').innerHTML=bigPic(settings.robot_photo);
  $('rd-specs').innerHTML=specs.map(s=>`<div><span>${s.label}</span><br>${s.value}</div>`).join('')+`<div><span>Programs</span><br>See the <a href="#" onclick="go('coding');return false" style="color:var(--pine);font-weight:800">💻 Coding</a> page</div>`;
- $('rd-atts').innerHTML=atts.map(a=>`<div class="att"><b>${a.name}</b> <span class="tag">${a.mission}</span> <span class="hint">· Size ${a.size} · Built by ${a.by.map(b=>av(b,1)+' '+b).join(' + ')}</span><div style="font-size:12px;margin-top:4px">${a.purpose}</div>${a.photo?`<a class="att-pic" href="/images/${encodeURIComponent(a.photo)}" target="_blank" title="Click to see it big"><img src="/images/${encodeURIComponent(a.photo)}" alt="${a.name} on the mat" loading="lazy"></a>`:''}<div class="vers">${a.vers.map(v=>`<div class="ver"><div class="ph"></div>${fmt(v.d)}<br><span style="color:var(--dim)">${cap(v.n)}</span></div>`).join('')}</div></div>`).join('');
+ $('rd-atts').innerHTML=atts.map(a=>`<div class="att"><b>${a.name}</b> <span class="tag">${a.mission}</span> <span class="hint">· Size ${a.size} · Built by ${a.by.map(b=>av(b,1)+' '+b).join(' + ')}</span><div style="font-size:12px;margin-top:4px">${a.purpose}</div>${a.photo?`<a class="att-pic" href="/images/${encodeURIComponent(a.photo)}" target="_blank" title="Click to see it big"><img src="/images/${encodeURIComponent(a.photo)}" alt="${a.name} on the mat" loading="lazy"></a>`:''}<div class="vers">${a.vers.map(v=>`<div class="ver">${v.photo?`<a class="ph has" href="/images/${encodeURIComponent(v.photo)}" target="_blank" title="Click to see it big"><img src="/images/${encodeURIComponent(v.photo)}" alt="" loading="lazy"></a>`:'<div class="ph"></div>'}${fmt(v.d)}<br><span style="color:var(--dim)">${cap(v.n)}</span></div>`).join('')}</div></div>`).join('');
  $('rd-tests').innerHTML=`<table><tr><th>Date</th><th>Attachment</th><th>Result</th><th>What we saw</th><th>What we changed</th><th>Outcome</th></tr>${tests.length?'':'<tr><td colspan="6" class="hint">No test sessions logged yet. Try an attachment 10 times, count the successes, and write what you changed — judges call that ITERATE.</td></tr>'}${[...tests].sort((a,b)=>b.d.localeCompare(a.d)).map(t=>`<tr><td>${fmt(t.d)}</td><td>${t.att}</td><td><b>${t.succ}/${t.tries}</b> (${Math.round(t.succ/t.tries*100)}%)</td><td>${cap(t.obs)}</td><td class="arrow">→ <span style="color:var(--ink);font-weight:600">${t.chg}</span></td><td>${t.res}</td></tr>`).join('')}</table>`;
  $('t-att').innerHTML=atts.map(a=>`<option>${a.name}</option>`).join('');
  $('rd-trade').innerHTML=`<table><tr><th>Question</th><th>Options we weighed</th><th>We picked</th><th>Why</th></tr>${tradeoffs.map(t=>`<tr><td>${t.q}</td><td style="font-weight:500">${t.opts}</td><td>${blank(t.pick)?fill('/api/tradeoffs/'+t.id,'pick',''):`<span class="pill" style="background:var(--pine)">${t.pick}</span>`}</td><td style="font-weight:500">${blank(t.why)?fill('/api/tradeoffs/'+t.id,'why',''):t.why}</td></tr>`).join('')}</table>`;
@@ -664,6 +668,7 @@ function ganttDetail(i){const g=gantt[i];$('ip-gantt-detail').innerHTML=`<b styl
 function renderCV(){
  const contrib={};TEAM.forEach(m=>contrib[m.n]=0);entries.forEach(e=>e.who.forEach(w=>contrib[w]++));
  const fact=(i,label,key,val)=>`<span>${label}:</span> <i class="fill" contenteditable="true" spellcheck="false" data-i="${i}" data-key="${key}" onblur="saveCard(this.dataset.i,this.dataset.key,this)">${val}</i>`;
+ $('cv-team-pic').innerHTML=bigPic(settings.team_photo);
  $('cv-spot').innerHTML=TEAM.map((m,i)=>`<div class="scard"><div class="face" style="border-color:${m.ring||m.c};background:${m.ring||m.c}22">${pic(m)||m.face}</div><b>${m.n}</b><div class="role fill" contenteditable="true" spellcheck="false" onblur="saveCard(${i},'role',this)">${m.role}</div><div class="facts">${fact(i,'Fav core value','fav',m.fav)}<br>${fact(i,'Fav color','color',m.color)}<br>${fact(i,'Worked on most','most',m.most)}<br>${fact(i,'Learned','learned',m.learned)}<br>${fact(i,'Worked with most','with',m.with)}<br>${fact(i,'Notebook entries','entries',m.entries!==undefined?m.entries:contrib[m.n])}</div></div>`).join('');
  const help={};TEAM.forEach(m=>help[m.n]={g:0,r:0});moments.filter(m=>m.help).forEach(m=>{help[m.help[0]].g++;help[m.help[1]].r++});
  $('cv-help').innerHTML=`<table><tr><th>Who</th><th>Helped someone</th><th>Got help</th></tr>${TEAM.map(m=>`<tr><td>${av(m.n,1)} ${m.n}</td><td>${'🟢'.repeat(help[m.n].g)||'—'}</td><td>${'💜'.repeat(help[m.n].r)||'—'}</td></tr>`).join('')}</table><div class="hint">Tag a moment as "help" and it shows up here — both giving and getting help are Core Values wins.</div>`;

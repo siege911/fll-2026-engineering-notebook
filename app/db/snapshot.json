@@ -1,5 +1,5 @@
 {
- "written_at": "2026-11-20T04:48:35.129Z",
+ "written_at": "2026-11-20T17:40:56.737Z",
  "applied_updates": [
   {
    "file": "2026-09-28-profile-photos.sql",
@@ -216,6 +216,10 @@
   {
    "file": "2026-11-15e-no-final-v3.sql",
    "applied_at": "2026-11-15 17:51:23"
+  },
+  {
+   "file": "2026-11-20-new-photos.sql",
+   "applied_at": "2026-11-20 17:39:59"
   }
  ],
  "attachment_versions": [
@@ -420,14 +424,14 @@
    "attachment_id": 10,
    "date": "2026-11-02",
    "note": "📷 photo: one attachment does both M08 + M09",
-   "photo": null
+   "photo": "11-2-mission-8-9.jpg"
   },
   {
    "id": 30,
    "attachment_id": 12,
    "date": "2026-11-02",
    "note": "📷 photo: one attachment does both M08 + M09",
-   "photo": null
+   "photo": "11-2-mission-8-9.jpg"
   },
   {
    "id": 31,
@@ -484,6 +488,118 @@
    "date": "2026-11-13",
    "note": "worked on (Fynn)",
    "photo": null
+  },
+  {
+   "id": 39,
+   "attachment_id": 5,
+   "date": "2026-11-02",
+   "note": "📷 photo on the mat",
+   "photo": "11-2-mission-2-3.jpg"
+  },
+  {
+   "id": 40,
+   "attachment_id": 2,
+   "date": "2026-11-02",
+   "note": "📷 photo on the mat",
+   "photo": "11-2-mission-4.jpg"
+  },
+  {
+   "id": 41,
+   "attachment_id": 6,
+   "date": "2026-11-02",
+   "note": "📷 photo on the mat",
+   "photo": "11-2-mission-12.jpg"
+  },
+  {
+   "id": 42,
+   "attachment_id": 9,
+   "date": "2026-11-02",
+   "note": "📷 photo on the mat",
+   "photo": "11-2-mission-14.jpg"
+  },
+  {
+   "id": 43,
+   "attachment_id": 8,
+   "date": "2026-11-02",
+   "note": "📷 photo on the mat",
+   "photo": "11-2-mission-15.jpg"
+  },
+  {
+   "id": 44,
+   "attachment_id": 1,
+   "date": "2026-11-20",
+   "note": "📷 final-form photo (run 1)",
+   "photo": "11-20-mission-1.jpg"
+  },
+  {
+   "id": 45,
+   "attachment_id": 2,
+   "date": "2026-11-20",
+   "note": "📷 final-form photo (run 3)",
+   "photo": "11-20-mission-4-5.jpg"
+  },
+  {
+   "id": 46,
+   "attachment_id": 5,
+   "date": "2026-11-20",
+   "note": "📷 final-form photo (run 2)",
+   "photo": "11-20-mission-2-3.jpg"
+  },
+  {
+   "id": 47,
+   "attachment_id": 7,
+   "date": "2026-11-20",
+   "note": "📷 final-form photo (run 8)",
+   "photo": "11-20-mission-12b-13.jpg"
+  },
+  {
+   "id": 48,
+   "attachment_id": 8,
+   "date": "2026-11-20",
+   "note": "📷 final-form photo (run 7)",
+   "photo": "11-20-mission-15.jpg"
+  },
+  {
+   "id": 49,
+   "attachment_id": 9,
+   "date": "2026-11-20",
+   "note": "📷 final-form photo (run 5)",
+   "photo": "11-20-mission-14.jpg"
+  },
+  {
+   "id": 50,
+   "attachment_id": 10,
+   "date": "2026-11-20",
+   "note": "📷 final-form photo (run 4)",
+   "photo": "11-20-mission-8-9.jpg"
+  },
+  {
+   "id": 51,
+   "attachment_id": 11,
+   "date": "2026-11-20",
+   "note": "📷 final-form photo (run 9)",
+   "photo": "11-20-mission-6-7-11.jpg"
+  },
+  {
+   "id": 52,
+   "attachment_id": 12,
+   "date": "2026-11-20",
+   "note": "📷 final-form photo (run 4)",
+   "photo": "11-20-mission-8-9.jpg"
+  },
+  {
+   "id": 53,
+   "attachment_id": 13,
+   "date": "2026-11-20",
+   "note": "📷 final-form photo (run 9)",
+   "photo": "11-20-mission-6-7-11.jpg"
+  },
+  {
+   "id": 54,
+   "attachment_id": 14,
+   "date": "2026-11-20",
+   "note": "📷 final-form photo (run 9)",
+   "photo": "11-20-mission-6-7-11.jpg"
   }
  ],
  "attachments": [
@@ -495,17 +611,17 @@
    "built_by": "[\"Isla\"]",
    "size": "—",
    "sort_order": 1,
-   "photo": null
+   "photo": "11-20-mission-1.jpg"
   },
   {
    "id": 2,
    "name": "Lucky Leaves attachment",
-   "mission": "M04",
+   "mission": "M04 + M05",
    "purpose": "Pull the leaves out of the nest without moving the katydid (M04 Lucky Leaves)",
    "built_by": "[\"Fynn\"]",
    "size": "—",
    "sort_order": 2,
-   "photo": "11-2-mission-4.jpg"
+   "photo": "11-20-mission-4-5.jpg"
   },
   {
    "id": 3,
@@ -535,7 +651,7 @@
    "built_by": "[\"Nolan\"]",
    "size": "—",
    "sort_order": 5,
-   "photo": "11-2-mission-2-3.jpg"
+   "photo": "11-20-mission-2-3.jpg"
   },
   {
    "id": 6,
@@ -550,12 +666,12 @@
   {
    "id": 7,
    "name": "Keystone Species (mascot) attachment",
-   "mission": "M13",
+   "mission": "M13 + M12 (cane)",
    "purpose": "Carry our team mascot — the team-built keystone species — onto the restoration platform (M13 Keystone Species, \"the mascot mission\")",
    "built_by": "[\"Thea\",\"Nolan\"]",
    "size": "—",
    "sort_order": 7,
-   "photo": null
+   "photo": "11-20-mission-12b-13.jpg"
   },
   {
    "id": 8,
@@ -565,7 +681,7 @@
    "built_by": "[\"Isla\"]",
    "size": "—",
    "sort_order": 8,
-   "photo": "11-2-mission-15.jpg"
+   "photo": "11-20-mission-15.jpg"
   },
   {
    "id": 9,
@@ -575,7 +691,7 @@
    "built_by": "[\"Weston\"]",
    "size": "—",
    "sort_order": 9,
-   "photo": "11-2-mission-14.jpg"
+   "photo": "11-20-mission-14.jpg"
   },
   {
    "id": 10,
@@ -585,7 +701,7 @@
    "built_by": "[\"Nolan\"]",
    "size": "—",
    "sort_order": 10,
-   "photo": "11-2-mission-8-9.jpg"
+   "photo": "11-20-mission-8-9.jpg"
   },
   {
    "id": 11,
@@ -595,7 +711,7 @@
    "built_by": "[\"Weston\",\"Nolan\"]",
    "size": "—",
    "sort_order": 11,
-   "photo": null
+   "photo": "11-20-mission-6-7-11.jpg"
   },
   {
    "id": 12,
@@ -605,7 +721,7 @@
    "built_by": "[\"Weston\"]",
    "size": "—",
    "sort_order": 9,
-   "photo": "11-2-mission-8-9.jpg"
+   "photo": "11-20-mission-8-9.jpg"
   },
   {
    "id": 13,
@@ -615,7 +731,7 @@
    "built_by": "[\"Nolan\",\"Weston\"]",
    "size": "—",
    "sort_order": 12,
-   "photo": null
+   "photo": "11-20-mission-6-7-11.jpg"
   },
   {
    "id": 14,
@@ -625,7 +741,7 @@
    "built_by": "[\"Nolan\",\"Weston\"]",
    "size": "—",
    "sort_order": 13,
-   "photo": null
+   "photo": "11-20-mission-6-7-11.jpg"
   }
  ],
  "entries": [
@@ -2319,7 +2435,7 @@
    "no_equipment": 1,
    "difficulty": 0,
    "run_number": 3,
-   "attachment": "—",
+   "attachment": "Lucky Leaves attachment",
    "built_by": "[]",
    "programmed_by": "[\"Fynn\",\"Isla\",\"Adeline\"]",
    "reliability": 80,
@@ -3150,6 +3266,16 @@
    "key": "ip_summary",
    "value": "{\"problem\":\"There is about 300 animal strikes on I-17 so ADOT made a bridge for animals to go over. We don't know if this bridge is working or not.\",\"solution\":\"Our solution is to make a camera that can tag all the animals that are crossing the bridge. It will have a motion sensor, and AI to see what animal it is.\",\"how\":\"First, we met with Nate Reagan, then we got the Raspberry Pi and the miniature. Then we programmed the camera with AI and wired it.\"}",
    "note": "typed in the app 2026-11-18 04:18:03"
+  },
+  {
+   "key": "robot_photo",
+   "value": "{\"photo\":\"11-20-robot-base.jpg\",\"date\":\"2026-11-20\",\"caption\":\"Our three identical robot bases (built Sep 6 by Thea, Nolan, Weston)\"}",
+   "note": "update 2026-11-20"
+  },
+  {
+   "key": "team_photo",
+   "value": "{\"photo\":\"11-20-team-photo.jpg\",\"date\":\"2026-11-20\",\"caption\":\"Rooted Warriors: Adeline, Fynn, Isla, Nolan, Thea, Weston\"}",
+   "note": "update 2026-11-20"
   }
  ],
  "shares": [
@@ -3207,7 +3333,7 @@
    "worked_with_most": "",
    "notebook_entries": "",
    "sort_order": 1,
-   "photo": "profile thea.jpg",
+   "photo": "11-20-profile-thea.jpg",
    "ring_color": null
   },
   {
@@ -3222,7 +3348,7 @@
    "worked_with_most": "",
    "notebook_entries": "",
    "sort_order": 2,
-   "photo": "profile fynn.jpg",
+   "photo": "11-20-profile-fynn.jpg",
    "ring_color": "#ffd84d"
   },
   {
@@ -3237,7 +3363,7 @@
    "worked_with_most": "",
    "notebook_entries": "",
    "sort_order": 3,
-   "photo": "profile isla.jpg",
+   "photo": "11-20-profile-isla.jpg",
    "ring_color": "#ffa53d"
   },
   {
@@ -3252,7 +3378,7 @@
    "worked_with_most": "",
    "notebook_entries": "",
    "sort_order": 4,
-   "photo": "profile adeline.jpg",
+   "photo": "11-20-profile-adeline.jpg",
    "ring_color": "#f9a8d4"
   },
   {
@@ -3267,7 +3393,7 @@
    "worked_with_most": "",
    "notebook_entries": "",
    "sort_order": 5,
-   "photo": "profile nolan.jpg",
+   "photo": "11-20-profile-nolan.jpg",
    "ring_color": null
   },
   {
@@ -3282,7 +3408,7 @@
    "worked_with_most": "",
    "notebook_entries": "",
    "sort_order": 6,
-   "photo": "profile weston.jpg",
+   "photo": "11-20-profile-weston.jpg",
    "ring_color": null
   }
  ],

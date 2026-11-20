@@ -8,6 +8,24 @@ Backfilled 2026-09-06 from `../DECISIONS.md` and `../PROGRESS.md`.
 
 ---
 
+## 2026-11-20 — New photos: the robot base + every attachment (final form)
+**Sent by:** [who?] · "There is a picture of the base robot to add to Robot Design. There are updated pictures of all of the attachments for all of the missions." Originals in `../photos/`, app copies in `../app/images/11-20-*.jpg`.
+
+| Photo | Shows | Goes on (app) |
+|---|---|---|
+| `robot-base.jpg` | The **three identical robot bases** (built Sep 6 by Thea, Nolan, Weston), side by side, no attachments | Robot Design → The Main Robot |
+| `mission 1.jpg` | Run 1: M01 Drone Survey | Drone Survey attachment |
+| `mission 2-3.jpg` | Run 2: M02 + M03 | Combined 2 + 3 attachment |
+| `mission 4-5.jpg` | Run 3: M04 Lucky Leaves + M05 Reaching Roots, gray prongs at the nest | Lucky Leaves attachment (does M04 + M05) |
+| `mission 6-7-11.jpg` | Run 9: M06 + M07 + M11 | Mission 6, Mission 7, Mission 11 attachments |
+| `mission 8-9.jpg` | Run 4: M08 + M09 | Mission 8 + Mission 9 attachment (one attachment) |
+| `mission 12b-13.jpg` | Run 8: M13 Keystone Species (mascot on the robot) + M12 part 2 (cane) | Keystone Species (mascot) attachment |
+| `mission 14.jpg` | Run 5: M14 next to the brown replantation station | Mission 14 attachment |
+| `mission 15.jpg` | Run 7: M15 Biocentric Architecture | Mission 15 attachment |
+| `mission 12a.jpg` | **Same file as `mission 14.jpg`** (a mix-up) | not used: Mission 12 attachment keeps its Nov 2 photo. [unclear: real 12a photo] |
+
+The Nov 2 photos are kept and still show in each attachment's "versions" row (Attachments Over Time).
+
 ## 2026-11-15 — Robot code: mission menu (Adeline) + fine-tuning (Fynn) = Final v2
 - **Nov 3:** all programs saved as Final v1. **Adeline** built the mission menu (`main_base.py`) and `robot.py` (ports + wheels set up once; every mission file now has a `run()`). Tested **Nov 9**.
 - **Nov 9 + Nov 13:** **Fynn** fine-tuned the code for all the missions, saved in **Final v2** with the menu (the latest code on the hub, backed up Nov 15) (new M02 + M03 path, smaller M15 arm moves, M01 distances, fixed two bugs in the M06 + M07 ending).

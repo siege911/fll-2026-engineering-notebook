@@ -8,6 +8,27 @@ One entry per practice, **newest at top**. This is the raw material for the team
 
 ---
 
+## 2026-11-20 (Friday) — New photos: robot base, every run's attachment, team photo, profile pictures (not a practice)
+**Told by:** [who?] (sent 2026-11-20, the day before Regionals)
+
+**Raw update (their words):**
+> I added a folder called "photos" these are updates to all of the pictures. There is a picture of the base robot to add to Robot Design. There are updated pictures of all of the attachments for all of the missions. We also added a Team picture and updated each of the student pictures.
+
+**What happened**
+- Robot Design: first photo of **the robot base**: all **three identical bases** side by side (`robot-base.jpg`). Now on the Robot Design page under The Main Robot.
+- Robot Design: new photo of each attachment on the mat, **one photo per run**, named like the Final v2 programs: mission 1, 2-3, 4-5, 6-7-11, 8-9, 12a, 12b-13, 14, 15. These are the final-form attachments (after Fynn's fine-tuning Nov 9 + 13).
+- Core Values / Team: new **team photo** (all six in the purple Rooted Warriors shirts, Arizona flag behind) and a **new profile picture of each student** (Adeline, Fynn, Isla, Nolan, Thea, Weston).
+- Originals stay in `photos/`; the app uses smaller copies in `app/images/` named `11-20-…`. The old photos are kept too.
+
+**Problems / open questions**
+- **`mission 12a.jpg` is the exact same picture as `mission 14.jpg`** (same file, shows the M14 replantation station). So the Mission 12 (part 1, support tie) attachment keeps its Nov 2 photo until the right 12a picture is added. [unclear: real 12a photo]
+- [unclear: the photo for 14 is run 5 (M10 + M14); M10 has no attachment of its own in the app.]
+
+**App changes made:** `app/db/updates/2026-11-20-new-photos.sql` (robot base photo, team photo, new profile pictures, new attachment photos + a dated "📷" version on each attachment). Page: robot photo on The Main Robot, team photo on Team Profile, attachment versions now show their photo.
+**Rubric rows touched:** Robot Design COMMUNICATE (clear pictures of the robot and every attachment), Core Values Team Spotlight (team photo).
+
+---
+
 ## 2026-11-15 (Sunday) — Robot code: Final v1 and Final v2 added to the code folder (not a practice)
 **Told by:** Coach CJ (sent 2026-11-15)
 
