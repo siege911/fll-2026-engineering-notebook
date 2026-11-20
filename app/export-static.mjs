@@ -31,8 +31,12 @@ try {
   const saved = new Date().toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' });
   const baked = JSON.stringify({ data, files, saved }).replace(/</g, '\\u003c');
 
-  fs.rmSync(OUT, { recursive: true, force: true });
-  fs.mkdirSync(OUT, { recursive: true });
+  // Overwrite in place and only remove what's gone: deleting and re-making folders makes OneDrive save "site 2" copies (Nov 19).
+  const keep = new Set(['index.html', 'robots.txt', 'images', ...fs.readdirSync(path.join(APP, 'public'))]);
+  const pics = new Set(fs.readdirSync(path.join(APP, 'images')));
+  fs.mkdirSync(path.join(OUT, 'images'), { recursive: true });
+  for (const f of fs.readdirSync(OUT)) if (!keep.has(f)) fs.rmSync(path.join(OUT, f), { recursive: true, force: true });
+  for (const f of fs.readdirSync(path.join(OUT, 'images'))) if (!pics.has(f) || f.startsWith('.')) fs.rmSync(path.join(OUT, 'images', f), { recursive: true, force: true });
   let html = fs.readFileSync(path.join(APP, 'public', 'index.html'), 'utf8');
   html = html.replace('<head>', '<head>\n<meta name="robots" content="noindex, nofollow">');
   const at = html.indexOf('<script>');
