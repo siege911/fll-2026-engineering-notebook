@@ -12,6 +12,28 @@ Format:
 
 Backfilled 2026-09-06 from `../DECISIONS.md`, `../PROGRESS.md`, and `../mockups/GALLERY.md`.
 
+## 2026-11-19 — View-only website copy for Regionals (`site/`)
+- **Files:** `app/export-static.mjs` (new), `app/package.json` (`npm run export`), `app/public/index.html`, `site/` (generated), `.claude/launch.json` (`site-preview`)
+- **What:** `npm run export` (from `app/`) builds `site/`: the app page with all the database data and the shared code files / install guides baked in (`window.VIEW_ONLY`), plus `logo.png` and `images/`. In that copy nothing can be typed or saved: forms and "Tap to fill in" blanks are hidden, status menus and rubric buttons are locked, and the sidebar says "👀 View-only copy · saved <date>". It also tells search engines not to list it. The laptop app works exactly as before. The database is only read.
+- **Why / who asked:** CJ, to put the notebook online (free static hosting from GitHub) for the competition without touching the database.
+- **Remember:** the online copy only changes when someone runs `npm run export` and pushes `site/`.
+
+## 2026-11-17 — Innovation Project + Robot Design follow the judging script; new Temporary page
+- **File:** `app/public/index.html`
+- **What:** Cards reordered so scrolling down the page matches the script (`presentation/2026-11-17-judging-script.md`), top to bottom.
+  - Innovation Project: The Problem (Isla) → Experts & Their Feedback, Research Collection, Project Plan (Gantt) (Adeline) → Our Solution, Project Photos (Thea) → Camera Wiring Diagram, The Code & How to Install It, Communication (Nolan) → How We Got Here (Weston) → Innovation Project Details: Parts We Ordered. The Problem / Our Solution / How We Got Here strip was split into three separate cards so each sits where its speaker talks.
+  - Robot Design: The Main Robot, Tradeoff Decisions (Isla) → Attachments Over Time (Weston) → Test Sessions (Fynn). Tradeoffs moved up from the bottom.
+  - New **Temporary** page (last in the sidebar): cards taken off a page go here instead of being deleted. The 8-Step Progress card is back, on this page.
+- **Later:** The Main Robot card made full width, like the other Robot Design cards (student request).
+- **Later:** Robot Design also shows **live copies** of the script's cards from other pages (originals stay where they were): Run Plan & Time Check (Robot Game) and Who's Been Doing What (Dashboard) after Tradeoff Decisions, Our Robot Code (Coding) at the bottom. Page order now: The Main Robot → Tradeoff Decisions → Run Plan → Who's Been Doing What → Attachments Over Time → Test Sessions → Our Robot Code. Built with `data-mirror` + `setupMirrors()`; `rcShow` opens the program on the page you're looking at. Tap-to-fill blanks in the copies save normally.
+- **Nothing deleted.** Cards the script shows from other pages (Run Plan on Robot Game, Who's Been Doing What on Dashboard, Our Robot Code on Coding) stayed where they were.
+- **Why / who asked:** A student [who?]: "so we can scroll from top to bottom on our script and it matches."
+
+## 2026-11-17 — Innovation Project: Experts card moved up
+- **File:** `app/public/index.html` (`#page-ip`)
+- **What:** The Experts & Their Feedback card (Nate Ragan) now sits right under the first box (The Problem / Our Solution / How We Got Here), above Research Collection. It used to be after 8-Step Progress. Then the Project Plan (Gantt) card moved right under Experts, so the order is now: first box → Experts → Gantt → Research Collection → 8-Step Progress → Communication. Last, the **8-Step Progress card was removed** (the page skips it when it's missing; step data still in the database). See DECISIONS.md. Then the **Camera Wiring Diagram** card moved up from Innovation Project Details to right under the Gantt chart (above Research Collection), and **The Code & How to Install It** card moved right under the wiring.
+- **Why / who asked:** A student [who?] wanted Nate Ragan's box higher up the page.
+
 ## 2026-11-15 — Coding page: "Final" code folders
 - **Files:** `app/robotcode.mjs`, `app/public/index.html`; data `app/db/updates/2026-11-15d-final-code.sql`; folder `code/Final v1` → `code/Final v1 - Nov 3`
 - **What:** Our Robot Code now reads folders named `<name> - Mon D` (e.g. `Final v2 - Nov 9`) and shows the name under the date. A loose `.py` beats a zip copy of the same name in one folder. Mission numbers read from names like `mission12a.py` / `mission13_12b.py`. A new program that grew out of an old one (`mission4.py` → `mission4_5.py`) shows "grew from …" and its first version shows what changed from the old one. Files with no mission number (`main_base.py`, `robot.py`) show their first comment line. Each version shows who made it (`robot_code_who`). Data: Fynn in "Coded by" for 11 missions, Adeline's mission menu in Programs We've Written, notebook entries Nov 3 / 9 / 13.

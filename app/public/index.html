@@ -240,6 +240,12 @@
   footer{margin-top:22px;font-size:11px;color:var(--dim);text-align:center;font-weight:600}
   .hint{font-size:11px;color:var(--dim);font-weight:600;margin-top:6px}
   @media(max-width:760px){body{flex-direction:column}aside{width:100%;height:auto;position:static;flex-direction:row;flex-wrap:wrap;gap:4px}.crest{width:100%}.countdown{margin-top:0;width:100%}.navlink{width:auto}}
+  /* view-only copy (npm run export → ../site/) */
+  .viewonly .fill{cursor:default;border-bottom-color:transparent!important;background:none!important}
+  .viewonly .fill:empty::before{content:'—';color:var(--dim);font-style:normal}
+  .viewonly .lvl,.viewonly [onclick^="setStep"]{pointer-events:none}
+  .viewonly select:disabled,.viewonly input:disabled{opacity:1}
+  .viewbadge{margin-top:8px;font-size:11px;font-weight:800;color:#d9c6ee;text-align:center;line-height:1.4}
 </style>
 </head>
 <body>
@@ -256,6 +262,7 @@
   <button class="navlink" data-page="cv"><span class="ico">🤝</span> Core Values</button>
   <button class="navlink" data-page="log"><span class="ico">📓</span> Daily Log</button>
   <button class="navlink" data-page="rubric"><span class="ico">📋</span> Rubric Check</button>
+  <button class="navlink" data-page="temp"><span class="ico">🗃️</span> Temporary</button>
   <div class="countdown"><div class="num" id="cd-num">–</div><div class="lbl" id="cd-lbl"></div></div>
 </aside>
 
@@ -301,8 +308,11 @@
   <section class="page" id="page-design">
     <div class="pagehead"><h1>Robot Design<small>The main robot · attachments · testing · tradeoffs</small></h1><span class="chip">IDENTIFY → DESIGN → CREATE → ITERATE → COMMUNICATE</span></div>
     <div class="grid">
-      <div class="card"><h2><span><i class="leafdot"></i>The Main Robot</span></h2>
+      <div class="card wide"><h2><span><i class="leafdot"></i>The Main Robot</span></h2>
         <div class="spec" id="rd-specs"></div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>Tradeoff Decisions</span></h2><div id="rd-trade"></div></div> <!-- Isla (moved up to follow the judging script, Nov 17) -->
+      <div class="card wide"><h2><span><i class="leafdot"></i>Run Plan &amp; Time Check</span><span class="hint">Same as the Robot Game page</span></h2><div data-mirror="g-runplan"></div></div> <!-- Isla: live copy of the card on another page (Nov 17) -->
+      <div class="card wide"><h2><span><i class="leafdot"></i>Who's Been Doing What</span><span class="hint">Same as the Dashboard</span></h2><div data-mirror="d-balance"></div></div> <!-- Adeline: live copy of the card on another page (Nov 17) -->
       <div class="card wide"><h2><span><i class="leafdot"></i>Attachments Over Time</span><span class="hint">Every version gets a picture — click a version in the real app to see it big</span></h2><div class="grid" id="rd-atts"></div></div>
       <div class="card wide"><h2><span><i class="leafdot"></i>Test Sessions — Observation → Change → Result</span></h2><div id="rd-tests"></div>
         <div class="form" style="margin-top:12px">
@@ -314,7 +324,7 @@
           <label class="full">What we changed<input id="t-chg" placeholder="Added a rubber tip"></label>
           <button class="btn full" onclick="addTest()">🔬 Save test session</button>
         </div></div>
-      <div class="card wide"><h2><span><i class="leafdot"></i>Tradeoff Decisions</span></h2><div id="rd-trade"></div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>Our Robot Code</span><span class="hint">Same as the Coding page · every change to our programs</span></h2><div data-mirror="rc"></div></div> <!-- Thea: live copy of the card on another page (Nov 17) -->
     </div>
   </section>
 
@@ -336,11 +346,9 @@
   <section class="page" id="page-ip">
     <div class="pagehead"><h1>Innovation Project<small>Problem · Solution · How we got here</small></h1></div>
     <div class="grid">
-      <div class="card wide" style="background:linear-gradient(100deg,#fff,#f2ecfa)"><div class="grid">
-        <div><h2><span><i class="leafdot"></i>The Problem</span></h2><div class="ipbox" id="ip-problem"></div></div>
-        <div><h2><span><i class="leafdot"></i>Our Solution</span></h2><div class="ipbox" id="ip-solution"></div></div>
-        <div><h2><span><i class="leafdot"></i>How We Got Here</span></h2><div class="ipbox" id="ip-how"></div></div>
-      </div></div>
+      <!-- Card order follows the judging script (Nov 17): Isla, Adeline, Thea, Nolan, Weston, Fynn. 8-Step Progress is on the Temporary page. -->
+      <div class="card wide" style="background:linear-gradient(100deg,#fff,#f2ecfa)"><h2><span><i class="leafdot"></i>The Problem</span></h2><div class="ipbox" id="ip-problem"></div></div> <!-- Isla -->
+      <div class="card wide"><h2><span><i class="leafdot"></i>Experts &amp; Their Feedback</span></h2><div id="ip-experts"></div></div> <!-- Adeline -->
       <div class="card wide"><h2><span><i class="leafdot"></i>Research Collection</span></h2><div id="ip-research"></div></div>
       <div class="card wide"><h2><span><i class="leafdot"></i>Project Plan (Gantt)</span><span class="hint">Colors = who owns it · click a bar to see its iterations</span></h2><div class="months"><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span></div><div class="gantt" id="ip-gantt"></div><div id="ip-gantt-detail" class="hint" style="margin-top:10px"></div>
         <div class="form" style="margin-top:14px">
@@ -350,8 +358,10 @@
           <label>Ends<select id="g-e"><option value="0.5">Mid Aug</option><option value="1">End of Aug</option><option value="1.5">Mid Sep</option><option value="2">End of Sep</option><option value="2.5">Mid Oct</option><option value="3">End of Oct</option><option value="3.5">Mid Nov</option><option value="4">End of Nov</option></select></label>
           <button class="btn" onclick="addGantt()">📅 Add to plan</button>
         </div></div>
-      <div class="card wide"><h2><span><i class="leafdot"></i>8-Step Progress</span><span class="hint">👆 Click the step we're working on now</span></h2><div class="steps" id="ip-steps"></div></div>
-      <div class="card wide"><h2><span><i class="leafdot"></i>Experts &amp; Their Feedback</span></h2><div id="ip-experts"></div></div>
+      <div class="card wide" style="background:linear-gradient(100deg,#fff,#f2ecfa)"><h2><span><i class="leafdot"></i>Our Solution</span></h2><div class="ipbox" id="ip-solution"></div></div> <!-- Thea -->
+      <div class="card wide"><h2><span><i class="leafdot"></i>Project Photos</span><span class="hint">Click a photo to see it big</span></h2><div class="ipphotos" id="ip-photos"></div></div> <!-- Nov 2: soldering photos -->
+      <div class="card wide"><h2><span><i class="leafdot"></i>Camera Wiring Diagram</span><span class="hint">Everything runs on 3.3 V · dashed = optional · hover a pin to see why</span></h2><div id="ipd-wiring"></div></div> <!-- Nolan -->
+      <div class="card wide"><h2><span><i class="leafdot"></i>The Code &amp; How to Install It</span><span class="hint">👆 Click a computer to open its code and install steps</span></h2><div id="ipd-code"></div></div>
       <div class="card wide"><h2><span><i class="leafdot"></i>Communication</span><span class="hint">Every time we shared our project: who we told, what they said, what we changed</span></h2> <!-- Thea, Oct 26 -->
         <div id="ip-shares"></div>
         <div class="form" style="margin-top:14px">
@@ -362,12 +372,19 @@
           <label class="full">What we changed because of it<input id="sh-chg" placeholder="Leave blank if nothing yet"></label>
           <button class="btn full" onclick="addShare()">📣 Save</button>
         </div></div>
-      <div class="card wide"><h2><span><i class="leafdot"></i>Project Photos</span><span class="hint">Click a photo to see it big</span></h2><div class="ipphotos" id="ip-photos"></div></div> <!-- Nov 2: soldering photos -->
+      <div class="card wide" style="background:linear-gradient(100deg,#fff,#f2ecfa)"><h2><span><i class="leafdot"></i>How We Got Here</span></h2><div class="ipbox" id="ip-how"></div></div> <!-- Weston -->
       <!-- Innovation Project Details (Coach CJ, Nov 2): parts, wiring, and the code + install guide for each computer -->
       <div class="pagehead wide ipd-head"><h1>Innovation Project Details<small>Parts · wiring · the code on each computer · how to install it</small></h1></div>
       <div class="card wide"><h2><span><i class="leafdot"></i>Parts We Ordered</span><span class="hint" id="ipd-parts-sum"></span></h2><div id="ipd-parts"></div></div>
-      <div class="card wide"><h2><span><i class="leafdot"></i>Camera Wiring Diagram</span><span class="hint">Everything runs on 3.3 V · dashed = optional · hover a pin to see why</span></h2><div id="ipd-wiring"></div></div>
-      <div class="card wide"><h2><span><i class="leafdot"></i>The Code &amp; How to Install It</span><span class="hint">👆 Click a computer to open its code and install steps</span></h2><div id="ipd-code"></div></div>
+    </div>
+  </section>
+
+  <!-- ================= TEMPORARY (Nov 17) ================= -->
+  <!-- Cards taken off a page live here instead of being deleted, so they can be put back. -->
+  <section class="page" id="page-temp">
+    <div class="pagehead"><h1>Temporary<small>Cards we took off a page · kept here in case we want them back</small></h1></div>
+    <div class="grid">
+      <div class="card wide"><h2><span><i class="leafdot"></i>8-Step Progress</span><span class="hint">From the Innovation Project page (off Nov 17) · 👆 Click the step we're working on now</span></h2><div class="steps" id="ip-steps"></div></div>
     </div>
   </section>
 
@@ -445,7 +462,11 @@ const CVALS=['Teamwork','Discovery','Fun','Innovation','Inclusion','Impact'];
 const STATUSES=['Not started','Prototyping','Working','Reliable','Competition-ready'];
 let TEAM=[],missions=[],EXTRAS=[],runs=[],matches=[],rubric=[],entries=[],moments=[],tests=[],atts=[],tradeoffs=[],programs=[],specs=[],
     ipSteps=[],gantt=[],research=[],experts=[],shares=[],ipPhotos=[],quotes=[],settings={},ipNow=null,ipParts=[],ipWiring=[],ipPlatforms=[],robotCode={dates:[],labels:{},programs:[]};
+/* View-only copy (Nov 19, CJ): `npm run export` builds ../site/ with the data baked in as window.VIEW_ONLY = {data, files, saved}.
+   Then nothing can be typed or saved, and the page never calls the server. The laptop app (no VIEW_ONLY) works as before. */
+const VIEW=window.VIEW_ONLY||null;
 async function api(method,url,body){
+ if(VIEW){if(method==='GET'&&url==='/api/data')return VIEW.data;throw new Error('this is the view-only copy')}
  const r=await fetch(url,{method,headers:{'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined});
  if(!r.ok)throw new Error((await r.json().catch(()=>({}))).error||r.statusText);return r.json()}
 async function load(){
@@ -455,7 +476,7 @@ async function load(){
  ipParts=d.ip_parts||[];ipWiring=d.ip_wiring||[];ipPlatforms=d.ip_platforms||[];robotCode=d.robot_code||{dates:[],labels:{},programs:[]}; /* || []: an older server (before Nov 2) doesn't send these */
  quotes=d.quotes.length?d.quotes:[{q:'Your proudest moment goes here.',by:'—'}];settings=d.settings;
  ipNow=(settings.ip_progress||{}).now??null;
- renderAll()}
+ renderAll();setupMirrors()}
 /* Saves, then reloads everything from the database so every page shows what's really stored. */
 async function save(method,url,body,okMsg){
  try{await api(method,url,body);if(okMsg)toast(okMsg);await load();return true}
@@ -546,7 +567,7 @@ function renderDesign(){
 function renderIP(){
  const ip=settings.ip_summary||{};
  Object.entries(IP_BOX).forEach(([k,ph])=>ipBox(k,ip[k]||'',ph,false));
- $('ip-steps').innerHTML=ipSteps.map((s,i)=>{const done=ipNow!=null&&i<ipNow,now=i===ipNow;return `<div class="step ${done?'done':now?'now':''}" onclick="setStep(${i})" title="Click: we're working on this step now"><span class="n">${done?'✅':i+1}</span>${s}</div>`}).join('');
+ if($('ip-steps'))$('ip-steps').innerHTML=ipSteps.map((s,i)=>{const done=ipNow!=null&&i<ipNow,now=i===ipNow;return `<div class="step ${done?'done':now?'now':''}" onclick="setStep(${i})" title="Click: we're working on this step now"><span class="n">${done?'✅':i+1}</span>${s}</div>`}).join('');
  $('g-who').innerHTML=[...TEAM.map(m=>m.n),'Whole team'].map(n=>`<option>${n}</option>`).join('');
  $('ip-gantt-detail').innerHTML=gantt.length?'👆 Click a bar':'Nothing in the plan yet. Add your first task below: what needs to happen before the tournament, and who owns it?';
  $('ip-gantt').innerHTML=gantt.map((g,i)=>`<div>${av(g.who,1)} ${g.task}</div><div class="lane"><div class="gbar" style="left:${g.s/4*100}%;width:${(g.e-g.s)/4*100}%;background:${member(g.who).c}" onclick="ganttDetail(${i})" title="${g.who}">${(g.e-g.s)>=g.who.length*0.045?g.who:''}</div></div>`).join('');
@@ -588,8 +609,10 @@ function renderIPDetails(){
 function ipdShow(id){const d=$('ipd-'+id);d.open=true;d.scrollIntoView({behavior:'smooth',block:'start'})}
 /* Opens a guide or code file the first time it's clicked. The server reads the real file, so it's always the latest version. */
 async function ipdOpen(el){if(!el.open||el.dataset.done)return;el.dataset.done=1;const box=el.querySelector('.ipd-body'),url='/api/file?path='+encodeURIComponent(el.dataset.path);
- try{const r=await fetch(url);if(!r.ok)throw new Error(r.status===404?'the file is missing':(await r.json().catch(()=>({}))).error||r.statusText);const t=await r.text();
-  box.innerHTML=el.dataset.kind==='doc'?`<div class="md">${md(t)}</div>`:`<div class="codebar"><span>${t.split('\n').length} lines</span><button class="btn sm ghost" onclick="copyCode(this)">📋 Copy</button><a class="btn sm ghost" href="${url}" target="_blank" rel="noopener">Open by itself ↗</a></div><pre class="code">${escH(t)}</pre>`}
+ try{let t;if(VIEW){t=VIEW.files[el.dataset.path];if(t==null)throw new Error('the file is missing')}
+  else{const r=await fetch(url);if(!r.ok)throw new Error(r.status===404?'the file is missing':(await r.json().catch(()=>({}))).error||r.statusText);t=await r.text()}
+  const href=VIEW?URL.createObjectURL(new Blob([t],{type:'text/plain;charset=utf-8'})):url;
+  box.innerHTML=el.dataset.kind==='doc'?`<div class="md">${md(t)}</div>`:`<div class="codebar"><span>${t.split('\n').length} lines</span><button class="btn sm ghost" onclick="copyCode(this)">📋 Copy</button><a class="btn sm ghost" href="${href}" target="_blank" rel="noopener">Open by itself ↗</a></div><pre class="code">${escH(t)}</pre>`}
  catch(e){el.dataset.done='';box.innerHTML=`<p class="hint">⚠️ Couldn't open it: ${escH(e.message)}</p>`}}
 async function copyCode(b){try{await navigator.clipboard.writeText(b.closest('.ipd-body').querySelector('pre').textContent);toast('📋 Copied')}catch(e){toast('⚠️ Couldn\'t copy. Use "Open by itself" instead')}}
 /* Tiny markdown reader for the install guides: headings, lists, tables, code blocks, quotes, **bold**, `code`, links. */
@@ -722,7 +745,7 @@ function renderRobotCode(){
    <div class="ipd-body"><div class="codebar"><span>${v.code.split('\n').length} lines${dif?` · green = added, red = taken out${j?'':` (compared with ${escH(p.from)})`}`:''}</span><button class="btn sm ghost" onclick="rcCopy(${i},${j})">📋 Copy</button></div><pre class="code">${(dif||v.code.split('\n').map(s=>({t:'',s}))).map(l=>`<span class="ln ${l.t}"><i>${l.t==='a'?'+':l.t==='d'?'−':''}</i>${escH(l.s)||' '}</span>`).join('')}</pre></div></details>`}).join('');
  $('rc').innerHTML=grid+ask+P.map((p,i)=>`<details class="rc" id="rc-${i}"><summary>💻 ${label(p)}${grew(p)} · ${name(p)} ${coders(p).map(n=>av(n,1)).join('')} <span class="hint">${p.versions.length} version${p.versions.length>1?'s':''} · first saved ${fmt(p.seen[0].d)} · last changed ${fmt(p.versions[p.versions.length-1].d)}</span></summary><div class="rc-body">${vers(p,i)}</div></details>`).join('');
 }
-function rcShow(i){const d=$('rc-'+i);d.open=true;d.scrollIntoView({behavior:'smooth',block:'start'})}
+function rcShow(i){const d=document.querySelector('.page.active #rc-'+i+', .page.active #m-rc-'+i)||$('rc-'+i);d.open=true;d.scrollIntoView({behavior:'smooth',block:'start'})}
 async function rcCopy(i,j){try{await navigator.clipboard.writeText(robotCode.programs[i].versions[j].code);toast('📋 Copied')}catch(e){toast('⚠️ Couldn\'t copy')}}
 /* Line-by-line "what changed" between two versions: [{t:''|'a'|'d', s}] (a = added, d = taken out).
    Nov 15: indenting a line (e.g. moving code into run()) doesn't count as a change. */
@@ -733,6 +756,10 @@ function lineDiff(a,b){
  while(i<A.length&&j<B.length){if(At[i]===Bt[j]){out.push({t:'',s:B[j]});i++;j++}else if(L[i+1][j]>=L[i][j+1])out.push({t:'d',s:A[i++]});else out.push({t:'a',s:B[j++]})}
  while(i<A.length)out.push({t:'d',s:A[i++]});while(j<B.length)out.push({t:'a',s:B[j++]});
  return out}
+/* Live copies (Nov 17): a <div data-mirror="id"> shows the same thing as the card with that id on another page, so Robot Design can follow the judging script without moving cards. */
+let mirrorsOn=false;
+function setupMirrors(){if(mirrorsOn)return;mirrorsOn=true;document.querySelectorAll('[data-mirror]').forEach(m=>{const src=$(m.dataset.mirror);if(!src)return;
+ const copy=()=>{m.innerHTML=src.innerHTML.replace(/id="rc-/g,'id="m-rc-')};copy();new MutationObserver(copy).observe(src,{childList:true,subtree:true,characterData:true})})}
 function renderAll(){renderDash();renderGame();renderDesign();renderCoding();renderIP();renderCV();renderLog();renderRubric()}
 
 /* ===================== ACTIONS (each one saves to the database) ===================== */
@@ -752,8 +779,19 @@ async function addEntry(){const t=$('e-text').value.trim(),who=picked('e-who');i
 /* profile cards: tap a field, type, tap away → saved */
 function saveCard(i,key,el){const v=el.textContent.trim(),m=TEAM[i];if((m[key]||'')===v)return;save('PATCH','/api/team/'+encodeURIComponent(m.n),{[key]:v},`💾 Saved on ${m.n}'s card`)}
 
+/* View-only copy: turn off every way to type or save, after every redraw (filters and tabs redraw parts of the page). */
+function lockView(){
+ document.querySelectorAll('[contenteditable="true"]').forEach(el=>{el.contentEditable='false';el.removeAttribute('onblur')});
+ document.querySelectorAll('main select[onchange],main input[type=range]').forEach(el=>el.disabled=true);
+ document.querySelectorAll('main .form').forEach(f=>{const c=f.closest('.card');
+  if(c&&[...c.children].every(k=>k===f||k.tagName==='H2'))c.style.display='none';else f.style.display='none'});
+ document.querySelectorAll('button[onclick^="ipBox"]').forEach(b=>b.style.display='none')}
+if(VIEW){document.body.classList.add('viewonly');
+ document.querySelector('aside .crest').insertAdjacentHTML('beforeend',`<div class="viewbadge">👀 View-only copy<br>saved ${VIEW.saved}</div>`);
+ let queued=false;new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;lockView()})}).observe(document.querySelector('main'),{childList:true,subtree:true})}
+
 /* ===================== INIT ===================== */
-load().then(()=>{
+load().then(()=>{if(VIEW)lockView();
  whoPicker('e-who',TEAM.map(t=>t.n),true);whoPicker('cvm-who',TEAM.map(t=>t.n),true);whoPicker('e-cv',CVALS,false);
  const tour=settings.tournament||{};if(tour.date){const days=Math.max(0,Math.round((new Date(tour.date)-new Date(TODAY))/864e5));$('cd-num').textContent=days;$('cd-lbl').innerHTML=`days to ${tour.name}<br>${fmt(tour.date)}`}
 }).catch(e=>{console.error(e);document.querySelector('main').insertAdjacentHTML('afterbegin','<div class="card" style="margin-bottom:14px;border:2px solid var(--lavender)"><b>Can\'t reach the team database.</b> Start the app with <code>npm run dev</code> in the app folder, then open <a href="http://localhost:8787">http://localhost:8787</a>.</div>')});

@@ -1,5 +1,5 @@
 {
- "written_at": "2026-11-15T17:51:23.365Z",
+ "written_at": "2026-11-20T04:40:54.532Z",
  "applied_updates": [
   {
    "file": "2026-09-28-profile-photos.sql",
@@ -3145,6 +3145,11 @@
    "key": "robot_code_who",
    "value": "{\"2026-11-09\":[\"Adeline\",\"Fynn\"]}",
    "note": "Coding page: who made each saved version of the code, by code-folder date (Nov 15)"
+  },
+  {
+   "key": "ip_summary",
+   "value": "{\"problem\":\"There is about 300 animal strikes on I-17 so ADOT made a bridge for animals to go over. We don't know if this bridge is working or not.\",\"solution\":\"Our solution is to make a camera that can tag all the animals that are crossing the bridge. It will have a motion sensor, and AI to see what animal it is.\",\"how\":\"First, we met with Nate Reagan, then we got the Raspberry Pi and the miniature. Then we programmed the camera with AI and wired it.\"}",
+   "note": "typed in the app 2026-11-18 04:18:03"
   }
  ],
  "shares": [
@@ -3370,7 +3375,7 @@
    "date": "2026-09-04",
    "question": "One attachment for Missions 2 + 3, or two separate ones?",
    "options": "Adeline's Mission 2 attachment vs Nolan's combined 2 + 3 attachment",
-   "pick": "Not decided yet",
+   "pick": "Mission 2-3 connected",
    "why": "Test both, then pick — and write down why. That's exactly what judges want to see.",
    "sort_order": 6
   }

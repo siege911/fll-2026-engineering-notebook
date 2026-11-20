@@ -11,6 +11,14 @@ npm run dev          # → http://localhost:8787
 From Claude Code: start the `rooted-warriors` server in `../.claude/launch.json`.
 To open it from a tablet on the same Wi-Fi: `HOST=0.0.0.0 npm run dev`, then go to `http://<this-computer's-IP>:8787`. There is no PIN yet, so only do this on the team's own network.
 
+## Online view-only copy (Nov 19)
+
+```
+npm run export       # → ../site/  (page + all data baked in, images, logo)
+```
+
+`site/` is a plain static website: no server, no database, nothing can be saved. It's hosted from GitHub as a static site (publish folder `site`). Run the export after every update and push `site/`, or the online copy stays at the old data. Preview it locally with the `site-preview` server in `../.claude/launch.json` (http://localhost:8790).
+
 ## What's where
 
 | Path | What it is |

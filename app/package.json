@@ -4,12 +4,15 @@
   "private": true,
   "description": "Rooted Warriors FLL season app — local dev server + SQLite database. No dependencies (Node 22+).",
   "type": "module",
-  "engines": { "node": ">=22.13" },
+  "engines": {
+    "node": ">=22.13"
+  },
   "scripts": {
     "dev": "node --disable-warning=ExperimentalWarning server.mjs",
     "db:apply": "node --disable-warning=ExperimentalWarning db/db.mjs apply",
     "db:snapshot": "node --disable-warning=ExperimentalWarning db/db.mjs snapshot",
     "db:sql": "node --disable-warning=ExperimentalWarning db/db.mjs sql",
-    "db:reset": "node --disable-warning=ExperimentalWarning db/db.mjs reset"
+    "db:reset": "node --disable-warning=ExperimentalWarning db/db.mjs reset",
+    "export": "node --disable-warning=ExperimentalWarning export-static.mjs"
   }
 }

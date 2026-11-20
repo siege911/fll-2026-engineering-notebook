@@ -4,6 +4,32 @@ Newest at top. Capture-field and design decisions come from the students; archit
 
 ---
 
+## 2026-11-19 — Online copy is view-only, data baked in (CJ)
+
+- For the competition the notebook goes online as a **view-only copy**: `site/`, built by `npm run export` from `app/`, hosted free as a static site from the GitHub repo (Render static site, publish folder `site`).
+- All the database data is written into the page itself. The online copy has no database and no server, so nobody online can change anything, and it never sleeps.
+- The laptop app and its database stay as they are; students keep typing there. The online copy is refreshed by running the export again and pushing.
+- Still no password on the online copy (the team-password plan in `droplet/INSTALL.md` isn't built). Only share the link with judges. Search engines are told not to list it.
+
+---
+
+## 2026-11-17 — App pages follow the judging script; Temporary page instead of deleting (student [who?])
+
+- The Innovation Project and Robot Design pages now go in the same order as our judging script (saved as `presentation/2026-11-17-judging-script.md`), so the judges can scroll while we talk.
+- Rule from now on: **we don't delete cards.** A card we take off a page moves to the new **Temporary** page, so it can be put back. The 8-Step Progress card lives there now.
+- This replaces the card order written in the entry below.
+- Robot Design also shows copies of the three script cards that live on other pages (Run Plan, Who's Been Doing What, Our Robot Code), in script order. The originals stay on their own pages.
+
+---
+
+## 2026-11-17 — Innovation Project page: new card order, 8-Step Progress removed (student [who?])
+
+- Nate Ragan's box (Experts & Their Feedback) moved right under the first box, and the Project Plan (Gantt) right under it. Order now: Problem / Solution / How We Got Here → Experts → Gantt → Camera Wiring Diagram → The Code & How to Install It → Research Collection → Communication → Project Photos → Details (Parts We Ordered). The wiring and code cards moved up out of the Details section.
+- **8-Step Progress card taken off the page** at the student's request. The step list and "where we are" are still saved, so it can come back.
+- Why: [who? / why not given]. A judge may still ask how we followed the design process; the Gantt chart and "How We Got Here" show our steps.
+
+---
+
 ## 2026-11-15 — One menu program for competition (Adeline, Final v2)
 
 The robot now runs **one program, `main_base.py`, with a mission menu**, instead of picking a separate program for each run. Missions that run together are joined into one file (M04 + M05, M08 + M09, M06 + M07 + M11; M12 is split into part a, the support tie, and part b, the cane, run with M13). The menu order (1–9) is the run plan. Ports and wheels are set once in `robot.py`. Built by Adeline (Nov 3), tested Nov 9, fine-tuned by Fynn (Nov 9 + Nov 13). Told by Coach CJ.

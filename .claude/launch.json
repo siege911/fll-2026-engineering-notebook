@@ -4,8 +4,20 @@
     {
       "name": "rooted-warriors",
       "runtimeExecutable": "node",
-      "runtimeArgs": ["--disable-warning=ExperimentalWarning", "app/server.mjs"],
+      "runtimeArgs": [
+        "--disable-warning=ExperimentalWarning",
+        "app/server.mjs"
+      ],
       "port": 8787
+    },
+    {
+      "name": "site-preview",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "-e",
+        "const h=require('http'),f=require('fs'),p=require('path'),R=p.resolve('site'),T={'.html':'text/html; charset=utf-8','.png':'image/png','.jpg':'image/jpeg','.txt':'text/plain'};h.createServer((q,s)=>{let u=decodeURIComponent(q.url.split('?')[0]);if(u.endsWith('/'))u+='index.html';const x=p.join(R,u);if(!x.startsWith(R)||!f.existsSync(x)){s.writeHead(404);return s.end('Not found')}s.writeHead(200,{'Content-Type':T[p.extname(x)]||'application/octet-stream'});f.createReadStream(x).pipe(s)}).listen(8790,'127.0.0.1')"
+      ],
+      "port": 8790
     }
   ]
 }
