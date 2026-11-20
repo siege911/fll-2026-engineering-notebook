@@ -8,6 +8,29 @@ Who coded what is kept in `ROBOT-GAME.md` / `ROBOT-DESIGN.md` and the app's miss
 
 ---
 
+## 2026-11-20 — Final v3: last fine-tuning before Regionals (Nov 18 + 19 practices)
+**Told by:** [who?] (sent 2026-11-20, the day before Regionals)
+> We updated the code during practices on Nov 18 and 19. This file is the new code. Please update the code on the Notebook.
+
+**New folder in `code/`:** `Final v3 - Nov 18` holding `pybricks-backup-2026-11-19_00-55-51.zip` (from the Transcend drive, folder `Final 11-18`). Same 11 programs as Final v2. The backup's time (00:55 on Nov 19, world time) is **5:55 pm on Nov 18** here, so the folder is dated Nov 18. [unclear: anything changed at the Nov 19 practice after this backup isn't in it.]
+
+**What changed since Final v2 (4 of 11 programs; the menu, `robot.py` and the other 5 missions are the same, byte for byte):**
+- `mission1.py` (M01, run 1): drives farther (straight 520 → **600**) and makes a tighter arc (radius −300 → **−200**). An `arc(-20, -65)` was tried and left as a comment.
+- `mission2_3.py` (M02 + M03, run 2): faster (speed 600 → **800**); at the mission it now backs up 10 mm first, then moves the right arm **faster and farther** (speed 50 → 100, 90° → **105°**), then backs up 490 (was 500). A slow 15 mm back-up was tried and left as comments.
+- `mission8_9.py` (M08 + M09, run 4): the right arm swings farther (−165° → **−220°**) and the slow drive-in is shorter (270 → **220**).
+- `mission14.py` (M14, run 5): backs up farther after the left arm move (−90 → **−130**).
+
+| Program | Missions | Final v2 (Nov 9) | Final v3 (Nov 18) |
+|---|---|:-:|:-:|
+| `mission1.py` | M01 | 25 | ✏️ |
+| `mission2_3.py` | M02 + M03 | 33 | ✏️ |
+| `mission8_9.py` | M08 + M09 | 42 | ✏️ |
+| `mission14.py` | M14 | 31 | ✏️ |
+| `main_base.py`, `robot.py`, `mission4_5.py`, `mission6_7_11.py`, `mission12a.py`, `mission13_12b.py`, `mission15.py` | | | = |
+
+**Who:** **Fynn and Isla** did most of the work (told 2026-11-20: "Fynn and Isla did most of the work.").
+**App:** the new folder shows up on the Coding page by itself; notebook entry in `app/db/updates/2026-11-20b-final-v3-code.sql`, who in `2026-11-20c-final-v3-who.sql`.
+
 ## 2026-11-15 — Final v1 and Final v2: the mission menu and Fynn's fine-tuning (Nov 2 → Nov 15)
 **Told by:** Coach CJ (sent 2026-11-15)
 > I updated our "code" folder with the latest Code iterations. Final v1 is just the capture of everything on November 3. Adeline did the main work on Nov 3 to move to the Final v2 which includes the code for selecting the missions during the competition. We tested it on Nov 9. Fynn did the updates on Nov 9 and Nov 13 to the code for Final v3 to fine-tune all of the missions.

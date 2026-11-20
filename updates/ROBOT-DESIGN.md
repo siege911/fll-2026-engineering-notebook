@@ -8,7 +8,11 @@ Backfilled 2026-09-06 from `../DECISIONS.md` and `../PROGRESS.md`.
 
 ---
 
-## 2026-11-20 — New photos: the robot base + every attachment (final form)
+## 2026-11-20 — Robot code Final v3 (Nov 18 + 19): Fynn and Isla
+- **Fynn and Isla** did most of the last fine-tuning before Regionals, saved as **Final v3** (`code/Final v3 - Nov 18`). Changed: run 1 (M01), run 2 (M02 + M03), run 4 (M08 + M09), run 5 (M14). Details: `ROBOT-CODE.md` 2026-11-20.
+- Isla added to "Coded by" for M01, M02, M03, M08, M09, M14 (Fynn was already listed).
+
+: the robot base + every attachment (final form)
 **Sent by:** [who?] · "There is a picture of the base robot to add to Robot Design. There are updated pictures of all of the attachments for all of the missions." Originals in `../photos/`, app copies in `../app/images/11-20-*.jpg`.
 
 | Photo | Shows | Goes on (app) |

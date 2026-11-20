@@ -12,6 +12,9 @@ Format:
 
 Backfilled 2026-09-06 from `../DECISIONS.md`, `../PROGRESS.md`, and `../mockups/GALLERY.md`.
 
+## 2026-11-20 — Final v3 robot code
+- Data only: `code/Final v3 - Nov 18/` (new Pybricks backup) + `app/db/updates/2026-11-20b-final-v3-code.sql` (notebook entry) + `2026-11-20c-final-v3-who.sql` (Fynn + Isla made it). Asked by [who?]. `site/` re-exported.
+
 ## 2026-11-20 — New photos: robot base, team photo, profile pictures, final attachment photos
 - **Files:** `app/db/updates/2026-11-20-new-photos.sql`, `app/images/11-20-*.jpg` (smaller copies of `photos/`), `app/public/index.html`, `site/` (export)
 - **What:** Robot Design → The Main Robot shows the robot base photo (`settings.robot_photo`). Core Values → Team Profile shows the team photo on top (`settings.team_photo`). New profile pictures for all six. Each attachment's main photo is now the Nov 20 final-form one; the little version boxes in Attachments Over Time now show their photo (Nov 2 and Nov 20), click to see it big. Lucky Leaves attachment now listed for M04 + M05; mascot attachment for M13 + M12 (cane).

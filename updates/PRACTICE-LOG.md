@@ -8,6 +8,33 @@ One entry per practice, **newest at top**. This is the raw material for the team
 
 ---
 
+## 2026-11-18 + 2026-11-19 — Robot code: Final v3, last fine-tuning before Regionals
+**Who was there:** [who?] (Fynn and Isla did most of the code work)
+**Told by:** [who?] (sent 2026-11-20)
+
+**Raw update (their words):**
+> We updated the code during practices on Nov 18 and 19. This file is the new code. Please update the code on the Notebook.
+
+**Follow-up, same day:**
+> Fynn and Isla did most of the work.
+
+**What happened**
+- Robot Design (CODE): new folder `code/Final v3 - Nov 18` (Pybricks backup taken 5:55 pm Nov 18). 4 of the 11 programs changed since Final v2:
+  - Run 1, M01: drives farther (520 → 600), tighter arc.
+  - Run 2, M02 + M03: faster (800), arm moves faster and farther (105°), small back-up before the arm.
+  - Run 4, M08 + M09: right arm swings farther (−220°), shorter slow drive-in (220).
+  - Run 5, M14: backs up farther (−130) after the left arm.
+  - Menu, `robot.py` and runs 3, 6, 7, 8, 9 unchanged. Full write-up: `ROBOT-CODE.md` 2026-11-20.
+
+**Problems / open questions**
+- Answered same day: **Fynn and Isla** changed the code.
+- [unclear: the backup is from Nov 18; were there more changes on Nov 19 that aren't saved?]
+
+**App changes made:** `app/db/updates/2026-11-20b-final-v3-code.sql` (notebook entry) + `2026-11-20c-final-v3-who.sql` (Fynn + Isla). The code shows up on the Coding page by itself.
+**Rubric rows touched:** Robot Design ITERATE (testing and fine-tuning right before the tournament), CODE.
+
+---
+
 ## 2026-11-20 (Friday) — New photos: robot base, every run's attachment, team photo, profile pictures (not a practice)
 **Told by:** [who?] (sent 2026-11-20, the day before Regionals)
 

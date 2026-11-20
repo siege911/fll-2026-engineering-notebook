@@ -1,5 +1,5 @@
 {
- "written_at": "2026-11-20T17:40:56.737Z",
+ "written_at": "2026-11-20T19:09:36.336Z",
  "applied_updates": [
   {
    "file": "2026-09-28-profile-photos.sql",
@@ -220,6 +220,14 @@
   {
    "file": "2026-11-20-new-photos.sql",
    "applied_at": "2026-11-20 17:39:59"
+  },
+  {
+   "file": "2026-11-20b-final-v3-code.sql",
+   "applied_at": "2026-11-20 19:06:39"
+  },
+  {
+   "file": "2026-11-20c-final-v3-who.sql",
+   "applied_at": "2026-11-20 19:09:28"
   }
  ],
  "attachment_versions": [
@@ -1668,6 +1676,20 @@
    "source": "update",
    "sample": 0,
    "created_at": "2026-11-15 17:12:58"
+  },
+  {
+   "id": 67,
+   "date": "2026-11-18",
+   "who": "[\"Fynn\",\"Isla\"]",
+   "component": "Robot Design",
+   "phase": "ITERATE",
+   "text": "Last fine-tuning before Regionals, saved as Final v3. Mission 1 drives farther with a tighter turn; Missions 2 + 3 run faster and the arm moves farther; Missions 8 + 9 arm swings farther; Mission 14 backs up farther. The menu and the other runs stayed the same.",
+   "core_values": "[]",
+   "success": 1,
+   "photo": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-20 19:06:39"
   }
  ],
  "experts": [
@@ -2373,7 +2395,7 @@
    "run_number": 1,
    "attachment": "Drone Survey attachment",
    "built_by": "[\"Isla\"]",
-   "programmed_by": "[\"Adeline\",\"Fynn\"]",
+   "programmed_by": "[\"Adeline\",\"Fynn\",\"Isla\"]",
    "reliability": 0,
    "status": "Working",
    "est_seconds": 12
@@ -2389,7 +2411,7 @@
    "run_number": 2,
    "attachment": "Mission 2 attachment · Combined 2+3",
    "built_by": "[\"Adeline\",\"Nolan\"]",
-   "programmed_by": "[\"Nolan\",\"Fynn\"]",
+   "programmed_by": "[\"Nolan\",\"Fynn\",\"Isla\"]",
    "reliability": 100,
    "status": "Working",
    "est_seconds": 30
@@ -2405,7 +2427,7 @@
    "run_number": 2,
    "attachment": "Flip the Rock attachment · Combined 2+3",
    "built_by": "[\"Nolan\"]",
-   "programmed_by": "[\"Nolan\",\"Fynn\"]",
+   "programmed_by": "[\"Nolan\",\"Fynn\",\"Isla\"]",
    "reliability": 100,
    "status": "Reliable",
    "est_seconds": 30
@@ -2485,7 +2507,7 @@
    "run_number": 4,
    "attachment": "Mission 8 attachment",
    "built_by": "[\"Nolan\"]",
-   "programmed_by": "[\"Fynn\"]",
+   "programmed_by": "[\"Fynn\",\"Isla\"]",
    "reliability": 20,
    "status": "Working",
    "est_seconds": 30
@@ -2501,7 +2523,7 @@
    "run_number": 4,
    "attachment": "Mission 9 attachment",
    "built_by": "[\"Weston\"]",
-   "programmed_by": "[\"Weston\",\"Fynn\"]",
+   "programmed_by": "[\"Weston\",\"Fynn\",\"Isla\"]",
    "reliability": 0,
    "status": "Working",
    "est_seconds": 30
@@ -2581,7 +2603,7 @@
    "run_number": 5,
    "attachment": "Mission 14 attachment",
    "built_by": "[\"Weston\"]",
-   "programmed_by": "[\"Fynn\"]",
+   "programmed_by": "[\"Fynn\",\"Isla\"]",
    "reliability": 100,
    "status": "Working",
    "est_seconds": 30
@@ -2696,7 +2718,7 @@
    "id": 2,
    "program": "Drone Survey (M01) program",
    "mission": "M01",
-   "coded_by": "[\"Adeline\",\"Fynn\"]",
+   "coded_by": "[\"Adeline\",\"Fynn\",\"Isla\"]",
    "sensors": "—",
    "innovative_bit": "First mission program of the season (Sep 11) — fill in what's clever about it",
    "sort_order": 2
@@ -2723,7 +2745,7 @@
    "id": 5,
    "program": "Seeds of Renewal (M14) program",
    "mission": "M14",
-   "coded_by": "[\"Fynn\"]",
+   "coded_by": "[\"Fynn\",\"Isla\"]",
    "sensors": "—",
    "innovative_bit": "Fynn coded Weston's attachment (Sep 25) — fill in what's clever about it",
    "sort_order": 5
@@ -2741,7 +2763,7 @@
    "id": 7,
    "program": "Exploding Seeds + Flip the Rock (M02 + M03) program",
    "mission": "M02",
-   "coded_by": "[\"Nolan\",\"Fynn\"]",
+   "coded_by": "[\"Nolan\",\"Fynn\",\"Isla\"]",
    "sensors": "—",
    "innovative_bit": "Nolan's first program, for his combined 2 + 3 attachment (Oct 2) — tested 5/5",
    "sort_order": 7
@@ -2768,7 +2790,7 @@
    "id": 10,
    "program": "Research Platform (M09) program",
    "mission": "M09",
-   "coded_by": "[\"Weston\",\"Fynn\"]",
+   "coded_by": "[\"Weston\",\"Fynn\",\"Isla\"]",
    "sensors": "—",
    "innovative_bit": "First M09 program (Oct 23, \"the big tree mission\")",
    "sort_order": 10
@@ -3259,7 +3281,7 @@
   },
   {
    "key": "robot_code_who",
-   "value": "{\"2026-11-09\":[\"Adeline\",\"Fynn\"]}",
+   "value": "{\"2026-11-09\":[\"Adeline\",\"Fynn\"],\"2026-11-18\":[\"Fynn\",\"Isla\"]}",
    "note": "Coding page: who made each saved version of the code, by code-folder date (Nov 15)"
   },
   {

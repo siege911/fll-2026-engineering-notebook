@@ -5,7 +5,7 @@ Update this at the end of every session (same time as `DECISIONS.md` and `mockup
 
 **Status key:** ⬜ not started · 🟡 in progress · ✅ done
 
-**Last updated:** 2026-11-20 (new photos: robot base, team photo, profile pictures, final attachment photos; online copy re-exported)
+**Last updated:** 2026-11-20 (Final v3 robot code from Nov 18–19; new photos: robot base, team photo, profile pictures, final attachment photos; online copy re-exported)
 
 **Team:** Rooted Warriors — Thea, Adeline, Fynn, Isla, Nolan, Weston · Coach CJ
 
