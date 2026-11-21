@@ -12,6 +12,70 @@ Format:
 
 Backfilled 2026-09-06 from `../DECISIONS.md`, `../PROGRESS.md`, and `../mockups/GALLERY.md`.
 
+## 2026-11-20 — Run Plan: run 3 marked skipped
+- **File:** app/public/index.html
+- **What:** Run Plan & Time Check reads `settings.game_plan.skip`: a run whose missions are all skipped (run 3, M04 + M05) is crossed out in the table with a "skipped · time" tag and left out of the time bar and the totals ("8 runs (run 3 skipped) · 178s driving + 28s swaps = 206s"). The run row itself is unchanged in the data.
+- **Why / who asked:** student [who?]: "Yes, mark it."
+
+## 2026-11-20 — Top Practice Score card on the Dashboard
+- **Files:** app/public/index.html · app/db/updates/2026-11-20m-skip-m04-m05.sql (new setting `game_plan`: skip M04 + M05, why "time")
+- **What:** New first card on the Dashboard: best practice match score (400) "of" top possible score (460) with a percent bar (87%). Top possible is worked out from the data: every mission not in `game_plan.skip` + Equipment Inspection + Precision Tokens. The hint says which missions we skip and why. Hidden if no matches are saved.
+- **Why / who asked:** student [who?]: "Show top practice score was 400 but top possible score is 460. We skipped Missions 4 & 5 due to time."
+
+## 2026-11-20 — Thu + Fri practice entries, best score 400 (data only)
+- **File:** app/db/updates/2026-11-20l-practice-400.sql (4 notebook entries Nov 19 + Nov 20; practice match 400 saved on Nov 20). No card shows matches right now (Best Match Score + Score History were removed earlier today).
+- **Why / who asked:** student [who?].
+
+## 2026-11-20 — Rubric Map card removed from the Dashboard
+- **File:** app/public/index.html
+- **What:** The Dashboard's Rubric Map card is gone. Who's Been Doing What is now full width so the last row isn't half empty. The 20 rubric ratings are still saved in the data but nothing in the app shows them now.
+- **Why / who asked:** student [who?]: "Remove it too."
+
+## 2026-11-20 — Rubric Check page removed
+- **File:** app/public/index.html
+- **What:** The Rubric Check page and its menu button are gone. The Dashboard's Rubric Map card stays (counts of rows at each level) but its "Rate →" button and click-through were removed, since there's no page to go to. The 20 ratings are still saved in the data.
+- **Why / who asked:** student [who?]: "Get rid of the rubric trek page" (Rubric Check).
+
+## 2026-11-20 — Small people circles: color + first letter
+- **File:** app/public/index.html
+- **What:** Every small person circle (names on entries, missions, attachments, Who's Been Doing What, the who-picker buttons, Daily Log people buttons) now shows the person's color with the first letter of their name instead of a tiny photo. The big profile pictures on Core Values → Team Profile are unchanged.
+- **Why / who asked:** student [who?]: "With all the really tiny profile pictures that we can't see, make the circle just the color of whoever it is, with the letter of their first name. Don't change the larger circle of each person on the Core Values page."
+
+## 2026-11-20 — Mascot photo + Nate Ragan's pictures
+- **Files:** app/db/updates/2026-11-20k-mascot-nate-photos.sql · app/server.mjs (experts send `photo`, `tphoto`) · app/public/index.html · app/images/11-20-mascot.jpg, 11-20-mascot-square.jpg, 11-20-nate-ragan-with-team.jpg, 11-20-profile-nate-ragan.jpg (from ../photos/)
+- **What:** New experts columns `photo` (profile picture) and `team_photo`. Experts card: Nate's round profile picture (cropped from the left of the team photo) and the full photo of Nate with the team underneath, captioned "Nate Ragan (left) with the Rooted Warriors". Core Values → Team Mascot: the empty "Photo" box is now the mascot photo (click for the big one).
+- **Why / who asked:** student [who?]: "We added our Team Mascot Photo and a Picture of Nate Ragan with the Team. Nate Ragan is the guy on the left if we want to crop it for a profile picture."
+
+## 2026-11-20 — Emojis removed from the whole app
+- **Files:** app/public/index.html · app/db/updates/2026-11-20j-no-emojis.sql
+- **What:** No emojis anywhere in the app: menu icons, buttons ("Save match"), pop-up messages, hints, tags, the run plan's timer and buffer marks, the IP computer tiles, code-history markers, the view-only badge. Where an emoji meant something it became words or numbers: calendar legend "Purple = practice day · Green = match day"; Help Given ↔ Received shows counts instead of dots; rubric rows that also count for Core Values show "CV" instead of a gear; expert and profile fallbacks show the first letter. Data: removed ✅ and 📷 from attachment version notes, ✅ from "Robot base status", and the Wi-Fi emojis from a Pi file description. Install guides shown on the IP page hide their emojis (the guide files themselves keep them, since they name buttons on the Pi). Kept: plain arrows (→ ↔ ↗) and the robot code exactly as written. Team faces, the expert's face and the computer icons are still saved but not shown.
+- **Why / who asked:** student [who?]: "There are a lot of emojis throughout the entire app. Can you get rid of all of them?"
+
+## 2026-11-20 — Robot Game + Robot Design combined into one page, in talk order
+- **File:** app/public/index.html
+- **What:** The Robot Game page is gone; its cards moved onto Robot Design, now called **Robot Design & Game** (nav button too). Card order follows the Robot Design talk: 1 Isla — The Main Robot, Tradeoff Decisions, Mission Inventory, Run Plan & Time Check · 2 Adeline — Who's Been Doing What (copy of the Dashboard card) · 3 Weston — Attachments Over Time · 4 Fynn — Test Sessions, Points-per-Second Leaderboard, Log a Practice Match · 5 Thea — Our Robot Code (copy of the Coding card) · 6 Nolan — no card. The old Run Plan copy is now the real card. Run Plan and Points-per-Second are full width now, so they no longer scroll sideways. Dashboard's Mission Inventory "Edit →" opens this page.
+- **Why / who asked:** student [who?]: "combine the robot game and robot design but make it go along like the script."
+
+## 2026-11-20 — Attachments Over Time: one picture + a version list
+- **File:** app/public/index.html
+- **What:** Robot Design → Attachments Over Time. Each attachment shows only its newest picture (its main photo, or the newest version photo if it has no main one). Versions are now a dated bullet list ("Aug 31 · V1 built ✅"); a version with an older picture gets a "📷 picture" link that opens it. Removed the small version thumbnails and the striped empty boxes. Hint text changed to "Newest picture on top · click 📷 to see an older version".
+- **Why / who asked:** student [who?]: "Just show the latest attachment picture. List the adjustments over time as a list with a link to older pictures … don't put smaller thumbnail pictures or striped empty boxes."
+
+## 2026-11-20 — Small text a bit bigger, whole app
+- **File:** app/public/index.html
+- **What:** Every CSS font size under 13px raised: 9→11, 10→12, 11→13, 12→13 px (about 50 places: table headers, tags, hints, labels, meta lines, run-plan bar). 13px and up unchanged. Chart text inside SVG drawings (font-size="8"–"12") not changed: it scales with the drawing. Side effect: on Robot Game, the Run Plan and Points-per-Second tables are a little wider than their cards at laptop width and scroll sideways.
+- **Why / who asked:** student [who?]: "make all the really small text a bit bigger."
+
+## 2026-11-20 — How attachments attach off the Main Robot card (data only)
+- **File:** app/db/updates/2026-11-20i-drop-how-attach.sql
+- **What:** Deleted the blank robot_specs row "How attachments attach" (Robot Design → Main Robot).
+- **Why / who asked:** student [who?]: "get rid of how attachments attach too."
+
+## 2026-11-20 — Size + Wire management off the Main Robot card (data only)
+- **File:** app/db/updates/2026-11-20h-drop-size-wires.sql
+- **What:** Deleted the two blank robot_specs rows "Size (W × D)" and "Wire management" (Robot Design → Main Robot).
+- **Why / who asked:** student [who?]: "just get rid of that column and the wire management."
+
 ## 2026-11-20 — Difficulty for M11–M15 (data only; fixes a mistake)
 - **File:** app/db/updates/2026-11-20f-reliability-counts.sql (mistake: saved as reliability + test sessions) → app/db/updates/2026-11-20g-difficulty-not-reliability.sql (fix)
 - **What:** Difficulty M11 3, M12 3, M13 2, M14 2, M15 3. Removed the 5 wrong test rows and notebook entry; reliability for M11–M15 put back to the slider estimates set in the app.

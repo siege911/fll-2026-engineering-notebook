@@ -4,6 +4,36 @@ Newest at top. Capture-field and design decisions come from the students; archit
 
 ---
 
+## 2026-11-20 — We skip Missions 4 + 5 in matches (student [who?])
+
+- "We skipped Missions 4 & 5 due to time." In a match we don't run M04 Lucky Leaves + M05 Reaching Roots (run 3, the Lucky Leaves attachment): there isn't enough time in 150 seconds.
+- Cost: 50 points. Our top possible score is **460** instead of 510. Our best practice score is **400** (Nov 19–20).
+- Shown on the Dashboard as "Top Practice Score: 400 · Top possible 460".
+
+---
+
+## 2026-11-20 — Rubric Check page removed (student [who?])
+
+- "Get rid of the rubric trek page." The page where we rated ourselves 1–4 on all 20 rubric rows is gone from the app. The ratings we already gave are still saved, and the Dashboard's Rubric Map still shows how many rows are at each level, but they can't be changed in the app anymore.
+- Same day: "Remove it too." The Dashboard's Rubric Map card is gone as well. The ratings stay saved but aren't shown anywhere in the app.
+
+---
+
+## 2026-11-20 — No emojis in the app (student [who?])
+
+- "There are a lot of emojis throughout the entire app. Can you get rid of all of them?" The app now uses words only. Emojis that carried meaning were swapped for words or numbers (calendar colors, help counts, "CV" for rubric rows that count for Core Values).
+- Not changed: our markdown notes, the install guide files, and the robot code.
+
+---
+
+## 2026-11-20 — Robot Game and Robot Design are one page (student [who?])
+
+- "Combine the robot game and robot design but make it go along like the script." The app now has one **Robot Design & Game** page in the same order as our Robot Design talk (Isla → Adeline → Weston → Fynn → Thea → Nolan), so the judges can scroll while we talk. The robot game talk is judged with the Robot Design rubric anyway.
+- Fynn's part gets the testing cards (Test Sessions, Points-per-Second, Log a Practice Match) because he talks about testing and timing every mission. Nolan's closing has no card.
+- The "Show" notes in our talk (updates/PRESENTATION.md, the Word doc, the practice timer) were updated to the new page name the same day.
+
+---
+
 ## 2026-11-20 — Temporary page removed (Thea)
 
 - "Get rid of the temporary page." This ends the Nov 17 rule that removed cards move to Temporary instead of being deleted. Removed cards now go away for real (old versions are still in the app's history if we want one back).

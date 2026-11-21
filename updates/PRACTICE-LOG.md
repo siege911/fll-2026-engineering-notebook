@@ -8,6 +8,44 @@ One entry per practice, **newest at top**. This is the raw material for the team
 
 ---
 
+## 2026-11-19 (Thu) + 2026-11-20 (Fri) — Practicing the Innovation Project talk + the Robot Game
+**Told by:** student [who?] (sent 2026-11-20)
+**Who was there:** everyone (Adeline, Fynn, Isla, Nolan, Thea, Weston), both days
+
+**Raw update (their words):**
+> Add entries that we did practices on Thursday and Friday to practice our Innovation Project speech and Robot Game. Our best score in the Robot game was 400 but our top possible score is doing everything except Missions 4 & 5.
+
+**What happened**
+- Innovation Project: practiced our Innovation Project judging talk, Thursday Nov 19 and Friday Nov 20.
+- Robot Game: practiced the Robot Game both days. **Best score: 400.** [unclear: which day, Nov 19 or Nov 20]
+- Our **top possible score** is everything except **M04 Lucky Leaves + M05 Reaching Roots**: 390 mission points + 20 Equipment Inspection + 50 Precision Tokens = **460** (the full game is 510). M04 + M05 are run 3 (Lucky Leaves attachment). **We skip M04 + M05 because of time.**
+
+**Wins:** 400 points, our first recorded match score, 87% of our top possible 460.
+**Follow-up, same day:**
+> Everyone was at both practices. Show top practice score was 400 but top possible score is 460. We skipped Missions 4 & 5 due to time
+
+**Next time:** Regionals, Nov 21.
+**App changes made:** `app/db/updates/2026-11-20l-practice-400.sql` (4 notebook entries + the 400 match) · `2026-11-20m-skip-m04-m05.sql` (skipped missions) · Dashboard card "Top Practice Score".
+**Rubric rows touched:** Innovation Project COMMUNICATE; Robot Design ITERATE (repeated testing); Robot Game score.
+
+---
+
+## 2026-11-20 — New photos: team mascot + Nate Ragan with the team
+**Told by:** student [who?] (sent 2026-11-20)
+
+**Raw update (their words):**
+> We added our Team Mascot Photo and a Picture of Nate Ragan with the Team. Nate Ragan is the guy on the left if we want to crop it for a profile picture.
+
+**What happened**
+- Core Values: first photo of the **team mascot** (built by Thea, Sep 11), standing on the mat. Original `../photos/mascot.jpg`.
+- Innovation Project: photo of **Nate Ragan** (Arizona Game and Fish, our expert) with the whole team; Nate is on the left. Original `../photos/nate_ragan.jpg`. [unclear: the day the photo was taken; we met Nate Oct 5]
+- Nate's profile picture was cropped from the left side of the team photo.
+
+**App changes made:** `app/db/updates/2026-11-20k-mascot-nate-photos.sql`; Experts card shows Nate's picture and the team photo; Team Mascot card shows the mascot photo.
+**Rubric rows touched:** Innovation Project RESEARCH (expert), Core Values pride & enthusiasm / team spotlight.
+
+---
+
 ## 2026-11-20 — Difficulty ratings: M11, M12, M13, M14, M15 (out of 5)
 **Told by:** Thea (sent 2026-11-20)
 

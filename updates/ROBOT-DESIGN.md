@@ -8,6 +8,12 @@ Backfilled 2026-09-06 from `../DECISIONS.md` and `../PROGRESS.md`.
 
 ---
 
+## 2026-11-20 — Size, Wire management and How attachments attach taken off the Main Robot card
+**Asked by:** student [who?]: "for the main robot in size, just get rid of that column and the wire management," then "get rid of how attachments attach too."
+- Removed from the app's Main Robot specs: **Size (W × D)**, **Wire management** and **How attachments attach**. All three were still blank (nobody had measured or written them down). They're marked "removed" in the specs table below.
+
+---
+
 ## 2026-11-20 — Blanks filled from our judging talks + the Final v3 code
 **Asked by:** Thea: "fill out anything that hasn't been filled out." Only facts the team already said or wrote went in; everything else is still open (list at the bottom of this note).
 - **Which drive tires? (Isla, Robot Design talk):** "We started by testing 8 different wheels. We decided on this one because it has good traction and is accurate." [unclear: which 8 wheels, and who tested them]
@@ -62,10 +68,10 @@ The Nov 2 photos are kept and still show in each attachment's "versions" row (At
 | Wheelbase | Wide | week of Aug 24 | students |
 | Sensors | Gyro in the hub (drive straight, exact turns). No color sensors: no room | Sep 6 (color) · gyro in every Final v3 program (Nov 18) | students |
 | Accuracy vs speed | Leans accuracy (wide base → accurate turns; no sensors → navigation by wheel rotations and turns) | Sep 6 | students |
-| Size (width × depth) | [not measured yet] | | |
+| Size (width × depth) | [removed from the app Nov 20, never measured] | | |
 | Motors | 4: drive wheels on A (left) + E (right), attachment motors on B (left) + F (right) | from the code (`robot.py`), recorded 2026-11-20 | students |
-| Wire management | [not recorded yet] | | |
-| How attachments attach | [not recorded yet] | | |
+| Wire management | [removed from the app Nov 20, never recorded] | | |
+| How attachments attach | [removed from the app Nov 20, never recorded] | | |
 
 ## Tradeoff decisions (what the judges' DESIGN row wants)
 

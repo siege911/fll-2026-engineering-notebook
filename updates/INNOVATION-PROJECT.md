@@ -8,6 +8,16 @@ Backfilled 2026-09-06 from `../DECISIONS.md` and `../PROGRESS.md`.
 
 ---
 
+## 2026-11-19 + 2026-11-20 — Practiced our judging talk
+- The whole team practiced the Innovation Project talk on Thursday Nov 19 and Friday Nov 20, the two days before Regionals. Told by student [who?].
+
+---
+
+## 2026-11-20 — Photo of Nate Ragan with the team
+- Photo of **Nate Ragan** (Arizona Game and Fish, our expert) with the whole team; Nate is on the left. Original `../photos/nate_ragan.jpg`. His profile picture on the Experts card is cropped from it. Told by student [who?]. [unclear: the day it was taken; we met Nate Oct 5]
+
+---
+
 ## 2026-11-20 — From our judging talk into the notebook: 3 ideas + the Pi → tiny camera switch
 **Asked by:** Thea ("fill out anything that hasn't been filled out"). Both facts come from the team's own Innovation Project talk (`PRESENTATION.md`, Nov 15 text).
 - **The 3 ideas we considered (Adeline):** (1) a system that alerts drivers to animals with a camera or sensor and a flashing light; (2) a camera in a car that alerts the driver; (3) a camera that tracks how many animals use the bridge vs. other crossing places. **Picked:** one multi-purpose camera that detects animals and could serve all 3, starting with counting animals on the new bridge. (Nate said the warning light has been done before, Oct 5.) [unclear: the date we chose]

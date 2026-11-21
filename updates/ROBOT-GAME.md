@@ -8,6 +8,12 @@ Backfilled 2026-09-06 from `../DECISIONS.md` and `../PROGRESS.md`.
 
 ---
 
+## 2026-11-19 + 2026-11-20 — Practice matches: best score 400 (everyone, both days)
+- Practiced the Robot Game Thursday Nov 19 and Friday Nov 20. **Best score: 400** [unclear: which day].
+- **Top possible for us: 460** = every mission except M04 Lucky Leaves + M05 Reaching Roots (390) + Equipment Inspection 20 + Precision Tokens 50. Full game max is 510. M04 + M05 are run 3. **We skip M04 + M05 because of time** (they don't fit in the 150-second match).
+- **Run plan:** run 3 (M04 + M05, Lucky Leaves attachment) is marked skipped. We now plan **8 runs**: 178 s driving + 28 s swaps = 206 s on paper, but 4 of those runs are still guessed times, and our real best match scored 400.
+- Told by student [who?], Nov 20.
+
 ## 2026-11-20 — Difficulty for every mission; reliability estimates (Thea)
 - **Difficulty (out of 5), Thea:** M11 Window to the Past 3 · M12 Forest Elder 3 · M13 Keystone Species 2 · M14 Seeds of Renewal 2 · M15 Biocentric Architecture 3. Already typed in the app earlier ([who?]): M01 2 · M02 3 · M03 1 · M04 2 · M05 2 · M06 2 · M07 1 · M08 1 · M09 3 · M10 2.
 - **Reliability (app sliders, estimates, not counted tries):** M01 100 · M06 91 · M07 93 · M08 93 · M09 81 · M10 97 · M11 94 · M12 100 · M13 91 · M14 82 · M15 95. Counted tries exist only for M02 + M03 (5/5 Oct 2), M04 + M05 (4/5 Nov 1) and M14 (5/5 Oct 2).

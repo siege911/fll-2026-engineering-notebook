@@ -8,6 +8,12 @@ Backfilled 2026-09-06 from `../DECISIONS.md` and `../PROGRESS.md`.
 
 ---
 
+## 2026-11-20 — Mascot photo
+- First photo of the **team mascot** (built by Thea, Sep 11): blocky blue + pink body, leaf on top, one eye winking. Original `../photos/mascot.jpg`; shown on Core Values → Team Mascot. Told by student [who?].
+- Still unclear: the mascot's name and what creature it is.
+
+---
+
 ## Team
 
 **Rooted Warriors** — Thea, Adeline, Fynn, Isla, Nolan, Weston · Coach CJ.

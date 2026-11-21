@@ -8,6 +8,10 @@ Our two 5-minute judging talks, part by part, in the judges' rubric order (`../0
 
 ---
 
+## 2026-11-20 — "Show" notes point to the new Robot Design & Game page [who?]
+- The app's Robot Game and Robot Design pages are now one page, **Robot Design & Game**, in talk order (see `../DECISIONS.md` 2026-11-20). Three **Show** notes changed to match: Isla's (Run Plan is further down the same page), Weston's and Fynn's. Talk words not changed.
+- Changed in this file, the Word doc and the practice timer. The older `../presentation/2026-11-17-judging-script.md` is kept as it was.
+
 ## 2026-11-15 (later) — Fixes from Coach CJ
 - **Adeline's research blank filled** with two points from Nolan's websites: Banff's 44 crossings cut big-animal crashes 80%+ (Think Wildlife Foundation / WWF), and the LA Times says building a crossing doesn't mean animals use it, so places like Nepal check with camera traps (WWF).
 - **Facts settled:** bridge cost stays **$21 million** (ADOT's current number; may rise to $24 million). Thea's motion sensor line now says **about 15 feet** (AM312 is rated 3–5 m) and **a picture every second** (camera v4).
@@ -143,7 +147,7 @@ Built from the Engineering Notebook (see `../DECISIONS.md` 2026-11-13).
 >
 > We built three copies of the base, so we can test three attachments at once and have a spare. Our strategy: split up the board and work on multiple missions at once. We first built an attachment for a single mission, then we grouped nearby missions together for our attachments. Now we can do all 15 missions in nine runs.
 
-**Show:** Hold up the robot and point to its wheels (bring 2 or 3 of the wheels you tested if you can) · Tradeoff Decisions on the Robot Design page (wheels, low + wide, three copies) · then the Run Plan & Time Check on the Robot Game page (9 runs).
+**Show:** Hold up the robot and point to its wheels (bring 2 or 3 of the wheels you tested if you can) · Tradeoff Decisions on the Robot Design & Game page (wheels, low + wide, three copies) · then scroll down the same page to the Run Plan & Time Check (9 runs).
 
 📝 In the app, the "Which drive tires?" tradeoff still says "(students: which tires did you compare?)": write in the 8 wheels and why you picked this one, and your three-copies reason. We haven't done a full timed run of the whole board yet. Do one before the tournament, so if a judge asks "how long do all nine runs take?" you have a real number.
 
@@ -167,7 +171,7 @@ Built from the Engineering Notebook (see `../DECISIONS.md` 2026-11-13).
 >
 > Our attachments do more than one mission per trip. Our 2-and-3 attachment knocks the seeds loose and flips the rock. Our favorite attachment is probably this one for Mission 14. We're supposed to deliver the seeds into this thing. Since this mission isn't attached to the board, we tried something different. We used these arms to unlock the mission from the board and then these hooks to lift up the whole mission and bring it back to base. It's just one of the many ways we approached problems on the game board in unique ways.
 
-**Show:** The 2+3 attachment · then demo the Mission 14 attachment on the mat: arms unlock the model, hooks lift it, robot drives it back to base (Robot Design → Attachments Over Time has its photo).
+**Show:** The 2+3 attachment · then demo the Mission 14 attachment on the mat: arms unlock the model, hooks lift it, robot drives it back to base (Robot Design & Game → Attachments Over Time has its photo).
 
 📝 Fynn fine-tuned the Mission 14 attachment on Nov 9. If it looks different from the Nov 2 photo in the app, take a new one. Know the Mission 14 rule in case a judge asks whether bringing the model back to base is allowed.
 
@@ -178,7 +182,7 @@ Built from the Engineering Notebook (see `../DECISIONS.md` 2026-11-13).
 >
 > We tested over and over and refined for consistency. Mission 14 worked 5 out of 5 times. Missions 4 and 5 worked 4 out of 5. On November 8, Isla and I tested every mission and listed what needed work, like Mission 15's yellow arm. We timed every mission to see how long they took and worked to find ways to speed them up. For instance we rebuilt this attachment for Missions 2 and 3 to make it more consistent by aligning with the base and lowering our grabber.
 
-**Show:** Laptop: a mission program, pointing to the back-into-the-wall + gyro reset lines and the next-mission menu · Run the robot squaring on the wall if there's a mat · Attachments Over Time (Robot Design page: Fynn's Nov 9 + Nov 13 fine-tuning) and Run Plan times (Robot Game page) · then hold up the finished 2+3 attachment.
+**Show:** Laptop: a mission program, pointing to the back-into-the-wall + gyro reset lines and the next-mission menu · Run the robot squaring on the wall if there's a mat · Attachments Over Time (Robot Design & Game page: Fynn's Nov 9 + Nov 13 fine-tuning) and Run Plan times (same page, up in Isla's part) · then hold up the finished 2+3 attachment.
 
 📝 Fynn's fine-tuning is logged now (Nov 9: Missions 6, 7, 14 and some of 2+3; Nov 13: finished 2+3, worked on 8+9) ✓. Test Sessions still has only 3 rows with numbers: count tries (like "5 out of 5") at the next practice and add them. A full timed run of the whole board would make this row even stronger.
 

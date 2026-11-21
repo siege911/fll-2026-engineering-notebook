@@ -5,7 +5,7 @@ Update this at the end of every session (same time as `DECISIONS.md` and `mockup
 
 **Status key:** ⬜ not started · 🟡 in progress · ✅ done
 
-**Last updated:** 2026-11-20 (Thea: Dashboard + Robot Game cards trimmed, Temporary page removed, blanks filled from the judging talks; Final v3 robot code from Nov 18–19; new photos: robot base, team photo, profile pictures, final attachment photos; online copy re-exported)
+**Last updated:** 2026-11-20 (later: app made editable again for cleanup; Robot Game + Robot Design combined into one page in talk order; Attachments Over Time shows one picture + a version list; small text bigger; Size / Wire management / How attachments attach removed. Earlier: Thea: Dashboard + Robot Game cards trimmed, Temporary page removed, blanks filled from the judging talks; Final v3 robot code from Nov 18–19; new photos: robot base, team photo, profile pictures, final attachment photos; online copy re-exported)
 
 **Team:** Rooted Warriors — Thea, Adeline, Fynn, Isla, Nolan, Weston · Coach CJ
 
@@ -126,6 +126,7 @@ Missions with an attachment started: **9 of 15** (M01, M02, M03, M04, M08, M12, 
 Newest at top. One short entry per practice.
 
 ### 2026-11-20 (Thea, app cleanup before Regionals)
+- **App (later Nov 20):** Robot Game + Robot Design are one page, **Robot Design & Game**, in Robot Design talk order. Attachments Over Time: newest picture + dated version list. Small text 1–2 px bigger. Main Robot lost 3 blank rows. Not re-exported yet.
 - **App:** Dashboard lost Best Match Score; Mission Inventory is full width. Robot Game lost Score History. Temporary page removed (8-Step Progress went with it). Blanks filled from the Nov 15 talks + Final v3 code: tire, three-bases, 2 + 3 tradeoffs, new no-gears tradeoff, Motors, Sensors = gyro, 3 notebook entries.
 - **Still blank (team to answer):** robot size, wire management, how attachments attach, run launchers, reliability counts, share dates, mascot name, M10 attachment/coder.
 - **Rubric language:** Robot Design DESIGN: tradeoffs now have the team's reasons ("good traction and accurate", "test three at once and have a spare").

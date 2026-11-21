@@ -21,21 +21,21 @@
   .crest{text-align:center;margin-bottom:14px;position:relative;z-index:1}
   .crest svg{width:80px}
   .crest .team{font-size:16px;font-weight:800;letter-spacing:.5px;margin-top:4px}
-  .crest .sub{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--lilac)}
+  .crest .sub{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--lilac)}
   .navlink{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;position:relative;z-index:1;transition:.15s;border:none;background:none;color:var(--cream);text-align:left;width:100%}
   .navlink:hover{background:var(--pine)}
   .navlink.active{background:var(--lavender);color:var(--forest)}
   .navlink .ico{width:20px;text-align:center}
   .countdown{margin-top:auto;position:relative;z-index:1;background:var(--pine);border:1px solid var(--teal);border-radius:12px;padding:12px;text-align:center}
   .countdown .num{font-size:30px;font-weight:800;color:var(--teal)}
-  .countdown .lbl{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--lilac)}
+  .countdown .lbl{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--lilac)}
   /* ---------- main ---------- */
   main{flex:1;padding:26px 28px;min-width:0}
   .page{display:none}.page.active{display:block}
   .pagehead{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px;margin-bottom:20px}
   h1{font-size:24px;font-weight:800;color:var(--forest);-webkit-text-stroke:1.5px var(--lavender);paint-order:stroke fill} /* thin lavender outline (Thea, Oct 9) */
-  h1 small{display:block;font-size:12px;font-weight:600;color:var(--dim);-webkit-text-stroke:0}
-  .chip{background:var(--lavender);color:var(--forest);font-weight:800;font-size:12px;padding:6px 14px;border-radius:20px}
+  h1 small{display:block;font-size:13px;font-weight:600;color:var(--dim);-webkit-text-stroke:0}
+  .chip{background:var(--lavender);color:var(--forest);font-weight:800;font-size:13px;padding:6px 14px;border-radius:20px}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
   .wide{grid-column:1/-1}
   .card{background:var(--paper);border-radius:14px;padding:18px;border:2.5px solid var(--lavender); /* lavender frames (Thea, Oct 12, option E) */box-shadow:0 2px 6px rgba(28,59,42,.07);min-width:0;overflow-x:auto} /* wide tables scroll inside their card instead of spilling out (Oct 23) */
@@ -43,24 +43,26 @@
   .card h2 .leafdot{width:12px;height:12px;background:var(--lavender);border-radius:0 60% 0 60%;display:inline-block;margin-right:6px}
   .card h2 span:first-child{display:flex;align-items:center}
   .big{font-size:52px;font-weight:800;color:var(--grass);line-height:1}
+  tr.skiprun td{color:var(--dim);text-decoration:line-through}tr.skiprun td .tag{text-decoration:none;display:inline-block} /* Nov 20: skipped run */
+  .scorerow{display:flex;align-items:center;gap:18px;flex-wrap:wrap}.scorerow .of{font-weight:800;color:var(--dim);font-size:16px}.scorebar{flex:1;min-width:160px;display:flex;align-items:center;gap:8px}.scorebar .bar{flex:1;width:auto} /* Nov 20: Top Practice Score */
   .delta{color:var(--grass);font-weight:700;font-size:13px}
   table{width:100%;border-collapse:collapse;font-size:13px}
-  th{text-align:left;font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;padding:6px 8px;border-bottom:2px solid var(--line);font-weight:800}
+  th{text-align:left;font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;padding:6px 8px;border-bottom:2px solid var(--line);font-weight:800}
   td{padding:8px;border-bottom:1px solid var(--soft);font-weight:600;vertical-align:middle}
-  .pill{font-size:10px;font-weight:800;padding:4px 10px;border-radius:10px;color:#fff;white-space:nowrap;display:inline-block}
+  .pill{font-size:12px;font-weight:800;padding:4px 10px;border-radius:10px;color:#fff;white-space:nowrap;display:inline-block}
   .p-Competition-ready,.p-Reliable{background:var(--grass)} .p-Working{background:var(--teal)} .p-Prototyping{background:var(--lavender)} .p-Not-started{background:#b9b3a4}
   .bar{display:inline-block;width:76px;height:9px;background:#ece5d2;border-radius:5px;overflow:hidden;vertical-align:middle}
   .bar i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,var(--teal),var(--grass))}
   .heat{display:grid;grid-template-columns:repeat(10,1fr);gap:6px}
-  .heat .cell{aspect-ratio:1;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;cursor:pointer}
+  .heat .cell{aspect-ratio:1;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;cursor:pointer}
   .heatcount{display:grid;grid-template-columns:repeat(4,1fr);gap:8px} /* count of each rating (Thea, Oct 26) */
   .heatcount .cell{border-radius:10px;padding:12px 2px;text-align:center;color:#fff;cursor:pointer}
   .heatcount .num{font-size:30px;font-weight:800;line-height:1}
-  .heatcount .lab{font-size:12px;font-weight:800;margin-top:4px}
-  .heatcount .lvlname{font-size:10px;font-weight:700;opacity:.9;text-transform:uppercase;overflow-wrap:anywhere}
+  .heatcount .lab{font-size:13px;font-weight:800;margin-top:4px}
+  .heatcount .lvlname{font-size:12px;font-weight:700;opacity:.9;text-transform:uppercase;overflow-wrap:anywhere}
   .heatcount .l1{color:#6f6a59}
   .l1{background:#d9d3c2;color:#8a8471} .l2{background:var(--lavender)} .l3{background:var(--teal)} .l4{background:var(--grass)}
-  .legend{font-size:11px;color:var(--dim);margin-top:10px;font-weight:600}
+  .legend{font-size:13px;color:var(--dim);margin-top:10px;font-weight:600}
   .cv{display:flex;flex-direction:column;gap:9px}
   .cv .row{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700}
   .cv .name{width:92px}
@@ -69,40 +71,40 @@
   .entry{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--soft)}
   .entry:last-child{border-bottom:none}
   .avatar{width:36px;height:36px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:14px}
-  .avatar.sm{width:24px;height:24px;font-size:10px}
+  .avatar.sm{width:24px;height:24px;font-size:12px}
   .avatar img,.scard .face img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
   .avatar:has(img){border:2px solid}
-  .entry .meta{font-size:11px;color:var(--dim);font-weight:700;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .entry .meta{font-size:13px;color:var(--dim);font-weight:700;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
   .entry .txt{font-size:13px;line-height:1.5;margin-top:3px}
-  .tag{font-size:10px;font-weight:800;color:var(--pine);background:var(--lilac);border-radius:8px;padding:2px 8px}
+  .tag{font-size:12px;font-weight:800;color:var(--pine);background:var(--lilac);border-radius:8px;padding:2px 8px}
   .tag.cvtag{background:#d6f3f7;color:#0f7a88}
-  .photo{margin-top:8px;height:70px;max-width:260px;border-radius:8px;background:repeating-linear-gradient(45deg,#e8e0cd 0 12px,#efe9d8 12px 24px);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--dim);font-weight:700}
+  .photo{margin-top:8px;height:70px;max-width:260px;border-radius:8px;background:repeating-linear-gradient(45deg,#e8e0cd 0 12px,#efe9d8 12px 24px);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--dim);font-weight:700}
   /* forms */
   .form{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;align-items:end}
-  .form label{display:flex;flex-direction:column;gap:4px;font-size:11px;font-weight:800;color:var(--dim);text-transform:uppercase;letter-spacing:.5px}
+  .form label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:800;color:var(--dim);text-transform:uppercase;letter-spacing:.5px}
   .form input,.form select,.form textarea{border:1.5px solid var(--line);border-radius:8px;padding:8px 10px;background:#fffdf6;color:var(--ink);font-weight:600}
   .form textarea{min-height:64px;resize:vertical}
   .form .full{grid-column:1/-1}
   .btn{background:var(--pine);color:#fff;border:none;border-radius:10px;padding:10px 16px;font-weight:800;cursor:pointer;transition:.15s}
   .btn:hover{background:var(--forest)}
   .btn.lav{background:var(--lavender);color:var(--forest)}
-  .btn.sm{padding:5px 10px;font-size:11px;border-radius:8px}
+  .btn.sm{padding:5px 10px;font-size:13px;border-radius:8px}
   .btn.ghost{background:transparent;border:1.5px solid var(--pine);color:var(--pine)}
   .who-picks{display:flex;gap:6px;flex-wrap:wrap}
-  .who-pick{border:2px solid var(--line);border-radius:20px;padding:4px 10px;font-size:12px;font-weight:800;cursor:pointer;background:#fffdf6;display:flex;align-items:center;gap:6px}
+  .who-pick{border:2px solid var(--line);border-radius:20px;padding:4px 10px;font-size:13px;font-weight:800;cursor:pointer;background:#fffdf6;display:flex;align-items:center;gap:6px}
   .who-pick.on{border-color:var(--pine);background:var(--lilac)}
   .toast{position:fixed;bottom:20px;right:20px;background:var(--forest);color:var(--cream);padding:12px 18px;border-radius:12px;font-weight:800;box-shadow:0 8px 20px rgba(0,0,0,.25);opacity:0;transform:translateY(10px);transition:.3s;z-index:50}
   .toast.show{opacity:1;transform:none}
   .celebrate{background:linear-gradient(100deg,#fff,#f2ecfa);border-color:var(--lavender)}
   .celebrate .quote{font-size:15px;font-style:italic;line-height:1.5}
-  .celebrate .by{font-size:11px;color:var(--dim);font-weight:800;margin-top:6px}
+  .celebrate .by{font-size:13px;color:var(--dim);font-weight:800;margin-top:6px}
   /* run plan */
   .runplan{display:flex;gap:2px;align-items:center;margin-top:22px;position:relative}
-  .runplan .seg{min-width:0;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--forest);overflow:hidden;white-space:nowrap}
-  .runplan .gap{min-width:0;text-align:center;font-size:9px;color:var(--dim);overflow:hidden}
+  .runplan .seg{min-width:0;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--forest);overflow:hidden;white-space:nowrap}
+  .runplan .gap{min-width:0;text-align:center;font-size:11px;color:var(--dim);overflow:hidden}
   .runplan .limit{position:absolute;top:-6px;bottom:-6px;border-left:2.5px dashed #c0392b}
-  .runplan .limit span{position:absolute;top:-16px;left:-22px;width:44px;text-align:center;font-size:10px;font-weight:800;color:#c0392b}
-  .ruler{display:flex;justify-content:space-between;font-size:10px;color:var(--dim);font-weight:700;margin-top:4px}
+  .runplan .limit span{position:absolute;top:-16px;left:-22px;width:44px;text-align:center;font-size:12px;font-weight:800;color:#c0392b}
+  .ruler{display:flex;justify-content:space-between;font-size:12px;color:var(--dim);font-weight:700;margin-top:4px}
   /* rubric */
   .rrow{display:grid;grid-template-columns:1.6fr 2.4fr auto auto;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--soft);font-size:13px}
   .rrow .lvls{display:flex;gap:4px}
@@ -110,28 +112,30 @@
   .rubkey-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
   .rubkey-row>div{display:grid;grid-template-columns:auto 1fr;column-gap:10px;align-items:center}
   .rubkey-row .lvl{display:flex;align-items:center;justify-content:center;cursor:default;grid-row:span 2}
-  .rubkey-row small{grid-column:2;color:var(--dim);font-weight:600;font-size:12px;line-height:1.3}
+  .rubkey-row small{grid-column:2;color:var(--dim);font-weight:600;font-size:13px;line-height:1.3}
   @media (max-width:800px){.rubkey-row{grid-template-columns:1fr 1fr}}
   .lvl.on1{background:#d9d3c2;color:#6d675a;border-color:#d9d3c2} .lvl.on2{background:var(--lavender);color:#fff;border-color:var(--lavender)} .lvl.on3{background:var(--teal);color:#fff;border-color:var(--teal)} .lvl.on4{background:var(--grass);color:#fff;border-color:var(--grass)}
-  .evid{font-size:11px;color:var(--dim);font-weight:700;white-space:nowrap}
-  .phase-h{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:900;color:var(--lavender);margin:14px 0 4px}
-  .gear{color:var(--teal);font-size:11px}
+  .evid{font-size:13px;color:var(--dim);font-weight:700;white-space:nowrap}
+  .phase-h{font-size:13px;letter-spacing:2px;text-transform:uppercase;font-weight:900;color:var(--lavender);margin:14px 0 4px}
+  .gear{color:var(--teal);font-size:13px}
   /* steps / gantt */
   .steps{display:grid;grid-template-columns:repeat(8,1fr);gap:6px}
-  .step{border-radius:10px;padding:8px 6px;text-align:center;font-size:10px;font-weight:800;border:2px solid var(--line);background:#fffdf6}
+  .step{border-radius:10px;padding:8px 6px;text-align:center;font-size:12px;font-weight:800;border:2px solid var(--line);background:#fffdf6}
   .step.done{background:var(--grass);color:#fff;border-color:var(--grass)} .step.now{background:var(--lavender);color:var(--forest);border-color:var(--lavender)}
   .step .n{font-size:16px;display:block}
   .steps .step{cursor:pointer} .steps .step:hover{border-color:var(--lavender)}
   .ipbox p{font-size:14px;line-height:1.55;margin:0 0 6px;white-space:pre-wrap}
-  .gantt{display:grid;grid-template-columns:150px 1fr;gap:6px 10px;font-size:12px;font-weight:700;align-items:center}
+  .gantt{display:grid;grid-template-columns:150px 1fr;gap:6px 10px;font-size:13px;font-weight:700;align-items:center}
   .gantt .lane{height:22px;background:#f3eee2;border-radius:6px;position:relative}
-  .gantt .gbar{position:absolute;top:3px;bottom:3px;border-radius:5px;cursor:pointer;display:flex;align-items:center;padding-left:6px;font-size:10px;color:#fff;font-weight:800;white-space:nowrap;overflow:hidden}
+  .gantt .gbar{position:absolute;top:3px;bottom:3px;border-radius:5px;cursor:pointer;display:flex;align-items:center;padding-left:6px;font-size:12px;color:#fff;font-weight:800;white-space:nowrap;overflow:hidden}
   .gantt .gbar:hover{filter:brightness(1.1)}
-  .months{display:grid;grid-template-columns:repeat(4,1fr);font-size:10px;color:var(--dim);font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-left:160px;margin-bottom:4px}
+  .months{display:grid;grid-template-columns:repeat(4,1fr);font-size:12px;color:var(--dim);font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-left:160px;margin-bottom:4px}
   .expert{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--soft)}
-  .expert .face{width:44px;height:44px;border-radius:50%;background:var(--lilac);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+  .expert .face{width:44px;height:44px;border-radius:50%;background:var(--lilac);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;overflow:hidden}
+  .expert .face:has(img){width:72px;height:72px}.expert .face a{display:block;width:100%;height:100%}.expert .face img{width:100%;height:100%;object-fit:cover;display:block} /* Nov 20: expert profile picture */
+  .mascot-pic{flex:none;display:block}.mascot-pic img{width:140px;height:140px;object-fit:cover;border-radius:16px;display:block} /* Nov 20: mascot photo */
   .expert b{display:block}
-  .expert .fb{font-size:12px;margin-top:3px;line-height:1.45}
+  .expert .fb{font-size:13px;margin-top:3px;line-height:1.45}
   .arrow{color:var(--grass);font-weight:900}
   /* Project Photos (Nov 2) */
   .ipphotos{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
@@ -139,7 +143,7 @@
   .ipphotos figcaption{font-size:13px;margin-top:6px;display:flex;gap:4px;align-items:center}
   /* Innovation Project Details (Nov 2) */
   .ipd-head{margin:12px 0 -4px}
-  .ipd-grp{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:900;color:var(--lavender);margin:12px 0 2px}
+  .ipd-grp{font-size:13px;letter-spacing:2px;text-transform:uppercase;font-weight:900;color:var(--lavender);margin:12px 0 2px}
   .ipd-grp:first-child{margin-top:0}
   .p-Bought,.p-Have{background:var(--grass)} .p-Shipping{background:var(--teal)} .p-Need{background:var(--lavender);color:var(--forest)} .p-Optional,.p-Later{background:#b9b3a4} .p-Not-sure{background:#fffdf6;color:var(--pine);border:1.5px dashed var(--lavender)}
   .ipd-svg{width:100%;max-width:760px;display:block;margin:0 auto 10px}
@@ -154,13 +158,13 @@
   details.plat>summary{cursor:pointer;padding:12px 0;font-size:15px;font-weight:800;color:var(--forest);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
   details.plat>summary .hint{margin:0}
   details.plat>p{font-size:13px;line-height:1.55;margin:0 0 4px}
-  .ipd-sub{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:900;color:var(--pine);margin:14px 0 4px}
+  .ipd-sub{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;font-weight:900;color:var(--pine);margin:14px 0 4px}
   details.ipd-f{border-top:1px solid var(--soft)}
   details.ipd-f>summary{cursor:pointer;padding:8px 0;font-size:13px;font-weight:700;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
-  details.ipd-f>summary code{font-size:12px;color:var(--pine);font-weight:800}
+  details.ipd-f>summary code{font-size:13px;color:var(--pine);font-weight:800}
   details.ipd-f>summary .hint{margin:0}
   .ipd-todo{background:repeating-linear-gradient(45deg,#f7f3ea 0 12px,#fffdf6 12px 24px);border:1.5px dashed var(--lavender);border-radius:10px;padding:12px;font-size:13px;margin-bottom:8px}
-  .codebar{display:flex;gap:8px;align-items:center;justify-content:flex-end;margin-bottom:6px;font-size:11px;color:var(--dim);font-weight:700}
+  .codebar{display:flex;gap:8px;align-items:center;justify-content:flex-end;margin-bottom:6px;font-size:13px;color:var(--dim);font-weight:700}
   .codebar span{margin-right:auto}
   .codebar a{text-decoration:none}
   /* Our Robot Code (Nov 2): history grid + what changed */
@@ -198,8 +202,8 @@
   .scard{border-radius:14px;padding:16px;border:2px solid var(--line);background:#fffdf6;text-align:center}
   .scard .face{width:88px;height:88px;overflow:hidden;border-radius:50%;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:30px;border:4px solid}
   .scard b{font-size:16px;display:block}
-  .scard .role{font-size:11px;color:var(--dim);font-weight:800;text-transform:uppercase;letter-spacing:1px}
-  .scard .facts{font-size:12px;text-align:left;margin-top:10px;line-height:1.7}
+  .scard .role{font-size:13px;color:var(--dim);font-weight:800;text-transform:uppercase;letter-spacing:1px}
+  .scard .facts{font-size:13px;text-align:left;margin-top:10px;line-height:1.7}
   .scard .facts span{color:var(--dim);font-weight:800}
   .fill{font-style:normal;border-bottom:1.5px dashed transparent;border-radius:4px;padding:0 3px;outline:none;cursor:text;min-width:40px;display:inline-block}
   .fill:hover{border-bottom-color:var(--lavender);background:#f7f3fb}
@@ -208,46 +212,44 @@
   .diff .fill:not(:empty){min-width:0;padding:0 1px}
   .fill:empty::before{content:'Tap to fill in';color:var(--lavender);font-weight:700;font-style:italic}
   .balance{display:flex;gap:4px;height:22px;border-radius:8px;overflow:hidden;margin-top:6px}
-  .balance i{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff}
+  .balance i{display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff}
   /* calendar */
-  .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font-size:11px;font-weight:700}
-  .cal .dow{color:var(--dim);text-align:center;font-size:10px;text-transform:uppercase}
+  .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font-size:13px;font-weight:700}
+  .cal .dow{color:var(--dim);text-align:center;font-size:12px;text-transform:uppercase}
   .cal .day{aspect-ratio:1;border-radius:8px;background:#f7f3ea;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;position:relative}
   .cal .day.prac{background:var(--lilac);cursor:pointer} .cal .day.match{background:#cdeccf} .cal .day.tourn{background:var(--forest);color:#fff} .cal .day.today{outline:2px solid var(--teal)}
   .cal .day .dots{display:flex;gap:2px}
   .cal .day .dots i{width:5px;height:5px;border-radius:50%;background:var(--grass)}
   .cal .day.blank{background:transparent}
   .att{border:1.5px solid var(--line);border-radius:12px;padding:12px;background:#fffdf6}
-  .bigpic{display:block;margin:0 0 12px}.bigpic img{width:100%;max-height:420px;object-fit:contain;background:#f3eee2;border-radius:12px;display:block}.bigpic figcaption{font-size:12px;color:var(--dim);margin-top:4px} /* Nov 20: robot + team photos */
-  .ver .ph.has{display:block;width:90px;height:60px;background:none}.ver .ph img{width:90px;height:60px;object-fit:cover;border-radius:5px;display:block} /* Nov 20: version photos */
+  .bigpic{display:block;margin:0 0 12px}.bigpic img{width:100%;max-height:420px;object-fit:contain;background:#f3eee2;border-radius:12px;display:block}.bigpic figcaption{font-size:13px;color:var(--dim);margin-top:4px} /* Nov 20: robot + team photos */
   .att-pic{display:block;margin:8px 0}.att-pic img{width:100%;height:260px;object-fit:contain;background:#f3eee2;border-radius:10px;display:block} /* Nov 2: attachment photo on the mat */
   .att b{font-size:14px}
-  .vers{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
-  .ver{background:#f3eee2;border-radius:8px;padding:6px 8px;font-size:11px;font-weight:700;min-width:90px}
-  .ver .ph{height:36px;border-radius:5px;background:repeating-linear-gradient(45deg,#e8e0cd 0 8px,#efe9d8 8px 16px);margin-bottom:4px}
+  .vers{margin:8px 0 0 18px;font-size:13px;line-height:1.6} /* Nov 20: versions as a dated list */
+  .vers a{color:var(--pine);font-weight:800}
   .spec{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;font-size:13px}
-  .spec span{color:var(--dim);font-weight:800;font-size:11px;text-transform:uppercase}
+  .spec span{color:var(--dim);font-weight:800;font-size:13px;text-transform:uppercase}
   .feed-people{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:4px 0 6px}
   .feed-people button{border:2px solid var(--line);background:#fffdf6;border-radius:16px;padding:12px 10px 10px;width:104px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;font-family:inherit;font-weight:800;font-size:13px;color:var(--forest);white-space:nowrap}
   .feed-people button:hover{border-color:var(--pine);transform:translateY(-2px)}
   .feed-people .avatar{width:60px;height:60px;font-size:22px}
   .feed-people .teamlogo{width:60px;height:60px;object-fit:contain}
-  .feed-people small{font-weight:600;font-size:11px;color:#777}
+  .feed-people small{font-weight:600;font-size:13px;color:#777}
   .filterbar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
-  .filterbar button{border:2px solid var(--line);background:#fffdf6;border-radius:16px;padding:4px 12px;font-weight:800;font-size:12px;cursor:pointer}
+  .filterbar button{border:2px solid var(--line);background:#fffdf6;border-radius:16px;padding:4px 12px;font-weight:800;font-size:13px;cursor:pointer}
   .filterbar button.on{background:var(--pine);color:#fff;border-color:var(--pine)}
   .filterbar.lav button.on{background:var(--lavender);color:var(--forest);border-color:var(--lavender)} /* Robot Game mission buttons (Thea, Oct 12) */
   .confetti{position:fixed;top:-10px;width:10px;height:14px;border-radius:2px;z-index:99;pointer-events:none;animation:fall linear forwards}
   @keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:.8}}
-  footer{margin-top:22px;font-size:11px;color:var(--dim);text-align:center;font-weight:600}
-  .hint{font-size:11px;color:var(--dim);font-weight:600;margin-top:6px}
+  footer{margin-top:22px;font-size:13px;color:var(--dim);text-align:center;font-weight:600}
+  .hint{font-size:13px;color:var(--dim);font-weight:600;margin-top:6px}
   @media(max-width:760px){body{flex-direction:column}aside{width:100%;height:auto;position:static;flex-direction:row;flex-wrap:wrap;gap:4px}.crest{width:100%}.countdown{margin-top:0;width:100%}.navlink{width:auto}}
   /* view-only copy (npm run export → ../site/) */
   .viewonly .fill{cursor:default;border-bottom-color:transparent!important;background:none!important}
   .viewonly .fill:empty::before{content:'—';color:var(--dim);font-style:normal}
   .viewonly .lvl,.viewonly [onclick^="setStep"]{pointer-events:none}
   .viewonly select:disabled,.viewonly input:disabled{opacity:1}
-  .viewbadge{margin-top:8px;font-size:11px;font-weight:800;color:#d9c6ee;text-align:center;line-height:1.4}
+  .viewbadge{margin-top:8px;font-size:13px;font-weight:800;color:#d9c6ee;text-align:center;line-height:1.4}
 </style>
 </head>
 <body>
@@ -256,14 +258,12 @@
     <div class="team">ROOTED WARRIORS</div>
     <div class="sub">Season App · v5</div>
   </div>
-  <button class="navlink active" data-page="dash"><span class="ico">🏠</span> Dashboard</button>
-  <button class="navlink" data-page="game"><span class="ico">🎯</span> Robot Game</button>
-  <button class="navlink" data-page="design"><span class="ico">🤖</span> Robot Design</button>
-  <button class="navlink" data-page="coding"><span class="ico">💻</span> Coding</button>
-  <button class="navlink" data-page="ip"><span class="ico">💡</span> Innovation Project</button>
-  <button class="navlink" data-page="cv"><span class="ico">🤝</span> Core Values</button>
-  <button class="navlink" data-page="log"><span class="ico">📓</span> Daily Log</button>
-  <button class="navlink" data-page="rubric"><span class="ico">📋</span> Rubric Check</button>
+  <button class="navlink active" data-page="dash">Dashboard</button>
+  <button class="navlink" data-page="design">Robot Design &amp; Game</button>
+  <button class="navlink" data-page="coding">Coding</button>
+  <button class="navlink" data-page="ip">Innovation Project</button>
+  <button class="navlink" data-page="cv">Core Values</button>
+  <button class="navlink" data-page="log">Daily Log</button>
   <div class="countdown"><div class="num" id="cd-num">–</div><div class="lbl" id="cd-lbl"></div></div>
 </aside>
 
@@ -272,46 +272,31 @@
   <section class="page active" id="page-dash">
     <div class="pagehead"><h1>Team Dashboard<small>Everything the judges will see, in one place</small></h1><span class="chip">2026 SEASON</span></div>
     <div class="grid">
-      <div class="card wide"><h2><span><i class="leafdot"></i>Mission Inventory</span><button class="btn sm lav" onclick="go('game')">Edit →</button></h2><div id="d-missions"></div></div>
+      <div class="card wide" id="d-score-card"><h2><span><i class="leafdot"></i>Top Practice Score</span></h2><div id="d-score"></div></div> <!-- Nov 20: best practice match vs. top possible (settings.game_plan) -->
+      <div class="card wide"><h2><span><i class="leafdot"></i>Mission Inventory</span><button class="btn sm lav" onclick="go('design')">Edit →</button></h2><div id="d-missions"></div></div>
       <div class="card wide"><h2><span><i class="leafdot"></i>Latest Notebook Entries</span><button class="btn sm lav" onclick="go('log')">Write one →</button></h2><div id="d-log"></div></div>
       <div class="card"><h2><span><i class="leafdot"></i>Core Values Tally</span><button class="btn sm lav" onclick="go('cv')">Add moment →</button></h2><div class="cv" id="d-cv"></div></div>
       <div class="card celebrate"><h2><span><i class="leafdot"></i>Proudest Moment</span></h2><div class="quote" id="d-quote"></div><div class="by" id="d-quote-by"></div></div>
-      <div class="card"><h2><span><i class="leafdot"></i>Who's Been Doing What</span></h2><div id="d-balance"></div><div class="hint">Judges look for "all team members" — keep every color showing up!</div></div>
-      <div class="card"><h2><span><i class="leafdot"></i>Rubric Map — 20 rows</span><button class="btn sm lav" onclick="go('rubric')">Rate →</button></h2><div class="heatcount" id="d-heat"></div><div class="legend" id="d-heat-legend"></div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>Who's Been Doing What</span></h2><div id="d-balance"></div><div class="hint">Judges look for "all team members" — keep every color showing up!</div></div>
     </div>
   </section>
 
-  <!-- ================= ROBOT GAME ================= -->
-  <section class="page" id="page-game">
-    <div class="pagehead"><h1>Robot Game<small>Missions · run plan · practice match scores</small></h1></div>
-    <div class="grid">
-      <div class="card wide"><h2><span><i class="leafdot"></i>Mission Inventory</span><span class="hint">Change a status or reliability and watch the dashboard update</span></h2><div id="g-missions"></div></div>
-      <div class="card" style="align-self:start"><h2><span><i class="leafdot"></i>Run Plan &amp; Time Check</span></h2><div id="g-runplan"></div></div>
-      <div class="card" style="grid-row:span 2;align-self:start"><h2><span><i class="leafdot"></i>Points-per-Second Leaderboard</span></h2> <!-- spans 2 rows so Score History + Log tuck under the Run Plan on narrower screens (Thea, Oct 23) --><div id="g-pps"></div><div class="hint">(points × reliability) ÷ seconds — which missions earn the most for their time?</div></div>
-      <div style="display:flex;flex-direction:column;gap:16px;align-self:start;min-width:0"> <!-- Log a Practice Match (Score History removed Nov 20) -->
-        <div class="card"><h2><span><i class="leafdot"></i>Log a Practice Match</span></h2>
-          <div class="form">
-            <label>Date<input type="date" id="m-date" value="2026-09-06"></label>
-            <label>Score<input type="number" id="m-score" placeholder="Like 205"></label>
-            <label>Runs completed<input type="number" id="m-runs" placeholder="4"></label>
-            <label class="full">What failed?<input id="m-fail" placeholder="Flip the Rock missed the flag"></label>
-            <label class="full">What we changed after<input id="m-change" placeholder="Nolan made the pusher wider"></label>
-            <button class="btn full" onclick="addMatch()">🏆 Save match</button>
-          </div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= ROBOT DESIGN ================= -->
+  <!-- ================= ROBOT DESIGN + ROBOT GAME (combined Nov 20) ================= -->
+  <!-- One page for the Robot Design talk. Cards go in the same order as the talk (updates/PRESENTATION.md), so the judges can scroll while we talk. -->
   <section class="page" id="page-design">
-    <div class="pagehead"><h1>Robot Design<small>The main robot · attachments · testing · tradeoffs</small></h1><span class="chip">IDENTIFY → DESIGN → CREATE → ITERATE → COMMUNICATE</span></div>
+    <div class="pagehead"><h1>Robot Design &amp; Game<small>Our robot · strategy · attachments · code · testing</small></h1><span class="chip">IDENTIFY → DESIGN → CREATE → ITERATE → COMMUNICATE</span></div>
     <div class="grid">
+      <!-- 1 · Isla: Meet our robot + Mission strategy -->
       <div class="card wide"><h2><span><i class="leafdot"></i>The Main Robot</span></h2>
         <div id="rd-robot-pic"></div><div class="spec" id="rd-specs"></div></div> <!-- Nov 20: robot base photo (settings.robot_photo) -->
-      <div class="card wide"><h2><span><i class="leafdot"></i>Tradeoff Decisions</span></h2><div id="rd-trade"></div></div> <!-- Isla (moved up to follow the judging script, Nov 17) -->
-      <div class="card wide"><h2><span><i class="leafdot"></i>Run Plan &amp; Time Check</span><span class="hint">Same as the Robot Game page</span></h2><div data-mirror="g-runplan"></div></div> <!-- Isla: live copy of the card on another page (Nov 17) -->
-      <div class="card wide"><h2><span><i class="leafdot"></i>Who's Been Doing What</span><span class="hint">Same as the Dashboard</span></h2><div data-mirror="d-balance"></div></div> <!-- Adeline: live copy of the card on another page (Nov 17) -->
-      <div class="card wide"><h2><span><i class="leafdot"></i>Attachments Over Time</span><span class="hint">Every version gets a picture — click a version in the real app to see it big</span></h2><div class="grid" id="rd-atts"></div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>Tradeoff Decisions</span></h2><div id="rd-trade"></div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>Mission Inventory</span><span class="hint">Change a status or reliability and watch the dashboard update</span></h2><div id="g-missions"></div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>Run Plan &amp; Time Check</span></h2><div id="g-runplan"></div></div>
+      <!-- 2 · Adeline: Use of resources + All members contributed -->
+      <div class="card wide"><h2><span><i class="leafdot"></i>Who's Been Doing What</span><span class="hint">Same as the Dashboard</span></h2><div data-mirror="d-balance"></div></div> <!-- live copy of the card on another page (Nov 17) -->
+      <!-- 3 · Weston: Skills in all members + Attachments -->
+      <div class="card wide"><h2><span><i class="leafdot"></i>Attachments Over Time</span><span class="hint">Newest picture on top · click "picture" to see an older version</span></h2><div class="grid" id="rd-atts"></div></div>
+      <!-- 4 · Fynn: Code / sensors + Testing ("we timed every mission") -->
       <div class="card wide"><h2><span><i class="leafdot"></i>Test Sessions — Observation → Change → Result</span></h2><div id="rd-tests"></div>
         <div class="form" style="margin-top:12px">
           <label>Date<input type="date" id="t-date" value="2026-09-06"></label>
@@ -320,9 +305,21 @@
           <label>Successes<input type="number" id="t-succ" placeholder="8"></label>
           <label class="full">What we saw<input id="t-obs" placeholder="Drone attachment slipped off the launcher"></label>
           <label class="full">What we changed<input id="t-chg" placeholder="Added a rubber tip"></label>
-          <button class="btn full" onclick="addTest()">🔬 Save test session</button>
+          <button class="btn full" onclick="addTest()">Save test session</button>
         </div></div>
-      <div class="card wide"><h2><span><i class="leafdot"></i>Our Robot Code</span><span class="hint">Same as the Coding page · every change to our programs</span></h2><div data-mirror="rc"></div></div> <!-- Thea: live copy of the card on another page (Nov 17) -->
+      <div class="card wide"><h2><span><i class="leafdot"></i>Points-per-Second Leaderboard</span></h2><div id="g-pps"></div><div class="hint">(points × reliability) ÷ seconds — which missions earn the most for their time?</div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>Log a Practice Match</span></h2>
+        <div class="form">
+          <label>Date<input type="date" id="m-date" value="2026-09-06"></label>
+          <label>Score<input type="number" id="m-score" placeholder="Like 205"></label>
+          <label>Runs completed<input type="number" id="m-runs" placeholder="4"></label>
+          <label class="full">What failed?<input id="m-fail" placeholder="Flip the Rock missed the flag"></label>
+          <label class="full">What we changed after<input id="m-change" placeholder="Nolan made the pusher wider"></label>
+          <button class="btn full" onclick="addMatch()">Save match</button>
+        </div></div>
+      <!-- 5 · Thea: Improvements + Process & lessons learned -->
+      <div class="card wide"><h2><span><i class="leafdot"></i>Our Robot Code</span><span class="hint">Same as the Coding page · every change to our programs</span></h2><div data-mirror="rc"></div></div> <!-- live copy of the card on another page (Nov 17) -->
+      <!-- 6 · Nolan: Pride & enthusiasm + closing (no card: hold up the attachments) -->
     </div>
   </section>
 
@@ -354,12 +351,12 @@
           <label>Who owns it?<select id="g-who"></select></label>
           <label>Starts<select id="g-s"><option value="0">Early Aug</option><option value="0.5">Mid Aug</option><option value="1">Early Sep</option><option value="1.5">Mid Sep</option><option value="2">Early Oct</option><option value="2.5">Mid Oct</option><option value="3">Early Nov</option><option value="3.5">Mid Nov</option></select></label>
           <label>Ends<select id="g-e"><option value="0.5">Mid Aug</option><option value="1">End of Aug</option><option value="1.5">Mid Sep</option><option value="2">End of Sep</option><option value="2.5">Mid Oct</option><option value="3">End of Oct</option><option value="3.5">Mid Nov</option><option value="4">End of Nov</option></select></label>
-          <button class="btn" onclick="addGantt()">📅 Add to plan</button>
+          <button class="btn" onclick="addGantt()">Add to plan</button>
         </div></div>
       <div class="card wide" style="background:linear-gradient(100deg,#fff,#f2ecfa)"><h2><span><i class="leafdot"></i>Our Solution</span></h2><div class="ipbox" id="ip-solution"></div></div> <!-- Thea -->
       <div class="card wide"><h2><span><i class="leafdot"></i>Project Photos</span><span class="hint">Click a photo to see it big</span></h2><div class="ipphotos" id="ip-photos"></div></div> <!-- Nov 2: soldering photos -->
       <div class="card wide"><h2><span><i class="leafdot"></i>Camera Wiring Diagram</span><span class="hint">Everything runs on 3.3 V · dashed = optional · hover a pin to see why</span></h2><div id="ipd-wiring"></div></div> <!-- Nolan -->
-      <div class="card wide"><h2><span><i class="leafdot"></i>The Code &amp; How to Install It</span><span class="hint">👆 Click a computer to open its code and install steps</span></h2><div id="ipd-code"></div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>The Code &amp; How to Install It</span><span class="hint">Click a computer to open its code and install steps</span></h2><div id="ipd-code"></div></div>
       <div class="card wide"><h2><span><i class="leafdot"></i>Communication</span><span class="hint">Every time we shared our project: who we told, what they said, what we changed</span></h2> <!-- Thea, Oct 26 -->
         <div id="ip-shares"></div>
         <div class="form" style="margin-top:14px">
@@ -368,7 +365,7 @@
           <label class="full">Who shared it<div class="who-picks" id="sh-who"></div></label>
           <label class="full">What they said<input id="sh-said" placeholder="Their ideas, questions, or advice"></label>
           <label class="full">What we changed because of it<input id="sh-chg" placeholder="Leave blank if nothing yet"></label>
-          <button class="btn full" onclick="addShare()">📣 Save</button>
+          <button class="btn full" onclick="addShare()">Save</button>
         </div></div>
       <div class="card wide" style="background:linear-gradient(100deg,#fff,#f2ecfa)"><h2><span><i class="leafdot"></i>How We Got Here</span></h2><div class="ipbox" id="ip-how"></div></div> <!-- Weston -->
       <!-- Innovation Project Details (Coach CJ, Nov 2): parts, wiring, and the code + install guide for each computer -->
@@ -392,7 +389,7 @@
           <label class="full">Which value?<select id="cvm-val"><option>Teamwork</option><option>Discovery</option><option>Fun</option><option>Innovation</option><option>Inclusion</option><option>Impact</option></select></label>
           <label class="full">Who was involved?<div class="who-picks" id="cvm-who"></div></label>
           <label class="full">What happened?<textarea id="cvm-text" placeholder="Weston stayed late to help Nolan finish his program"></textarea></label>
-          <button class="btn full" onclick="addMoment()">🤝 Save moment</button>
+          <button class="btn full" onclick="addMoment()">Save moment</button>
         </div></div>
       <div class="card"><h2><span><i class="leafdot"></i>Help Given ↔ Received</span></h2><div id="cv-help"></div></div>
       <div class="card"><h2><span><i class="leafdot"></i>Recent Moments</span></h2><div id="cv-moments"></div></div>
@@ -411,10 +408,10 @@
           <label class="full">Who did this?<div class="who-picks" id="e-who"></div></label>
           <label class="full">What happened?<textarea id="e-text" placeholder="What did we try, what did we see, what will we change?"></textarea></label>
           <label class="full">Core Values spotted (optional)<div class="who-picks" id="e-cv"></div></label>
-          <label class="full"><span style="display:flex;justify-content:space-between"><span>Photo</span><span class="hint">📷 add photo (works in the real app)</span></span><div class="photo" style="height:40px;max-width:100%">Tap to add a photo</div></label>
-          <button class="btn full" onclick="addEntry()">📓 Save entry</button>
+          <label class="full"><span style="display:flex;justify-content:space-between"><span>Photo</span><span class="hint">add photo (works in the real app)</span></span><div class="photo" style="height:40px;max-width:100%">Tap to add a photo</div></label>
+          <button class="btn full" onclick="addEntry()">Save entry</button>
         </div></div>
-      <div class="card"><h2><span><i class="leafdot"></i>Success Calendar</span></h2><div id="log-cal"></div><div class="legend">💜 practice day · 💚 match day · green dots = successes logged · teal ring = today</div></div>
+      <div class="card"><h2><span><i class="leafdot"></i>Success Calendar</span></h2><div id="log-cal"></div><div class="legend">Purple = practice day · Green = match day · green dots = successes logged · teal ring = today</div></div>
       <div class="card wide" style="text-align:center;padding:26px 20px"><h2 style="justify-content:center"><span><i class="leafdot"></i>Notebook Feed</span></h2>
         <div class="hint" id="log-teaser" style="margin:0 0 14px;font-size:13px"></div>
         <div class="feed-people" id="log-people"></div>
@@ -425,22 +422,7 @@
       <div class="filterbar" id="log-filter"></div><div id="log-feed"></div></div>
   </section>
 
-  <!-- ================= RUBRIC ================= -->
-  <section class="page" id="page-rubric">
-    <div class="pagehead"><h1>Rubric Check</h1><span class="chip" id="rub-summary"></span></div>
-    <div class="card wide rubkey" style="margin-bottom:16px"><h2><span><i class="leafdot"></i>What the numbers mean</span></h2>
-      <div class="rubkey-row">
-        <div><span class="lvl on1">1</span><b>Beginning</b><small>Barely any proof yet, or it's unclear</small></div>
-        <div><span class="lvl on2">2</span><b>Developing</b><small>Some proof, but partial or simple</small></div>
-        <div><span class="lvl on3">3</span><b>Accomplished</b><small>Clear, detailed proof · our goal for every row!</small></div>
-        <div><span class="lvl on4">4</span><b>Exceeds</b><small>Beyond Accomplished · the judge has to write down why!</small></div>
-      </div></div>
-    <div class="grid">
-      <div class="card"><h2><span><i class="leafdot"></i>Innovation Project</span></h2><div id="rub-ip"></div></div>
-      <div class="card"><h2><span><i class="leafdot"></i>Robot Design</span></h2><div id="rub-rd"></div></div>
-    </div>
-    <div class="hint" style="margin-top:12px">"entries" = notebook entries tagged to that phase</div>
-  </section>
+  <!-- Rubric Check page removed Nov 20 (student request). Ratings are still saved. Dashboard's Rubric Map card removed too (same day). -->
 
   <footer>Rooted Warriors Season App · v5 · saved in the team database</footer>
 </main>
@@ -472,7 +454,7 @@ async function load(){
 /* Saves, then reloads everything from the database so every page shows what's really stored. */
 async function save(method,url,body,okMsg){
  try{await api(method,url,body);if(okMsg)toast(okMsg);await load();return true}
- catch(e){toast('⚠️ Not saved — '+e.message);console.error(e);return false}}
+ catch(e){toast('Not saved — '+e.message);console.error(e);return false}}
 
 /* ===================== HELPERS ===================== */
 const $=id=>document.getElementById(id);
@@ -484,17 +466,17 @@ const fill=(url,key,val,kind='text')=>`<i class="fill" contenteditable="true" sp
 function saveFill(el){
  const raw=el.textContent.trim(),{url,key,kind,old}=el.dataset;if(raw===old)return;if(!raw){el.textContent=old;return}
  let v=raw;
- if(kind==='num'){v=parseInt(raw,10);const max=key==='diff'?5:99;if(!(v>=1&&v<=max)){toast(`⚠️ Type a number from 1 to ${max}`);el.textContent=old;return}}
+ if(kind==='num'){v=parseInt(raw,10);const max=key==='diff'?5:99;if(!(v>=1&&v<=max)){toast(`Type a number from 1 to ${max}`);el.textContent=old;return}}
  if(kind==='names'||kind==='name'){const said=raw.split(/\s*(?:,|\+|&|\band\b)\s*/i).filter(Boolean),found=said.map(w=>TEAM.find(t=>t.n.toLowerCase()===w.toLowerCase()));
-  const bad=said.filter((w,i)=>!found[i]);if(bad.length){toast(`⚠️ Who is "${bad[0]}"? Type teammates' first names`);el.textContent=old;return}
+  const bad=said.filter((w,i)=>!found[i]);if(bad.length){toast(`Who is "${bad[0]}"? Type teammates' first names`);el.textContent=old;return}
   v=kind==='name'?found[0].n:[...new Set(found.map(t=>t.n))]}
- save('PATCH',url,{[key]:v},'💾 Saved!')}
+ save('PATCH',url,{[key]:v},'Saved!')}
 const cap=t=>t?String(t).charAt(0).toUpperCase()+String(t).slice(1):t; /* display only: first letter capital */
-const member=n=>TEAM.find(t=>t.n===n)||{c:'#999',face:'🙂'};
+const member=n=>TEAM.find(t=>t.n===n)||{c:'#999',face:''};
 const fmt=d=>{if(!d)return 'date?';const [y,m,dd]=d.split('-'); /* Nov 15: some shares have no known date */return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]+' '+(+dd)};
-const bigPic=p=>p&&p.photo?`<figure class="bigpic"><a href="/images/${encodeURIComponent(p.photo)}" target="_blank" title="Click to see it big"><img src="/images/${encodeURIComponent(p.photo)}" alt="${escH(p.caption||'')}" loading="lazy"></a><figcaption>📷 ${fmt(p.date)} · ${escH(p.caption||'')}</figcaption></figure>`:''; /* Nov 20: settings.robot_photo / team_photo */
+const bigPic=p=>p&&p.photo?`<figure class="bigpic"><a href="/images/${encodeURIComponent(p.photo)}" target="_blank" title="Click to see it big"><img src="/images/${encodeURIComponent(p.photo)}" alt="${escH(p.caption||'')}" loading="lazy"></a><figcaption>${fmt(p.date)} · ${escH(p.caption||'')}</figcaption></figure>`:''; /* Nov 20: settings.robot_photo / team_photo */
 const pic=m=>m.photo?`<img src="/images/${encodeURIComponent(m.photo)}" alt="${m.n}" loading="lazy">`:'';
-const av=(n,sm)=>`<span class="avatar ${sm?'sm':''}" style="background:${member(n).c};border-color:${member(n).c}" title="${n}">${pic(member(n))||n[0]}</span>`;
+const av=(n,sm)=>`<span class="avatar ${sm?'sm':''}" style="background:${member(n).c};border-color:${member(n).c}" title="${n}">${n[0]}</span>`; /* Nov 20: small circles = color + first letter (photos too small to see); Core Values profile cards keep photos */
 function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)}
 function confetti(){const cols=['#3f9b4c','#b48fd9','#20b5c9','#d9c6ee','#f4efe1'];for(let i=0;i<90;i++){const c=document.createElement('div');c.className='confetti';c.style.left=Math.random()*100+'vw';c.style.background=cols[i%cols.length];c.style.animationDuration=(2+Math.random()*2)+'s';c.style.animationDelay=(Math.random()*.6)+'s';document.body.appendChild(c);setTimeout(()=>c.remove(),4500)}}
 function go(p){if(p==='log'&&$('log-feed-card'))closeFeed();document.querySelectorAll('.navlink').forEach(b=>b.classList.toggle('active',b.dataset.page===p));document.querySelectorAll('.page').forEach(s=>s.classList.toggle('active',s.id==='page-'+p));window.scrollTo(0,0)}
@@ -502,7 +484,7 @@ function go(p){if(p==='log'&&$('log-feed-card'))closeFeed();document.querySelect
 function openFeed(f){if(f){logFilter=f;renderLog()}$('log-home').style.display='none';$('log-feed-card').style.display='block';window.scrollTo(0,0)}
 function closeFeed(){$('log-home').style.display='';$('log-feed-card').style.display='none';window.scrollTo(0,0)}
 document.querySelectorAll('.navlink').forEach(b=>b.onclick=()=>go(b.dataset.page));
-function whoPicker(id,opts,colors){const box=$(id);box.innerHTML=opts.map(o=>`<span class="who-pick" data-v="${o}">${colors?`<span class="avatar sm" style="background:${member(o).c};border-color:${member(o).c}">${pic(member(o))||o[0]}</span>`:''}${o}</span>`).join('');box.querySelectorAll('.who-pick').forEach(p=>p.onclick=()=>p.classList.toggle('on'))}
+function whoPicker(id,opts,colors){const box=$(id);box.innerHTML=opts.map(o=>`<span class="who-pick" data-v="${o}">${colors?`<span class="avatar sm" style="background:${member(o).c};border-color:${member(o).c}">${o[0]}</span>`:''}${o}</span>`).join('');box.querySelectorAll('.who-pick').forEach(p=>p.onclick=()=>p.classList.toggle('on'))}
 const picked=id=>[...$(id).querySelectorAll('.who-pick.on')].map(p=>p.dataset.v);
 const clearPicks=id=>$(id).querySelectorAll('.who-pick').forEach(p=>p.classList.remove('on'));
 function tally(){const t={Teamwork:0,Discovery:0,Fun:0,Innovation:0,Inclusion:0,Impact:0};moments.forEach(m=>t[m.v]=(t[m.v]||0)+1);entries.forEach(e=>(e.cv||[]).forEach(v=>t[v]=(t[v]||0)+1));return t}
@@ -516,18 +498,22 @@ function missionTable(editable){
  const btns=editable?`<div class="filterbar lav">${['All',...missions.map(m=>m.id)].map(id=>`<button class="${id===gameMission?'on':''}" title="${id==='All'?'Every mission':missions.find(m=>m.id===id).name}" onclick="pickMission('${id}')">${id}</button>`).join('')}</div>`:'';
  const who=list=>list.length?list.map(n=>av(n,1)).join(''):'—';
  const maxPts=missions.reduce((a,m)=>a+m.pts,0), started=missions.filter(m=>m.st!=='Not started').length;
- return `${btns}<table><tr><th>Mission</th><th>Max pts</th>${editable?'<th>How it scores</th><th class="diff">Difficulty</th><th>Run</th><th>Attachment</th><th>Built</th><th>Coded</th>':''}<th>Status</th><th>Reliability</th></tr>${rows.map(m=>{const i=missions.indexOf(m);return `<tr><td><b>${m.id}</b> ${m.name}</td><td><b>${m.pts}</b></td>${editable?`<td style="font-weight:500;font-size:12px">${m.how}</td><td class="diff" style="white-space:nowrap">${fill('/api/missions/'+m.id,'diff',m.diff,'num')}${m.diff?'<b>/5</b>':''}</td><td>${m.run??fill('/api/missions/'+m.id,'run','','num')}</td><td>${blank(m.att)?fill('/api/missions/'+m.id,'att',''):m.att}</td><td>${m.built.length?who(m.built):fill('/api/missions/'+m.id,'built','','names')}</td><td>${m.prog.length?who(m.prog):fill('/api/missions/'+m.id,'prog','','names')}</td>`:''}
- <td>${editable?`<select onchange="save('PATCH','/api/missions/${m.id}',{st:this.value},'✅ ${m.id} status saved')">${STATUSES.map(s=>`<option ${s===m.st?'selected':''}>${s}</option>`).join('')}</select>`:`<span class="pill p-${m.st.replace(/ /g,'-')}">${m.st}</span>`}</td>
- <td>${editable?`<input type="range" min="0" max="100" value="${m.rel}" style="width:80px;vertical-align:middle" oninput="this.nextSibling.textContent=' '+this.value+'%'" onchange="save('PATCH','/api/missions/${m.id}',{rel:+this.value},'✅ ${m.id} reliability saved')"> `:`<span class="bar"><i style="width:${m.rel}%"></i></span> `}${m.rel?m.rel+'%':'—'}</td></tr>`}).join('')}</table>
+ return `${btns}<table><tr><th>Mission</th><th>Max pts</th>${editable?'<th>How it scores</th><th class="diff">Difficulty</th><th>Run</th><th>Attachment</th><th>Built</th><th>Coded</th>':''}<th>Status</th><th>Reliability</th></tr>${rows.map(m=>{const i=missions.indexOf(m);return `<tr><td><b>${m.id}</b> ${m.name}</td><td><b>${m.pts}</b></td>${editable?`<td style="font-weight:500;font-size:13px">${m.how}</td><td class="diff" style="white-space:nowrap">${fill('/api/missions/'+m.id,'diff',m.diff,'num')}${m.diff?'<b>/5</b>':''}</td><td>${m.run??fill('/api/missions/'+m.id,'run','','num')}</td><td>${blank(m.att)?fill('/api/missions/'+m.id,'att',''):m.att}</td><td>${m.built.length?who(m.built):fill('/api/missions/'+m.id,'built','','names')}</td><td>${m.prog.length?who(m.prog):fill('/api/missions/'+m.id,'prog','','names')}</td>`:''}
+ <td>${editable?`<select onchange="save('PATCH','/api/missions/${m.id}',{st:this.value},'${m.id} status saved')">${STATUSES.map(s=>`<option ${s===m.st?'selected':''}>${s}</option>`).join('')}</select>`:`<span class="pill p-${m.st.replace(/ /g,'-')}">${m.st}</span>`}</td>
+ <td>${editable?`<input type="range" min="0" max="100" value="${m.rel}" style="width:80px;vertical-align:middle" oninput="this.nextSibling.textContent=' '+this.value+'%'" onchange="save('PATCH','/api/missions/${m.id}',{rel:+this.value},'${m.id} reliability saved')"> `:`<span class="bar"><i style="width:${m.rel}%"></i></span> `}${m.rel?m.rel+'%':'—'}</td></tr>`}).join('')}</table>
  <div class="hint">${started} of ${missions.length} missions started · ${maxPts} pts on the field + ${EXTRAS.map(e=>`${e.name} ${e.pts}`).join(' + ')} = <b>${maxPts+EXTRAS.reduce((a,e)=>a+e.pts,0)} max</b></div>`}
 
 /* ===================== RENDER ===================== */
 function renderDash(){
+ /* Top Practice Score (Nov 20): best match vs. the most we can score with the missions we run (settings.game_plan.skip left out) */
+ {const plan=settings.game_plan||{skip:[]},skip=missions.filter(m=>plan.skip.includes(m.id)),top=missions.filter(m=>!plan.skip.includes(m.id)).reduce((a,m)=>a+m.pts,0)+EXTRAS.reduce((a,e)=>a+e.pts,0);
+  const best=matches.length?Math.max(...matches.map(m=>m.s)):null;$('d-score-card').style.display=best==null?'none':'';
+  if(best!=null)$('d-score').innerHTML=`<div class="scorerow"><div><div class="big">${best}</div><div class="hint" style="margin:0">top practice score</div></div><div class="of">of</div><div><div class="big" style="color:var(--pine)">${top}</div><div class="hint" style="margin:0">top possible score</div></div><div class="scorebar"><span class="bar"><i style="width:${Math.round(best/top*100)}%"></i></span><b>${Math.round(best/top*100)}%</b></div></div><div class="hint">${skip.length?`Top possible = every mission except ${skip.map(m=>`${m.id} ${m.name}`).join(' + ')} (we skip ${skip.length>1?'them':'it'} because of ${escH(plan.why||'time')}), plus ${EXTRAS.map(e=>e.name).join(' and ')}. `:''}${matches.length} practice match${matches.length>1?'es':''} logged.</div>`}
  $('d-missions').innerHTML=missionTable(false);$('g-missions').innerHTML=missionTable(true);
  const cnt=[0,0,0,0,0];rubric.forEach(r=>cnt[r.l]++);
- $('d-heat').innerHTML=[[4,'Exceeds'],[3,'Accomplished'],[2,'Developing'],[1,'Beginning']].map(([l,name])=>`<div class="cell l${l}" title="${rubric.filter(r=>r.l===l).map(r=>r.row).join(', ')||'none'}" onclick="go('rubric')"><div class="num">${cnt[l]}</div><div class="lab">${l}s</div><div class="lvlname">${name}</div></div>`).join('');
- $('d-heat-legend').innerHTML='Grow every row to 3+ by Nov 14!';
- $('rub-summary').textContent=`${cnt[3]+cnt[4]} / 20 rows at Accomplished or better`;
+ if($('d-heat'))$('d-heat').innerHTML=[[4,'Exceeds'],[3,'Accomplished'],[2,'Developing'],[1,'Beginning']].map(([l,name])=>`<div class="cell l${l}" title="${rubric.filter(r=>r.l===l).map(r=>r.row).join(', ')||'none'}"><div class="num">${cnt[l]}</div><div class="lab">${l}s</div><div class="lvlname">${name}</div></div>`).join('');
+ if($('d-heat-legend'))$('d-heat-legend').innerHTML='Grow every row to 3+ by Nov 14!';
+ if($('rub-summary'))$('rub-summary').textContent=`${cnt[3]+cnt[4]} / 20 rows at Accomplished or better`;
  const t=tally(),mx=Math.max(1,...Object.values(t));const cols={Teamwork:'#3f9b4c',Discovery:'#20b5c9',Fun:'#b48fd9',Innovation:'#2a5c3f',Inclusion:'#8fc9a4',Impact:'#6fd0dd'};
  const cvHtml=CVALS.map(v=>`<div class="row"><span class="name">${v}</span><div class="track"><i style="width:${t[v]/mx*100}%;background:${cols[v]}"></i></div><b>${t[v]}</b></div>`).join('');$('d-cv').innerHTML=cvHtml;$('cv-tally').innerHTML=cvHtml;
  $('d-quote').textContent='“'+quotes[0].q+'”';$('d-quote-by').textContent='— '+quotes[0].by;
@@ -535,18 +521,23 @@ function renderDash(){
  $('d-balance').innerHTML=`<div class="balance">${TEAM.map(m=>`<i style="flex:${contrib[m.n]||.3};background:${m.c}" title="${m.n}: ${contrib[m.n]} entries">${m.n}</i>`).join('')}</div><div class="hint">Entries tagged per person: ${TEAM.map(m=>`${m.n} ${contrib[m.n]}`).join(' · ')}</div>`;
  $('d-log').innerHTML=[...entries].sort((a,b)=>b.d.localeCompare(a.d)).slice(0,3).map(entryHtml).join('');
 }
-function entryHtml(e,me){return `<div class="entry">${isWhole(e)?av('Whole team'):av(me&&e.who.includes(me)?me:e.who[0])}<div><div class="meta">${e.who.join(', ')} · ${fmt(e.d)} <span class="tag">${e.comp} · ${e.ph}</span>${(e.cv||[]).map(v=>`<span class="tag cvtag">⚙️ ${v}</span>`).join('')}${e.succ?'<span class="tag" style="background:#cdeccf;color:#1f6b2f">✅ success</span>':''}</div><div class="txt">${cap(e.t)}</div>${e.photo?`<div class="photo">📷 ${e.photo}</div>`:''}</div></div>`}
+function entryHtml(e,me){return `<div class="entry">${isWhole(e)?av('Whole team'):av(me&&e.who.includes(me)?me:e.who[0])}<div><div class="meta">${e.who.join(', ')} · ${fmt(e.d)} <span class="tag">${e.comp} · ${e.ph}</span>${(e.cv||[]).map(v=>`<span class="tag cvtag">${v}</span>`).join('')}${e.succ?'<span class="tag" style="background:#cdeccf;color:#1f6b2f">success</span>':''}</div><div class="txt">${cap(e.t)}</div>${e.photo?`<div class="photo">Photo: ${e.photo}</div>`:''}</div></div>`}
 function renderGame(){
- const total=runs.reduce((a,r)=>a+r.t,0),swaps=(runs.length-1)*4,used=total+swaps,buf=150-used;const cols=['#3f9b4c','#20b5c9','#b48fd9','#8fc9a4'],scale=Math.max(150,used); /* bar is drawn to scale; the dashed line is the 150 s buzzer */
- $('g-runplan').innerHTML=`<div class="hint" style="margin-bottom:6px"><b>DRAFT</b> — ${(()=>{const tr=runs.filter(r=>r.timed),last=tr.map(r=>r.timed).sort().pop();return tr.length?`⏱ ${tr.length} of ${runs.length} runs timed for real (${tr.reduce((a,r)=>a+r.t,0)}s, last on ${fmt(last)}); the other ${runs.length-tr.length} are still guesses.`:'Times are guesses until we time a real run.'})()} Launchers not decided.</div><div class="hint">${runs.length} runs · ${total}s driving + ${swaps}s swaps = <b>${used}s</b> · ${buf>=0?buf+'s buffer ✅':Math.abs(buf)+'s OVER ⚠️'}</div><div class="runplan">${runs.map((r,i)=>`<div class="seg" style="flex:${r.t};background:${cols[i%cols.length]}" title="Run ${r.n}: ${r.m.map(id=>missions.find(m=>m.id===id).name).join(' + ')} · ${r.timed?'⏱ '+r.t+'s (timed)':'~'+r.t+'s (guess)'}">R${r.n}</div>${i<runs.length-1?'<div class="gap" style="flex:4" title="4 s to swap attachments">↺</div>':''}`).join('')}${buf>0?`<div class="seg" style="flex:${buf};background:#ece5d2;color:#7d8a76">buffer</div>`:''}<div class="limit" style="left:${150/scale*100}%"><span>150 s</span></div></div><div class="ruler"><span>0s</span><span>${scale>150?scale+'s':'150s'}</span></div>
- <table style="margin-top:10px"><tr><th>Run</th><th>Missions</th><th>Est. pts</th><th>Time</th><th>Notes</th><th>Launcher</th></tr>${runs.map(r=>`<tr><td>${r.n}</td><td>${r.m.map(id=>missions.find(m=>m.id===id).name).join(' + ')}</td><td>${r.m.reduce((a,id)=>a+((r.part||{})[id]??missions.find(m=>m.id===id).pts),0)}</td><td>${r.timed?`<b title="Timed ${fmt(r.timed)}">⏱ ${r.t}s</b>`:`~${r.t}s <span class="hint">guess</span>`}</td><td>${r.note||''}</td><td>${!blank(r.l)?av(r.l,1)+' '+r.l:fill('/api/runs/'+r.n,'l','','name')}</td></tr>`).join('')}</table>`;
+ /* Nov 20: a run whose missions are all in settings.game_plan.skip is skipped: grey in the table, left out of the bar and the time */
+ const SKIP=(settings.game_plan||{}).skip||[],skipped=r=>r.m.every(id=>SKIP.includes(id)),act=runs.filter(r=>!skipped(r)),skipN=runs.filter(skipped).map(r=>r.n);
+ const total=act.reduce((a,r)=>a+r.t,0),swaps=(act.length-1)*4,used=total+swaps,buf=150-used;const cols=['#3f9b4c','#20b5c9','#b48fd9','#8fc9a4'],scale=Math.max(150,used); /* bar is drawn to scale; the dashed line is the 150 s buzzer */
+ $('g-runplan').innerHTML=`<div class="hint" style="margin-bottom:6px"><b>DRAFT</b> — ${(()=>{const tr=runs.filter(r=>r.timed),last=tr.map(r=>r.timed).sort().pop();return tr.length?`${tr.length} of ${runs.length} runs timed for real (${tr.reduce((a,r)=>a+r.t,0)}s, last on ${fmt(last)}); the other ${runs.length-tr.length} are still guesses.`:'Times are guesses until we time a real run.'})()} Launchers not decided.</div><div class="hint">${act.length} runs${skipN.length?` (run ${skipN.join(', ')} skipped)`:''} · ${total}s driving + ${swaps}s swaps = <b>${used}s</b> · ${buf>=0?buf+'s buffer':Math.abs(buf)+'s OVER'}</div><div class="runplan">${act.map((r,i)=>`<div class="seg" style="flex:${r.t};background:${cols[(r.n-1)%cols.length]}" title="Run ${r.n}: ${r.m.map(id=>missions.find(m=>m.id===id).name).join(' + ')} · ${r.timed?r.t+'s (timed)':'~'+r.t+'s (guess)'}">R${r.n}</div>${i<act.length-1?'<div class="gap" style="flex:4" title="4 s to swap attachments">↺</div>':''}`).join('')}${buf>0?`<div class="seg" style="flex:${buf};background:#ece5d2;color:#7d8a76">buffer</div>`:''}<div class="limit" style="left:${150/scale*100}%"><span>150 s</span></div></div><div class="ruler"><span>0s</span><span>${scale>150?scale+'s':'150s'}</span></div>
+ <table style="margin-top:10px"><tr><th>Run</th><th>Missions</th><th>Est. pts</th><th>Time</th><th>Notes</th><th>Launcher</th></tr>${runs.map(r=>`<tr${skipped(r)?' class="skiprun"':''}><td>${r.n}</td><td>${r.m.map(id=>missions.find(m=>m.id===id).name).join(' + ')}${skipped(r)?` <span class="tag">skipped · ${escH((settings.game_plan||{}).why||'')}</span>`:''}</td><td>${r.m.reduce((a,id)=>a+((r.part||{})[id]??missions.find(m=>m.id===id).pts),0)}</td><td>${r.timed?`<b title="Timed ${fmt(r.timed)}">${r.t}s</b>`:`~${r.t}s <span class="hint">guess</span>`}</td><td>${r.note||''}</td><td>${!blank(r.l)?av(r.l,1)+' '+r.l:fill('/api/runs/'+r.n,'l','','name')}</td></tr>`).join('')}</table>`;
  const pps=missions.map(m=>({...m,pot:m.pts/m.sec,v:(m.pts*m.rel/100)/m.sec})).sort((a,b)=>(b.v-a.v)||(b.pot-a.pot)||(b.pts-a.pts));
  $('g-pps').innerHTML=`<table><tr><th>#</th><th>Mission</th><th>Max pts</th><th>Est. time</th><th>Potential pts/s</th><th>Expected pts</th></tr>${pps.map((m,i)=>`<tr><td>${i+1}</td><td>${m.id} ${m.name}</td><td>${m.pts}</td><td>~${m.sec}s</td><td><b style="color:${i===0?'var(--grass)':'inherit'}">${m.pot.toFixed(2)}</b></td><td>${m.rel?Math.round(m.pts*m.rel/100):'—'}</td></tr>`).join('')}</table><div class="hint">${missions.filter(m=>m.sec!==30).length?`Real times so far: ${missions.filter(m=>m.sec!==30).map(m=>m.id+' '+m.sec+'s').join(', ')}. The rest are guessed at 30 s. Fix the times as you learn them and the ranking gets smart.`:'Every mission is guessed at 30 s right now, so this is really a points ranking. Fix the times as you learn them and the ranking gets smart.'}</div>`;
 }
 function renderDesign(){
  $('rd-robot-pic').innerHTML=bigPic(settings.robot_photo);
- $('rd-specs').innerHTML=specs.map(s=>`<div><span>${s.label}</span><br>${s.value}</div>`).join('')+`<div><span>Programs</span><br>See the <a href="#" onclick="go('coding');return false" style="color:var(--pine);font-weight:800">💻 Coding</a> page</div>`;
- $('rd-atts').innerHTML=atts.map(a=>`<div class="att"><b>${a.name}</b> <span class="tag">${a.mission}</span> <span class="hint">· Size ${a.size} · Built by ${a.by.map(b=>av(b,1)+' '+b).join(' + ')}</span><div style="font-size:12px;margin-top:4px">${a.purpose}</div>${a.photo?`<a class="att-pic" href="/images/${encodeURIComponent(a.photo)}" target="_blank" title="Click to see it big"><img src="/images/${encodeURIComponent(a.photo)}" alt="${a.name} on the mat" loading="lazy"></a>`:''}<div class="vers">${a.vers.map(v=>`<div class="ver">${v.photo?`<a class="ph has" href="/images/${encodeURIComponent(v.photo)}" target="_blank" title="Click to see it big"><img src="/images/${encodeURIComponent(v.photo)}" alt="" loading="lazy"></a>`:'<div class="ph"></div>'}${fmt(v.d)}<br><span style="color:var(--dim)">${cap(v.n)}</span></div>`).join('')}</div></div>`).join('');
+ $('rd-specs').innerHTML=specs.map(s=>`<div><span>${s.label}</span><br>${s.value}</div>`).join('')+`<div><span>Programs</span><br>See the <a href="#" onclick="go('coding');return false" style="color:var(--pine);font-weight:800">Coding</a> page</div>`;
+ /* Nov 20: only the newest picture shows big; versions are a dated list, with a link to any older picture (no thumbnails, no empty boxes) */
+ const img=f=>`/images/${encodeURIComponent(f)}`;
+ $('rd-atts').innerHTML=atts.map(a=>{const latest=a.photo||[...a.vers].reverse().find(v=>v.photo)?.photo;
+  return `<div class="att"><b>${a.name}</b> <span class="tag">${a.mission}</span> <span class="hint">· Size ${a.size} · Built by ${a.by.map(b=>av(b,1)+' '+b).join(' + ')}</span><div style="font-size:13px;margin-top:4px">${a.purpose}</div>${latest?`<a class="att-pic" href="${img(latest)}" target="_blank" title="Click to see it big"><img src="${img(latest)}" alt="${a.name}" loading="lazy"></a>`:''}${a.vers.length?`<ul class="vers">${a.vers.map(v=>`<li><b>${fmt(v.d)}</b> · ${cap(v.n)}${v.photo&&v.photo!==latest?` · <a href="${img(v.photo)}" target="_blank">picture</a>`:''}</li>`).join('')}</ul>`:''}</div>`}).join('');
  $('rd-tests').innerHTML=`<table><tr><th>Date</th><th>Attachment</th><th>Result</th><th>What we saw</th><th>What we changed</th><th>Outcome</th></tr>${tests.length?'':'<tr><td colspan="6" class="hint">No test sessions logged yet. Try an attachment 10 times, count the successes, and write what you changed — judges call that ITERATE.</td></tr>'}${[...tests].sort((a,b)=>b.d.localeCompare(a.d)).map(t=>`<tr><td>${fmt(t.d)}</td><td>${t.att}</td><td><b>${t.succ}/${t.tries}</b> (${Math.round(t.succ/t.tries*100)}%)</td><td>${cap(t.obs)}</td><td class="arrow">→ <span style="color:var(--ink);font-weight:600">${t.chg}</span></td><td>${t.res}</td></tr>`).join('')}</table>`;
  $('t-att').innerHTML=atts.map(a=>`<option>${a.name}</option>`).join('');
  $('rd-trade').innerHTML=`<table><tr><th>Question</th><th>Options we weighed</th><th>We picked</th><th>Why</th></tr>${tradeoffs.map(t=>`<tr><td>${t.q}</td><td style="font-weight:500">${t.opts}</td><td>${blank(t.pick)?fill('/api/tradeoffs/'+t.id,'pick',''):`<span class="pill" style="background:var(--pine)">${t.pick}</span>`}</td><td style="font-weight:500">${blank(t.why)?fill('/api/tradeoffs/'+t.id,'why',''):t.why}</td></tr>`).join('')}</table>`;
@@ -554,21 +545,21 @@ function renderDesign(){
 function renderIP(){
  const ip=settings.ip_summary||{};
  Object.entries(IP_BOX).forEach(([k,ph])=>ipBox(k,ip[k]||'',ph,false));
- if($('ip-steps'))$('ip-steps').innerHTML=ipSteps.map((s,i)=>{const done=ipNow!=null&&i<ipNow,now=i===ipNow;return `<div class="step ${done?'done':now?'now':''}" onclick="setStep(${i})" title="Click: we're working on this step now"><span class="n">${done?'✅':i+1}</span>${s}</div>`}).join('');
+ if($('ip-steps'))$('ip-steps').innerHTML=ipSteps.map((s,i)=>{const done=ipNow!=null&&i<ipNow,now=i===ipNow;return `<div class="step ${done?'done':now?'now':''}" onclick="setStep(${i})" title="Click: we're working on this step now"><span class="n">${done?'':i+1}</span>${s}</div>`}).join('');
  $('g-who').innerHTML=[...TEAM.map(m=>m.n),'Whole team'].map(n=>`<option>${n}</option>`).join('');
- $('ip-gantt-detail').innerHTML=gantt.length?'👆 Click a bar':'Nothing in the plan yet. Add your first task below: what needs to happen before the tournament, and who owns it?';
+ $('ip-gantt-detail').innerHTML=gantt.length?'Click a bar':'Nothing in the plan yet. Add your first task below: what needs to happen before the tournament, and who owns it?';
  $('ip-gantt').innerHTML=gantt.map((g,i)=>`<div>${av(g.who,1)} ${g.task}</div><div class="lane"><div class="gbar" style="left:${g.s/4*100}%;width:${(g.e-g.s)/4*100}%;background:${member(g.who).c}" onclick="ganttDetail(${i})" title="${g.who}">${(g.e-g.s)>=g.who.length*0.045?g.who:''}</div></div>`).join('');
  renderShares();renderIPPhotos();renderIPDetails();
  $('ip-research').innerHTML=`<table><tr><th>Source</th><th>Type</th><th style="white-space:nowrap">Found by</th><th>What we learned</th></tr>${research.map(r=>`<tr><td>${r.url?`<a href="${r.url}" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">${r.src} ↗</a>`:r.src}</td><td><span class="tag" style="white-space:nowrap">${r.type}</span></td><td>${av(r.by,1)}</td><td style="font-weight:500">${cap(r.note)}</td></tr>`).join('')}</table>`;
- $('ip-experts').innerHTML=experts.length?experts.map(e=>`<div class="expert"><div class="face">${e.face}</div><div><b>${e.n}</b><span class="hint">${e.role}${e.d?` · met ${fmt(e.d)}`:''}${e.by?` · ${e.by}`:''}</span><div class="fb">${e.fb}</div><div class="fb"><span class="arrow">→ improvement:</span> ${e.imp}</div>${e.notes&&e.notes.length?`<details class="fb"><summary>What we learned (${e.notes.length} notes)</summary><ul style="margin:4px 0 0;padding-left:18px">${e.notes.map(x=>`<li>${x}</li>`).join('')}</ul></details>`:''}${e.qs&&e.qs.length?`<details class="fb"><summary>Our questions (${e.qs.length})</summary><ol style="margin:4px 0 0;padding-left:18px">${e.qs.map(x=>`<li style="margin-bottom:4px"><b style="display:inline">${x.q}</b><br><span class="arrow">→</span> ${x.a}</li>`).join('')}</ol></details>`:''}</div></div>`).join(''):'<p class="hint">No experts yet. Who knows a lot about our problem?</p>';
+ $('ip-experts').innerHTML=experts.length?experts.map(e=>`<div class="expert"><div class="face">${e.photo?`<a href="/images/${encodeURIComponent(e.photo)}" target="_blank" title="Click to see it big"><img src="/images/${encodeURIComponent(e.photo)}" alt="${escH(e.n)}" loading="lazy"></a>`:(e.n||'?')[0]}</div><div><b>${e.n}</b><span class="hint">${e.role}${e.d?` · met ${fmt(e.d)}`:''}${e.by?` · ${e.by}`:''}</span><div class="fb">${e.fb}</div><div class="fb"><span class="arrow">→ improvement:</span> ${e.imp}</div>${e.notes&&e.notes.length?`<details class="fb"><summary>What we learned (${e.notes.length} notes)</summary><ul style="margin:4px 0 0;padding-left:18px">${e.notes.map(x=>`<li>${x}</li>`).join('')}</ul></details>`:''}${e.qs&&e.qs.length?`<details class="fb"><summary>Our questions (${e.qs.length})</summary><ol style="margin:4px 0 0;padding-left:18px">${e.qs.map(x=>`<li style="margin-bottom:4px"><b style="display:inline">${x.q}</b><br><span class="arrow">→</span> ${x.a}</li>`).join('')}</ol></details>`:''}${e.tphoto?`<figure class="bigpic" style="margin:10px 0 0"><a href="/images/${encodeURIComponent(e.tphoto)}" target="_blank" title="Click to see it big"><img src="/images/${encodeURIComponent(e.tphoto)}" alt="${escH(e.n)} with the team" loading="lazy"></a><figcaption>${escH(e.n)} (left) with the Rooted Warriors</figcaption></figure>`:''}</div></div>`).join(''):'<p class="hint">No experts yet. Who knows a lot about our problem?</p>';
 }
 const IP_BOX={problem:'What problem are we solving? Who does it affect? (Nate said: about 300 animal strikes a year on I-17)',solution:'What is our solution, in one or two sentences?',how:'How did we get here? (ideas we had, research, experts, what we changed)'};
 const escH=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-function ipBox(k,v,ph,editing){$('ip-'+k).innerHTML=(v&&!editing)?`<p>${escH(v)}</p><button class="btn sm lav" onclick="ipBox('${k}',(settings.ip_summary||{})['${k}']||'',IP_BOX['${k}'],true)">✏️ Edit</button>`:`<div class="form"><textarea class="full" id="ipt-${k}" placeholder="${escH(ph)}">${escH(v)}</textarea><button class="btn sm full" onclick="saveIP('${k}')">💾 Save</button></div>`}
-async function saveIP(k){const v=$('ipt-'+k).value.trim();await save('PATCH','/api/settings/ip_summary',{[k]:v},v?'💾 Saved to the Innovation Project':'Cleared')}
-async function setStep(i){await save('PATCH','/api/settings/ip_progress',{now:i},`📍 Now on step ${i+1}: ${ipSteps[i]}`)}
+function ipBox(k,v,ph,editing){$('ip-'+k).innerHTML=(v&&!editing)?`<p>${escH(v)}</p><button class="btn sm lav" onclick="ipBox('${k}',(settings.ip_summary||{})['${k}']||'',IP_BOX['${k}'],true)">Edit</button>`:`<div class="form"><textarea class="full" id="ipt-${k}" placeholder="${escH(ph)}">${escH(v)}</textarea><button class="btn sm full" onclick="saveIP('${k}')">Save</button></div>`}
+async function saveIP(k){const v=$('ipt-'+k).value.trim();await save('PATCH','/api/settings/ip_summary',{[k]:v},v?'Saved to the Innovation Project':'Cleared')}
+async function setStep(i){await save('PATCH','/api/settings/ip_progress',{now:i},`Now on step ${i+1}: ${ipSteps[i]}`)}
 async function addGantt(){const task=$('g-task').value.trim(),s=+$('g-s').value,e=+$('g-e').value;if(!task){toast('Type the task first');return}if(e<=s){toast('The end has to be after the start');return}
- if(await save('POST','/api/gantt',{task,who:$('g-who').value,s,e},'📅 Added to the plan')) $('g-task').value=''}
+ if(await save('POST','/api/gantt',{task,who:$('g-who').value,s,e},'Added to the plan')) $('g-task').value=''}
 function renderIPPhotos(){ // Project Photos (Nov 2): files in app/images/, click to open full size
  $('ip-photos').innerHTML=ipPhotos.length?ipPhotos.map(p=>{const src='/images/'+encodeURIComponent(p.photo);return `<figure><a href="${src}" target="_blank"><img src="${src}" alt="${escH(p.cap||'')}" loading="lazy"></a><figcaption>${(p.who||[]).map(n=>av(n,1)).join('')}<span><b>${fmt(p.d)}</b> · ${escH(p.cap||'')}</span></figcaption></figure>`}).join(''):'<div class="hint">No photos yet.</div>'}
 function renderShares(){
@@ -576,35 +567,35 @@ function renderShares(){
  if(!$('sh-d').value)$('sh-d').value=TODAY;
  if(!$('sh-who').children.length)whoPicker('sh-who',[...TEAM.map(m=>m.n),'Whole team'],true)}
 async function addShare(){const to=$('sh-to').value.trim(),who=picked('sh-who');if(!to){toast('Type who we shared with first');return}if(!who.length){toast('Pick who shared it');return}
- if(await save('POST','/api/shares',{d:$('sh-d').value,to,who,said:$('sh-said').value.trim(),chg:$('sh-chg').value.trim()},'📣 Saved to Communication')){['sh-to','sh-said','sh-chg'].forEach(id=>$(id).value='');clearPicks('sh-who')}}
+ if(await save('POST','/api/shares',{d:$('sh-d').value,to,who,said:$('sh-said').value.trim(),chg:$('sh-chg').value.trim()},'Saved to Communication')){['sh-to','sh-said','sh-chg'].forEach(id=>$(id).value='');clearPicks('sh-who')}}
 /* ---------- Innovation Project Details (Coach CJ, Nov 2): parts, wiring, code + install guides ---------- */
 function renderIPDetails(){
  const groups=[...new Set(ipParts.map(p=>p.grp))],n=st=>ipParts.filter(p=>st.includes(p.st)).length;
  $('ipd-parts-sum').textContent=`${n(['Bought','Have'])} bought or have · ${n(['Shipping'])} on the way · ${n(['Need'])} still need`;
  $('ipd-parts').innerHTML=groups.map(g=>`<div class="ipd-grp">${escH(g)}</div><table><tr><th>Part</th><th>How many</th><th>Status</th><th>Note</th></tr>${ipParts.filter(p=>p.grp===g).map(p=>`<tr><td>${escH(p.part)}</td><td style="white-space:nowrap">${escH(p.qty||'—')}</td><td><span class="pill p-${p.st.replace(/ /g,'-')}">${escH(p.st)}</span>${p.d?`<span class="hint" style="display:block;margin-top:2px">${fmt(p.d)}</span>`:''}</td><td style="font-weight:500">${escH(p.note||'')}</td></tr>`).join('')}</table>`).join('');
  const wires=ipWiring.filter(w=>w.part),free=ipWiring.filter(w=>!w.part);
- $('ipd-wiring').innerHTML=wiringSvg()+`<table><tr><th>XIAO pin</th><th>Goes to</th><th>Why</th><th>In the code?</th></tr>${wires.map(w=>`<tr><td style="white-space:nowrap"><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:${w.color};vertical-align:middle;margin-right:6px"></span><b>${escH(w.pin)}</b>${w.gpio?` <span class="hint">${escH(w.gpio)}</span>`:''}</td><td>${escH(w.part)} · <b>${escH(w.ppin)}</b>${w.opt?' <span class="tag">optional</span>':''}</td><td style="font-weight:500">${escH(w.why)}</td><td style="white-space:nowrap">${w.code?'✅ camera v3':'<span class="hint">planned</span>'}</td></tr>`).join('')}</table><div class="hint">${free.map(w=>`<b>${escH(w.pin)}</b>: ${escH(w.why)}`).join(' · ')}</div>`;
+ $('ipd-wiring').innerHTML=wiringSvg()+`<table><tr><th>XIAO pin</th><th>Goes to</th><th>Why</th><th>In the code?</th></tr>${wires.map(w=>`<tr><td style="white-space:nowrap"><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:${w.color};vertical-align:middle;margin-right:6px"></span><b>${escH(w.pin)}</b>${w.gpio?` <span class="hint">${escH(w.gpio)}</span>`:''}</td><td>${escH(w.part)} · <b>${escH(w.ppin)}</b>${w.opt?' <span class="tag">optional</span>':''}</td><td style="font-weight:500">${escH(w.why)}</td><td style="white-space:nowrap">${w.code?'camera v3':'<span class="hint">planned</span>'}</td></tr>`).join('')}</table><div class="hint">${free.map(w=>`<b>${escH(w.pin)}</b>: ${escH(w.why)}`).join(' · ')}</div>`;
  const sig=JSON.stringify(ipPlatforms);if($('ipd-code').dataset.sig===sig)return; /* don't snap open code shut when something else saves */
  $('ipd-code').dataset.sig=sig;
- const file=(f,kind,what)=>f.exists?`<details class="ipd-f" data-path="${escH(f.path)}" data-kind="${kind}" ontoggle="ipdOpen(this)"><summary>${kind==='doc'?'📋':'💻'} ${kind==='doc'?`<b>${escH(what)}</b> <code>${escH(f.path)}</code>`:`<code>${escH(f.path)}</code> <span class="hint">${escH(what)}</span>`}</summary><div class="ipd-body"><p class="hint">Opening…</p></div></details>`
-  :`<details class="ipd-f"><summary>🚧 <code>${escH(f.path)}</code> <span class="hint">${escH(what)}</span> <span class="tag">not built yet</span></summary><div class="ipd-todo">🚧 <b>Not built yet.</b> ${escH(what)}. When this file is written, it shows up here by itself.</div></details>`;
- $('ipd-code').innerHTML=`<div class="ipd-flow">${ipPlatforms.map((p,i)=>`${i?'<span class="arrow">→</span>':''}<button class="ipd-tile" onclick="ipdShow('${p.id}')"><span class="ico">${p.icon}</span><b>${escH(p.name)}</b><span class="hint" style="display:block;margin:0">${escH(p.device)}</span><span class="pill" style="margin-top:6px;background:${p.built?'var(--teal)':'var(--lavender)'};color:${p.built?'#fff':'var(--forest)'}">${p.built?'Code written':'Not built yet'}</span></button>`).join('')}</div>`
-  +ipPlatforms.map(p=>`<details class="plat" id="ipd-${p.id}"><summary>${p.icon} ${escH(p.name)} <span class="hint">${escH(p.device)}</span> <span class="pill" style="background:${p.built?'var(--teal)':'var(--lavender)'};color:${p.built?'#fff':'var(--forest)'}">${escH(p.st)}</span></summary>
+ const file=(f,kind,what)=>f.exists?`<details class="ipd-f" data-path="${escH(f.path)}" data-kind="${kind}" ontoggle="ipdOpen(this)"><summary>${kind==='doc'?`<b>${escH(what)}</b> <code>${escH(f.path)}</code>`:`<code>${escH(f.path)}</code> <span class="hint">${escH(what)}</span>`}</summary><div class="ipd-body"><p class="hint">Opening…</p></div></details>`
+  :`<details class="ipd-f"><summary><code>${escH(f.path)}</code> <span class="hint">${escH(what)}</span> <span class="tag">not built yet</span></summary><div class="ipd-todo"><b>Not built yet.</b> ${escH(what)}. When this file is written, it shows up here by itself.</div></details>`;
+ $('ipd-code').innerHTML=`<div class="ipd-flow">${ipPlatforms.map((p,i)=>`${i?'<span class="arrow">→</span>':''}<button class="ipd-tile" onclick="ipdShow('${p.id}')"><b>${escH(p.name)}</b><span class="hint" style="display:block;margin:0">${escH(p.device)}</span><span class="pill" style="margin-top:6px;background:${p.built?'var(--teal)':'var(--lavender)'};color:${p.built?'#fff':'var(--forest)'}">${p.built?'Code written':'Not built yet'}</span></button>`).join('')}</div>`
+  +ipPlatforms.map(p=>`<details class="plat" id="ipd-${p.id}"><summary>${escH(p.name)} <span class="hint">${escH(p.device)}</span> <span class="pill" style="background:${p.built?'var(--teal)':'var(--lavender)'};color:${p.built?'#fff':'var(--forest)'}">${escH(p.st)}</span></summary>
    <p>${escH(p.job)}</p><div class="hint">${escH(p.ver)} · last big change ${fmt(p.upd)}</div>
-   <div class="ipd-sub">📋 How to install</div>${p.docs.map(d=>file(d,'doc',d.label)).join('')}
-   <div class="ipd-sub">💻 The code</div>${p.files.map(f=>file(f,'code',f.what)).join('')}</details>`).join('')}
+   <div class="ipd-sub">How to install</div>${p.docs.map(d=>file(d,'doc',d.label)).join('')}
+   <div class="ipd-sub">The code</div>${p.files.map(f=>file(f,'code',f.what)).join('')}</details>`).join('')}
 function ipdShow(id){const d=$('ipd-'+id);d.open=true;d.scrollIntoView({behavior:'smooth',block:'start'})}
 /* Opens a guide or code file the first time it's clicked. The server reads the real file, so it's always the latest version. */
 async function ipdOpen(el){if(!el.open||el.dataset.done)return;el.dataset.done=1;const box=el.querySelector('.ipd-body'),url='/api/file?path='+encodeURIComponent(el.dataset.path);
  try{let t;if(VIEW){t=VIEW.files[el.dataset.path];if(t==null)throw new Error('the file is missing')}
   else{const r=await fetch(url);if(!r.ok)throw new Error(r.status===404?'the file is missing':(await r.json().catch(()=>({}))).error||r.statusText);t=await r.text()}
   const href=VIEW?URL.createObjectURL(new Blob([t],{type:'text/plain;charset=utf-8'})):url;
-  box.innerHTML=el.dataset.kind==='doc'?`<div class="md">${md(t)}</div>`:`<div class="codebar"><span>${t.split('\n').length} lines</span><button class="btn sm ghost" onclick="copyCode(this)">📋 Copy</button><a class="btn sm ghost" href="${href}" target="_blank" rel="noopener">Open by itself ↗</a></div><pre class="code">${escH(t)}</pre>`}
- catch(e){el.dataset.done='';box.innerHTML=`<p class="hint">⚠️ Couldn't open it: ${escH(e.message)}</p>`}}
-async function copyCode(b){try{await navigator.clipboard.writeText(b.closest('.ipd-body').querySelector('pre').textContent);toast('📋 Copied')}catch(e){toast('⚠️ Couldn\'t copy. Use "Open by itself" instead')}}
+  box.innerHTML=el.dataset.kind==='doc'?`<div class="md">${md(t)}</div>`:`<div class="codebar"><span>${t.split('\n').length} lines</span><button class="btn sm ghost" onclick="copyCode(this)">Copy</button><a class="btn sm ghost" href="${href}" target="_blank" rel="noopener">Open by itself ↗</a></div><pre class="code">${escH(t)}</pre>`}
+ catch(e){el.dataset.done='';box.innerHTML=`<p class="hint">Couldn't open it: ${escH(e.message)}</p>`}}
+async function copyCode(b){try{await navigator.clipboard.writeText(b.closest('.ipd-body').querySelector('pre').textContent);toast('Copied')}catch(e){toast('Couldn\'t copy. Use "Open by itself" instead')}}
 /* Tiny markdown reader for the install guides: headings, lists, tables, code blocks, quotes, **bold**, `code`, links. */
 function md(src){
- const inl=t=>escH(t).replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/\[([^\]]+)\]\(([^)\s]+)\)/g,(m,a,u)=>/^https?:/.test(u)?`<a href="${u}" target="_blank" rel="noopener">${a}</a>`:`<b>${a}</b>`);
+ const inl=t=>escH(t.replace(/\p{Extended_Pictographic}️?\s?/gu,'')).replace( /* Nov 20: no emojis in the app (guide files keep theirs) *//`([^`]+)`/g,'<code>$1</code>').replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/\[([^\]]+)\]\(([^)\s]+)\)/g,(m,a,u)=>/^https?:/.test(u)?`<a href="${u}" target="_blank" rel="noopener">${a}</a>`:`<b>${a}</b>`);
  const L=src.replace(/\r/g,'').split('\n'),LIST=/^\s*([-*]|\d+\.)\s/,BLOCK=/^(```|#{1,4}\s|\||>|---+\s*$)/;let out='',i=0;
  while(i<L.length){const l=L[i];
   if(/^```/.test(l)){const b=[];i++;while(i<L.length&&!/^```/.test(L[i]))b.push(L[i++]);i++;out+=`<pre>${escH(b.join('\n'))}</pre>`;continue}
@@ -652,16 +643,16 @@ function renderCV(){
  const contrib={};TEAM.forEach(m=>contrib[m.n]=0);entries.forEach(e=>e.who.forEach(w=>contrib[w]++));
  const fact=(i,label,key,val)=>`<span>${label}:</span> <i class="fill" contenteditable="true" spellcheck="false" data-i="${i}" data-key="${key}" onblur="saveCard(this.dataset.i,this.dataset.key,this)">${val}</i>`;
  $('cv-team-pic').innerHTML=bigPic(settings.team_photo);
- $('cv-spot').innerHTML=TEAM.map((m,i)=>`<div class="scard"><div class="face" style="border-color:${m.ring||m.c};background:${m.ring||m.c}22">${pic(m)||m.face}</div><b>${m.n}</b><div class="role fill" contenteditable="true" spellcheck="false" onblur="saveCard(${i},'role',this)">${m.role}</div><div class="facts">${fact(i,'Fav core value','fav',m.fav)}<br>${fact(i,'Fav color','color',m.color)}<br>${fact(i,'Worked on most','most',m.most)}<br>${fact(i,'Learned','learned',m.learned)}<br>${fact(i,'Worked with most','with',m.with)}<br>${fact(i,'Notebook entries','entries',m.entries!==undefined?m.entries:contrib[m.n])}</div></div>`).join('');
+ $('cv-spot').innerHTML=TEAM.map((m,i)=>`<div class="scard"><div class="face" style="border-color:${m.ring||m.c};background:${m.ring||m.c}22">${pic(m)||m.n[0]}</div><b>${m.n}</b><div class="role fill" contenteditable="true" spellcheck="false" onblur="saveCard(${i},'role',this)">${m.role}</div><div class="facts">${fact(i,'Fav core value','fav',m.fav)}<br>${fact(i,'Fav color','color',m.color)}<br>${fact(i,'Worked on most','most',m.most)}<br>${fact(i,'Learned','learned',m.learned)}<br>${fact(i,'Worked with most','with',m.with)}<br>${fact(i,'Notebook entries','entries',m.entries!==undefined?m.entries:contrib[m.n])}</div></div>`).join('');
  const help={};TEAM.forEach(m=>help[m.n]={g:0,r:0});moments.filter(m=>m.help).forEach(m=>{help[m.help[0]].g++;help[m.help[1]].r++});
- $('cv-help').innerHTML=`<table><tr><th>Who</th><th>Helped someone</th><th>Got help</th></tr>${TEAM.map(m=>`<tr><td>${av(m.n,1)} ${m.n}</td><td>${'🟢'.repeat(help[m.n].g)||'—'}</td><td>${'💜'.repeat(help[m.n].r)||'—'}</td></tr>`).join('')}</table><div class="hint">Tag a moment as "help" and it shows up here — both giving and getting help are Core Values wins.</div>`;
+ $('cv-help').innerHTML=`<table><tr><th>Who</th><th>Helped someone</th><th>Got help</th></tr>${TEAM.map(m=>`<tr><td>${av(m.n,1)} ${m.n}</td><td>${help[m.n].g||'—'}</td><td>${help[m.n].r||'—'}</td></tr>`).join('')}</table><div class="hint">Tag a moment as "help" and it shows up here — both giving and getting help are Core Values wins.</div>`;
  const mas=settings.mascot||{};$('cv-mascot-by').textContent=mas.built_by?`Built by ${mas.built_by} · ${fmt(mas.date)}`:'';
  $('cv-mascot').innerHTML=`<div style="display:flex;gap:14px;align-items:center">
-  <div style="width:96px;height:96px;flex:none;border-radius:16px;border:2px dashed var(--dim);display:flex;align-items:center;justify-content:center;font-size:36px" title="Photo of the mascot goes here">📷</div>
+  ${mas.photo?`<a class="mascot-pic" href="/images/${encodeURIComponent(mas.photo_big||mas.photo)}" target="_blank" title="Click to see it big"><img src="/images/${encodeURIComponent(mas.photo)}" alt="Our team mascot" loading="lazy"></a>`:`<div style="width:96px;height:96px;flex:none;border-radius:16px;border:2px dashed var(--dim);display:flex;align-items:center;justify-content:center;font-size:13px" title="Photo of the mascot goes here">Photo</div>`}
   <div style="font-size:13px"><div><b>Name:</b> ${fill('/api/settings/mascot','name',mas.name||'')}</div>
    <div style="margin-top:4px"><b>Built by:</b> ${mas.built_by||'—'}</div>
    <div style="margin-top:4px"><b>Double duty:</b> Our mascot is the team-built <b>keystone species</b> the robot delivers for M13 Keystone Species — "the mascot mission." 30 points if it lands on the platform!</div></div></div>`;
- $('cv-moments').innerHTML=[...moments].sort((a,b)=>b.d.localeCompare(a.d)).slice(0,6).map(m=>`<div class="entry">${av(m.who[0])}<div><div class="meta">${m.who.join(' + ')} · ${fmt(m.d)} <span class="tag cvtag">⚙️ ${m.v}</span></div><div class="txt">${cap(m.t)}</div></div></div>`).join('');
+ $('cv-moments').innerHTML=[...moments].sort((a,b)=>b.d.localeCompare(a.d)).slice(0,6).map(m=>`<div class="entry">${av(m.who[0])}<div><div class="meta">${m.who.join(' + ')} · ${fmt(m.d)} <span class="tag cvtag">${m.v}</span></div><div class="txt">${cap(m.t)}</div></div></div>`).join('');
 }
 let logFilter='All';
 const isWhole=e=>e.who.includes('Whole team')||(TEAM.length&&TEAM.every(t=>e.who.includes(t.n)));
@@ -683,10 +674,10 @@ function renderLog(){
   for(let d=1;d<=mo.days;d++){const cls=matchDays.has(d)?'match':pracDays.has(d)?'prac':'';const today=mo.key===TODAY.slice(0,7)&&d===+TODAY.slice(8);cal+=`<div class="day ${cls} ${today?'today':''}" title="${cls?'entries logged':''}">${d}${succ[d]?`<div class="dots">${'<i></i>'.repeat(Math.min(succ[d],3))}</div>`:''}</div>`}
   return cal+'</div>'}).join('');
 }
-function renderRubric(){
+function renderRubric(){if(!$('rub-ip'))return; /* page removed Nov 20 */
  const evid=ph=>entries.filter(e=>e.ph===ph).length;
  ['ip','rd'].forEach(sec=>{let html='',lastPh='';rubric.forEach((r,i)=>{if(r.sec!==sec)return;if(r.ph!==lastPh){html+=`<div class="phase-h">${r.ph}</div>`;lastPh=r.ph}
-  html+=`<div class="rrow"><div>${r.cv?'<span class="gear" title="also counts for Core Values">⚙️</span> ':''}<b>${r.row}</b></div><div class="lvls">${[1,2,3,4].map(l=>`<button class="lvl ${r.l===l?'on'+l:''}" onclick="save('PATCH','/api/rubric/${r.id}',{l:${l}})">${l}</button>`).join('')}</div><div class="evid">${evid(r.ph)} entries</div><div></div></div>`});
+  html+=`<div class="rrow"><div>${r.cv?'<span class="gear" title="also counts for Core Values">CV</span> ':''}<b>${r.row}</b></div><div class="lvls">${[1,2,3,4].map(l=>`<button class="lvl ${r.l===l?'on'+l:''}" onclick="save('PATCH','/api/rubric/${r.id}',{l:${l}})">${l}</button>`).join('')}</div><div class="evid">${evid(r.ph)} entries</div><div></div></div>`});
   $(sec==='ip'?'rub-ip':'rub-rd').innerHTML=html});
 }
 function renderCoding(){
@@ -706,7 +697,7 @@ function codeMissionTable(){
  const who=list=>list.length?list.map(n=>av(n,1)).join(''):'—';
  const rows=codeMission==='All'?missions.filter(m=>m.st!=='Not started'):missions.filter(m=>m.id===codeMission);
  const btns=`<div class="filterbar lav">${['All',...missions.map(m=>m.id)].map(id=>`<button class="${id===codeMission?'on':''}" title="${id==='All'?'Every started mission':missions.find(m=>m.id===id).name}" onclick="pickCodeMission('${id}')">${id}</button>`).join('')}</div>`;
- return `${btns}<table><tr><th>Mission</th><th>Attachment</th><th>Built by</th><th>Coded by</th><th>Program</th></tr>${rows.map(m=>`<tr><td><b>${m.id}</b> ${m.name}</td><td>${m.att}</td><td>${who(m.built)}</td><td>${m.prog.length?who(m.prog):fill('/api/missions/'+m.id,'prog','','names')}</td><td>${m.prog.length?'<span class="pill" style="background:var(--pine)">Written ✅</span>':'<span class="pill" style="background:var(--lavender);color:var(--forest)">Needs a program</span>'}</td></tr>`).join('')}</table><div class="hint">A mission scores zero until it has BOTH an attachment and a program. "Needs a program" rows are the to-do list for the coders.</div>`;
+ return `${btns}<table><tr><th>Mission</th><th>Attachment</th><th>Built by</th><th>Coded by</th><th>Program</th></tr>${rows.map(m=>`<tr><td><b>${m.id}</b> ${m.name}</td><td>${m.att}</td><td>${who(m.built)}</td><td>${m.prog.length?who(m.prog):fill('/api/missions/'+m.id,'prog','','names')}</td><td>${m.prog.length?'<span class="pill" style="background:var(--pine)">Written</span>':'<span class="pill" style="background:var(--lavender);color:var(--forest)">Needs a program</span>'}</td></tr>`).join('')}</table><div class="hint">A mission scores zero until it has BOTH an attachment and a program. "Needs a program" rows are the to-do list for the coders.</div>`;
 }
 /* ---------- Our Robot Code (Nov 2): every program in code/, every practice it changed, and what changed ---------- */
 function renderRobotCode(){
@@ -720,21 +711,21 @@ function renderRobotCode(){
  const name=p=>p.missions.map(id=>`<b>${id}</b> ${escH((missions.find(m=>m.id===id)||{}).name||'')}`).join(' + ')||(about(p)?escH(about(p)):'<span class="hint">no mission number in the file name</span>');
  const tag=p=>p.file+(p.copy?' copy '+p.copy:''),next=p=>P.filter(q=>q.from===tag(p)).map(q=>q.file); /* Nov 15: mission4.py → mission4_5.py */
  const grew=p=>`${p.from?` <span class="tag" title="This program started as a copy of ${escH(p.from)}">grew from ${escH(p.from)}</span>`:''}${next(p).length?` <span class="hint" style="margin:0">→ now ${next(p).map(escH).join(', ')}</span>`:''}`;
- const label=p=>`<code>${escH(p.file)}</code>${p.copy?` <span class="tag">copy ${p.copy}</span>`:''}${!p.copy||!runs[p.file]?'':runs[p.file]===p.seen[0].d?' <span class="pill" style="background:var(--pine)">✅ the robot runs this one</span>':' <span class="hint" style="margin:0">not the one the robot runs</span>'}`; /* which copy: settings.robot_code_runs, file → date that copy was first saved */
+ const label=p=>`<code>${escH(p.file)}</code>${p.copy?` <span class="tag">copy ${p.copy}</span>`:''}${!p.copy||!runs[p.file]?'':runs[p.file]===p.seen[0].d?' <span class="pill" style="background:var(--pine)">the robot runs this one</span>':' <span class="hint" style="margin:0">not the one the robot runs</span>'}`; /* which copy: settings.robot_code_runs, file → date that copy was first saved */
  const cell=(p,d)=>{const i=p.seen.findIndex(s=>s.d===d);if(i<0)return '';const s=p.seen[i];
   return i===0?'<span class="rc-dot rc-new" title="First time saved"></span>':s.v!==p.seen[i-1].v?'<span class="rc-dot rc-chg" title="Changed"></span>':'<span class="rc-dot rc-same" title="Same as before"></span>'};
  const grid=`<div class="rc-wrap"><table class="rc-grid"><tr><th>Program</th>${dates.map(d=>`<th>${fmt(d)}${labels[d]?`<br><span class="tag">${escH(labels[d])}</span>`:''}</th>`).join('')}<th>Versions</th></tr>${P.map((p,i)=>`<tr class="rc-row" onclick="rcShow(${i})"><td>${label(p)}<br><span class="hint" style="margin:0">${p.missions.join(' + ')||escH(about(p)||'')}</span>${grew(p)}</td>${dates.map(d=>`<td>${cell(p,d)}</td>`).join('')}<td><b>${p.versions.length}</b></td></tr>`).join('')}</table></div>
-  <div class="hint"><span class="rc-dot rc-new"></span> first time saved · <span class="rc-dot rc-chg"></span> changed · <span class="rc-dot rc-same"></span> saved, same as before. 👆 Click a program to see its code and what changed each time.</div>`;
+  <div class="hint"><span class="rc-dot rc-new"></span> first time saved · <span class="rc-dot rc-chg"></span> changed · <span class="rc-dot rc-same"></span> saved, same as before. Click a program to see its code and what changed each time.</div>`;
  const copies=[...new Set(P.filter(p=>p.copy&&!runs[p.file]).map(p=>p.file))];
- const ask=copies.length?`<div class="ipd-todo" style="margin-top:10px">🤔 There are two different <b>${copies.map(escH).join(', ')}</b> programs saved (copy A and copy B). Is one an old try? Which one does the robot really run?</div>`:'';
+ const ask=copies.length?`<div class="ipd-todo" style="margin-top:10px">There are two different <b>${copies.map(escH).join(', ')}</b> programs saved (copy A and copy B). Is one an old try? Which one does the robot really run?</div>`:'';
  const coders=p=>[...new Set([...p.missions.flatMap(id=>(missions.find(m=>m.id===id)||{prog:[]}).prog),...p.versions.flatMap(v=>byWho[v.d]||[])])]; /* + who made a saved version (robot_code_who, Nov 15) */
  const vers=(p,i)=>p.versions.map((v,j)=>({v,j})).reverse().map(({v,j})=>{const prev=j?p.versions[j-1].code:v.base,dif=prev!=null?lineDiff(prev,v.code):null,add=dif?dif.filter(l=>l.t==='a').length:0,del=dif?dif.filter(l=>l.t==='d').length:0;
-  return `<details class="ipd-f"${j===p.versions.length-1?' open':''}><summary>${j?'✏️':'🌱'} <b>${fmt(v.d)}</b>${labels[v.d]?` <span class="tag">${escH(labels[v.d])}</span>`:''}${(byWho[v.d]||[]).map(n=>av(n,1)).join('')} <span class="hint">${j?`version ${j+1} · `:`first version${dif?` · grew from ${escH(p.from)} · `:''}`}${dif?`<span style="color:var(--grass)">+${add}</span> <span style="color:#d64545">−${del}</span> lines changed`:''} · saved in <code>${escH(v.src)}</code></span></summary>
-   <div class="ipd-body"><div class="codebar"><span>${v.code.split('\n').length} lines${dif?` · green = added, red = taken out${j?'':` (compared with ${escH(p.from)})`}`:''}</span><button class="btn sm ghost" onclick="rcCopy(${i},${j})">📋 Copy</button></div><pre class="code">${(dif||v.code.split('\n').map(s=>({t:'',s}))).map(l=>`<span class="ln ${l.t}"><i>${l.t==='a'?'+':l.t==='d'?'−':''}</i>${escH(l.s)||' '}</span>`).join('')}</pre></div></details>`}).join('');
- $('rc').innerHTML=grid+ask+P.map((p,i)=>`<details class="rc" id="rc-${i}"><summary>💻 ${label(p)}${grew(p)} · ${name(p)} ${coders(p).map(n=>av(n,1)).join('')} <span class="hint">${p.versions.length} version${p.versions.length>1?'s':''} · first saved ${fmt(p.seen[0].d)} · last changed ${fmt(p.versions[p.versions.length-1].d)}</span></summary><div class="rc-body">${vers(p,i)}</div></details>`).join('');
+  return `<details class="ipd-f"${j===p.versions.length-1?' open':''}><summary><b>${fmt(v.d)}</b>${labels[v.d]?` <span class="tag">${escH(labels[v.d])}</span>`:''}${(byWho[v.d]||[]).map(n=>av(n,1)).join('')} <span class="hint">${j?`version ${j+1} · `:`first version${dif?` · grew from ${escH(p.from)} · `:''}`}${dif?`<span style="color:var(--grass)">+${add}</span> <span style="color:#d64545">−${del}</span> lines changed`:''} · saved in <code>${escH(v.src)}</code></span></summary>
+   <div class="ipd-body"><div class="codebar"><span>${v.code.split('\n').length} lines${dif?` · green = added, red = taken out${j?'':` (compared with ${escH(p.from)})`}`:''}</span><button class="btn sm ghost" onclick="rcCopy(${i},${j})">Copy</button></div><pre class="code">${(dif||v.code.split('\n').map(s=>({t:'',s}))).map(l=>`<span class="ln ${l.t}"><i>${l.t==='a'?'+':l.t==='d'?'−':''}</i>${escH(l.s)||' '}</span>`).join('')}</pre></div></details>`}).join('');
+ $('rc').innerHTML=grid+ask+P.map((p,i)=>`<details class="rc" id="rc-${i}"><summary>${label(p)}${grew(p)} · ${name(p)} ${coders(p).map(n=>av(n,1)).join('')} <span class="hint">${p.versions.length} version${p.versions.length>1?'s':''} · first saved ${fmt(p.seen[0].d)} · last changed ${fmt(p.versions[p.versions.length-1].d)}</span></summary><div class="rc-body">${vers(p,i)}</div></details>`).join('');
 }
 function rcShow(i){const d=document.querySelector('.page.active #rc-'+i+', .page.active #m-rc-'+i)||$('rc-'+i);d.open=true;d.scrollIntoView({behavior:'smooth',block:'start'})}
-async function rcCopy(i,j){try{await navigator.clipboard.writeText(robotCode.programs[i].versions[j].code);toast('📋 Copied')}catch(e){toast('⚠️ Couldn\'t copy')}}
+async function rcCopy(i,j){try{await navigator.clipboard.writeText(robotCode.programs[i].versions[j].code);toast('Copied')}catch(e){toast('Couldn\'t copy')}}
 /* Line-by-line "what changed" between two versions: [{t:''|'a'|'d', s}] (a = added, d = taken out).
    Nov 15: indenting a line (e.g. moving code into run()) doesn't count as a change. */
 function lineDiff(a,b){
@@ -754,18 +745,18 @@ function renderAll(){renderDash();renderGame();renderDesign();renderCoding();ren
 async function addMatch(){const s=+$('m-score').value;if(!s){toast('Type a score first!');return}const prevBest=matches.length?Math.max(...matches.map(m=>m.s)):0,d=$('m-date').value;
  if(!await save('POST','/api/matches',{d,s,r:+$('m-runs').value||0,f:$('m-fail').value||'—',c:$('m-change').value||'—'}))return;
  ['m-score','m-runs','m-fail','m-change'].forEach(i=>$(i).value='');
- if(s>prevBest){confetti();toast(prevBest?`🎉 NEW HIGH SCORE: ${s}! (+${s-prevBest})`:`🎉 FIRST MATCH SCORED: ${s}!`);await save('POST','/api/quotes',{q:`We just scored ${s} — a new team record!`,by:'Whole team · '+fmt(d),d})}else toast('Match saved. Keep iterating!')}
+ if(s>prevBest){confetti();toast(prevBest?`NEW HIGH SCORE: ${s}! (+${s-prevBest})`:`FIRST MATCH SCORED: ${s}!`);await save('POST','/api/quotes',{q:`We just scored ${s} — a new team record!`,by:'Whole team · '+fmt(d),d})}else toast('Match saved. Keep iterating!')}
 async function addTest(){const tr=+$('t-tries').value,su=+$('t-succ').value;if(!tr){toast('How many tries?');return}
  const d=$('t-date').value,att=$('t-att').value,obs=$('t-obs').value||'—',chg=$('t-chg').value||'—';
  if(!await save('POST','/api/tests',{d,att,tries:tr,succ:su,obs,chg,res:Math.round(su/tr*100)+'% today'}))return;
  await save('POST','/api/entries',{d,who:(atts.find(a=>a.name===att)||{by:[]}).by,comp:'Robot Design',ph:'ITERATE',t:`Tested ${att}: ${su}/${tr}. Saw: ${obs}. Changed: ${chg}.`,cv:[],succ:su/tr>=.8});
- ['t-tries','t-succ','t-obs','t-chg'].forEach(i=>$(i).value='');toast('🔬 Test logged — that\'s ITERATE evidence!')}
+ ['t-tries','t-succ','t-obs','t-chg'].forEach(i=>$(i).value='');toast('Test logged — that\'s ITERATE evidence!')}
 async function addMoment(){const t=$('cvm-text').value.trim(),who=picked('cvm-who');if(!t||!who.length){toast('Pick who and say what happened');return}
- if(await save('POST','/api/moments',{d:TODAY,v:$('cvm-val').value,who,t,help:who.length>=2&&/help/i.test(t)?[who[0],who[1]]:null},'🤝 Core Values moment saved!')){$('cvm-text').value='';clearPicks('cvm-who')}}
+ if(await save('POST','/api/moments',{d:TODAY,v:$('cvm-val').value,who,t,help:who.length>=2&&/help/i.test(t)?[who[0],who[1]]:null},'Core Values moment saved!')){$('cvm-text').value='';clearPicks('cvm-who')}}
 async function addEntry(){const t=$('e-text').value.trim(),who=picked('e-who');if(!t||!who.length){toast('Pick who did it and write what happened');return}
- if(await save('POST','/api/entries',{d:$('e-date').value,who,comp:$('e-comp').value,ph:$('e-phase').value,t,cv:picked('e-cv'),succ:/work|success|finally|record|✅/i.test(t)},'📓 Entry saved to the notebook!')){$('e-text').value='';clearPicks('e-who');clearPicks('e-cv')}}
+ if(await save('POST','/api/entries',{d:$('e-date').value,who,comp:$('e-comp').value,ph:$('e-phase').value,t,cv:picked('e-cv'),succ:/work|success|finally|record|✅/i.test(t)},'Entry saved to the notebook!')){$('e-text').value='';clearPicks('e-who');clearPicks('e-cv')}}
 /* profile cards: tap a field, type, tap away → saved */
-function saveCard(i,key,el){const v=el.textContent.trim(),m=TEAM[i];if((m[key]||'')===v)return;save('PATCH','/api/team/'+encodeURIComponent(m.n),{[key]:v},`💾 Saved on ${m.n}'s card`)}
+function saveCard(i,key,el){const v=el.textContent.trim(),m=TEAM[i];if((m[key]||'')===v)return;save('PATCH','/api/team/'+encodeURIComponent(m.n),{[key]:v},`Saved on ${m.n}'s card`)}
 
 /* View-only copy: turn off every way to type or save, after every redraw (filters and tabs redraw parts of the page). */
 function lockView(){
@@ -775,7 +766,7 @@ function lockView(){
   if(c&&[...c.children].every(k=>k===f||k.tagName==='H2'))c.style.display='none';else f.style.display='none'});
  document.querySelectorAll('button[onclick^="ipBox"]').forEach(b=>b.style.display='none')}
 if(VIEW){document.body.classList.add('viewonly');
- document.querySelector('aside .crest').insertAdjacentHTML('beforeend',`<div class="viewbadge">👀 View-only copy<br>saved ${VIEW.saved}</div>`);
+ document.querySelector('aside .crest').insertAdjacentHTML('beforeend',`<div class="viewbadge">View-only copy<br>saved ${VIEW.saved}</div>`);
  let queued=false;new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;lockView()})}).observe(document.querySelector('main'),{childList:true,subtree:true})}
 
 /* ===================== INIT ===================== */

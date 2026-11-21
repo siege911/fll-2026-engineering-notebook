@@ -1,5 +1,5 @@
 {
- "written_at": "2026-11-21T02:01:23.785Z",
+ "written_at": "2026-11-21T03:04:45.155Z",
  "applied_updates": [
   {
    "file": "2026-09-28-profile-photos.sql",
@@ -244,6 +244,30 @@
   {
    "file": "2026-11-20g-difficulty-not-reliability.sql",
    "applied_at": "2026-11-21 02:01:15"
+  },
+  {
+   "file": "2026-11-20h-drop-size-wires.sql",
+   "applied_at": "2026-11-21 02:09:30"
+  },
+  {
+   "file": "2026-11-20i-drop-how-attach.sql",
+   "applied_at": "2026-11-21 02:10:03"
+  },
+  {
+   "file": "2026-11-20j-no-emojis.sql",
+   "applied_at": "2026-11-21 02:37:02"
+  },
+  {
+   "file": "2026-11-20k-mascot-nate-photos.sql",
+   "applied_at": "2026-11-21 02:41:45"
+  },
+  {
+   "file": "2026-11-20l-practice-400.sql",
+   "applied_at": "2026-11-21 02:59:27"
+  },
+  {
+   "file": "2026-11-20m-skip-m04-m05.sql",
+   "applied_at": "2026-11-21 03:01:30"
   }
  ],
  "attachment_versions": [
@@ -251,14 +275,14 @@
    "id": 1,
    "attachment_id": 1,
    "date": "2026-08-31",
-   "note": "v1 built ✅",
+   "note": "v1 built",
    "photo": null
   },
   {
    "id": 2,
    "attachment_id": 2,
    "date": "2026-08-31",
-   "note": "v1 built ✅",
+   "note": "v1 built",
    "photo": null
   },
   {
@@ -286,21 +310,21 @@
    "id": 6,
    "attachment_id": 5,
    "date": "2026-09-19",
-   "note": "Nolan built the \"number 2\" attachment ✅ — is it this one? ask Nolan",
+   "note": "Nolan built the \"number 2\" attachment — is it this one? ask Nolan",
    "photo": null
   },
   {
    "id": 7,
    "attachment_id": 6,
    "date": "2026-09-04",
-   "note": "v1 created ✅ (Fynn)",
+   "note": "v1 created (Fynn)",
    "photo": null
   },
   {
    "id": 8,
    "attachment_id": 6,
    "date": "2026-09-11",
-   "note": "finished ✅ + programmed (Isla)",
+   "note": "finished + programmed (Isla)",
    "photo": null
   },
   {
@@ -321,42 +345,42 @@
    "id": 11,
    "attachment_id": 7,
    "date": "2026-09-11",
-   "note": "v1 built ✅",
+   "note": "v1 built",
    "photo": null
   },
   {
    "id": 12,
    "attachment_id": 7,
    "date": "2026-09-19",
-   "note": "finished ✅",
+   "note": "finished",
    "photo": null
   },
   {
    "id": 13,
    "attachment_id": 8,
    "date": "2026-09-19",
-   "note": "v1 built ✅",
+   "note": "v1 built",
    "photo": null
   },
   {
    "id": 14,
    "attachment_id": 8,
    "date": "2026-09-25",
-   "note": "built + programmed ✅ (Isla)",
+   "note": "built + programmed (Isla)",
    "photo": null
   },
   {
    "id": 15,
    "attachment_id": 9,
    "date": "2026-09-19",
-   "note": "v1 built ✅",
+   "note": "v1 built",
    "photo": null
   },
   {
    "id": 16,
    "attachment_id": 9,
    "date": "2026-09-25",
-   "note": "programmed ✅ (Fynn)",
+   "note": "programmed (Fynn)",
    "photo": null
   },
   {
@@ -384,28 +408,28 @@
    "id": 20,
    "attachment_id": 11,
    "date": "2026-10-12",
-   "note": "v1 built ✅ (Weston)",
+   "note": "v1 built (Weston)",
    "photo": null
   },
   {
    "id": 21,
    "attachment_id": 12,
    "date": "2026-10-23",
-   "note": "v1 built ✅ (Weston)",
+   "note": "v1 built (Weston)",
    "photo": null
   },
   {
    "id": 22,
    "attachment_id": 13,
    "date": "2026-10-26",
-   "note": "v1 built ✅ (Nolan)",
+   "note": "v1 built (Nolan)",
    "photo": null
   },
   {
    "id": 23,
    "attachment_id": 14,
    "date": "2026-10-26",
-   "note": "v1 built ✅ (Nolan)",
+   "note": "v1 built (Nolan)",
    "photo": null
   },
   {
@@ -447,14 +471,14 @@
    "id": 29,
    "attachment_id": 10,
    "date": "2026-11-02",
-   "note": "📷 photo: one attachment does both M08 + M09",
+   "note": "photo: one attachment does both M08 + M09",
    "photo": "11-2-mission-8-9.jpg"
   },
   {
    "id": 30,
    "attachment_id": 12,
    "date": "2026-11-02",
-   "note": "📷 photo: one attachment does both M08 + M09",
+   "note": "photo: one attachment does both M08 + M09",
    "photo": "11-2-mission-8-9.jpg"
   },
   {
@@ -517,112 +541,112 @@
    "id": 39,
    "attachment_id": 5,
    "date": "2026-11-02",
-   "note": "📷 photo on the mat",
+   "note": "photo on the mat",
    "photo": "11-2-mission-2-3.jpg"
   },
   {
    "id": 40,
    "attachment_id": 2,
    "date": "2026-11-02",
-   "note": "📷 photo on the mat",
+   "note": "photo on the mat",
    "photo": "11-2-mission-4.jpg"
   },
   {
    "id": 41,
    "attachment_id": 6,
    "date": "2026-11-02",
-   "note": "📷 photo on the mat",
+   "note": "photo on the mat",
    "photo": "11-2-mission-12.jpg"
   },
   {
    "id": 42,
    "attachment_id": 9,
    "date": "2026-11-02",
-   "note": "📷 photo on the mat",
+   "note": "photo on the mat",
    "photo": "11-2-mission-14.jpg"
   },
   {
    "id": 43,
    "attachment_id": 8,
    "date": "2026-11-02",
-   "note": "📷 photo on the mat",
+   "note": "photo on the mat",
    "photo": "11-2-mission-15.jpg"
   },
   {
    "id": 44,
    "attachment_id": 1,
    "date": "2026-11-20",
-   "note": "📷 final-form photo (run 1)",
+   "note": "final-form photo (run 1)",
    "photo": "11-20-mission-1.jpg"
   },
   {
    "id": 45,
    "attachment_id": 2,
    "date": "2026-11-20",
-   "note": "📷 final-form photo (run 3)",
+   "note": "final-form photo (run 3)",
    "photo": "11-20-mission-4-5.jpg"
   },
   {
    "id": 46,
    "attachment_id": 5,
    "date": "2026-11-20",
-   "note": "📷 final-form photo (run 2)",
+   "note": "final-form photo (run 2)",
    "photo": "11-20-mission-2-3.jpg"
   },
   {
    "id": 47,
    "attachment_id": 7,
    "date": "2026-11-20",
-   "note": "📷 final-form photo (run 8)",
+   "note": "final-form photo (run 8)",
    "photo": "11-20-mission-12b-13.jpg"
   },
   {
    "id": 48,
    "attachment_id": 8,
    "date": "2026-11-20",
-   "note": "📷 final-form photo (run 7)",
+   "note": "final-form photo (run 7)",
    "photo": "11-20-mission-15.jpg"
   },
   {
    "id": 49,
    "attachment_id": 9,
    "date": "2026-11-20",
-   "note": "📷 final-form photo (run 5)",
+   "note": "final-form photo (run 5)",
    "photo": "11-20-mission-14.jpg"
   },
   {
    "id": 50,
    "attachment_id": 10,
    "date": "2026-11-20",
-   "note": "📷 final-form photo (run 4)",
+   "note": "final-form photo (run 4)",
    "photo": "11-20-mission-8-9.jpg"
   },
   {
    "id": 51,
    "attachment_id": 11,
    "date": "2026-11-20",
-   "note": "📷 final-form photo (run 9)",
+   "note": "final-form photo (run 9)",
    "photo": "11-20-mission-6-7-11.jpg"
   },
   {
    "id": 52,
    "attachment_id": 12,
    "date": "2026-11-20",
-   "note": "📷 final-form photo (run 4)",
+   "note": "final-form photo (run 4)",
    "photo": "11-20-mission-8-9.jpg"
   },
   {
    "id": 53,
    "attachment_id": 13,
    "date": "2026-11-20",
-   "note": "📷 final-form photo (run 9)",
+   "note": "final-form photo (run 9)",
    "photo": "11-20-mission-6-7-11.jpg"
   },
   {
    "id": 54,
    "attachment_id": 14,
    "date": "2026-11-20",
-   "note": "📷 final-form photo (run 9)",
+   "note": "final-form photo (run 9)",
    "photo": "11-20-mission-6-7-11.jpg"
   }
  ],
@@ -1748,6 +1772,62 @@
    "source": "update",
    "sample": 0,
    "created_at": "2026-11-21 01:01:41"
+  },
+  {
+   "id": 72,
+   "date": "2026-11-19",
+   "who": "[\"Whole team\"]",
+   "component": "Innovation Project",
+   "phase": "COMMUNICATE",
+   "text": "Practiced our Innovation Project judging talk.",
+   "core_values": "[\"Teamwork\"]",
+   "success": 0,
+   "photo": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-21 02:59:27"
+  },
+  {
+   "id": 73,
+   "date": "2026-11-19",
+   "who": "[\"Whole team\"]",
+   "component": "Robot Game",
+   "phase": "ITERATE",
+   "text": "Practiced the Robot Game.",
+   "core_values": "[]",
+   "success": 0,
+   "photo": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-21 02:59:27"
+  },
+  {
+   "id": 74,
+   "date": "2026-11-20",
+   "who": "[\"Whole team\"]",
+   "component": "Innovation Project",
+   "phase": "COMMUNICATE",
+   "text": "Practiced our Innovation Project judging talk again, the day before Regionals.",
+   "core_values": "[\"Teamwork\"]",
+   "success": 0,
+   "photo": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-21 02:59:27"
+  },
+  {
+   "id": 75,
+   "date": "2026-11-20",
+   "who": "[\"Whole team\"]",
+   "component": "Robot Game",
+   "phase": "ITERATE",
+   "text": "Practiced the Robot Game. Our best score over Thursday and Friday was 400! Our top possible score is 460: every mission except Missions 4 and 5, plus Equipment Inspection and Precision Tokens.",
+   "core_values": "[]",
+   "success": 1,
+   "photo": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-21 02:59:27"
   }
  ],
  "experts": [
@@ -1762,7 +1842,9 @@
    "date": "2026-10-05",
    "met_by": "Whole team",
    "notes": "[\"About 300 animal strikes in a year on I-17\",\"The I-17 wildlife bridge cost $24 million and is supposed to reduce collisions by 90%\",\"Baby animals go where their mom goes, so if the mom uses the bridge, they will too\",\"GPS collars on elk: they tranquilize them to put collars on; the battery lasts 3 years, then the collar falls off\",\"Game and Fish has a live stream to watch the animals\",\"There might be one camera on the bridge (he is not sure)\",\"A camera with a flashing light has been done before\",\"Officers use satellite cameras that send a notification to your phone\",\"Not using a live stream prevents bad stuff from happening\",\"We could use AI to edit the video or blur out any human\",\"We won't get data from Game and Fish, so we get our own\",\"We need ADOT's permission to use the bridge\",\"Backup: put the camera on the squirrel nest and track that\",\"Cameras in a wide perimeter would be the most effective\",\"Thermal goggles to see animals at night\",\"Not a lot of AI; drones for law-enforcement investigations\"]",
-   "questions": "[{\"q\":\"How many big crashes happen every year in Flagstaff, with the animals?\",\"a\":\"About 300 animal strikes in a year, on I-17.\"},{\"q\":\"Another one of our ideas is to make the camera send a blinking light to warn drivers that there is an animal crossing.\",\"a\":\"A camera with a flashing light has been done before.\"},{\"q\":\"Do you ever use live stream cameras?\",\"a\":\"Yes, they have a live stream to watch the animals. For our camera: not using a live stream prevents bad stuff.\"},{\"q\":\"How long does it usually take for animals to figure out if a new bridge is safe, and to know the bridge is there for them, with big animals?\",\"a\":\"The animals go where their mom goes, so if their mom goes on the bridge, they will. (No time given.)\"},{\"q\":\"For the big new overpass being built on the I-17 at Willard Springs, how are you planning to count the animals? Regular trail cameras from the store, or special expensive equipment?\",\"a\":\"There might be one camera on the bridge, but he is not sure.\"}]"
+   "questions": "[{\"q\":\"How many big crashes happen every year in Flagstaff, with the animals?\",\"a\":\"About 300 animal strikes in a year, on I-17.\"},{\"q\":\"Another one of our ideas is to make the camera send a blinking light to warn drivers that there is an animal crossing.\",\"a\":\"A camera with a flashing light has been done before.\"},{\"q\":\"Do you ever use live stream cameras?\",\"a\":\"Yes, they have a live stream to watch the animals. For our camera: not using a live stream prevents bad stuff.\"},{\"q\":\"How long does it usually take for animals to figure out if a new bridge is safe, and to know the bridge is there for them, with big animals?\",\"a\":\"The animals go where their mom goes, so if their mom goes on the bridge, they will. (No time given.)\"},{\"q\":\"For the big new overpass being built on the I-17 at Willard Springs, how are you planning to count the animals? Regular trail cameras from the store, or special expensive equipment?\",\"a\":\"There might be one camera on the bridge, but he is not sure.\"}]",
+   "photo": "11-20-profile-nate-ragan.jpg",
+   "team_photo": "11-20-nate-ragan-with-team.jpg"
   }
  ],
  "gantt": [
@@ -2136,7 +2218,7 @@
    "status": "Working on the Pi (Nov 9): camera → Pi → AI tagging, no crashes · first real animal still to come",
    "built": 1,
    "docs": "[{\"label\":\"How it works\",\"path\":\"pi/README.md\"},{\"label\":\"How to install\",\"path\":\"pi/INSTALL.md\"},{\"label\":\"Networking (camera Wi-Fi + house Wi-Fi)\",\"path\":\"pi/NETWORKING.md\"}]",
-   "files": "[{\"path\":\"pi/station/server.py\",\"what\":\"The Camera Station: receives photos, runs the tagging, answers the touchscreen page\"},{\"path\":\"pi/station/store.py\",\"what\":\"The station's memory, and how visits are grouped and counted\"},{\"path\":\"pi/station/ai.py\",\"what\":\"Talking to SpeciesNet, blurring people, practice-mode answers\"},{\"path\":\"pi/station/network.py\",\"what\":\"The 📡 Camera Wi-Fi / 🌐 House Wi-Fi switch\"},{\"path\":\"pi/station/public/index.html\",\"what\":\"The touchscreen page (ours to change)\"},{\"path\":\"pi/station/camera-station.service\",\"what\":\"Starts the station when the Pi boots\"},{\"path\":\"pi/station/50-camera-station.rules\",\"what\":\"Lets the station flip the Wi-Fi switch\"},{\"path\":\"pi/settings.example.json\",\"what\":\"Copy to settings.json (the real one stays on the Pi)\"},{\"path\":\"pi/collector.py\",\"what\":\"Backup: fetches photos from a camera still on v2\"},{\"path\":\"pi/station/uploader.py\",\"what\":\"Sends the visits we picked to our website\"}]",
+   "files": "[{\"path\":\"pi/station/server.py\",\"what\":\"The Camera Station: receives photos, runs the tagging, answers the touchscreen page\"},{\"path\":\"pi/station/store.py\",\"what\":\"The station's memory, and how visits are grouped and counted\"},{\"path\":\"pi/station/ai.py\",\"what\":\"Talking to SpeciesNet, blurring people, practice-mode answers\"},{\"path\":\"pi/station/network.py\",\"what\":\"The Camera Wi-Fi / House Wi-Fi switch\"},{\"path\":\"pi/station/public/index.html\",\"what\":\"The touchscreen page (ours to change)\"},{\"path\":\"pi/station/camera-station.service\",\"what\":\"Starts the station when the Pi boots\"},{\"path\":\"pi/station/50-camera-station.rules\",\"what\":\"Lets the station flip the Wi-Fi switch\"},{\"path\":\"pi/settings.example.json\",\"what\":\"Copy to settings.json (the real one stays on the Pi)\"},{\"path\":\"pi/collector.py\",\"what\":\"Backup: fetches photos from a camera still on v2\"},{\"path\":\"pi/station/uploader.py\",\"what\":\"Sends the visits we picked to our website\"}]",
    "updated": "2026-11-15",
    "sort_order": 2,
    "source": "update"
@@ -2440,7 +2522,18 @@
    "source": "update"
   }
  ],
- "matches": [],
+ "matches": [
+  {
+   "id": 1,
+   "date": "2026-11-20",
+   "score": 400,
+   "runs_completed": null,
+   "what_failed": null,
+   "what_changed": null,
+   "source": "update",
+   "created_at": "2026-11-21 02:59:27"
+  }
+ ],
  "missions": [
   {
    "id": "M01",
@@ -2516,7 +2609,7 @@
    "difficulty": 2,
    "run_number": 3,
    "attachment": "Lucky Leaves attachment",
-   "built_by": "[]",
+   "built_by": "[\"Adeline\",\"Fynn\"]",
    "programmed_by": "[\"Fynn\",\"Isla\",\"Adeline\"]",
    "reliability": 80,
    "status": "Working",
@@ -2595,7 +2688,7 @@
    "no_equipment": 1,
    "difficulty": 2,
    "run_number": 5,
-   "attachment": "—",
+   "attachment": "No attachment",
    "built_by": "[]",
    "programmed_by": "[]",
    "reliability": 97,
@@ -2768,7 +2861,7 @@
    "program": "Robot base template",
    "mission": null,
    "coded_by": "[\"Adeline\"]",
-   "sensors": "—",
+   "sensors": "No color sensors",
    "innovative_bit": "Every mission program starts from this one template",
    "sort_order": 1
   },
@@ -3014,11 +3107,6 @@
    "sort_order": 1
   },
   {
-   "label": "Size (W × D)",
-   "value": "— measure it!",
-   "sort_order": 2
-  },
-  {
    "label": "Wheels",
    "value": "49.5 × 20 mm tires (decided Aug 28)",
    "sort_order": 3
@@ -3034,23 +3122,13 @@
    "sort_order": 5
   },
   {
-   "label": "Wire management",
-   "value": "— fill in",
-   "sort_order": 6
-  },
-  {
-   "label": "How attachments attach",
-   "value": "— fill in",
-   "sort_order": 7
-  },
-  {
    "label": "Accuracy vs Speed",
    "value": "Leaning accuracy — wide base for precise turns, accepted slower moves in tight spots",
    "sort_order": 8
   },
   {
    "label": "Robot base status",
-   "value": "Design finished ✅ — <b>3 identical copies built</b> (Thea, Nolan, Weston · Sep 6)",
+   "value": "Design finished — <b>3 identical copies built</b> (Thea, Nolan, Weston · Sep 6)",
    "sort_order": 9
   }
  ],
@@ -3319,8 +3397,8 @@
   },
   {
    "key": "mascot",
-   "value": "{\"name\":\"\",\"built_by\":\"Thea\",\"date\":\"2026-09-11\",\"mission\":\"M13\",\"photo\":null}",
-   "note": "Core Values page: Team Mascot card"
+   "value": "{\"name\":\"Scott\",\"built_by\":\"Thea\",\"date\":\"2026-09-11\",\"mission\":\"M13\",\"photo\":\"11-20-mascot-square.jpg\",\"photo_big\":\"11-20-mascot.jpg\"}",
+   "note": "typed in the app 2026-11-21 02:42:30"
   },
   {
    "key": "coding_note",
@@ -3355,6 +3433,11 @@
   {
    "key": "team_photo",
    "value": "{\"photo\":\"11-20-team-photo.jpg\",\"date\":\"2026-11-20\",\"caption\":\"Rooted Warriors: Adeline, Fynn, Isla, Nolan, Thea, Weston\"}",
+   "note": "update 2026-11-20"
+  },
+  {
+   "key": "game_plan",
+   "value": "{\"skip\":[\"M04\",\"M05\"],\"why\":\"time\",\"date\":\"2026-11-20\"}",
    "note": "update 2026-11-20"
   }
  ],
