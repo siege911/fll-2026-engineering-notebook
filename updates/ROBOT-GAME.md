@@ -8,6 +8,11 @@ Backfilled 2026-09-06 from `../DECISIONS.md` and `../PROGRESS.md`.
 
 ---
 
+## 2026-11-20 — Difficulty for every mission; reliability estimates (Thea)
+- **Difficulty (out of 5), Thea:** M11 Window to the Past 3 · M12 Forest Elder 3 · M13 Keystone Species 2 · M14 Seeds of Renewal 2 · M15 Biocentric Architecture 3. Already typed in the app earlier ([who?]): M01 2 · M02 3 · M03 1 · M04 2 · M05 2 · M06 2 · M07 1 · M08 1 · M09 3 · M10 2.
+- **Reliability (app sliders, estimates, not counted tries):** M01 100 · M06 91 · M07 93 · M08 93 · M09 81 · M10 97 · M11 94 · M12 100 · M13 91 · M14 82 · M15 95. Counted tries exist only for M02 + M03 (5/5 Oct 2), M04 + M05 (4/5 Nov 1) and M14 (5/5 Oct 2).
+- Correction: a first try saved Thea's numbers as reliability/test sessions by mistake; removed the same day.
+
 ## 2026-11-15 — The hub menu follows the run plan (Final v2 code)
 - The new mission menu (Adeline, tested Nov 9) has 9 slots, the same order as our 9 runs: 1 M01 · 2 M02 + M03 · 3 M04 + M05 · 4 M08 + M09 · 5 M14 · 6 M12 part 1 (support tie) · 7 M15 · 8 M13 + M12 part 2 (cane) · 9 M06 + M07 + M11.
 - After a run finishes the hub shows the next number (orange light): press RIGHT or CENTER to go. CENTER during a run stops it and stays on that number to retry.

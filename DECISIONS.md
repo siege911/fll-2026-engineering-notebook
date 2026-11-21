@@ -4,6 +4,24 @@ Newest at top. Capture-field and design decisions come from the students; archit
 
 ---
 
+## 2026-11-20 — Temporary page removed (Thea)
+
+- "Get rid of the temporary page." This ends the Nov 17 rule that removed cards move to Temporary instead of being deleted. Removed cards now go away for real (old versions are still in the app's history if we want one back).
+- Gone with it: 8-Step Progress, Best Match Score, Score History. We haven't logged any practice matches this season, so those score cards were empty.
+
+---
+
+## 2026-11-20 — Blanks in the app filled from our own talks (Thea)
+
+- Asked: "fill out anything that hasn't been filled out." Rule used: **only facts the team already said or wrote** (the Nov 15 judging talks, the Final v3 code). Nothing guessed; blanks with no answer stay blank and are listed in `updates/ROBOT-DESIGN.md` 2026-11-20.
+- Written down as decisions (the judges can ask "why?"):
+  - **Pi in the forest → tiny camera** (Weston's talk): lower energy and a smaller solar panel (a Pi 4 uses 3–5 W all the time, Oct 3 research).
+  - **One multi-purpose camera instead of 3 separate ideas** (Adeline's talk): warning light, in-car camera, bridge-counting camera.
+  - **A build-and-test robot with no gears** (Adeline's talk): one person hand-drives it to test attachments, then we program on a geared robot.
+  - **Combined 2 + 3 attachment** (Weston + Thea): one trip, two missions.
+
+---
+
 ## 2026-11-19 — Online copy is view-only, data baked in (CJ)
 
 - For the competition the notebook goes online as a **view-only copy**: `site/`, built by `npm run export` from `app/`, hosted free as a static site from the GitHub repo (Render static site, publish folder `site`).

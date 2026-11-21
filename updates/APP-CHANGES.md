@@ -12,6 +12,31 @@ Format:
 
 Backfilled 2026-09-06 from `../DECISIONS.md`, `../PROGRESS.md`, and `../mockups/GALLERY.md`.
 
+## 2026-11-20 — Difficulty for M11–M15 (data only; fixes a mistake)
+- **File:** app/db/updates/2026-11-20f-reliability-counts.sql (mistake: saved as reliability + test sessions) → app/db/updates/2026-11-20g-difficulty-not-reliability.sql (fix)
+- **What:** Difficulty M11 3, M12 3, M13 2, M14 2, M15 3. Removed the 5 wrong test rows and notebook entry; reliability for M11–M15 put back to the slider estimates set in the app.
+- **Why / who asked:** Thea.
+
+## 2026-11-20 — Tradeoff pick renamed: "No color sensors"
+- **File:** app/db/updates/2026-11-20e-no-color-sensors.sql
+- **What:** Robot Design → Tradeoff Decisions, "Color sensors, or no sensors?": pick "No sensors" → "No color sensors".
+- **Why / who asked:** Thea. The robot does use the hub's gyro, so "No sensors" could confuse a judge.
+
+## 2026-11-20 — Temporary page removed; Score History removed
+- **File:** app/public/index.html
+- **What:** Score History card (match chart + match table) taken off the Robot Game page; Log a Practice Match stays. Then the whole **Temporary** page was removed (nav link + page), with the cards on it: 8-Step Progress (off the IP page Nov 17), Best Match Score (off the Dashboard today), Score History. Matches logged in the app are still saved in the data; only these displays are gone. Old versions are in git history if a card should come back.
+- **Why / who asked:** Thea: "get rid of score history in robot game", then "get rid of the temporary page".
+
+## 2026-11-20 — Blanks filled from our judging talks (data only)
+- **File:** app/db/updates/2026-11-20d-fill-blanks-from-talks.sql
+- **What:** Tradeoffs (tires, three bases, combined 2 + 3, new no-gears robot), robot specs (Motors, Sensors = gyro), "Sensors" on every mission program, 3 notebook entries (3 ideas, Pi → tiny camera, no-gears robot).
+- **Why / who asked:** Thea: "fill out anything that hasn't been filled out." Only facts from the Nov 15 talks and the Final v3 code; the rest stays blank (list in ROBOT-DESIGN.md 2026-11-20).
+
+## 2026-11-20 — Dashboard: Best Match Score removed, Mission Inventory full width
+- **File:** app/public/index.html
+- **What:** Took the "Best Match Score" card (big number + score chart) off the Team Dashboard. Mission Inventory now spans the full width of the page. The score-over-time chart is still on the Robot Game page.
+- **Why / who asked:** Thea.
+
 ## 2026-11-20 — Final v3 robot code
 - Data only: `code/Final v3 - Nov 18/` (new Pybricks backup) + `app/db/updates/2026-11-20b-final-v3-code.sql` (notebook entry) + `2026-11-20c-final-v3-who.sql` (Fynn + Isla made it). Asked by [who?]. `site/` re-exported.
 

@@ -8,6 +8,27 @@ One entry per practice, **newest at top**. This is the raw material for the team
 
 ---
 
+## 2026-11-20 — Difficulty ratings: M11, M12, M13, M14, M15 (out of 5)
+**Told by:** Thea (sent 2026-11-20)
+
+**Raw update (their words):**
+> In Robot Game for Windows in the past, make it a 3 out of 5. For Forest Elder, make it a 3 out of 5. For Keystone Species, make it a 2 out of 5. For Seeds of Renewal make it a 2 out of 5. And for Biocentric Architecture, make it a 3 out of 5.
+
+**Follow-up, same day (Thea):**
+> For my question to change the numbers, you didn't do it. Try again.
+
+**What happened**
+- Robot Game: the team's **difficulty** rating (1–5) for the last five missions, in the Mission Inventory's Difficulty column:
+  - M11 Window to the Past **3/5** · M12 Forest Elder **3/5** · M13 Keystone Species **2/5** · M14 Seeds of Renewal **2/5** · M15 Biocentric Architecture **3/5**
+- Already set in the app before (typed in, [who?]): M01 2 · M02 3 · M03 1 · M04 2 · M05 2 · M06 2 · M07 1 · M08 1 · M09 3 · M10 2. Now all 15 missions have a difficulty.
+- **Correction:** Claude first read "3 out of 5" as test tries (reliability) and saved 5 test sessions + a notebook entry by mistake. Those were removed the same day (update file `2026-11-20g-difficulty-not-reliability.sql`).
+- Reliability set with the app's sliders today ([who?], Thea says **estimates**, not counted tries): M01 100% · M06 91% · M07 93% · M08 93% · M09 81% · M10 97% · M11 94% · M12 100% · M13 91% · M14 82% · M15 95%. (The M11–M15 slider moves didn't save at first because the app's data file was locked; put back from what the app showed.)
+
+**App changes made:** `app/db/updates/2026-11-20f-reliability-counts.sql` (mistake) → fixed by `2026-11-20g-difficulty-not-reliability.sql`.
+**Rubric rows touched:** Robot Game strategy (which missions are hard).
+
+---
+
 ## 2026-11-18 + 2026-11-19 — Robot code: Final v3, last fine-tuning before Regionals
 **Who was there:** [who?] (Fynn and Isla did most of the code work)
 **Told by:** [who?] (sent 2026-11-20)

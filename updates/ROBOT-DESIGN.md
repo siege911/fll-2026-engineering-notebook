@@ -8,6 +8,19 @@ Backfilled 2026-09-06 from `../DECISIONS.md` and `../PROGRESS.md`.
 
 ---
 
+## 2026-11-20 — Blanks filled from our judging talks + the Final v3 code
+**Asked by:** Thea: "fill out anything that hasn't been filled out." Only facts the team already said or wrote went in; everything else is still open (list at the bottom of this note).
+- **Which drive tires? (Isla, Robot Design talk):** "We started by testing 8 different wheels. We decided on this one because it has good traction and is accurate." [unclear: which 8 wheels, and who tested them]
+- **Why three identical bases? (Isla, Robot Design talk):** "so we can test three attachments at once and have a spare."
+- **One attachment for Missions 2 + 3, or two? (decided: combined).** Why, in the team's words: "Our attachments do more than one mission per trip. Our 2-and-3 attachment knocks the seeds loose and flips the rock." (Weston) · "Lesson two: combine missions to save trips." (Thea) · Nolan's combined attachment tested 5/5 on Oct 2.
+- **New tradeoff: a robot with no gears (Adeline, Robot Design talk):** one of the three bases has no gears, so "one person [can] focus on building and hand drive the robot around the map testing attachments. Then we would switch to one of the two robots with gears to actually program the mission." [unclear: when we started doing this, and whose idea it was]
+- **Motors (from the code, `robot.py`):** 4 motors: left wheel port A, right wheel port E, left attachment motor port B, right attachment motor port F.
+- **Sensors (from the code + Fynn's talk):** the **gyro built into the hub**. Every Final v3 mission program turns it on: it keeps the robot driving straight and turning exactly; distance is measured with wheel rotations. Each mission backs up a little, then resets (zeroes) the heading. Still no color sensors (no room, Sep 6).
+- **Renamed (Thea):** the tradeoff pick "No sensors" is now **"No color sensors"**, because the robot does use the gyro in the hub.
+- **Still blank (nobody has said yet):** robot size (measure it!), wire management, how attachments attach, attachment sizes, who launches each run, what we changed after each test session, mascot name, M10 attachment/coder.
+
+---
+
 ## 2026-11-20 — Robot code Final v3 (Nov 18 + 19): Fynn and Isla
 - **Fynn and Isla** did most of the last fine-tuning before Regionals, saved as **Final v3** (`code/Final v3 - Nov 18`). Changed: run 1 (M01), run 2 (M02 + M03), run 4 (M08 + M09), run 5 (M14). Details: `ROBOT-CODE.md` 2026-11-20.
 - Isla added to "Coded by" for M01, M02, M03, M08, M09, M14 (Fynn was already listed).
@@ -47,10 +60,10 @@ The Nov 2 photos are kept and still show in each attachment's "versions" row (At
 | Structure | Reinforced with bracing for rigidity | Sep 6 | students |
 | Drive tires | 49.5 × 20 mm | Aug 28 | students |
 | Wheelbase | Wide | week of Aug 24 | students |
-| Sensors | None (color sensors considered, no room) | Sep 6 | students |
+| Sensors | Gyro in the hub (drive straight, exact turns). No color sensors: no room | Sep 6 (color) · gyro in every Final v3 program (Nov 18) | students |
 | Accuracy vs speed | Leans accuracy (wide base → accurate turns; no sensors → navigation by wheel rotations and turns) | Sep 6 | students |
 | Size (width × depth) | [not measured yet] | | |
-| Motors | [not recorded yet] | | |
+| Motors | 4: drive wheels on A (left) + E (right), attachment motors on B (left) + F (right) | from the code (`robot.py`), recorded 2026-11-20 | students |
 | Wire management | [not recorded yet] | | |
 | How attachments attach | [not recorded yet] | | |
 
@@ -61,10 +74,11 @@ The Nov 2 photos are kept and still show in each attachment's "versions" row (At
 | Sep 6 | Low or tall base? | low / tall | **Low** | Low center of gravity, less likely to tip |
 | Sep 6 (choice made week of Aug 24) | Wide or narrow wheelbase? | wide / narrow | **Wide** | More accurate turning. Accepted cost: harder to move in tight spaces on the field |
 | Sep 6 | Reinforce the base or keep it light? | reinforced / light | **Reinforced** | Bracing makes the base more rigid |
-| Sep 6 | Color sensors or none? | color sensors / none | **None** | Base is so compact there was no room for a sensor. Accepted cost: no line/color detection; navigate by wheel rotations and turns |
-| Sep 6 | One robot base, or three identical copies? | one / three | **Three** | [students to fill in — nudge next session] |
-| Aug 28 | Which drive tires? | [unclear: alternatives] | **49.5 × 20 mm** | [not recorded — ask] |
-| Sep 4 → open | Which Mission 2 attachment: Adeline's M02-only, or Nolan's combined M02+M03? | two builds | [not decided] | — |
+| Sep 6 | Color sensors or none? | color sensors / none | **No color sensors** (renamed Nov 20, Thea: the robot does use the hub's gyro) | Base is so compact there was no room for a sensor. Accepted cost: no line/color detection; navigate by wheel rotations and turns |
+| Sep 6 | One robot base, or three identical copies? | one / three | **Three** | "so we can test three attachments at once and have a spare" (Isla, judging talk) |
+| Aug 28 | Which drive tires? | 8 different wheels tested [unclear: which] | **49.5 × 20 mm** | "good traction and is accurate" (Isla, judging talk) |
+| [unclear: date] | Build-and-test robot with no gears? | all bases with gears / one without | **One base with no gears** | One person builds and hand-drives it around the map to test attachments; then we switch to a geared robot to program the mission (Adeline, judging talk) |
+| Sep 4 → Oct 2 | Which Mission 2 attachment: Adeline's M02-only, or Nolan's combined M02+M03? | two builds | **Combined 2 + 3** | Does both missions in one trip (knocks the seeds loose and flips the rock); tested 5/5 Oct 2. "Combine missions to save trips." |
 
 ---
 

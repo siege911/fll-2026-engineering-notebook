@@ -8,6 +8,13 @@ Backfilled 2026-09-06 from `../DECISIONS.md` and `../PROGRESS.md`.
 
 ---
 
+## 2026-11-20 — From our judging talk into the notebook: 3 ideas + the Pi → tiny camera switch
+**Asked by:** Thea ("fill out anything that hasn't been filled out"). Both facts come from the team's own Innovation Project talk (`PRESENTATION.md`, Nov 15 text).
+- **The 3 ideas we considered (Adeline):** (1) a system that alerts drivers to animals with a camera or sensor and a flashing light; (2) a camera in a car that alerts the driver; (3) a camera that tracks how many animals use the bridge vs. other crossing places. **Picked:** one multi-purpose camera that detects animals and could serve all 3, starting with counting animals on the new bridge. (Nate said the warning light has been done before, Oct 5.) [unclear: the date we chose]
+- **Improvement: Raspberry Pi in the forest → tiny camera (Weston):** "Our first plan was to put the Raspberry Pi in the forest. After our research, we switched to the tiny camera due to lower energy usage and a smaller solar panel." Our Oct 3 research: a Pi 4 uses 3–5 W all the time. Now the tiny camera stays in the forest and the Pi collects the pictures over Wi-Fi.
+
+---
+
 ## 2026-11-15 — Thea's brother, ADOT paperwork, bridge cost (Coach CJ)
 - **Sharing: Thea's older brother** developed his own custom circuit board and is willing to help us build one for the next camera version. Added to the Communication table. [unclear: date we shared with him; his name]
 - **ADOT:** Coach CJ talked to the **ADOT District Administrator for the Northcentral District** about putting our camera on the Willard Springs bridge, and **we have the paperwork needed**. Added to Communication and the Gantt chart. [unclear: date]

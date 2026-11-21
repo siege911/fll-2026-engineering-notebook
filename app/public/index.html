@@ -264,7 +264,6 @@
   <button class="navlink" data-page="cv"><span class="ico">🤝</span> Core Values</button>
   <button class="navlink" data-page="log"><span class="ico">📓</span> Daily Log</button>
   <button class="navlink" data-page="rubric"><span class="ico">📋</span> Rubric Check</button>
-  <button class="navlink" data-page="temp"><span class="ico">🗃️</span> Temporary</button>
   <div class="countdown"><div class="num" id="cd-num">–</div><div class="lbl" id="cd-lbl"></div></div>
 </aside>
 
@@ -273,9 +272,7 @@
   <section class="page active" id="page-dash">
     <div class="pagehead"><h1>Team Dashboard<small>Everything the judges will see, in one place</small></h1><span class="chip">2026 SEASON</span></div>
     <div class="grid">
-      <div class="card"><h2><span><i class="leafdot"></i>Best Match Score</span><button class="btn sm lav" onclick="go('game')">Log a match →</button></h2>
-        <div class="big" id="d-best">—</div><div class="delta" id="d-delta"></div><div id="d-chart"></div></div>
-      <div class="card"><h2><span><i class="leafdot"></i>Mission Inventory</span><button class="btn sm lav" onclick="go('game')">Edit →</button></h2><div id="d-missions"></div></div>
+      <div class="card wide"><h2><span><i class="leafdot"></i>Mission Inventory</span><button class="btn sm lav" onclick="go('game')">Edit →</button></h2><div id="d-missions"></div></div>
       <div class="card wide"><h2><span><i class="leafdot"></i>Latest Notebook Entries</span><button class="btn sm lav" onclick="go('log')">Write one →</button></h2><div id="d-log"></div></div>
       <div class="card"><h2><span><i class="leafdot"></i>Core Values Tally</span><button class="btn sm lav" onclick="go('cv')">Add moment →</button></h2><div class="cv" id="d-cv"></div></div>
       <div class="card celebrate"><h2><span><i class="leafdot"></i>Proudest Moment</span></h2><div class="quote" id="d-quote"></div><div class="by" id="d-quote-by"></div></div>
@@ -291,8 +288,7 @@
       <div class="card wide"><h2><span><i class="leafdot"></i>Mission Inventory</span><span class="hint">Change a status or reliability and watch the dashboard update</span></h2><div id="g-missions"></div></div>
       <div class="card" style="align-self:start"><h2><span><i class="leafdot"></i>Run Plan &amp; Time Check</span></h2><div id="g-runplan"></div></div>
       <div class="card" style="grid-row:span 2;align-self:start"><h2><span><i class="leafdot"></i>Points-per-Second Leaderboard</span></h2> <!-- spans 2 rows so Score History + Log tuck under the Run Plan on narrower screens (Thea, Oct 23) --><div id="g-pps"></div><div class="hint">(points × reliability) ÷ seconds — which missions earn the most for their time?</div></div>
-      <div style="display:flex;flex-direction:column;gap:16px;align-self:start;min-width:0"> <!-- Score History with Log a Practice Match right under it (Thea, Oct 23) -->
-        <div class="card"><h2><span><i class="leafdot"></i>Score History</span></h2><div id="g-chart"></div><div id="g-matches"></div></div>
+      <div style="display:flex;flex-direction:column;gap:16px;align-self:start;min-width:0"> <!-- Log a Practice Match (Score History removed Nov 20) -->
         <div class="card"><h2><span><i class="leafdot"></i>Log a Practice Match</span></h2>
           <div class="form">
             <label>Date<input type="date" id="m-date" value="2026-09-06"></label>
@@ -348,7 +344,7 @@
   <section class="page" id="page-ip">
     <div class="pagehead"><h1>Innovation Project<small>Problem · Solution · How we got here</small></h1></div>
     <div class="grid">
-      <!-- Card order follows the judging script (Nov 17): Isla, Adeline, Thea, Nolan, Weston, Fynn. 8-Step Progress is on the Temporary page. -->
+      <!-- Card order follows the judging script (Nov 17): Isla, Adeline, Thea, Nolan, Weston, Fynn. -->
       <div class="card wide" style="background:linear-gradient(100deg,#fff,#f2ecfa)"><h2><span><i class="leafdot"></i>The Problem</span></h2><div class="ipbox" id="ip-problem"></div></div> <!-- Isla -->
       <div class="card wide"><h2><span><i class="leafdot"></i>Experts &amp; Their Feedback</span></h2><div id="ip-experts"></div></div> <!-- Adeline -->
       <div class="card wide"><h2><span><i class="leafdot"></i>Research Collection</span></h2><div id="ip-research"></div></div>
@@ -383,12 +379,6 @@
 
   <!-- ================= TEMPORARY (Nov 17) ================= -->
   <!-- Cards taken off a page live here instead of being deleted, so they can be put back. -->
-  <section class="page" id="page-temp">
-    <div class="pagehead"><h1>Temporary<small>Cards we took off a page · kept here in case we want them back</small></h1></div>
-    <div class="grid">
-      <div class="card wide"><h2><span><i class="leafdot"></i>8-Step Progress</span><span class="hint">From the Innovation Project page (off Nov 17) · 👆 Click the step we're working on now</span></h2><div class="steps" id="ip-steps"></div></div>
-    </div>
-  </section>
 
   <!-- ================= CORE VALUES ================= -->
   <section class="page" id="page-cv">
@@ -533,12 +523,6 @@ function missionTable(editable){
 
 /* ===================== RENDER ===================== */
 function renderDash(){
- const sorted=[...matches].sort((a,b)=>a.d.localeCompare(b.d));
- if(sorted.length){const best=Math.max(...matches.map(m=>m.s));const last=sorted[sorted.length-1].s,prev=sorted.length>1?sorted[sorted.length-2].s:last;
-  $('d-best').textContent=best;$('d-delta').textContent=(last-prev>=0?'▲ +':'▼ ')+(last-prev)+' vs. previous match · '+matches.length+' matches played';
-  $('d-chart').innerHTML=lineChart(sorted,'#3f9b4c');$('g-chart').innerHTML=lineChart(sorted,'#b48fd9')}
- else{$('d-best').textContent='—';$('d-delta').textContent='No practice matches scored yet — the first one is a milestone!';
-  $('d-chart').innerHTML='<div class="hint" style="margin-top:10px">Your score-over-time chart appears here after the first match.</div>';$('g-chart').innerHTML=''}
  $('d-missions').innerHTML=missionTable(false);$('g-missions').innerHTML=missionTable(true);
  const cnt=[0,0,0,0,0];rubric.forEach(r=>cnt[r.l]++);
  $('d-heat').innerHTML=[[4,'Exceeds'],[3,'Accomplished'],[2,'Developing'],[1,'Beginning']].map(([l,name])=>`<div class="cell l${l}" title="${rubric.filter(r=>r.l===l).map(r=>r.row).join(', ')||'none'}" onclick="go('rubric')"><div class="num">${cnt[l]}</div><div class="lab">${l}s</div><div class="lvlname">${name}</div></div>`).join('');
@@ -558,7 +542,6 @@ function renderGame(){
  <table style="margin-top:10px"><tr><th>Run</th><th>Missions</th><th>Est. pts</th><th>Time</th><th>Notes</th><th>Launcher</th></tr>${runs.map(r=>`<tr><td>${r.n}</td><td>${r.m.map(id=>missions.find(m=>m.id===id).name).join(' + ')}</td><td>${r.m.reduce((a,id)=>a+((r.part||{})[id]??missions.find(m=>m.id===id).pts),0)}</td><td>${r.timed?`<b title="Timed ${fmt(r.timed)}">⏱ ${r.t}s</b>`:`~${r.t}s <span class="hint">guess</span>`}</td><td>${r.note||''}</td><td>${!blank(r.l)?av(r.l,1)+' '+r.l:fill('/api/runs/'+r.n,'l','','name')}</td></tr>`).join('')}</table>`;
  const pps=missions.map(m=>({...m,pot:m.pts/m.sec,v:(m.pts*m.rel/100)/m.sec})).sort((a,b)=>(b.v-a.v)||(b.pot-a.pot)||(b.pts-a.pts));
  $('g-pps').innerHTML=`<table><tr><th>#</th><th>Mission</th><th>Max pts</th><th>Est. time</th><th>Potential pts/s</th><th>Expected pts</th></tr>${pps.map((m,i)=>`<tr><td>${i+1}</td><td>${m.id} ${m.name}</td><td>${m.pts}</td><td>~${m.sec}s</td><td><b style="color:${i===0?'var(--grass)':'inherit'}">${m.pot.toFixed(2)}</b></td><td>${m.rel?Math.round(m.pts*m.rel/100):'—'}</td></tr>`).join('')}</table><div class="hint">${missions.filter(m=>m.sec!==30).length?`Real times so far: ${missions.filter(m=>m.sec!==30).map(m=>m.id+' '+m.sec+'s').join(', ')}. The rest are guessed at 30 s. Fix the times as you learn them and the ranking gets smart.`:'Every mission is guessed at 30 s right now, so this is really a points ranking. Fix the times as you learn them and the ranking gets smart.'}</div>`;
- $('g-matches').innerHTML=`<table style="margin-top:8px"><tr><th>Date</th><th>Score</th><th>Runs</th><th>What failed</th><th>What we changed</th></tr>${matches.length?'':'<tr><td colspan="5" class="hint">No matches yet. Run the robot for 2.5 minutes, count the points, and log it here — confetti guaranteed on the first one.</td></tr>'}${[...matches].sort((a,b)=>b.d.localeCompare(a.d)).map(m=>`<tr><td>${fmt(m.d)}</td><td><b>${m.s}</b></td><td>${m.r}</td><td>${m.f}</td><td class="arrow">→ <span style="color:var(--ink);font-weight:600">${m.c}</span></td></tr>`).join('')}</table>`;
 }
 function renderDesign(){
  $('rd-robot-pic').innerHTML=bigPic(settings.robot_photo);

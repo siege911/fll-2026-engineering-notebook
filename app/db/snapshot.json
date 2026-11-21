@@ -1,5 +1,5 @@
 {
- "written_at": "2026-11-20T19:09:36.336Z",
+ "written_at": "2026-11-21T02:01:23.785Z",
  "applied_updates": [
   {
    "file": "2026-09-28-profile-photos.sql",
@@ -228,6 +228,22 @@
   {
    "file": "2026-11-20c-final-v3-who.sql",
    "applied_at": "2026-11-20 19:09:28"
+  },
+  {
+   "file": "2026-11-20d-fill-blanks-from-talks.sql",
+   "applied_at": "2026-11-21 01:01:41"
+  },
+  {
+   "file": "2026-11-20e-no-color-sensors.sql",
+   "applied_at": "2026-11-21 01:54:28"
+  },
+  {
+   "file": "2026-11-20f-reliability-counts.sql",
+   "applied_at": "2026-11-21 01:57:41"
+  },
+  {
+   "file": "2026-11-20g-difficulty-not-reliability.sql",
+   "applied_at": "2026-11-21 02:01:15"
   }
  ],
  "attachment_versions": [
@@ -1690,6 +1706,48 @@
    "source": "update",
    "sample": 0,
    "created_at": "2026-11-20 19:06:39"
+  },
+  {
+   "id": 68,
+   "date": "2026-11-15",
+   "who": "[\"Adeline\"]",
+   "component": "Innovation Project",
+   "phase": "DESIGN",
+   "text": "From our judging talk: we had 3 ideas. 1) A camera or sensor with a flashing light to warn drivers about animals. 2) A camera in a car that alerts the driver. 3) A camera that counts how many animals use the bridge vs other crossing places. We picked one multi-purpose camera that detects animals and could help all 3, starting with counting animals on the new bridge.",
+   "core_values": "[\"Innovation\"]",
+   "success": 0,
+   "photo": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-21 01:01:41"
+  },
+  {
+   "id": 69,
+   "date": "2026-11-15",
+   "who": "[\"Weston\"]",
+   "component": "Innovation Project",
+   "phase": "ITERATE",
+   "text": "From our judging talk: our first plan was to put the Raspberry Pi in the forest. After our research (a Pi 4 uses 3–5 watts all the time) we switched to the tiny camera, because it uses less energy and needs a smaller solar panel. The Pi now collects the pictures over Wi-Fi.",
+   "core_values": "[]",
+   "success": 1,
+   "photo": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-21 01:01:41"
+  },
+  {
+   "id": 70,
+   "date": "2026-11-15",
+   "who": "[\"Adeline\"]",
+   "component": "Robot Design",
+   "phase": "DESIGN",
+   "text": "From our judging talk: one of our three robots has no gears. One person builds and hand-drives it around the map to test attachments, then we switch to one of the two robots with gears to program the mission.",
+   "core_values": "[]",
+   "success": 0,
+   "photo": null,
+   "source": "update",
+   "sample": 0,
+   "created_at": "2026-11-21 01:01:41"
   }
  ],
  "experts": [
@@ -2396,7 +2454,7 @@
    "attachment": "Drone Survey attachment",
    "built_by": "[\"Isla\"]",
    "programmed_by": "[\"Adeline\",\"Fynn\",\"Isla\"]",
-   "reliability": 0,
+   "reliability": 100,
    "status": "Working",
    "est_seconds": 12
   },
@@ -2407,7 +2465,7 @@
    "max_points": 30,
    "how_it_scores": "10 per seed off the stalk (3 seeds)",
    "no_equipment": 0,
-   "difficulty": 0,
+   "difficulty": 3,
    "run_number": 2,
    "attachment": "Mission 2 attachment · Combined 2+3",
    "built_by": "[\"Adeline\",\"Nolan\"]",
@@ -2423,7 +2481,7 @@
    "max_points": 30,
    "how_it_scores": "Research flag down 20 · +10 if rock back in start position",
    "no_equipment": 0,
-   "difficulty": 0,
+   "difficulty": 1,
    "run_number": 2,
    "attachment": "Flip the Rock attachment · Combined 2+3",
    "built_by": "[\"Nolan\"]",
@@ -2439,7 +2497,7 @@
    "max_points": 30,
    "how_it_scores": "1st leaf out 10 · +20 for 2nd leaf if katydid stays put · katydid out of habitat = 0",
    "no_equipment": 1,
-   "difficulty": 0,
+   "difficulty": 2,
    "run_number": 3,
    "attachment": "Lucky Leaves attachment",
    "built_by": "[\"Fynn\"]",
@@ -2455,7 +2513,7 @@
    "max_points": 20,
    "how_it_scores": "Plant root partly extended 10 OR fully extended 20",
    "no_equipment": 1,
-   "difficulty": 0,
+   "difficulty": 2,
    "run_number": 3,
    "attachment": "Lucky Leaves attachment",
    "built_by": "[]",
@@ -2471,12 +2529,12 @@
    "max_points": 40,
    "how_it_scores": "Ant touching nest + 10 per leaf fragment inside (4 fragments)",
    "no_equipment": 0,
-   "difficulty": 0,
+   "difficulty": 2,
    "run_number": 9,
    "attachment": "Mission 6 attachment",
    "built_by": "[\"Nolan\",\"Weston\"]",
    "programmed_by": "[\"Fynn\"]",
-   "reliability": 0,
+   "reliability": 91,
    "status": "Working",
    "est_seconds": 30
   },
@@ -2487,12 +2545,12 @@
    "max_points": 30,
    "how_it_scores": "Mycelium fully extended 20 · +10 if other team's plant root is fully extended too",
    "no_equipment": 1,
-   "difficulty": 0,
+   "difficulty": 1,
    "run_number": 9,
    "attachment": "Mission 7 attachment",
    "built_by": "[\"Nolan\",\"Weston\"]",
    "programmed_by": "[\"Fynn\"]",
-   "reliability": 0,
+   "reliability": 93,
    "status": "Working",
    "est_seconds": 30
   },
@@ -2503,12 +2561,12 @@
    "max_points": 30,
    "how_it_scores": "Vine touching the mat 30",
    "no_equipment": 0,
-   "difficulty": 0,
+   "difficulty": 1,
    "run_number": 4,
    "attachment": "Mission 8 attachment",
    "built_by": "[\"Nolan\"]",
    "programmed_by": "[\"Fynn\",\"Isla\"]",
-   "reliability": 20,
+   "reliability": 93,
    "status": "Working",
    "est_seconds": 30
   },
@@ -2519,12 +2577,12 @@
    "max_points": 30,
    "how_it_scores": "Platform raised 10 · camera trap deployed 10 · seed off the tree 10",
    "no_equipment": 1,
-   "difficulty": 0,
+   "difficulty": 3,
    "run_number": 4,
    "attachment": "Mission 9 attachment",
    "built_by": "[\"Weston\"]",
    "programmed_by": "[\"Weston\",\"Fynn\",\"Isla\"]",
-   "reliability": 0,
+   "reliability": 81,
    "status": "Working",
    "est_seconds": 30
   },
@@ -2535,28 +2593,28 @@
    "max_points": 20,
    "how_it_scores": "Spider habitat untouched 10 · snail habitat untouched 10 (don't bump them!)",
    "no_equipment": 1,
-   "difficulty": 0,
+   "difficulty": 2,
    "run_number": 5,
    "attachment": "—",
    "built_by": "[]",
    "programmed_by": "[]",
-   "reliability": 0,
+   "reliability": 97,
    "status": "Working",
    "est_seconds": 30
   },
   {
    "id": "M11",
    "name": "Window to the Past",
-   "aka": "",
+   "aka": "\"Windows in the past\"",
    "max_points": 20,
    "how_it_scores": "Root cover down, touching the mat 20",
    "no_equipment": 0,
-   "difficulty": 0,
+   "difficulty": 3,
    "run_number": 9,
    "attachment": "Mission 11 attachment",
    "built_by": "[\"Weston\",\"Nolan\"]",
    "programmed_by": "[\"Weston\",\"Nolan\",\"Fynn\"]",
-   "reliability": 0,
+   "reliability": 94,
    "status": "Working",
    "est_seconds": 30
   },
@@ -2567,12 +2625,12 @@
    "max_points": 30,
    "how_it_scores": "Cane raised & touching tree 20 · support tie around post 10",
    "no_equipment": 1,
-   "difficulty": 0,
+   "difficulty": 3,
    "run_number": 6,
    "attachment": "Mission 12 attachment",
    "built_by": "[\"Fynn\",\"Isla\",\"Adeline\"]",
    "programmed_by": "[\"Isla\",\"Fynn\",\"Thea\",\"Adeline\"]",
-   "reliability": 0,
+   "reliability": 100,
    "status": "Working",
    "est_seconds": 7
   },
@@ -2583,12 +2641,12 @@
    "max_points": 30,
    "how_it_scores": "Our own keystone species on the platform + young trees raised 30 (build it from bag 20)",
    "no_equipment": 0,
-   "difficulty": 0,
+   "difficulty": 2,
    "run_number": 8,
    "attachment": "Keystone Species (mascot) attachment",
    "built_by": "[\"Thea\",\"Nolan\"]",
    "programmed_by": "[\"Isla\",\"Fynn\"]",
-   "reliability": 0,
+   "reliability": 91,
    "status": "Working",
    "est_seconds": 30
   },
@@ -2599,12 +2657,12 @@
    "max_points": 30,
    "how_it_scores": "5 per seed in the replantation station · +5 each if touching the mat (3 seeds)",
    "no_equipment": 0,
-   "difficulty": 0,
+   "difficulty": 2,
    "run_number": 5,
    "attachment": "Mission 14 attachment",
    "built_by": "[\"Weston\"]",
    "programmed_by": "[\"Fynn\",\"Isla\"]",
-   "reliability": 100,
+   "reliability": 82,
    "status": "Working",
    "est_seconds": 30
   },
@@ -2615,12 +2673,12 @@
    "max_points": 40,
    "how_it_scores": "Nesting canopy 10 · garden skylight 10 · compost hatch 10 · +10 for the one your dock needs",
    "no_equipment": 1,
-   "difficulty": 0,
+   "difficulty": 3,
    "run_number": 7,
    "attachment": "Mission 15 attachment",
    "built_by": "[\"Isla\"]",
    "programmed_by": "[\"Isla\",\"Adeline\",\"Fynn\"]",
-   "reliability": 0,
+   "reliability": 95,
    "status": "Working",
    "est_seconds": 30
   }
@@ -2719,7 +2777,7 @@
    "program": "Drone Survey (M01) program",
    "mission": "M01",
    "coded_by": "[\"Adeline\",\"Fynn\",\"Isla\"]",
-   "sensors": "—",
+   "sensors": "Gyro (in the hub)",
    "innovative_bit": "First mission program of the season (Sep 11) — fill in what's clever about it",
    "sort_order": 2
   },
@@ -2728,7 +2786,7 @@
    "program": "Forest Elder (M12) program",
    "mission": "M12",
    "coded_by": "[\"Isla\",\"Fynn\",\"Thea\",\"Adeline\"]",
-   "sensors": "—",
+   "sensors": "Gyro (in the hub)",
    "innovative_bit": "Isla wrote it the day the attachment was finished (Sep 11); Fynn programmed it again Sep 19; Thea programmed it Sep 25 — one program improved three times, or different versions? Fill in what's clever about it",
    "sort_order": 3
   },
@@ -2737,7 +2795,7 @@
    "program": "Lucky Leaves (M04) program",
    "mission": "M04",
    "coded_by": "[\"Adeline\",\"Fynn\",\"Isla\"]",
-   "sensors": "—",
+   "sensors": "Gyro (in the hub)",
    "innovative_bit": "Adeline's second mission program (Sep 19) — the katydid has to stay put, so how does the program keep it safe?",
    "sort_order": 4
   },
@@ -2746,7 +2804,7 @@
    "program": "Seeds of Renewal (M14) program",
    "mission": "M14",
    "coded_by": "[\"Fynn\",\"Isla\"]",
-   "sensors": "—",
+   "sensors": "Gyro (in the hub)",
    "innovative_bit": "Fynn coded Weston's attachment (Sep 25) — fill in what's clever about it",
    "sort_order": 5
   },
@@ -2755,7 +2813,7 @@
    "program": "Biocentric Architecture (M15) program",
    "mission": "M15",
    "coded_by": "[\"Isla\",\"Adeline\",\"Fynn\"]",
-   "sensors": "—",
+   "sensors": "Gyro (in the hub)",
    "innovative_bit": "Isla built the attachment AND wrote its program (Sep 25) — the 40-point mission. Fill in what's clever about it",
    "sort_order": 6
   },
@@ -2764,7 +2822,7 @@
    "program": "Exploding Seeds + Flip the Rock (M02 + M03) program",
    "mission": "M02",
    "coded_by": "[\"Nolan\",\"Fynn\",\"Isla\"]",
-   "sensors": "—",
+   "sensors": "Gyro (in the hub)",
    "innovative_bit": "Nolan's first program, for his combined 2 + 3 attachment (Oct 2) — tested 5/5",
    "sort_order": 7
   },
@@ -2773,7 +2831,7 @@
    "program": "Reaching Roots (M05) program",
    "mission": "M05",
    "coded_by": "[\"Fynn\",\"Isla\",\"Adeline\"]",
-   "sensors": "—",
+   "sensors": "Gyro (in the hub)",
    "innovative_bit": "First M05 program (Oct 12); Isla helped Fynn",
    "sort_order": 8
   },
@@ -2782,7 +2840,7 @@
    "program": "Keystone Species (M13) program",
    "mission": "M13",
    "coded_by": "[\"Isla\",\"Fynn\"]",
-   "sensors": "—",
+   "sensors": "Gyro (in the hub)",
    "innovative_bit": "First M13 program (Oct 23, \"the mascot mission\")",
    "sort_order": 9
   },
@@ -2791,7 +2849,7 @@
    "program": "Research Platform (M09) program",
    "mission": "M09",
    "coded_by": "[\"Weston\",\"Fynn\",\"Isla\"]",
-   "sensors": "—",
+   "sensors": "Gyro (in the hub)",
    "innovative_bit": "First M09 program (Oct 23, \"the big tree mission\")",
    "sort_order": 10
   },
@@ -2800,7 +2858,7 @@
    "program": "Window to the Past (M11) program",
    "mission": "M11",
    "coded_by": "[\"Weston\",\"Nolan\",\"Fynn\"]",
-   "sensors": "—",
+   "sensors": "Gyro (in the hub)",
    "innovative_bit": "First M11 program (Nov 1)",
    "sort_order": 11
   },
@@ -2809,7 +2867,7 @@
    "program": "Mission menu (main_base.py + robot.py)",
    "mission": null,
    "coded_by": "[\"Adeline\"]",
-   "sensors": "Hub buttons, light, speaker",
+   "sensors": "Gyro (on before each mission, off between), hub buttons, light, speaker",
    "innovative_bit": "One program for the whole match: pick runs 1–9 with the hub buttons, CENTER stops a run and stays on it to retry, the next run is ready (orange light) as soon as one finishes. Ports and wheels set once in robot.py. Built Nov 3, tested Nov 9.",
    "sort_order": 12
   }
@@ -2967,12 +3025,12 @@
   },
   {
    "label": "Motors",
-   "value": "— fill in",
+   "value": "4 motors: drive wheels on ports A (left) + E (right), attachment motors on B (left) + F (right)",
    "sort_order": 4
   },
   {
    "label": "Sensors",
-   "value": "None — color sensors discussed, but the compact base had no room for one (Sep 6)",
+   "value": "Gyro in the hub: drives straight and turns exactly (every Final v3 program turns it on). No color sensors: the compact base had no room for one (Sep 6)",
    "sort_order": 5
   },
   {
@@ -3496,7 +3554,7 @@
    "date": "2026-09-06",
    "question": "Color sensors, or no sensors?",
    "options": "Color sensors (line / color detection) vs none",
-   "pick": "No sensors",
+   "pick": "No color sensors",
    "why": "The base is so compact there was no room left for a sensor. Tradeoff we accepted: no line or color detection — the robot navigates by wheel rotations and turns alone.",
    "sort_order": 3
   },
@@ -3504,9 +3562,9 @@
    "id": 4,
    "date": "2026-08-28",
    "question": "Which drive tires?",
-   "options": "(students: which tires did you compare?)",
+   "options": "8 different wheels we tested",
    "pick": "49.5 × 20 mm tires",
-   "why": "(students: write why here)",
+   "why": "Good traction and accurate. \"We started by testing 8 different wheels. We decided on this one because it has good traction and is accurate.\" (Isla)",
    "sort_order": 4
   },
   {
@@ -3515,7 +3573,7 @@
    "question": "One robot base, or three identical copies?",
    "options": "One base everyone shares vs three matching bases",
    "pick": "Three identical bases (Sep 6)",
-   "why": "(students: write why here — more attachments tested at once? a spare if one breaks?)",
+   "why": "So we can test three attachments at once and have a spare. (Isla) One of the three has no gears: it is our build-and-test robot.",
    "sort_order": 5
   },
   {
@@ -3523,9 +3581,18 @@
    "date": "2026-09-04",
    "question": "One attachment for Missions 2 + 3, or two separate ones?",
    "options": "Adeline's Mission 2 attachment vs Nolan's combined 2 + 3 attachment",
-   "pick": "Mission 2-3 connected",
-   "why": "Test both, then pick — and write down why. That's exactly what judges want to see.",
+   "pick": "Combined 2 + 3 attachment",
+   "why": "One trip does two missions: it knocks the seeds loose and flips the rock (Weston). Nolan's combined attachment tested 5/5 on Oct 2. Lesson: \"combine missions to save trips.\" (Thea)",
    "sort_order": 6
+  },
+  {
+   "id": 7,
+   "date": null,
+   "question": "A build-and-test robot with no gears?",
+   "options": "Gears on every robot vs one robot with no gears",
+   "pick": "One robot with no gears",
+   "why": "One person can focus on building and hand-drive it around the map to test attachments. Then we switch to one of the two robots with gears to program the mission. (Adeline)",
+   "sort_order": 7
   }
  ]
 }
